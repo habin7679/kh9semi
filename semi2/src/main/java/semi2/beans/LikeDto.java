@@ -2,13 +2,13 @@
 package semi2.beans;
 
 public class LikeDto {
-	private String memberId;
+	private String MemberId;
 	private int productNo;
 	public String getMemberId() {
-		return memberId;
+		return MemberId;
 	}
-	public void setMemberId(String memberId) {
-		this.memberId = memberId;
+	public void setMemberId(String MemberId) {
+		this.MemberId = MemberId;
 	}
 	public int getProductNo() {
 		return productNo;

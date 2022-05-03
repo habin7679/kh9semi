@@ -4,11 +4,11 @@ import java.sql.Date;
 
 public class PayingDto {
 	private int orderNo;
-	private String memberId;
+	private String MemberId;
 	private int payingTotal;
 	private Date payingDate;
 	private String payingName;
-	private long payingPhone;
+	private String payingPhone;
 	private int payingPost;
 	private String payingBasicAddress;
 	private String payingDetailAddress;
@@ -22,10 +22,10 @@ public class PayingDto {
 		this.orderNo = orderNo;
 	}
 	public String getMemberId() {
-		return memberId;
+		return MemberId;
 	}
 	public void setMemberId(String memberId) {
-		this.memberId = memberId;
+		this.MemberId = memberId;
 	}
 	public int getPayingTotal() {
 		return payingTotal;
@@ -45,10 +45,10 @@ public class PayingDto {
 	public void setPayingName(String payingName) {
 		this.payingName = payingName;
 	}
-	public long getPayingPhone() {
+	public String getPayingPhone() {
 		return payingPhone;
 	}
-	public void setPayingPhone(long payingPhone) {
+	public void setPayingPhone(String payingPhone) {
 		this.payingPhone = payingPhone;
 	}
 	public int getPayingPost() {
