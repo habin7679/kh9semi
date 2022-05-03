@@ -1,13 +1,13 @@
+
 package semi2.beans;
 
-public class CartDto {
+public class LikeDto {
 	private String memberId;
 	private int productNo;
-	private int cartAmount;
-	public String getmemberId() {
+	public String getMemberId() {
 		return memberId;
 	}
-	public void setmemberId(String memberId) {
+	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
 	public int getProductNo() {
@@ -15,12 +15,6 @@ public class CartDto {
 	}
 	public void setProductNo(int productNo) {
 		this.productNo = productNo;
-	}
-	public int getCartAmount() {
-		return cartAmount;
-	}
-	public void setCartAmount(int cartAmount) {
-		this.cartAmount = cartAmount;
 	}
 	
 	
