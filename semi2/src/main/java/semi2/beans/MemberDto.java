@@ -105,6 +105,5 @@ public class MemberDto {
 				+ memberBirth + ", memberPost=" + memberPost + ", memberBasicAddress=" + memberBasicAddress
 				+ ", memberDetailAddress=" + memberDetailAddress + ", memberPoint=" + memberPoint + ", memberGrade="
 				+ memberGrade + ", memberJoindate=" + memberJoindate + "]";
-	}
-	
+}
 }
