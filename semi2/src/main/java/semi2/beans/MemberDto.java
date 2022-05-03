@@ -6,7 +6,7 @@ public class MemberDto {
 	private String memberId; 
 	private String memberPw;
 	private String memberNick;
-	private String name;
+	private String memberName;
 	private String memberPhone;
 	private String memberEmail;
 	private String memberBirth;
@@ -38,11 +38,11 @@ public class MemberDto {
 	public void setMemberNick(String memberNick) {
 		this.memberNick = memberNick;
 	}
-	public String getName() {
-		return name;
+	public String getMemberName() {
+		return memberName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
 	}
 	public String getMemberPhone() {
 		return memberPhone;
@@ -100,10 +100,11 @@ public class MemberDto {
 	}
 	@Override
 	public String toString() {
-		return "MemberDto [memberId=" + memberId + ", memberPw=" + memberPw + ", memberNick=" + memberNick + ", name="
-				+ name + ", memberPhone=" + memberPhone + ", memberEmail=" + memberEmail + ", memberBirth="
-				+ memberBirth + ", memberPost=" + memberPost + ", memberBasicAddress=" + memberBasicAddress
-				+ ", memberDetailAddress=" + memberDetailAddress + ", memberPoint=" + memberPoint + ", memberGrade="
-				+ memberGrade + ", memberJoindate=" + memberJoindate + "]";
-}
+		return "MemberDto [memberId=" + memberId + ", memberPw=" + memberPw + ", memberNick=" + memberNick
+				+ ", memberName=" + memberName + ", memberPhone=" + memberPhone + ", memberEmail=" + memberEmail
+				+ ", memberBirth=" + memberBirth + ", memberPost=" + memberPost + ", memberBasicAddress="
+				+ memberBasicAddress + ", memberDetailAddress=" + memberDetailAddress + ", memberPoint=" + memberPoint
+				+ ", memberGrade=" + memberGrade + ", memberJoindate=" + memberJoindate + "]";
+	}
+	
 }
