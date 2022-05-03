@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 public class MemberDao {
 
 	public void join(MemberDto memberDto) throws Exception{
-		Connection con= jdbcUtils.getConnection();
+		Connection con= JdbcUtils.getConnection();
 		
 		String sql = "insert into member("
 				+ "member_id, member_pw, member_name, member_nick, member_birth, member_email, "
