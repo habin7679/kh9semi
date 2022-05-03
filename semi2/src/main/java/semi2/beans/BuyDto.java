@@ -6,6 +6,7 @@ public class BuyDto {
 	private int orderNo;
 	private long buyDelivery;
 	private String buyStatus;
+	
 	public int getBuyNo() {
 		return buyNo;
 	}
