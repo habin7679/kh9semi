@@ -14,15 +14,15 @@ public class MemberDao {
 			+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 		PreparedStatement ps= con.prepareStatement(sql);
 		ps.setString(1, memberDto.getMemberId());
-		ps.setString(0, memberDto.getMemberPw());
-		ps.setString(0, memberDto.getMemberName());
-		ps.setString(0, memberDto.getMemberNick());
-		ps.setString(0, memberDto.getMemberBirth());
-		ps.setString(0, memberDto.getMemberEmail());
-		ps.setString(0, memberDto.getMemberPhone());
-		ps.setString(0, memberDto.getMemberPost());
-		ps.setString(0, memberDto.getMemberBasicAddress());
-		ps.setString(0, memberDto.getMemberDetailAddress());
+		ps.setString(2, memberDto.getMemberPw());
+		ps.setString(3, memberDto.getMemberName());
+		ps.setString(4, memberDto.getMemberNick());
+		ps.setString(5, memberDto.getMemberBirth());
+		ps.setString(6, memberDto.getMemberEmail());
+		ps.setString(7, memberDto.getMemberPhone());
+		ps.setString(8, memberDto.getMemberPost());
+		ps.setString(9, memberDto.getMemberBasicAddress());
+		ps.setString(10, memberDto.getMemberDetailAddress());
 		ps.execute();
 		
 		con.close();
