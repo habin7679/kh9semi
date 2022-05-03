@@ -1,6 +1,6 @@
 package semi2.beans;
 
-public class cartDto {
+public class CartDto {
 	private String customerId;
 	private int productNo;
 	private int cartAmount;

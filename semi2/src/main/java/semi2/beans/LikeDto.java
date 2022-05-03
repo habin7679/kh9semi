@@ -1,6 +1,6 @@
 package semi2.beans;
 
-public class likeDto {
+public class LikeDto {
 	private String memberId;
 	private String productNo;
 	public String getMemberId() {
