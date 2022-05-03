@@ -1,8 +1,13 @@
-drop table product;
-delete board;
 drop sequence board_seq;
+drop sequence reply_seq;
 ALTER TABLE board DROP PRIMARY KEY DROP INDEX;
-DROP TABLE board CASCADE CONSTRAINTS;
+DROP TABLE BOARD CASCADE CONSTRAINTS;
+DROP TABLE reply CASCADE CONSTRAINTS;
+DROP TABLE free CASCADE CONSTRAINTS;
+DROP TABLE notice CASCADE CONSTRAINTS;
+DROP TABLE tip CASCADE CONSTRAINTS;
+DROP TABLE cs CASCADE CONSTRAINTS;
+DROP TABLE review CASCADE CONSTRAINTS;
 
 commit;
 
@@ -21,7 +26,7 @@ create table reply(
 reply_no number primary key,
 reply_content varchar2(600) not null,
 reply_time date default sysdate not null,
-reply_target references board(board_no) on delete cascade,
+reply_board_no references board(board_no) on delete cascade,
 reply_writer references member(member_id) on delete set null
 );
 create sequence reply_seq;
