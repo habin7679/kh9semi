@@ -1,9 +1,12 @@
 package semi2.beans;
 
+import java.sql.Date;
+
 public class MemberDto {
 	private String memberId; 
 	private String memberPw;
 	private String memberNick;
+	private String name;
 	private String memberPhone;
 	private String memberEmail;
 	private String memberBirth;
@@ -12,9 +15,10 @@ public class MemberDto {
 	private String memberDetailAddress;
 	private int memberPoint;
 	private String memberGrade;
-	private String memberJoindate;
+	private Date memberJoindate;
 	public MemberDto() {
 		super();
+		
 	}
 	public String getMemberId() {
 		return memberId;
@@ -33,6 +37,12 @@ public class MemberDto {
 	}
 	public void setMemberNick(String memberNick) {
 		this.memberNick = memberNick;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getMemberPhone() {
 		return memberPhone;
@@ -82,19 +92,18 @@ public class MemberDto {
 	public void setMemberGrade(String memberGrade) {
 		this.memberGrade = memberGrade;
 	}
-	public String getMemberJoindate() {
+	public Date getMemberJoindate() {
 		return memberJoindate;
 	}
-	public void setMemberJoindate(String memberJoindate) {
+	public void setMemberJoindate(Date memberJoindate) {
 		this.memberJoindate = memberJoindate;
 	}
 	@Override
 	public String toString() {
-		return "MemberDto [memberId=" + memberId + ", memberPw=" + memberPw + ", memberNick=" + memberNick
-				+ ", memberPhone=" + memberPhone + ", memberEmail=" + memberEmail + ", memberBirth=" + memberBirth
-				+ ", memberPost=" + memberPost + ", memberBasicAddress=" + memberBasicAddress + ", memberDetailAddress="
-				+ memberDetailAddress + ", memberPoint=" + memberPoint + ", memberGrade=" + memberGrade
-				+ ", memberJoindate=" + memberJoindate + "]";
-	}
-	
+		return "MemberDto [memberId=" + memberId + ", memberPw=" + memberPw + ", memberNick=" + memberNick + ", name="
+				+ name + ", memberPhone=" + memberPhone + ", memberEmail=" + memberEmail + ", memberBirth="
+				+ memberBirth + ", memberPost=" + memberPost + ", memberBasicAddress=" + memberBasicAddress
+				+ ", memberDetailAddress=" + memberDetailAddress + ", memberPoint=" + memberPoint + ", memberGrade="
+				+ memberGrade + ", memberJoindate=" + memberJoindate + "]";
+}
 }
