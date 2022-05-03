@@ -5,17 +5,18 @@ public class OrderDto {
 	private String memberId;
 	private int productNo;
 	private int orderCount;
-	private boolean orderReview;
+	private String orderReview;
+	
 	public int getOrderNo() {
 		return orderNo;
 	}
 	public void setOrderNo(int orderNo) {
 		this.orderNo = orderNo;
 	}
-	public String getmemberId() {
+	public String getMemberId() {
 		return memberId;
 	}
-	public void setmemberId(String memberId) {
+	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
 	public int getProductNo() {
@@ -30,10 +31,10 @@ public class OrderDto {
 	public void setOrderCount(int orderCount) {
 		this.orderCount = orderCount;
 	}
-	public boolean isOrderReview() {
+	public String getOrderReview() {
 		return orderReview;
 	}
-	public void setOrderReview(boolean orderReview) {
+	public void setOrderReview(String orderReview) {
 		this.orderReview = orderReview;
 	}
 	

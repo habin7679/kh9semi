@@ -2,7 +2,7 @@ package semi2.beans;
 
 public class CreditDto {
 	private int orderNo;
-	private String MemberId;
+	private String memberId;
 	private String cardName;
 	private int cardNum;
 	private String cardPw;
@@ -14,10 +14,10 @@ public class CreditDto {
 		this.orderNo = orderNo;
 	}
 	public String getMemberId() {
-		return MemberId;
+		return memberId;
 	}
-	public void setMemberId(String MemberId) {
-		this.MemberId = MemberId;
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
 	public String getCardName() {
 		return cardName;

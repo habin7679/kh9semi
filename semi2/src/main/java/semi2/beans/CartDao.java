@@ -21,10 +21,12 @@ public class CartDao {
 	}
 	public boolean amountUpdate(CartDto cartDto) throws Exception{
 		Connection con = JdbcUtils.getConnection();
-		String sql = "update cart set cart_amount=?";
+		String sql = "update cart set cart_amount=? where member_id=? and product_no=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
 		ps.setInt(1, cartDto.getCartAmount());
+		ps.setString(2, cartDto.getMemberId());
+		ps.setInt(3, cartDto.getProductNo());
 		
 		int count = ps.executeUpdate();
 		
