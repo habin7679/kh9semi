@@ -1,4 +1,3 @@
-
 package semi2.beans;
 
 import java.sql.Connection;
@@ -19,3 +18,8 @@ public class LikeDao {
 		ps.execute();
 		con.close();		
 	}
+	public boolean delete(LikeDto likeDto) throws Exception{
+		Connection con = JdbcUtils.getConnection();
+		String sql = "delete ";
+	}
+}
