@@ -4,6 +4,7 @@ public class MemberDto {
 	private String memberId; 
 	private String memberPw;
 	private String memberNick;
+	private String memberName;
 	private String memberPhone;
 	private String memberEmail;
 	private String memberBirth;
@@ -91,10 +92,16 @@ public class MemberDto {
 	@Override
 	public String toString() {
 		return "MemberDto [memberId=" + memberId + ", memberPw=" + memberPw + ", memberNick=" + memberNick
-				+ ", memberPhone=" + memberPhone + ", memberEmail=" + memberEmail + ", memberBirth=" + memberBirth
-				+ ", memberPost=" + memberPost + ", memberBasicAddress=" + memberBasicAddress + ", memberDetailAddress="
-				+ memberDetailAddress + ", memberPoint=" + memberPoint + ", memberGrade=" + memberGrade
-				+ ", memberJoindate=" + memberJoindate + "]";
+				+ ", memberName=" + memberName + ", memberPhone=" + memberPhone + ", memberEmail=" + memberEmail
+				+ ", memberBirth=" + memberBirth + ", memberPost=" + memberPost + ", memberBasicAddress="
+				+ memberBasicAddress + ", memberDetailAddress=" + memberDetailAddress + ", memberPoint=" + memberPoint
+				+ ", memberGrade=" + memberGrade + ", memberJoindate=" + memberJoindate + "]";
+	}
+	public String getMemberName() {
+		return memberName;
+	}
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
 	}
 	
 }
