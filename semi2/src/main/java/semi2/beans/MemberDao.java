@@ -24,7 +24,6 @@ public class MemberDao {
 		ps.setString(8, memberDto.getMemberPost());
 		ps.setString(9, memberDto.getMemberBasicAddress());
 		ps.setString(10, memberDto.getMemberDetailAddress());
-		
 		ps.execute();
 		
 		con.close();

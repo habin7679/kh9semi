@@ -1,5 +1,6 @@
 package semi2.beans;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
