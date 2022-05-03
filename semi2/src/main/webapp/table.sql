@@ -114,6 +114,6 @@ create table orderp(
 order_no number references paying(order_no) on delete cascade, 
 member_id varchar2(20) references member(member_id), 
 product_no number references product(product_no), 
-order_amount number check(order_amount>0), 
-order_review char(1) check(order_review in('o','x'))
+order_count number check(order_count>0), 
+order_review char(1) default'x' check(order_review in('o','x'))
 );
