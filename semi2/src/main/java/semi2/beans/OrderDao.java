@@ -10,7 +10,7 @@ public class OrderDao {
 	public void insert(OrderDto orderDto) throws Exception{
 		Connection con = JdbcUtils.getConnection();
 		
-		String sql = "insert into orderp(order_no, member_id, product_no, order_count, order_review) values(?,?,?,?)";
+		String sql = "insert into orderp(order_no, member_id, product_no, order_count) values(?,?,?)";
 		
 		PreparedStatement ps = con.prepareStatement(sql);
 		
@@ -18,7 +18,6 @@ public class OrderDao {
 		ps.setString(2, orderDto.getMemberId());
 		ps.setInt(3, orderDto.getProductNo());
 		ps.setInt(4, orderDto.getOrderCount());
-		ps.setString(5, orderDto.getOrderReview());
 		
 		ps.execute();
 		con.close();
@@ -38,7 +37,7 @@ public class OrderDao {
 	}
 	public List<OrderDto> selectAll(int orderNo, String memberId) throws Exception{
 		Connection con = JdbcUtils.getConnection();
-		String sql = "selete * from orderp where order_no=? and member_id=?";
+		String sql = "select * from orderp where order_no=? and member_id=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
 		ps.setInt(1, orderNo);

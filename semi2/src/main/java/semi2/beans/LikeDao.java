@@ -7,18 +7,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LikeDao {
-	public void insert(String memberId, int ProductNo) throws Exception{
+	public void insert(LikeDto likeDto) throws Exception{
 		Connection con = JdbcUtils.getConnection();
 		
 		String sql = "insert into likep values(?,?)";
 		
 		PreparedStatement ps = con.prepareStatement(sql);
 		
-		ps.setString(1, memberId);
-		ps.setInt(2, ProductNo);
+		ps.setString(1, likeDto.getMemberId());
+		ps.setInt(2, likeDto.getProductNo());
 		
 		ps.execute();
 		con.close();
+	}
+	public LikeDto selectOne(LikeDto likeDto) throws Exception{
+		Connection con = JdbcUtils.getConnection();
+		String sql = "select * from like where member_id=? and product_no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, likeDto.getMemberId());
+		ps.setInt(2, likeDto.getProductNo());
+		
+		ResultSet rs = ps.executeQuery();
+		LikeDto lDto=null;
+		if(rs.next()) {
+			lDto.setMemberId(rs.getString("member_id"));
+			lDto.setProductNo(rs.getInt("product_no"));
+			return lDto;
+		}
+		return lDto;
 	}
 	public boolean delete(String memberId, int productNo) throws Exception{
 		Connection con = JdbcUtils.getConnection();
