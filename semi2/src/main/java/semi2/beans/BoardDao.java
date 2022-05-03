@@ -58,7 +58,6 @@ public class BoardDao {
 			boardDto.setBoardNo(rs.getInt("board_no"));
 			boardDto.setBoardHead(rs.getString("board_head"));
 			boardDto.setBoardTitle(rs.getString("board_title"));
-			//boardDto.setBoardContent(rs.getString("board_content"));//성능상의 이슈로 제거 가능하다면 제거하는것이 좋음
 			boardDto.setBoardTime(rs.getDate("board_time"));
 			boardDto.setBoardReadcount(rs.getInt("board_readcount"));
 			boardDto.setBoardWriter(rs.getString("board_writer"));
@@ -205,7 +204,7 @@ public class BoardDao {
 		Connection con = JdbcUtils.getConnection();
 		
 		String sql = "update board set board_replycount = ("
-									+ "select count(*) from reply where reply_target = ?"
+									+ "select count(*) from reply where reply_board_no = ?"
 						+ ") where board_no = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, boardNo);

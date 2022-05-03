@@ -4,10 +4,10 @@ public class CartDto {
 	private String memberId;
 	private int productNo;
 	private int cartAmount;
-	public String getmemberId() {
+	public String getMemberId() {
 		return memberId;
 	}
-	public void setmemberId(String memberId) {
+	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
 	public int getProductNo() {

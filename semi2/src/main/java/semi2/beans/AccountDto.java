@@ -7,17 +7,26 @@ public class AccountDto {
 	private long AccountNo;
 	private String AccountName;
 	private int AccountPrice;
+	private String AccountCheck;
+	
+	
+	public String getAccountCheck() {
+		return AccountCheck;
+	}
+	public void setAccountCheck(String accountCheck) {
+		AccountCheck = accountCheck;
+	}
 	public int getOrderNo() {
 		return orderNo;
 	}
 	public void setOrderNo(int orderNo) {
 		this.orderNo = orderNo;
 	}
-	public String getmemberId() {
+	public String getMemberId() {
 		return memberId;
 	}
-	public void setmemberId(String memberId) {
-		memberId = memberId;
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
 	public String getAccountBank() {
 		return AccountBank;

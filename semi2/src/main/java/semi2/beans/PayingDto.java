@@ -8,7 +8,7 @@ public class PayingDto {
 	private int payingTotal;
 	private Date payingDate;
 	private String payingName;
-	private long payingPhone;
+	private String payingPhone;
 	private int payingPost;
 	private String payingBasicAddress;
 	private String payingDetailAddress;
@@ -45,10 +45,10 @@ public class PayingDto {
 	public void setPayingName(String payingName) {
 		this.payingName = payingName;
 	}
-	public long getPayingPhone() {
+	public String getPayingPhone() {
 		return payingPhone;
 	}
-	public void setPayingPhone(long payingPhone) {
+	public void setPayingPhone(String payingPhone) {
 		this.payingPhone = payingPhone;
 	}
 	public int getPayingPost() {

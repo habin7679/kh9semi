@@ -56,6 +56,6 @@
 	    </div>
 	</div>
 	</form>
-	<a href="www.naver.com">d</a>
+	<a href="https://www.naver.com">d</a>
 </body>
 </html>
