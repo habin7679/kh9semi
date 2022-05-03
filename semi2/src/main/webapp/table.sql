@@ -35,3 +35,4 @@ product_fat number not null,
 product_info varchar2(100) not null,
 product_img varchar2(90) not null
 );
+create sequence product_no_seq;
