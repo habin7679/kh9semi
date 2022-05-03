@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 
 public class LikeDao {
 	public void insert(LikeDto likeDto) throws Exception{
-		
+		//gg
 		Connection con = JdbcUtils.getConnection();
 		
 		String sql = "insert into like values(?,?)";
