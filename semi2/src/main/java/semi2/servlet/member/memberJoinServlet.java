@@ -15,6 +15,8 @@ public class memberJoinServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+			resp.setContentType("text/plain; charset=UTF-8");
+			
 			MemberDto memberDto= new MemberDto();
 			memberDto.setMemberId(req.getParameter("memberId"));
 			memberDto.setMemberPw(req.getParameter("memberPw"));
@@ -29,7 +31,7 @@ public class memberJoinServlet extends HttpServlet{
 			
 			MemberDao memberDao= new MemberDao();
 			memberDao.join(memberDto);
-			resp.sendRedirect("footer.jsp");
+			resp.sendRedirect("join_success.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 			resp.sendError(500);
