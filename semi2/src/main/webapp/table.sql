@@ -18,13 +18,14 @@ member_joindate date default sysdate not null
 );
 
 
+
 create table product(
 product_no number primary key,
 product_name varchar2(100) not null,
 product_sort varchar2(50) check(product_sort in ('정기배송','닭가슴살','샐러드','소고기','간식','도시락')) ,
 product_price number not null,
 product_stock number not null,
-prduct_company varchar2(30) not null,
+product_company varchar2(30) not null,
 product_made date not null,
 product_expire date not null,
 product_event char(1) check(product_event in ('0','1')),
@@ -35,4 +36,14 @@ product_fat number not null,
 product_info varchar2(100) not null,
 product_img varchar2(90) not null
 );
+drop table product;
 create sequence product_no_seq;
+
+
+
+insert into product (product_no, product_name,product_sort,product_price,
+product_stock,product_company, product_made,product_expire,
+product_event,product_kcal,product_protein,product_carbohydrate,
+product_fat,product_info,product_img) values (product_no_seq.nextval, 
+'그린샐러드','샐러드', 4000, 2, '그린푸드','2022-05-01','2022-05-10','0',400,
+10,30,20,'맛있어요', 'salad.png');
