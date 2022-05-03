@@ -112,6 +112,7 @@ buy_status varchar2(15) check(buy_status in('입금전','입금확인','배송�
 
 create table orderp(
 order_no number references paying(order_no) on delete cascade, 
+member_id varchar2(20) references member(member_id), 
 product_no number references product(product_no), 
 order_amount number check(order_amount>0), 
 order_review char(1) check(order_review in('o','x'))
