@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class PayingDto {
 	private int orderNo;
-	private String MemberId;
+	private String memberId;
 	private int payingTotal;
 	private Date payingDate;
 	private String payingName;
@@ -22,10 +22,10 @@ public class PayingDto {
 		this.orderNo = orderNo;
 	}
 	public String getMemberId() {
-		return MemberId;
+		return memberId;
 	}
 	public void setMemberId(String memberId) {
-		this.MemberId = memberId;
+		this.memberId = memberId;
 	}
 	public int getPayingTotal() {
 		return payingTotal;
