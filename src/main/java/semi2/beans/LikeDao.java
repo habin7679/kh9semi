@@ -20,6 +20,6 @@ public class LikeDao {
 	}
 	public boolean delete(LikeDto likeDto) throws Exception{
 		Connection con = JdbcUtils.getConnection();
-		String sql = "delete "
+		String sql = "delete ";
 	}
 }
