@@ -141,7 +141,7 @@ public class BoardDao {
 		con.close();
 		
 		return number;
-	} 
+	}
 	
 	public void insert(BoardDto boardDto) throws Exception {
 		Connection con = JdbcUtils.getConnection();
