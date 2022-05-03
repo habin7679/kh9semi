@@ -27,9 +27,6 @@ public class BoardDto {
 	private int reviewBoardNo;
 	private int reviewProductNo;
 	private String reviewWriter;
-	private int replyNo;
-	private String replyContent;
-	private int replyBoardNo;
 	private int boardReplycount;
 	private int groupNo;
 	private int superNo;
@@ -178,25 +175,6 @@ public class BoardDto {
 	public void setReviewWriter(String reviewWriter) {
 		this.reviewWriter = reviewWriter;
 	}
-	public int getReplyNo() {
-		return replyNo;
-	}
-	public void setReplyNo(int replyNo) {
-		this.replyNo = replyNo;
-	}
-	public String getReplyContent() {
-		return replyContent;
-	}
-	public void setReplyContent(String replyContent) {
-		this.replyContent = replyContent;
-	}
-	public int getReplyBoardNo() {
-		return replyBoardNo;
-	}
-	public void setReplyBoardNo(int replyBoardNo) {
-		this.replyBoardNo = replyBoardNo;
-	}
-	
 	public int getBoardReplycount() {
 		return boardReplycount;
 	}
