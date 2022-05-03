@@ -30,7 +30,7 @@
 	    </div>
 	    <div>
 	        <label>생년월일</label><br>
-	        <input type="date" name="memberBirth" class="form-input input-round" autocomplete="off">
+	        <input type="date" name="memberBirth" autocomplete="off">
 	    </div>
 	    <div>
 	        <label>전화번호</label>
@@ -43,7 +43,7 @@
 	    <div>
 	        <label>주소</label><br>
                 <input type="text" name="memberPost" placeholder="우편번호" autocomplete="off">
-                <button class="btn address-find-btn">검색</button>
+                <button>검색</button>
             </div>
             <div>
                 <input type="text" name="memberBasicAddress" placeholder="기본주소" autocomplete="off">
@@ -55,5 +55,7 @@
 	        <button type="submit">회원가입</button>
 	    </div>
 	</div>
+	</form>
+	<a href="www.naver.com">d</a>
 </body>
 </html>
