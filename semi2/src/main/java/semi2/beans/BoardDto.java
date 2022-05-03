@@ -30,6 +30,10 @@ public class BoardDto {
 	private int replyNo;
 	private String replyContent;
 	private int replyBoardNo;
+	private int boardReplycount;
+	private int groupNo;
+	private int superNo;
+	private int depth;
 	public int getBoardNo() {
 		return boardNo;
 	}
@@ -191,6 +195,31 @@ public class BoardDto {
 	}
 	public void setReplyBoardNo(int replyBoardNo) {
 		this.replyBoardNo = replyBoardNo;
+	}
+	
+	public int getBoardReplycount() {
+		return boardReplycount;
+	}
+	public void setBoardReplycount(int boardReplycount) {
+		this.boardReplycount = boardReplycount;
+	}
+	public int getGroupNo() {
+		return groupNo;
+	}
+	public void setGroupNo(int groupNo) {
+		this.groupNo = groupNo;
+	}
+	public int getSuperNo() {
+		return superNo;
+	}
+	public void setSuperNo(int superNo) {
+		this.superNo = superNo;
+	}
+	public int getDepth() {
+		return depth;
+	}
+	public void setDepth(int depth) {
+		this.depth = depth;
 	}
 	public BoardDto() {
 		super();
