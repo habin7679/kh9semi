@@ -4,6 +4,7 @@ package semi2.beans;
 public class LikeDto {
 	private String memberId;
 	private int productNo;
+	
 	public String getMemberId() {
 		return memberId;
 	}
