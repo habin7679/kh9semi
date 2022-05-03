@@ -60,6 +60,35 @@ public class MemberDao {
 			return count > 0;
 		}
 		
+		//관리자 - 회원정보 전체 수정
+		public boolean updateAll(MemberDto memberDto) throws Exception {
+			Connection con = JdbcUtils.getConnection();
+					
+			String sql = "update member set member_pw = ?, member_name = ?, member_nick = ?, member_birth = ?, "
+					+ "member_email = ?, member_phone = ?, member_post = ?, member_basic_address = ?, member_detail_address = ?, "
+					+ "member_point = ?, member_grade = ?, member_joindate = ? where member_id = ?";
+					
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, memberDto.getMemberPw());
+			ps.setString(2, memberDto.getMemberName());
+			ps.setString(3, memberDto.getMemberNick());
+			ps.setString(4, memberDto.getMemberBirth());
+			ps.setString(5, memberDto.getMemberEmail());
+			ps.setString(6, memberDto.getMemberPhone());
+			ps.setString(7, memberDto.getMemberPost());
+			ps.setString(8, memberDto.getMemberBasicAddress());
+			ps.setString(9, memberDto.getMemberDetailAddress());
+			ps.setInt(10, memberDto.getMemberPoint());
+			ps.setString(11, memberDto.getMemberGrade());
+			ps.setDate(12, memberDto.getMemberJoindate());
+			ps.setString(13, memberDto.getMemberId());
+					
+			int count = ps.executeUpdate();
+			con.close();
+					
+			return count > 0;
+			}
+		
 		//관리자 - 멤버 목록 전체조회
 		public List<MemberDto> selectList() throws Exception {
 		Connection con= JdbcUtils.getConnection();
