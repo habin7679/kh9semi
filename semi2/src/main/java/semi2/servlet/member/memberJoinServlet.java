@@ -29,6 +29,7 @@ public class memberJoinServlet extends HttpServlet{
 			
 			MemberDao memberDao= new MemberDao();
 			memberDao.join(memberDto);
+			resp.sendRedirect("footer.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 			resp.sendError(500);
