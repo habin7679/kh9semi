@@ -144,7 +144,7 @@ public class ProductDto {
 			return this.productMadeString.toString();
 		}
 	}
-	public String getExpireStringNotNull() {
+	public String getProductExpireStringNotNull() {
 		if(this.productExpireString == null) return "";
 		else return this.productExpireString.toString();
 	}
