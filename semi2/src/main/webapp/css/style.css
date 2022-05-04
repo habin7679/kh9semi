@@ -1,0 +1,71 @@
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+    list-style: none;
+    text-decoration: none;
+    border-collapse: collapse;
+    margin: 0px;
+    padding: 0px;
+    color: black;
+}
+
+/* 배경 이미지 넣을때 사용
+    .intro_bg {
+    background-image: url("");
+    }
+    */
+
+.header {
+    display: flex;
+    width: 1280px;
+    margin: auto;
+    height: 50px;
+    justify-content:space-between;
+}
+
+.content {
+    display: flex;
+    width: 1280px;
+    margin: auto;
+    /*height: 50px;*/
+    justify-content:space-between;
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+
+.searchArea {
+    font-size: 12px;
+    width: 300px;
+    height: 32px;
+    background-color: rgb(211, 218, 215);
+    border-radius: 5px;
+    margin-top: 12px;
+}
+
+.searchArea>form>input {
+    border: none;
+    width: 250px;
+    height: 30px;
+    background: rgba(0, 0, 0, 0);
+    color: rgb(10, 11, 10);
+    padding-left: 10px;
+}
+
+
+.nav {
+    font-size: 12px;
+    display: flex;
+    justify-content: flex-end;
+    line-height: 50px;
+    width: 800px;
+    color: aliceblue;
+}
+
+.nav>li {
+    margin-left: 84px;
+}
+
+/* 네비 글자 색 바꿀 때
+    .nav>li>a {
+    color: ;
+    }
+    */
