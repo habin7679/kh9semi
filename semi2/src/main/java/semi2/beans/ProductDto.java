@@ -1,149 +1,152 @@
 package semi2.beans;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class ProductDto {
-	private int product_no;
-	private String product_name;
-	private String product_sort;
-	private int product_price;
-	private int product_stock;
-	private String product_company;
-	private String product_madeString;
-	private Date product_made;
-	private String product_expireString;
-	private Date product_expire;
-	private String product_event;
-	private int product_kcal;
-	private int product_protein;
-	private int product_carbohydrate;
-	private int product_fat;
-	private String product_info;
-	private String product_img;
+	private int productNo;
+	private String productName;
+	private String productSort;
+	private int productPrice;
+	private int productStock;
+	private String productCompany;
+	private String productMadeString;
+	private Date productMade;
+	private String productExpireString;
+	private Date productExpire;
+	private String productEvent;
+	private int productKcal;
+	private int productProtein;
+	private int productCarbohydrate;
+	private int productFat;
+	private String productInfo;
+	private String productImg;
+	
+	
 	@Override
 	public String toString() {
-		return "ProductDto [product_no=" + product_no + ", product_name=" + product_name + ", product_sort="
-				+ product_sort + ", product_price=" + product_price + ", product_stock=" + product_stock
-				+ ", product_company=" + product_company + ", product_made=" + product_madeString + ", product_expire="
-				+ product_expireString + ", product_event=" + product_event + ", product_kcal=" + product_kcal
-				+ ", product_protein=" + product_protein + ", product_carbohydrate=" + product_carbohydrate
-				+ ", product_fat=" + product_fat + ", product_info=" + product_info + ", product_img=" + product_img
-				+ "]";
+		return "ProductDto [productNo=" + productNo + ", productName=" + productName + ", productSort=" + productSort
+				+ ", productPrice=" + productPrice + ", productStock=" + productStock + ", productCompany="
+				+ productCompany + ", productMadeString=" + productMadeString + ", productMade=" + productMade
+				+ ", productExpireString=" + productExpireString + ", productExpire=" + productExpire
+				+ ", productEvent=" + productEvent + ", productKcal=" + productKcal + ", productProtein="
+				+ productProtein + ", productCarbohydrate=" + productCarbohydrate + ", productFat=" + productFat
+				+ ", productInfo=" + productInfo + ", productImg=" + productImg + "]";
 	}
-	public int getProduct_no() {
-		return product_no;
-	}
-	public void setProduct_no(int product_no) {
-		this.product_no = product_no;
-	}
-	public String getProduct_name() {
-		return product_name;
-	}
-	public void setProduct_name(String product_name) {
-		this.product_name = product_name;
-	}
-	public String getProduct_sort() {
-		return product_sort;
-	}
-	public void setProduct_sort(String product_sort) {
-		this.product_sort = product_sort;
-	}
-	public int getProduct_price() {
-		return product_price;
-	}
-	public void setProduct_price(int product_price) {
-		this.product_price = product_price;
-	}
-	public int getProduct_stock() {
-		return product_stock;
-	}
-	public void setProduct_stock(int product_stock) {
-		this.product_stock = product_stock;
-	}
-	public String getProduct_company() {
-		return product_company;
-	}
-	public void setProduct_company(String product_company) {
-		this.product_company = product_company;
-	}
+
 	
-	public String getProduct_madeString() {
-		return product_madeString;
+	public int getProductNo() {
+		return productNo;
 	}
-	public void setProduct_madeString(String product_madeString) {
-		this.product_madeString = product_madeString;
+	public void setProductNo(int productNo) {
+		this.productNo = productNo;
 	}
-	public Date getProduct_made() {
-		return product_made;
+	public String getProductName() {
+		return productName;
 	}
-	public void setProduct_made(Date product_made) {
-		this.product_made = product_made;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
-	public String getProduct_expireString() {
-		return product_expireString;
+	public String getProductSort() {
+		return productSort;
 	}
-	public void setProduct_expireString(String product_expireString) {
-		this.product_expireString = product_expireString;
+	public void setProductSort(String productSort) {
+		this.productSort = productSort;
 	}
-	public Date getProduct_expire() {
-		return product_expire;
+	public int getProductPrice() {
+		return productPrice;
 	}
-	public void setProduct_expire(Date product_expire) {
-		this.product_expire = product_expire;
+	public void setProductPrice(int productPrice) {
+		this.productPrice = productPrice;
 	}
-	public String getProduct_event() {
-		return product_event;
+	public int getProductStock() {
+		return productStock;
 	}
-	public void setProduct_event(String product_event) {
-		this.product_event = product_event;
+	public void setProductStock(int productStock) {
+		this.productStock = productStock;
 	}
-	public int getProduct_kcal() {
-		return product_kcal;
+	public String getProductCompany() {
+		return productCompany;
 	}
-	public void setProduct_kcal(int product_kcal) {
-		this.product_kcal = product_kcal;
+	public void setProductCompany(String productCompany) {
+		this.productCompany = productCompany;
 	}
-	public int getProduct_protein() {
-		return product_protein;
+	public String getProductMadeString() {
+		return productMadeString;
 	}
-	public void setProduct_protein(int product_protein) {
-		this.product_protein = product_protein;
+	public void setProductMadeString(String productMadeString) {
+		this.productMadeString = productMadeString;
 	}
-	public int getProduct_carbohydrate() {
-		return product_carbohydrate;
+	public Date getProductMade() {
+		return productMade;
 	}
-	public void setProduct_carbohydrate(int product_carbohydrate) {
-		this.product_carbohydrate = product_carbohydrate;
+	public void setProductMade(Date productMade) {
+		this.productMade = productMade;
 	}
-	public int getProduct_fat() {
-		return product_fat;
+	public String getProductExpireString() {
+		return productExpireString;
 	}
-	public void setProduct_fat(int product_fat) {
-		this.product_fat = product_fat;
+	public void setProductExpireString(String productExpireString) {
+		this.productExpireString = productExpireString;
 	}
-	public String getProduct_info() {
-		return product_info;
+	public Date getProductExpire() {
+		return productExpire;
 	}
-	public void setProduct_info(String product_info) {
-		this.product_info = product_info;
+	public void setProductExpire(Date productExpire) {
+		this.productExpire = productExpire;
 	}
-	public String getProduct_img() {
-		return product_img;
+	public String getProductEvent() {
+		return productEvent;
 	}
-	public void setProduct_img(String product_img) {
-		this.product_img = product_img;
+	public void setProductEvent(String productEvent) {
+		this.productEvent = productEvent;
 	}
-	public String getProduct_MadeStringNotNull() {
-		if(this.product_madeString == null) {
+	public int getProductKcal() {
+		return productKcal;
+	}
+	public void setProductKcal(int productKcal) {
+		this.productKcal = productKcal;
+	}
+	public int getProductProtein() {
+		return productProtein;
+	}
+	public void setProductProtein(int productProtein) {
+		this.productProtein = productProtein;
+	}
+	public int getProductCarbohydrate() {
+		return productCarbohydrate;
+	}
+	public void setProductCarbohydrate(int productCarbohydrate) {
+		this.productCarbohydrate = productCarbohydrate;
+	}
+	public int getProductFat() {
+		return productFat;
+	}
+	public void setProductFat(int productFat) {
+		this.productFat = productFat;
+	}
+	public String getProductInfo() {
+		return productInfo;
+	}
+	public void setProductInfo(String productInfo) {
+		this.productInfo = productInfo;
+	}
+	public String getProductImg() {
+		return productImg;
+	}
+	public void setProductImg(String productImg) {
+		this.productImg = productImg;
+	}
+	public String getProductMadeStringNotNull() {
+		if(this.productMadeString == null) {
 			return "";
 		}
 		else { 
-			return this.product_madeString.toString();
+			return this.productMadeString.toString();
 		}
 	}
 	public String getExpireStringNotNull() {
-		if(this.product_expireString == null) return "";
-		else return this.product_expireString.toString();
+		if(this.productExpireString == null) return "";
+		else return this.productExpireString.toString();
 	}
 	
 	

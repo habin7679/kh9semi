@@ -1,6 +1,7 @@
 package semi2.servlet.member;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,32 +11,35 @@ import javax.servlet.http.HttpServletResponse;
 
 import semi2.beans.MemberDao;
 import semi2.beans.MemberDto;
-@WebServlet(urlPatterns = "/member/join.ez")
-public class memberJoinServlet extends HttpServlet{
+@WebServlet(urlPatterns = /member/update.ez)
+public class MemberUpdateServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			resp.setContentType("text/plain; charset=UTF-8");
-			
-			MemberDto memberDto= new MemberDto();
+			req.setCharacterEncoding("UTF-8");
+			MemberDto memberDto = new MemberDto();
 			memberDto.setMemberId(req.getParameter("memberId"));
 			memberDto.setMemberPw(req.getParameter("memberPw"));
 			memberDto.setMemberNick(req.getParameter("memberNick"));
-			memberDto.setMemberName(req.getParameter("memberName"));
+			memberDto.setMemberName(req.getParameter("memberPhone"));
+			memberDto.setMemberPhone(req.getParameter("memberEmail"));
+			memberDto.setMemberEmail(req.getParameter("memberBirth"));
 			memberDto.setMemberBirth(req.getParameter("memberBirth"));
-			memberDto.setMemberEmail(req.getParameter("memberEmail"));
-			memberDto.setMemberPhone(req.getParameter("memberPhone"));
 			memberDto.setMemberPost(req.getParameter("memberPost"));
 			memberDto.setMemberBasicAddress(req.getParameter("memberBasicAddress"));
 			memberDto.setMemberDetailAddress(req.getParameter("memberDetailAddress"));
+			memberDto.setMemberPoint(Integer.parseInt(req.getParameter("memberPoint")));
+			memberDto.setMemberGrade(req.getParameter("memberGrade"));
+			memberDto.setMemberJoindate(req.getParameter("memberJoindate"));
 			
-			MemberDao memberDao= new MemberDao();
-			memberDao.join(memberDto);
-			resp.sendRedirect("join_success.jsp");
-		} catch (Exception e) {
+			MemberDao memberDao = new MemberDao();
+			boolean success = memberDao.update(memberDto);
+			resp.sendRedirect(req.getContextPath()+"/member/detail.jsp?memberId=" + memberDto.getMemberId());
+		
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			resp.sendError(500);
 		}
 	}
-	
 }
