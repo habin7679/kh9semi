@@ -37,11 +37,11 @@
 	List<BoardDto> list;
 	if(search){
 // 		list = boardDao.selectList(type, keyword);
-		list = boardDao.selectListByPaging(p, s, type, keyword); 
+		list = boardDao.selectFreeListByPaging(p, s, type, keyword); 
 	}
 	else {
 // 		list = boardDao.selectList();
-		list = boardDao.selectListByPaging(p, s);
+		list = boardDao.selectFreeListByPaging(p, s);
 	}
 %>    
 

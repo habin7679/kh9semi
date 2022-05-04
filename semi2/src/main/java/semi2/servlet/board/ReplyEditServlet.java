@@ -19,7 +19,7 @@ public class ReplyEditServlet extends HttpServlet{
 			//준비 : ReplyDto(replyNo + replyTarget + replyContent)
 			ReplyDto replyDto = new ReplyDto();
 			replyDto.setReplyNo(Integer.parseInt(req.getParameter("replyNo")));
-			replyDto.setReplyBoardNo(Integer.parseInt(req.getParameter("replyTarget")));
+			replyDto.setReplyTarget(Integer.parseInt(req.getParameter("replyTarget")));
 			replyDto.setReplyContent(req.getParameter("replyContent"));
 			
 			//처리
@@ -28,7 +28,7 @@ public class ReplyEditServlet extends HttpServlet{
 			
 			//출력
 			if(success) {
-				resp.sendRedirect("detail.jsp?boardNo="+replyDto.getReplyBoardNo());
+				resp.sendRedirect("detail.jsp?boardNo="+replyDto.getReplyTarget());
 			}
 			else {
 				resp.sendError(404);
