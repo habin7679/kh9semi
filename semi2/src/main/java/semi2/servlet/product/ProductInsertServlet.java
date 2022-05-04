@@ -7,7 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import java.sql.*;
 import semi2.beans.ProductDao;
 import semi2.beans.ProductDto;
 
@@ -25,8 +25,10 @@ public class ProductInsertServlet extends HttpServlet {
 				productDto.setProductPrice(Integer.parseInt(req.getParameter("productPrice")));
 				productDto.setProductStock(Integer.parseInt(req.getParameter("productStock")));
 				productDto.setProductCompany(req.getParameter("productCompany"));
-				productDto.setProductMadeString(req.getParameter("productMadeString"));
-				productDto.setProductExpireString(req.getParameter("productExpireString"));
+				java.sql.Date productMade = java.sql.Date.valueOf(req.getParameter("productMade"));
+				productDto.setProductMade(productMade);
+				java.sql.Date productExpire = java.sql.Date.valueOf(req.getParameter("productExpire"));
+				productDto.setProductExpire(productExpire);
 				productDto.setProductEvent(req.getParameter("productEvent"));
 				productDto.setProductKcal(Integer.parseInt(req.getParameter("productKcal")));
 				productDto.setProductProtein(Integer.parseInt(req.getParameter("productProtein")));
@@ -38,7 +40,7 @@ public class ProductInsertServlet extends HttpServlet {
 				ProductDao productDao = new ProductDao();
 				productDao.add(productDto);
 				
-				resp.sendRedirect("product_insert_finish.jsp");
+				resp.sendRedirect("product_insert_success.jsp");
 				
 			}
 			catch (Exception e) {

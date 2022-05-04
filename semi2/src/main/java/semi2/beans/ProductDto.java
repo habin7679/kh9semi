@@ -1,6 +1,6 @@
 package semi2.beans;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class ProductDto {
 	private int productNo;
