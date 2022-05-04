@@ -20,7 +20,7 @@ public class ReplyInsertServlet extends HttpServlet{
 			//준비 : ReplyDto ( replyTarget + replyContent ) + 작성자(HttpSession)
 			ReplyDto replyDto = new ReplyDto();
 			replyDto.setReplyContent(req.getParameter("replyContent"));
-			replyDto.setReplyBoardNo(Integer.parseInt(req.getParameter("replyBoardNo")));
+			replyDto.setReplyTarget(Integer.parseInt(req.getParameter("replyTarget")));
 			replyDto.setReplyWriter((String)req.getSession().getAttribute("login"));
 			
 			//처리
@@ -28,10 +28,10 @@ public class ReplyInsertServlet extends HttpServlet{
 			replyDao.insert(replyDto);
 			
 			BoardDao boardDao = new BoardDao();
-			boardDao.updateReplycount(replyDto.getReplyBoardNo());
+			boardDao.updateReplycount(replyDto.getReplyTarget());
 			
 			//출력
-			resp.sendRedirect("detail.jsp?boardNo="+replyDto.getReplyBoardNo());
+			resp.sendRedirect("detail.jsp?boardNo="+replyDto.getReplyTarget());
 		}
 		catch(Exception e) {
 			e.printStackTrace();

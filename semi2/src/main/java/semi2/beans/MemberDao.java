@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import oracle.jdbc.proxy.annotation.Pre;
+
 public class MemberDao {
 		//회원가입
 	public void join(MemberDto memberDto) throws Exception {
@@ -180,7 +182,53 @@ public class MemberDao {
 				memberDto.setMemberDetailAddress(rs.getString("member_detail_address"));
 				memberDto.setMemberPoint(rs.getInt("member_point"));
 				memberDto.setMemberGrade(rs.getString("member_grade"));
-				memberDto.setMemberJoindate(rs.getDate("member_join_date"));	
+				memberDto.setMemberJoindate(rs.getDate("member_joindate"));	
+			}
+			else {
+				memberDto = null;
+			}
+			con.close();
+			return memberDto;
+		}
+		
+		//아이디 찾기
+		public String findId(MemberDto memberDto) throws Exception{
+			Connection con= JdbcUtils.getConnection();
+			
+			String sql= "select member_id from member where member_name=? and member_birth=? and member_phone=?";
+			PreparedStatement ps= con.prepareStatement(sql);
+			ps.setString(1, memberDto.getMemberName());
+			ps.setString(2, memberDto.getMemberBirth());
+			ps.setString(3, memberDto.getMemberPhone());
+			ResultSet rs= ps.executeQuery();
+			
+			String memberId;
+			if(rs.next()) {
+				memberId= rs.getString("member_id");
+			}
+			else {
+				memberId=null;
+			}
+			con.close();
+			
+			return memberId;
+		}
+		
+		//로그인
+		public MemberDto Login(String memberId) throws Exception {
+			Connection con = JdbcUtils.getConnection();
+			
+			String sql = "select * from member where member_id = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, memberId);
+			ResultSet rs = ps.executeQuery();
+			
+			MemberDto memberDto;
+			if(rs.next()) {
+				memberDto = new MemberDto();
+				memberDto.setMemberId(rs.getString("member_id"));
+				memberDto.setMemberPw(rs.getString("member_pw"));
+			
 			}
 			else {
 				memberDto = null;
@@ -189,4 +237,54 @@ public class MemberDao {
 			return memberDto;
 		}
 
+		public MemberDto findPw(MemberDto memberDto) throws Exception{
+			Connection con= JdbcUtils.getConnection();
+			
+			String sql= "select * from member where member_id=? and member_name=? and member_phone=?";
+			PreparedStatement ps= con.prepareStatement(sql);
+			ps.setString(1, memberDto.getMemberId());
+			ps.setString(2, memberDto.getMemberName());
+			ps.setString(3, memberDto.getMemberPhone());
+			ResultSet rs=ps.executeQuery();
+			
+			MemberDto memberDto2;
+			if(rs.next()) {
+				memberDto2=new MemberDto();
+				
+				memberDto2.setMemberId(rs.getString("member_id"));
+				memberDto2.setMemberPw(rs.getString("member_pw"));
+				memberDto2.setMemberName(rs.getString("member_name"));
+				memberDto2.setMemberNick(rs.getString("member_nick"));
+				memberDto2.setMemberBirth(rs.getString("member_birth"));
+				memberDto2.setMemberEmail(rs.getString("member_email"));
+				memberDto2.setMemberPhone(rs.getString("member_phone"));
+				memberDto2.setMemberPost(rs.getString("member_post"));
+				memberDto2.setMemberBasicAddress(rs.getString("member_basic_address"));
+				memberDto2.setMemberDetailAddress(rs.getString("member_detail_address"));
+				memberDto2.setMemberPoint(rs.getInt("member_point"));
+				memberDto2.setMemberGrade(rs.getString("member_grade"));
+				memberDto2.setMemberJoindate(rs.getDate("member_joindate"));	
+			}
+			else {
+				memberDto2=null;
+			}
+			con.close();
+			
+			return memberDto2;
+		}
+		
+		//비밀번호 변경
+		public boolean changePw(String memberId, String memberPw)throws Exception{
+			Connection con =JdbcUtils.getConnection();
+			
+			String sql="update member set member_pw=? where member_id=?";
+			PreparedStatement ps=con.prepareStatement(sql);
+			ps.setString(1, memberPw);
+			ps.setString(2, memberId);
+			int count=ps.executeUpdate();
+			
+			con.close();
+			
+			return count>0;
+		}
 }

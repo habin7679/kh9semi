@@ -310,7 +310,476 @@ public class BoardDao {
 		
 		return list;
 	}
+//	페이징이 구현된 리스트
+	public List<BoardDto> selectNoticeListByPaging(int p, int s) throws Exception {
+		//시작지점, 종료지점 계산
+		int end = p * s;
+		int begin = end - ( s - 1 ); 
+		
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select * from ("
+								+ "select rownum rn, TMP.* from ("
+//									+ "select * from board order by board_no desc"
+									+ "select * from board_notice "
+									+ "connect by prior board_no = super_no "
+									+ "start with super_no = 0 "
+									+ "order siblings by group_no desc, board_no asc "
+								+ ") TMP"
+						+ ") where rn between ? and ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, begin);
+		ps.setInt(2, end);
+		ResultSet rs = ps.executeQuery();
+		
+		List<BoardDto> list = new ArrayList<>();
+		while(rs.next()) {
+			BoardDto boardDto = new BoardDto();
+			
+			boardDto.setBoardNo(rs.getInt("board_no"));
+			boardDto.setBoardHead(rs.getString("board_head"));
+			boardDto.setBoardTitle(rs.getString("board_title"));
+			boardDto.setBoardTime(rs.getDate("board_time"));
+			boardDto.setBoardReadcount(rs.getInt("board_readcount"));
+			boardDto.setBoardWriter(rs.getString("board_writer"));
+			//추가한 컬럼 정보를 같이 조회하도록 변경
+			boardDto.setBoardReplycount(rs.getInt("board_replycount"));
+			//계층형 게시판 컬럼 추가 조회구문 작성
+			boardDto.setGroupNo(rs.getInt("group_no"));
+			boardDto.setSuperNo(rs.getInt("super_no"));
+			boardDto.setDepth(rs.getInt("depth"));
+			
+			list.add(boardDto);
+		}
+		
+		con.close();
+		
+		return list;
+	}
 	
+	public List<BoardDto> selectNoticeListByPaging(int p, int s, String type, String keyword) throws Exception {
+		//시작지점, 종료지점 계산
+		int end = p * s;
+		int begin = end - ( s - 1 ); 
+		
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select * from ("
+								+ "select rownum rn, TMP.* from ("
+//									+ "select * from board where instr(#1, ?) > 0 order by board_no desc"
+									+ "select * from board_notice where instr(#1, ?) > 0 "
+									+ "connect by prior board_no = super_no "
+									+ "start with super_no = 0 "
+									+ "order siblings by group_no desc, board_no asc "
+								+ ") TMP"
+						+ ") where rn between ? and ?";
+		sql = sql.replace("#1", type);
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, keyword);
+		ps.setInt(2, begin);
+		ps.setInt(3, end);
+		ResultSet rs = ps.executeQuery();
+		
+		List<BoardDto> list = new ArrayList<>();
+		while(rs.next()) {
+			BoardDto boardDto = new BoardDto();
+			
+			boardDto.setBoardNo(rs.getInt("board_no"));
+			boardDto.setBoardHead(rs.getString("board_head"));
+			boardDto.setBoardTitle(rs.getString("board_title"));
+			boardDto.setBoardTime(rs.getDate("board_time"));
+			boardDto.setBoardReadcount(rs.getInt("board_readcount"));
+			boardDto.setBoardWriter(rs.getString("board_writer"));
+			//추가한 컬럼 정보를 같이 조회하도록 변경
+			boardDto.setBoardReplycount(rs.getInt("board_replycount"));
+			//계층형 게시판 컬럼 추가 조회구문 작성
+			boardDto.setGroupNo(rs.getInt("group_no"));
+			boardDto.setSuperNo(rs.getInt("super_no"));
+			boardDto.setDepth(rs.getInt("depth"));
+			
+			list.add(boardDto);
+		}
+		
+		con.close();
+		
+		return list;
+	}
+//	페이징이 구현된 리스트
+	public List<BoardDto> selectQnaListByPaging(int p, int s) throws Exception {
+		//시작지점, 종료지점 계산
+		int end = p * s;
+		int begin = end - ( s - 1 ); 
+		
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select * from ("
+								+ "select rownum rn, TMP.* from ("
+//									+ "select * from board order by board_no desc"
+									+ "select * from board_qna "
+									+ "connect by prior board_no = super_no "
+									+ "start with super_no = 0 "
+									+ "order siblings by group_no desc, board_no asc "
+								+ ") TMP"
+						+ ") where rn between ? and ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, begin);
+		ps.setInt(2, end);
+		ResultSet rs = ps.executeQuery();
+		
+		List<BoardDto> list = new ArrayList<>();
+		while(rs.next()) {
+			BoardDto boardDto = new BoardDto();
+			
+			boardDto.setBoardNo(rs.getInt("board_no"));
+			boardDto.setBoardHead(rs.getString("board_head"));
+			boardDto.setBoardTitle(rs.getString("board_title"));
+			boardDto.setBoardTime(rs.getDate("board_time"));
+			boardDto.setBoardReadcount(rs.getInt("board_readcount"));
+			boardDto.setBoardWriter(rs.getString("board_writer"));
+			//추가한 컬럼 정보를 같이 조회하도록 변경
+			boardDto.setBoardReplycount(rs.getInt("board_replycount"));
+			//계층형 게시판 컬럼 추가 조회구문 작성
+			boardDto.setGroupNo(rs.getInt("group_no"));
+			boardDto.setSuperNo(rs.getInt("super_no"));
+			boardDto.setDepth(rs.getInt("depth"));
+			
+			list.add(boardDto);
+		}
+		
+		con.close();
+		
+		return list;
+	}
+	
+	public List<BoardDto> selectQnaListByPaging(int p, int s, String type, String keyword) throws Exception {
+		//시작지점, 종료지점 계산
+		int end = p * s;
+		int begin = end - ( s - 1 ); 
+		
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select * from ("
+								+ "select rownum rn, TMP.* from ("
+//									+ "select * from board where instr(#1, ?) > 0 order by board_no desc"
+									+ "select * from board_qna where instr(#1, ?) > 0 "
+									+ "connect by prior board_no = super_no "
+									+ "start with super_no = 0 "
+									+ "order siblings by group_no desc, board_no asc "
+								+ ") TMP"
+						+ ") where rn between ? and ?";
+		sql = sql.replace("#1", type);
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, keyword);
+		ps.setInt(2, begin);
+		ps.setInt(3, end);
+		ResultSet rs = ps.executeQuery();
+		
+		List<BoardDto> list = new ArrayList<>();
+		while(rs.next()) {
+			BoardDto boardDto = new BoardDto();
+			
+			boardDto.setBoardNo(rs.getInt("board_no"));
+			boardDto.setBoardHead(rs.getString("board_head"));
+			boardDto.setBoardTitle(rs.getString("board_title"));
+			boardDto.setBoardTime(rs.getDate("board_time"));
+			boardDto.setBoardReadcount(rs.getInt("board_readcount"));
+			boardDto.setBoardWriter(rs.getString("board_writer"));
+			//추가한 컬럼 정보를 같이 조회하도록 변경
+			boardDto.setBoardReplycount(rs.getInt("board_replycount"));
+			//계층형 게시판 컬럼 추가 조회구문 작성
+			boardDto.setGroupNo(rs.getInt("group_no"));
+			boardDto.setSuperNo(rs.getInt("super_no"));
+			boardDto.setDepth(rs.getInt("depth"));
+			
+			list.add(boardDto);
+		}
+		
+		con.close();
+		
+		return list;
+	}
+//	페이징이 구현된 리스트
+	public List<BoardDto> selectReviewListByPaging(int p, int s) throws Exception {
+		//시작지점, 종료지점 계산
+		int end = p * s;
+		int begin = end - ( s - 1 ); 
+		
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select * from ("
+								+ "select rownum rn, TMP.* from ("
+//									+ "select * from board order by board_no desc"
+									+ "select * from board_review "
+									+ "connect by prior board_no = super_no "
+									+ "start with super_no = 0 "
+									+ "order siblings by group_no desc, board_no asc "
+								+ ") TMP"
+						+ ") where rn between ? and ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, begin);
+		ps.setInt(2, end);
+		ResultSet rs = ps.executeQuery();
+		
+		List<BoardDto> list = new ArrayList<>();
+		while(rs.next()) {
+			BoardDto boardDto = new BoardDto();
+			
+			boardDto.setBoardNo(rs.getInt("board_no"));
+			boardDto.setBoardHead(rs.getString("board_head"));
+			boardDto.setBoardTitle(rs.getString("board_title"));
+			boardDto.setBoardTime(rs.getDate("board_time"));
+			boardDto.setBoardReadcount(rs.getInt("board_readcount"));
+			boardDto.setBoardWriter(rs.getString("board_writer"));
+			//추가한 컬럼 정보를 같이 조회하도록 변경
+			boardDto.setBoardReplycount(rs.getInt("board_replycount"));
+			//계층형 게시판 컬럼 추가 조회구문 작성
+			boardDto.setGroupNo(rs.getInt("group_no"));
+			boardDto.setSuperNo(rs.getInt("super_no"));
+			boardDto.setDepth(rs.getInt("depth"));
+			
+			list.add(boardDto);
+		}
+		
+		con.close();
+		
+		return list;
+	}
+	
+	public List<BoardDto> selectReviewListByPaging(int p, int s, String type, String keyword) throws Exception {
+		//시작지점, 종료지점 계산
+		int end = p * s;
+		int begin = end - ( s - 1 ); 
+		
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select * from ("
+								+ "select rownum rn, TMP.* from ("
+//									+ "select * from board where instr(#1, ?) > 0 order by board_no desc"
+									+ "select * from board_review where instr(#1, ?) > 0 "
+									+ "connect by prior board_no = super_no "
+									+ "start with super_no = 0 "
+									+ "order siblings by group_no desc, board_no asc "
+								+ ") TMP"
+						+ ") where rn between ? and ?";
+		sql = sql.replace("#1", type);
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, keyword);
+		ps.setInt(2, begin);
+		ps.setInt(3, end);
+		ResultSet rs = ps.executeQuery();
+		
+		List<BoardDto> list = new ArrayList<>();
+		while(rs.next()) {
+			BoardDto boardDto = new BoardDto();
+			
+			boardDto.setBoardNo(rs.getInt("board_no"));
+			boardDto.setBoardHead(rs.getString("board_head"));
+			boardDto.setBoardTitle(rs.getString("board_title"));
+			boardDto.setBoardTime(rs.getDate("board_time"));
+			boardDto.setBoardReadcount(rs.getInt("board_readcount"));
+			boardDto.setBoardWriter(rs.getString("board_writer"));
+			//추가한 컬럼 정보를 같이 조회하도록 변경
+			boardDto.setBoardReplycount(rs.getInt("board_replycount"));
+			//계층형 게시판 컬럼 추가 조회구문 작성
+			boardDto.setGroupNo(rs.getInt("group_no"));
+			boardDto.setSuperNo(rs.getInt("super_no"));
+			boardDto.setDepth(rs.getInt("depth"));
+			
+			list.add(boardDto);
+		}
+		
+		con.close();
+		
+		return list;
+	}
+//	페이징이 구현된 리스트
+	public List<BoardDto> selectTipListByPaging(int p, int s) throws Exception {
+		//시작지점, 종료지점 계산
+		int end = p * s;
+		int begin = end - ( s - 1 ); 
+		
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select * from ("
+								+ "select rownum rn, TMP.* from ("
+//									+ "select * from board order by board_no desc"
+									+ "select * from board_tip "
+									+ "connect by prior board_no = super_no "
+									+ "start with super_no = 0 "
+									+ "order siblings by group_no desc, board_no asc "
+								+ ") TMP"
+						+ ") where rn between ? and ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, begin);
+		ps.setInt(2, end);
+		ResultSet rs = ps.executeQuery();
+		
+		List<BoardDto> list = new ArrayList<>();
+		while(rs.next()) {
+			BoardDto boardDto = new BoardDto();
+			
+			boardDto.setBoardNo(rs.getInt("board_no"));
+			boardDto.setBoardHead(rs.getString("board_head"));
+			boardDto.setBoardTitle(rs.getString("board_title"));
+			boardDto.setBoardTime(rs.getDate("board_time"));
+			boardDto.setBoardReadcount(rs.getInt("board_readcount"));
+			boardDto.setBoardWriter(rs.getString("board_writer"));
+			//추가한 컬럼 정보를 같이 조회하도록 변경
+			boardDto.setBoardReplycount(rs.getInt("board_replycount"));
+			//계층형 게시판 컬럼 추가 조회구문 작성
+			boardDto.setGroupNo(rs.getInt("group_no"));
+			boardDto.setSuperNo(rs.getInt("super_no"));
+			boardDto.setDepth(rs.getInt("depth"));
+			
+			list.add(boardDto);
+		}
+		
+		con.close();
+		
+		return list;
+	}
+	
+	public List<BoardDto> selectTipListByPaging(int p, int s, String type, String keyword) throws Exception {
+		//시작지점, 종료지점 계산
+		int end = p * s;
+		int begin = end - ( s - 1 ); 
+		
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select * from ("
+								+ "select rownum rn, TMP.* from ("
+//									+ "select * from board where instr(#1, ?) > 0 order by board_no desc"
+									+ "select * from board_tip where instr(#1, ?) > 0 "
+									+ "connect by prior board_no = super_no "
+									+ "start with super_no = 0 "
+									+ "order siblings by group_no desc, board_no asc "
+								+ ") TMP"
+						+ ") where rn between ? and ?";
+		sql = sql.replace("#1", type);
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, keyword);
+		ps.setInt(2, begin);
+		ps.setInt(3, end);
+		ResultSet rs = ps.executeQuery();
+		
+		List<BoardDto> list = new ArrayList<>();
+		while(rs.next()) {
+			BoardDto boardDto = new BoardDto();
+			
+			boardDto.setBoardNo(rs.getInt("board_no"));
+			boardDto.setBoardHead(rs.getString("board_head"));
+			boardDto.setBoardTitle(rs.getString("board_title"));
+			boardDto.setBoardTime(rs.getDate("board_time"));
+			boardDto.setBoardReadcount(rs.getInt("board_readcount"));
+			boardDto.setBoardWriter(rs.getString("board_writer"));
+			//추가한 컬럼 정보를 같이 조회하도록 변경
+			boardDto.setBoardReplycount(rs.getInt("board_replycount"));
+			//계층형 게시판 컬럼 추가 조회구문 작성
+			boardDto.setGroupNo(rs.getInt("group_no"));
+			boardDto.setSuperNo(rs.getInt("super_no"));
+			boardDto.setDepth(rs.getInt("depth"));
+			
+			list.add(boardDto);
+		}
+		
+		con.close();
+		
+		return list;
+	}
+//	페이징이 구현된 리스트
+	public List<BoardDto> selectFreeListByPaging(int p, int s) throws Exception {
+		//시작지점, 종료지점 계산
+		int end = p * s;
+		int begin = end - ( s - 1 ); 
+		
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select * from ("
+								+ "select rownum rn, TMP.* from ("
+//									+ "select * from board order by board_no desc"
+									+ "select * from board_free "
+									+ "connect by prior board_no = super_no "
+									+ "start with super_no = 0 "
+									+ "order siblings by group_no desc, board_no asc "
+								+ ") TMP"
+						+ ") where rn between ? and ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, begin);
+		ps.setInt(2, end);
+		ResultSet rs = ps.executeQuery();
+		
+		List<BoardDto> list = new ArrayList<>();
+		while(rs.next()) {
+			BoardDto boardDto = new BoardDto();
+			
+			boardDto.setBoardNo(rs.getInt("board_no"));
+			boardDto.setBoardHead(rs.getString("board_head"));
+			boardDto.setBoardTitle(rs.getString("board_title"));
+			boardDto.setBoardTime(rs.getDate("board_time"));
+			boardDto.setBoardReadcount(rs.getInt("board_readcount"));
+			boardDto.setBoardWriter(rs.getString("board_writer"));
+			//추가한 컬럼 정보를 같이 조회하도록 변경
+			boardDto.setBoardReplycount(rs.getInt("board_replycount"));
+			//계층형 게시판 컬럼 추가 조회구문 작성
+			boardDto.setGroupNo(rs.getInt("group_no"));
+			boardDto.setSuperNo(rs.getInt("super_no"));
+			boardDto.setDepth(rs.getInt("depth"));
+			
+			list.add(boardDto);
+		}
+		
+		con.close();
+		
+		return list;
+	}
+	
+	public List<BoardDto> selectFreeListByPaging(int p, int s, String type, String keyword) throws Exception {
+		//시작지점, 종료지점 계산
+		int end = p * s;
+		int begin = end - ( s - 1 ); 
+		
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select * from ("
+								+ "select rownum rn, TMP.* from ("
+//									+ "select * from board where instr(#1, ?) > 0 order by board_no desc"
+									+ "select * from board_free where instr(#1, ?) > 0 "
+									+ "connect by prior board_no = super_no "
+									+ "start with super_no = 0 "
+									+ "order siblings by group_no desc, board_no asc "
+								+ ") TMP"
+						+ ") where rn between ? and ?";
+		sql = sql.replace("#1", type);
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, keyword);
+		ps.setInt(2, begin);
+		ps.setInt(3, end);
+		ResultSet rs = ps.executeQuery();
+		
+		List<BoardDto> list = new ArrayList<>();
+		while(rs.next()) {
+			BoardDto boardDto = new BoardDto();
+			
+			boardDto.setBoardNo(rs.getInt("board_no"));
+			boardDto.setBoardHead(rs.getString("board_head"));
+			boardDto.setBoardTitle(rs.getString("board_title"));
+			boardDto.setBoardTime(rs.getDate("board_time"));
+			boardDto.setBoardReadcount(rs.getInt("board_readcount"));
+			boardDto.setBoardWriter(rs.getString("board_writer"));
+			//추가한 컬럼 정보를 같이 조회하도록 변경
+			boardDto.setBoardReplycount(rs.getInt("board_replycount"));
+			//계층형 게시판 컬럼 추가 조회구문 작성
+			boardDto.setGroupNo(rs.getInt("group_no"));
+			boardDto.setSuperNo(rs.getInt("super_no"));
+			boardDto.setDepth(rs.getInt("depth"));
+			
+			list.add(boardDto);
+		}
+		
+		con.close();
+		
+		return list;
+	}
 //	페이지 네비게이터의 마지막 번호 계산을 위한 카운트 기능을 검색, 목록 각각 구현
 //	countByPaging() - 목록에서 사용할 게시글 숫자 카운트 기능
 //	countByPaging(type, keyword) - 검색에서 사용할 게시글 숫자 카운트 기능
