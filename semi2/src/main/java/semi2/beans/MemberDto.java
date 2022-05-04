@@ -121,8 +121,8 @@ public class MemberDto {
 		return memberJoindate;
 	}
 
-	public void setMemberJoindate(Date memberJoindate) {
-		this.memberJoindate = memberJoindate;
+	public void setMemberJoindate(String string) {
+		this.memberJoindate = string;
 	}
 
 	@Override
