@@ -1,6 +1,0 @@
-@charset "UTF-8";
-
-div, span, label, p, header, footer, 
-section, article, aside, nav, a , ul, ol, li {
-    border:1px dotted gray;
-}
