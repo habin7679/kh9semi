@@ -30,7 +30,7 @@ public class ProductDto {
 				+ ", product_fat=" + product_fat + ", product_info=" + product_info + ", product_img=" + product_img
 				+ "]";
 	}
-	public int getProduct_no() {
+	public int getProductno() {
 		return product_no;
 	}
 	public void setProduct_no(int product_no) {

@@ -13,7 +13,7 @@ import semi2.beans.MemberDao;
 import semi2.beans.MemberDto;
 
 @WebServlet("/member/list.ez")
-public class memberListServlet extends HttpServlet {
+public class MemberListServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
