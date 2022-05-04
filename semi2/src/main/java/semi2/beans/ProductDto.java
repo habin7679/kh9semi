@@ -32,8 +32,7 @@ public class ProductDto {
 				+ productProtein + ", productCarbohydrate=" + productCarbohydrate + ", productFat=" + productFat
 				+ ", productInfo=" + productInfo + ", productImg=" + productImg + "]";
 	}
-	public ProductDto() {
-		super();
+
 	}
 	public int getProductNo() {
 		return productNo;
