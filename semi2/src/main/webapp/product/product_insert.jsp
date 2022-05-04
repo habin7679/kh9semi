@@ -53,7 +53,7 @@
 		<tr>
 			<th>폐기일</th>
 			<td>
-				<input type="date" name="productExpire">
+				<input type="date" name="productExpire" required>
 			</td>
 		</tr>
 		<tr>
@@ -99,7 +99,7 @@
 		<tr>
 			<th>상품이미지</th>
 			<td>
-				<input type="text" name="productImg" required>
+				<input type="text" name="productImg">
 			</td>
 		</tr>
 		
