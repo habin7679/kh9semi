@@ -188,4 +188,18 @@ public class MemberDao {
 			con.close();
 			return memberDto;
 		}
+		
+		//관리자 - 회원 탈퇴                                                                                                                         
+		public boolean delete(String memberId) throws Exception {
+			Connection con = JdbcUtils.getConnection();
+			
+			String sql = "delete score where memberId = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, memberId);
+			int count = ps.executeUpdate();
+			
+			con.close();
+			
+			return count > 0;
+		}
 }
