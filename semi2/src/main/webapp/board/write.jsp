@@ -23,9 +23,11 @@
 	        <label>말머리</label>
 	        <select name="boardHead" class="form-input fill input-round">
 	            <option value="">선택</option>
-	            <option>정보</option>
-	            <option>유머</option>
 	            <option>공지</option>
+	            <option>자유</option>
+	            <option>팁</option>
+	            <option>후기</option>
+	            <option>문의</option>
 	        </select>
 	    </div>
 	    <div class="row">
