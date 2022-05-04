@@ -4,9 +4,17 @@ public class OrderDto {
 	private int orderNo;
 	private String memberId;
 	private int productNo;
+	private int productPrice;
 	private int orderCount;
 	private String orderReview;
 	
+	
+	public int getProductPrice() {
+		return productPrice;
+	}
+	public void setProductPrice(int productPrice) {
+		this.productPrice = productPrice;
+	}
 	public int getOrderNo() {
 		return orderNo;
 	}

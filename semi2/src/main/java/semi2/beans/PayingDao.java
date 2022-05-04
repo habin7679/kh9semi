@@ -2,15 +2,34 @@ package semi2.beans;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class PayingDao {
-	public void insertNo(String memberId) throws Exception{
+	public int getSequence() throws Exception {
 		Connection con = JdbcUtils.getConnection();
-		
-		String sql = "insert into paying(order_no, member_id) values(order_seq.nextval(), ?)";
+		String sql = "select order_no_seq.nextval from dual";
 		
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, memberId);
+		
+		ResultSet rs = ps.executeQuery();
+		rs.next();	//데이터가 1개니까 이동을 지시
+		
+		int no = rs.getInt("nextval");
+		
+		con.close();
+		
+		return no;
+	}
+	
+	
+	public void insertNo(String memberId, int no) throws Exception{
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "insert into paying(order_no, member_id) values(?, ?)";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, no);
+		ps.setString(2, memberId);
 		
 		ps.execute();
 		con.close();
