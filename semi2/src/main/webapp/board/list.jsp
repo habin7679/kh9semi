@@ -1,6 +1,6 @@
 <%@page import="semi2.beans.BoardDto"%>
-<%@page import="java.util.List"%>
 <%@page import="semi2.beans.BoardDao"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -11,7 +11,6 @@
 	//=> 없으면 "목록"으로 간주
 	String type = request.getParameter("type");
 	String keyword = request.getParameter("keyword");
-
 	//페이징 관련 파라미터들을 수신
 	int p;
 	try {//정상적인 숫자가 들어온 경우 - 0이하인 경우 --> Plan A
@@ -34,15 +33,12 @@
 
 <%
 	boolean search = type != null && keyword != null;
-
 	BoardDao boardDao = new BoardDao();
 	List<BoardDto> list;
 	if(search){
-// 		list = boardDao.selectList(type, keyword);
 		list = boardDao.selectListByPaging(p, s, type, keyword); 
 	}
 	else {
-// 		list = boardDao.selectList();
 		list = boardDao.selectListByPaging(p, s);
 	}
 %>    
@@ -76,7 +72,6 @@
 %>
 
     
-<jsp:include page="/template/header.jsp"></jsp:include>
 
 <div class="container w950 m30">
 
@@ -227,5 +222,3 @@
 	</div>
 	
 </div>
-
-<jsp:include page="/template/footer.jsp"></jsp:include>

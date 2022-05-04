@@ -19,21 +19,21 @@ public class ProductDao {
 				+"product_no_seq.nextval,?,?,?,?,? to_date(?,'YYYY-MM-DD'), to_date(?,'YYYY-DD-MM')"
 				+"?,?,?,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setInt(1, productDto.getProduct_no());
-		ps.setString(2, productDto.getProduct_name());
-		ps.setString(3, productDto.getProduct_sort());
-		ps.setInt(4,productDto.getProduct_price());
-		ps.setInt(5, productDto.getProduct_stock());
-		ps.setString(6, productDto.getProduct_company());
-		ps.setString(7, productDto.getProduct_madeString());
-		ps.setString(8,productDto.getProduct_expireString());
-		ps.setString(9, productDto.getProduct_event());
-		ps.setInt(10, productDto.getProduct_kcal());
-		ps.setInt(11, productDto.getProduct_protein());
-		ps.setInt(12, productDto.getProduct_carbohydrate());
-		ps.setInt(13, productDto.getProduct_fat());
-		ps.setString(14, productDto.getProduct_info());
-		ps.setString(15, productDto.getProduct_img());
+		ps.setInt(1, productDto.getProductNo());
+		ps.setString(2, productDto.getProductName());
+		ps.setString(3, productDto.getProductSort());
+		ps.setInt(4,productDto.getProductPrice());
+		ps.setInt(5, productDto.getProductStock());
+		ps.setString(6, productDto.getProductCompany());
+		ps.setString(7, productDto.getProductMadeString());
+		ps.setString(8,productDto.getProductExpireString());
+		ps.setString(9, productDto.getProductEvent());
+		ps.setInt(10, productDto.getProductKcal());
+		ps.setInt(11, productDto.getProductProtein());
+		ps.setInt(12, productDto.getProductCarbohydrate());
+		ps.setInt(13, productDto.getProductFat());
+		ps.setString(14, productDto.getProductInfo());
+		ps.setString(15, productDto.getProductImg());
 		ps.execute();
 		
 		con.close();			
