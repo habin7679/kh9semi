@@ -1,5 +1,7 @@
 package semi2.beans;
 
+import java.sql.Date;
+
 public class CreditDto {
 	private int orderNo;
 	private String memberId;
@@ -7,6 +9,15 @@ public class CreditDto {
 	private int cardNum;
 	private String cardPw;
 	private int cardPrice;
+	private Date cardDate;
+	
+	
+	public Date getCardDate() {
+		return cardDate;
+	}
+	public void setCardDate(Date cardDate) {
+		this.cardDate = cardDate;
+	}
 	public int getOrderNo() {
 		return orderNo;
 	}

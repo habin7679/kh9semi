@@ -24,6 +24,18 @@ public class AccountDao {
 		ps.execute();
 		con.close();
 	}
+	public boolean checked(int orderNo) throws Exception{
+		Connection con = JdbcUtils.getConnection();
+		String sql = "update account set account_date=sysdate, account_check='o' where order_no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setInt(1, orderNo);
+		
+		int count = ps.executeUpdate();
+		con.close();
+		return count>0;
+		
+	}
 	public AccountDto selectOne(int orderNo) throws Exception{
 		Connection con = JdbcUtils.getConnection();
 		
@@ -47,13 +59,12 @@ public class AccountDao {
 		con.close();
 		return accountDto;
 	}
-	public List<AccountDto> selectNon(String accountCheck) throws Exception{
+	public List<AccountDto> selectNon() throws Exception{
 		Connection con = JdbcUtils.getConnection();
 		
-		String sql = "select * from account where account_check=?";
+		String sql = "select * from account where account_check='x'";
 		
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, accountCheck);		
 		
 		ResultSet rs = ps.executeQuery();
 		
@@ -73,4 +84,15 @@ public class AccountDao {
 		con.close();
 		return list;
 	}
+	public int accountsales(String yearMonth) throws Exception{
+		Connection con = JdbcUtils.getConnection();
+		String sql = "select sum(account_price) from account where to_char(account_date, 'yyyy-mm')=? and account_check='o'";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		int total = rs.getInt("sum(account_price)");
+		con.close();
+		return total;
+	}
+	
 }
