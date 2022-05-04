@@ -1,6 +1,6 @@
 package semi2.beans;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class ProductDto {
 	private int productNo;
@@ -33,7 +33,7 @@ public class ProductDto {
 				+ ", productInfo=" + productInfo + ", productImg=" + productImg + "]";
 	}
 
-	}
+	
 	public int getProductNo() {
 		return productNo;
 	}
