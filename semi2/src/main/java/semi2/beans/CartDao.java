@@ -54,7 +54,7 @@ public class CartDao {
 	public boolean delete(CartDto cartDto) throws Exception{
 		Connection con = JdbcUtils.getConnection();
 		
-		String sql = "delete from cart where member_id=? and product_no=?";
+		String sql = "delet cart where member_id=? and product_no=?";
 		
 		PreparedStatement ps = con.prepareStatement(sql);
 		
@@ -69,7 +69,7 @@ public class CartDao {
 	public List<CartDto> selectAll(String memberId) throws Exception{
 		Connection con = JdbcUtils.getConnection();
 		
-		String sql = "select product_no, cart_amount from cart where member_id=?";
+		String sql = "select * from cart where member_id=?";
 		
 		PreparedStatement ps = con.prepareStatement(sql);
 		

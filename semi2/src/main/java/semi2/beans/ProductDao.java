@@ -115,7 +115,7 @@ public class ProductDao {
     public ProductDto selectOne(int productNo) throws Exception {
         Connection con = JdbcUtils.getConnection();
 
-        String sql = "select*form product where product_no=?";
+        String sql = "select*from product where product_no=?";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, productNo);
         ResultSet rs = ps.executeQuery();
