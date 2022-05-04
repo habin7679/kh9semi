@@ -5,6 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+
+import com.fasterxml.jackson.core.PrettyPrinter;
 
 import oracle.net.aso.l;
 
@@ -41,8 +44,8 @@ public class ProductDao {
 		
 		con.close();			
 		}
-	//관리자 - 상품목록 조회
-
+	
+	//관리자 - 상품목록
     public List<ProductDto> listAll() throws Exception {
         Connection con = JdbcUtils.getConnection();
 
@@ -75,6 +78,7 @@ public class ProductDao {
         con.close();
         return list;
    }
+    
     //단일조회
     public ProductDto selectOne(int productNo) throws Exception {
         Connection con = JdbcUtils.getConnection();
@@ -106,6 +110,7 @@ public class ProductDao {
         con.close();
         return productDto;
     }
+    
     //상품 정보 수정
     public boolean update(ProductDto productDto) throws Exception {
     	Connection con = JdbcUtils.getConnection();
@@ -134,10 +139,45 @@ public class ProductDao {
     	
     	int count = ps.executeUpdate();
     	con.close();
+    	
     	return count > 0;	
     }
     
     //상품 검색
-    
+    public List<ProductDto> selectList(String type, String keyword) throws Exception {
+    	Connection con = JdbcUtils.getConnection();
+    	
+    	String sql = "select * from product where instr(#1, ?) > 0 order by product_no asc";
+    	sql = sql.replace("#1", type);
+    	
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	ps.setString(1, keyword);
+    	ResultSet rs = ps.executeQuery();
+    	
+    	List<ProductDto> list = new ArrayList<>();
+    	
+    	while (rs.next()) {
+			ProductDto productDto = new ProductDto();
+			productDto.setProductNo(rs.getInt("product_no"));
+			productDto.setProductName(rs.getString("product_name"));
+			productDto.setProductSort(rs.getString("product_sort"));
+			productDto.setProductPrice(rs.getInt("product_price"));
+			productDto.setProductStock(rs.getInt("product_stock"));
+			productDto.setProductCompany(rs.getString("product_company"));
+			productDto.setProductMade(rs.getDate("product_made"));
+			productDto.setProductExpire(rs.getDate("product_expire"));
+			productDto.setProductEvent(rs.getString("product_event"));
+			productDto.setProductKcal(rs.getInt("product_kcal"));
+			productDto.setProductProtein(rs.getInt("product_protein"));
+			productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
+			productDto.setProductFat(rs.getInt("product_fat"));
+			productDto.setProductInfo(rs.getString("product_info"));
+			productDto.setProductImg(rs.getString("product_img"));
+			
+			list.add(productDto);
+		}
+    	con.close();
+    	return list;
+    }    
 }
 
