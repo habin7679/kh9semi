@@ -3,7 +3,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+ 
 <%
 	//목록과 검색을 한페이지에서 한다
 	//=> 구분이 되어야 한다.
@@ -76,7 +76,7 @@
 <div class="container w950 m30">
 
 	<div class="row center">
-		<h1>자유 게시판</h1>
+		<h1>전체 게시판</h1>
 	</div>
 	
 	<div class="row right">
@@ -87,7 +87,7 @@
 		<table class="table table-border">
 			<thead>
 				<tr>
-					<th>번호</th>
+					<th>게시판</th>
 					<th width="40%">제목</th>
 					<th>작성자</th>
 					<th>작성일</th>
@@ -100,7 +100,7 @@
 			<tbody align="center">
 				<%for(BoardDto boardDto : list){ %>
 				<tr>
-					<td><%=boardDto.getBoardNo()%></td>
+					<td><%=boardDto.getBoardHead()%></td>
 					<td class="left">
 						
 						<%-- depth(차수)만큼 띄어쓰기 처리 --%>
@@ -110,11 +110,7 @@
 							<%} %>
 							<img src="<%=request.getContextPath()%>/image/reply.png" width="20" height="20">
 						<%} %>
-					
-						<!-- 말머리 -->
-						<%if(boardDto.getBoardHead() != null){%>
-						[<%=boardDto.getBoardHead()%>]
-						<%} %>
+						
 						
 						<!-- 게시글 제목 링크 -->
 						<a href="detail.jsp?boardNo=<%=boardDto.getBoardNo()%>">
