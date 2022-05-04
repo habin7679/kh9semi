@@ -4,7 +4,7 @@ public class BuyDto {
 	private int buyNo;
 	private String MemberId;
 	private int orderNo;
-	private long buyDelivery;
+	private long buyInvoice;
 	private String buyStatus;
 	
 	public int getBuyNo() {
@@ -25,11 +25,11 @@ public class BuyDto {
 	public void setOrderNo(int orderNo) {
 		this.orderNo = orderNo;
 	}
-	public long getBuyDelivery() {
-		return buyDelivery;
+	public long getBuyInvoice() {
+		return buyInvoice;
 	}
-	public void setBuyDelivery(long buyDelivery) {
-		this.buyDelivery = buyDelivery;
+	public void setBuyInvoice(long buyInvoice) {
+		this.buyInvoice = buyInvoice;
 	}
 	public String getBuyStatus() {
 		return buyStatus;
