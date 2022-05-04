@@ -33,7 +33,7 @@ public class ProductDto {
 				+ ", productInfo=" + productInfo + ", productImg=" + productImg + "]";
 	}
 
-	}
+	
 	public int getProductNo() {
 		return productNo;
 	}

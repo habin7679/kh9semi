@@ -74,36 +74,7 @@ public class ProductDao {
         return list;
     }
 
-	public List<MemberDto> listAll() throws Exception {
-		Connection con = JdbcUtils.getConnection();
-		
-		String sql = "select * form product";
-		PreparedStatement ps = con.prepareStatement(sql);
-		ResultSet rs = ps.executeQuery();
-		
-		List<ProductDto> list = new ArrayList<>();
-		ProductDto productDto = new ProductDto();
-		productDto.setProductNo(rs.getInt("product_no))";
-		productDto.setProdctName(rs.getInt("product_name))";
-		productDto.setProdctSort(rs.getInt("product_sort))";
-		productDto.setProdctPrice(rs.getInt("product_price))";
-		productDto.setProdctStock(rs.getInt("product_stock))";
-		productDto.setProdctCompany(rs.getInt("product_company))";
-		productDto.setProdctMadeString(rs.getInt("product_made_string))";
-		productDto.setProdctExpireString(rs.getInt("product_expire_string))";
-		productDto.setProdctEvent(rs.getInt("product_event))";
-		productDto.setProdctKcal(rs.getInt("product_kcal))";
-		productDto.setProdctProtein(rs.getInt("product_protein))";
-		productDto.setProdctCarbohydrate(rs.getInt("product_carbohydrate))";
-		productDto.setProdctFat(rs.getInt("product_fat))";
-		productDto.setProdctInfo(rs.getInt("product_info))";
-		productDto.setProdctImg(rs.getInt("product_img))";
-		
-		list.add(MemberDto);
-	}	
-		con.close();
-		return list;
-}
+	
 
 	
 	}
