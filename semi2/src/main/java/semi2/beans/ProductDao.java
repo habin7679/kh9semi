@@ -2,6 +2,7 @@ package semi2.beans;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class ProductDao {
 	public void add(ProductDto productDto) throws Exception {
@@ -35,6 +36,5 @@ public class ProductDao {
 		
 		con.close();			
 		}
-	
-	}
+}
 
