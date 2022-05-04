@@ -3,8 +3,11 @@ package semi2.beans;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+<<<<<<< HEAD
+=======
 import java.util.ArrayList;
 import java.util.List;
+>>>>>>> refs/remotes/origin/main
 
 public class ProductDao {
 	//상품 등록
@@ -39,6 +42,8 @@ public class ProductDao {
 		
 		con.close();			
 		}
+<<<<<<< HEAD
+=======
 	//관리자 - 상품목록 조회
 
     public List<ProductDto> listAll() throws Exception {
@@ -105,5 +110,6 @@ public class ProductDao {
         return productDto;
     }
   
+>>>>>>> refs/remotes/origin/main
 }
 
