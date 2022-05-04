@@ -11,11 +11,11 @@ public class ReplyDao {
 	public void insert(ReplyDto replyDto) throws Exception {
 		Connection con = JdbcUtils.getConnection();
 		
-		String sql = "insert into reply(reply_no, reply_writer, reply_board_no, reply_content) "
+		String sql = "insert into reply(reply_no, reply_writer, reply_target, reply_content) "
 							+ "values(reply_seq.nextval, ?, ?, ?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, replyDto.getReplyWriter());
-		ps.setInt(2, replyDto.getReplyBoardNo());
+		ps.setInt(2, replyDto.getReplyTarget());
 		ps.setString(3, replyDto.getReplyContent());
 		ps.execute();
 		
@@ -26,12 +26,12 @@ public class ReplyDao {
 //	1. 해당 글에 대한 댓글 목록
 //	2. 특정 검색어에 대한 댓글 목록
 //	= 댓글 정렬은 작성순, 등록순으로 한다.
-	public List<ReplyDto> selectList(int replyBoardNo) throws Exception {
+	public List<ReplyDto> selectList(int replyTarget) throws Exception {
 		Connection con = JdbcUtils.getConnection();
 		
-		String sql = "select * from reply where reply_board_no = ? order by reply_no asc";
+		String sql = "select * from reply where reply_target = ? order by reply_no asc";
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setInt(1, replyBoardNo);
+		ps.setInt(1, replyTarget);
 		ResultSet rs = ps.executeQuery();
 		
 		List<ReplyDto> list = new ArrayList<>();
@@ -43,7 +43,7 @@ public class ReplyDao {
 			replyDto.setReplyWriter(rs.getString("reply_writer"));
 			replyDto.setReplyContent(rs.getString("reply_content"));
 			replyDto.setReplyTime(rs.getDate("reply_time"));
-			replyDto.setReplyBoardNo(rs.getInt("reply_board_no"));
+			replyDto.setReplyTarget(rs.getInt("reply_target"));
 
 			list.add(replyDto);
 		}
@@ -71,7 +71,7 @@ public class ReplyDao {
 			replyDto.setReplyWriter(rs.getString("reply_writer"));
 			replyDto.setReplyContent(rs.getString("reply_content"));
 			replyDto.setReplyTime(rs.getDate("reply_time"));
-			replyDto.setReplyBoardNo(rs.getInt("reply_board_no"));
+			replyDto.setReplyTarget(rs.getInt("reply_target"));
 
 			list.add(replyDto);
 		}
@@ -126,7 +126,7 @@ public class ReplyDao {
 			replyDto.setReplyWriter(rs.getString("reply_writer"));
 			replyDto.setReplyContent(rs.getString("reply_content"));
 			replyDto.setReplyTime(rs.getDate("reply_time"));
-			replyDto.setReplyBoardNo(rs.getInt("reply_board_no"));
+			replyDto.setReplyTarget(rs.getInt("reply_target"));
 		}
 		else {
 			replyDto = null;
@@ -137,17 +137,3 @@ public class ReplyDao {
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
