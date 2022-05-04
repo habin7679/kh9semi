@@ -3,7 +3,8 @@
 <!-- 현재 프로젝트에서 시작 시 사용할 자원에 대해 명시하는 공간 -->
 
 <Context>
-   
+
+ 
    <!-- 
          사용할 자원 정보 
          - name : Java에서 찾기 위한 식별자
@@ -33,5 +34,5 @@
                   maxTotal="20"
                   maxIdle="5"
                   maxWaitMillis="3000"></Resource>
-   
+
 </Context>

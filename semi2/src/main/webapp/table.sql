@@ -85,7 +85,8 @@ member_id varchar2(20) references member(member_id),
 card_name varchar2(12) check(card_name in('상혁카드', '범식카드', '원주카드')), 
 card_num number check(card_num in(1231231231, 1234123411)), 
 card_pw varchar2(20) check(card_pw in('khkh', 'ezez')), 
-card_price number check(card_price>0)
+card_price number check(card_price>0),
+card_date date default sysdate
 );
 
 drop table account;
@@ -97,7 +98,8 @@ account_bank varchar2(20) check(account_bank in('하빈은행', '다은은행', 
 account_no number check(account_no in(110110110, 112112112)), 
 account_name varchar2(12) not null, 
 account_price number check(account_price>0), 
-account_check char(1) default 'x' check(account_check in('o', 'x'))
+account_check char(1) default 'x' check(account_check in('o', 'x')),
+account_date date 
 );
 
 create sequence buy_no_seq;
@@ -106,14 +108,14 @@ create table buy(
 buy_no number primary key, 
 member_id varchar2(20) references member(member_id), 
 order_no number references paying(order_no) on delete cascade, 
-buy_delivery number, 
-buy_status varchar2(15) check(buy_status in('입금전','입금확인','배송준비중','배송중','배송완료'))
+buy_invoice number, 
+buy_status varchar2(15) check(buy_status in('입금전','결제완료','배송준비중','배송중','배송완료'))
 );
 
 create table orderp(
-order_no number references paying(order_no) on delete cascade, 
+order_no number references paying(order_no) on delete cascade,
 member_id varchar2(20) references member(member_id), 
 product_no number references product(product_no), 
 order_count number check(order_count>0), 
-order_review char(1) default'x' check(order_review in('o','x'))
+order_review char(1) default 'x' check(order_review in('o','x'))
 );
