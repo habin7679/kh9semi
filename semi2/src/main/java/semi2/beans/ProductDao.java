@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import oracle.net.aso.l;
+
 public class ProductDao {
 	//상품 등록
 	public void add(ProductDto productDto) throws Exception {
@@ -58,8 +60,8 @@ public class ProductDao {
         productDto.setProductPrice(rs.getInt("product_price"));
         productDto.setProductStock(rs.getInt("product_stock"));
         productDto.setProductCompany(rs.getString("product_company"));
-        productDto.setProductMadeString(rs.getString("product_made_string"));
-        productDto.setProductExpireString(rs.getString("product_expire_string"));
+        productDto.setProductMade(rs.getDate("product_made"));
+        productDto.setProductExpire(rs.getDate("product_expire"));
         productDto.setProductEvent(rs.getString("product_event"));
         productDto.setProductKcal(rs.getInt("product_kcal"));
         productDto.setProductProtein(rs.getInt("product_protein"));
@@ -91,8 +93,8 @@ public class ProductDao {
             productDto.setProductPrice(rs.getInt("product_price"));
             productDto.setProductStock(rs.getInt("product_stock"));
             productDto.setProductCompany(rs.getString("product_company"));
-            productDto.setProductMadeString(rs.getString("product_made_string"));
-            productDto.setProductExpireString(rs.getString("product_expire_string"));
+            productDto.setProductMade(rs.getDate("product_made"));
+            productDto.setProductExpire(rs.getDate("product_expire"));
             productDto.setProductEvent(rs.getString("product_event"));
             productDto.setProductKcal(rs.getInt("product_kcal"));
             productDto.setProductProtein(rs.getInt("product_protein"));
@@ -104,6 +106,38 @@ public class ProductDao {
         con.close();
         return productDto;
     }
-  
+    //상품 정보 수정
+    public boolean update(ProductDto productDto) throws Exception {
+    	Connection con = JdbcUtils.getConnection();
+    	
+    	String sql = "update product set product_name = ?, product_sort = ?, product_price = ?, "
+    			+ "product_stock = ?, product_company = ?, product_made = ?, product_exprire = ?, "
+    			+ "product_event = ?, product_kcal = ?, product_protein = ?, product_carbohydrate = ?, "
+    			+ "procuct_fat = ?, product_info = ?, product_img = ? where product_no = ?";
+    	
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	ps.setString(1, productDto.getProductName());
+    	ps.setString(2, productDto.getProductSort());
+    	ps.setInt(3, productDto.getProductPrice());
+    	ps.setInt(4, productDto.getProductStock());
+    	ps.setString(5, productDto.getProductCompany());
+    	ps.setDate(6, productDto.getProductMade());
+    	ps.setDate(7, productDto.getProductExpire());
+    	ps.setString(8, productDto.getProductEvent());
+    	ps.setInt(9, productDto.getProductKcal());
+    	ps.setInt(10, productDto.getProductProtein());
+    	ps.setInt(11, productDto.getProductCarbohydrate());
+    	ps.setInt(12, productDto.getProductFat());
+    	ps.setString(13, productDto.getProductInfo());
+    	ps.setString(14, productDto.getProductImg());
+    	ps.setInt(15, productDto.getProductNo());
+    	
+    	int count = ps.executeUpdate();
+    	con.close();
+    	return count > 0;	
+    }
+    
+    //상품 검색
+    
 }
 
