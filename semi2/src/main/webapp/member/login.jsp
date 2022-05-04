@@ -32,6 +32,10 @@
 		<div>
 			<input type="submit" value="로그인">
 		</div>
+		
+		<div>
+			<a href="find_id.jsp">아이디 찾기</a>
+		</div>
 	</div>
 	<% if(request.getParameter("error") !=null){ %>
 	<div>
@@ -39,6 +43,7 @@
 	</div>
 	<%} %>
 	</form>
+	
 	
 </body>
 </html>
