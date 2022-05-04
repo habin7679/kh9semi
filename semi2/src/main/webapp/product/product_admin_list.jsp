@@ -49,7 +49,6 @@
 						<td><%=productDto.getProductExpire()%></td>
 						<td><%=productDto.getProductEvent()%></td>
 						<td><a href = "detail.jsp" class="link">상세보기</a>
-					</div>
 					</td>
 				</tr>
 				<%}%>

@@ -7,10 +7,9 @@
 <%-- 준비 --%>
 <%
 	ProductDao productDao = new ProductDao();
-	String productSort = request.getParameter("productSort");
-	List<ProductDto> list = productDao.listUser(productSort);
+	//String productSort = request.getParameter("productSort");
+	List<ProductDto> list = productDao.listAll();
 %>
-
 <%-- 출력 --%>
 <jsp:include page="/template/header.jsp"></jsp:include>
 
@@ -21,38 +20,27 @@
 		<div class="row right">
 		<a href="product_insert.jsp" class="link link-btn">생성</a>
 		</div>
+		
 		<div class="row">
 		<table class="table table-border table-hover" >
-			<thead>
+			<%-- <thead>
 				<tr>
-					<th>상품번호</th>
+					<th>상품이미지</th>
 					<th>제품명</th>
-					<th>분류</th>
 					<th>제품 가격</th>
-					<th>재고</th>
-					<th>제조사</th>
-					<th>제조일</th>
-					<th>폐기일</th>
-					<th>행사 여부</th>
-					<th>기타</th>
+					<th>평점</th>
 				</tr>
-			</thead>
+			</thead>--%>
 			<tbody>
 				<%for(ProductDto productDto : list){ %>
-				<tr>
-				<td><%=productDto.getProductNo() %></td>
-						<td><%=productDto.getProductName()%></td>
-						<td><%=productDto.getProductSort()%></td>
-						<td><%=productDto.getProductPrice()%></td>
-						<td><%=productDto.getProductStock()%></td>
-						<td><%=productDto.getProductCompany()%></td>
-						<td><%=productDto.getProductMade()%></td>
-						<td><%=productDto.getProductExpire()%></td>
-						<td><%=productDto.getProductEvent()%></td>
-						<td><a href = "detail.jsp" class="link">상세보기</a>
+				<div type = "hidden" <%=productDto.getProductNo() %>></div>
+				<div>
+					<a href="details.jsp" class="link">
+						<%=productDto.getProductImg()%><br>
+					</a>
+						<%=productDto.getProductName()%><br>
+						<%=productDto.getProductPrice()%><br>
 					</div>
-					</td>
-				</tr>
 				<%}%>
 			</tbody>
 	</table>
