@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import semi2.beans.MemberDao;
 import semi2.beans.MemberDto;
-@WebServlet(urlPatterns = /member/update.ez)
+@WebServlet(urlPatterns = "/member/update.ez")
 public class MemberUpdateServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,8 +30,8 @@ public class MemberUpdateServlet extends HttpServlet {
 			memberDto.setMemberDetailAddress(req.getParameter("memberDetailAddress"));
 			memberDto.setMemberPoint(Integer.parseInt(req.getParameter("memberPoint")));
 			memberDto.setMemberGrade(req.getParameter("memberGrade"));
-			memberDto.setMemberJoindate(req.getParameter("memberJoindate"));
-			
+			java.sql.Date memberjoinDate = java.sql.Date.valueOf(req.getParameter("memberJoindate"));
+			memberDto.setMemberJoindate(memberjoinDate);			
 			MemberDao memberDao = new MemberDao();
 			boolean success = memberDao.update(memberDto);
 			resp.sendRedirect(req.getContextPath()+"/member/detail.jsp?memberId=" + memberDto.getMemberId());
