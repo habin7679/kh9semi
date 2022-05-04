@@ -44,9 +44,9 @@ create sequence product_no_seq;
 insert into product (product_no, product_name,product_sort,product_price,
 product_stock,product_company, product_made,product_expire,
 product_event,product_kcal,product_protein,product_carbohydrate,
-product_fat,product_info,product_img) values (product_no_seq.nextval, 
+product_fat,product_info) values (product_no_seq.nextval, 
 '그린샐러드','샐러드', 4000, 2, '그린푸드','2022-05-01','2022-05-10','0',400,
-10,30,20,'맛있어요', 'salad.png');
+10,30,20,'맛있어요');
 
 
 
