@@ -27,5 +27,6 @@ public class MemberDao {
 		ps.execute();
 		
 		con.close();
+		
 	}
 }
