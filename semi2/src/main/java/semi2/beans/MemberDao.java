@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import oracle.jdbc.proxy.annotation.Pre;
+
 public class MemberDao {
 		//회원가입
 	public void join(MemberDto memberDto) throws Exception {
@@ -188,7 +190,29 @@ public class MemberDao {
 			con.close();
 			return memberDto;
 		}
-
+		
+		//아이디 찾기
+		public String findId(MemberDto memberDto) throws Exception{
+			Connection con= JdbcUtils.getConnection();
+			
+			String sql= "select member_id from member where member_name=? and member_birth=? and member_phone=?";
+			PreparedStatement ps= con.prepareStatement(sql);
+			ps.setString(1, memberDto.getMemberName());
+			ps.setString(2, memberDto.getMemberBirth());
+			ps.setString(3, memberDto.getMemberPhone());
+			ResultSet rs= ps.executeQuery();
+			
+			String memberId;
+			if(rs.next()) {
+				memberId= rs.getString("member_id");
+			}
+			else {
+				memberId=null;
+			}
+			con.close();
+			
+			return memberId;
+		}
 }
 
 
