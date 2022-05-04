@@ -36,6 +36,10 @@
 		<div>
 			<a href="find_id.jsp">아이디 찾기</a>
 		</div>
+		
+		<div>
+			<a href="Change_pw.jsp">비밀번호 변경하기</a>
+		</div>
 	</div>
 	<% if(request.getParameter("error") !=null){ %>
 	<div>

@@ -18,7 +18,7 @@
 		</div>
 		<div>
 			<label>비밀번호</label>
-	        <input type="password" name="memberPw" placeholder="영어, 숫자, 특수문자 8~16자로 작성">
+	        <input type="password" name="memberPw" placeholder="첫자 영어 대문자,영어, 숫자, 특수문자 8~16자로 작성">
 	    </div>
 	    <div>
 	        <label>닉네임</label>
