@@ -72,10 +72,38 @@ public class ProductDao {
     }
         con.close();
         return list;
+   }
+    //단일조회
+    public ProductDto selectOne(int productNo) throws Exception {
+        Connection con = JdbcUtils.getConnection();
+
+        String sql = "select * form product where product_no=?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, productNo);
+        ResultSet rs = ps.executeQuery();
+        ProductDto productDto = null;
+
+        if(rs.next()) {
+            productDto = new ProductDto();
+            productDto.setProductNo(rs.getInt("product_no"));
+            productDto.setProductName(rs.getString("product_name"));
+            productDto.setProductSort(rs.getString("product_sort"));
+            productDto.setProductPrice(rs.getInt("product_price"));
+            productDto.setProductStock(rs.getInt("product_stock"));
+            productDto.setProductCompany(rs.getString("product_company"));
+            productDto.setProductMadeString(rs.getString("product_made_string"));
+            productDto.setProductExpireString(rs.getString("product_expire_string"));
+            productDto.setProductEvent(rs.getString("product_event"));
+            productDto.setProductKcal(rs.getInt("product_kcal"));
+            productDto.setProductProtein(rs.getInt("product_protein"));
+            productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
+            productDto.setProductFat(rs.getInt("product_fat"));
+            productDto.setProductInfo(rs.getString("product_info"));
+            productDto.setProductImg(rs.getString("product_img"));
+        }
+        con.close();
+        return productDto;
     }
-
-	
-
-	
-	}
+  
+}
 
