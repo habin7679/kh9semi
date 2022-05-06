@@ -20,7 +20,7 @@
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/style.css">
     <title>이지어트 메인 페이지</title>
 
-<style>
+<style>   
         /* 중간 사이드 바!! */
         ul.bar,
         ul.bar ul {
@@ -130,7 +130,7 @@
 		
 		
         <div class="content" style="height:100px;justify-content:space-around;">
-            <img src="/image/logo.png" style="width:210px;height:100px;">
+            <img src="<%=request.getContextPath()%>/image/logo.png" style="width:210px;height:100px;">
         </div>
           <div class="content">
             <ul class="bar" style="width:100%;display:flex;justify-content:space-between;">
