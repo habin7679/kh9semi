@@ -1,16 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="semi2.beans.MemberDto"%>
+<%@page import="semi2.beans.MemberDao"%>
 
 
+<!-- 카테고리 선택하기 위한 회원등급 값 불러오기 -->
+<%	
+String memberId = (String)session.getAttribute("login");
+MemberDao memberDao = new MemberDao();
+MemberDto memberDto = memberDao.selectOne(memberId);
+%>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 <form action="write.kh" method="post">
 
-<%--
-	이 페이지는 새글쓰기와 답글쓰기를 모두 처리하는 페이지이다.
-	따라서 답글쓰기일 경우 전달되는 파라미터(superNo)를 다음 페이지인 write.kh로 전달하는 코드가 필요하다.
- --%> 
+
 <%if(request.getParameter("superNo") != null){ %>   
 <input type="hidden" name="superNo" value="<%=request.getParameter("superNo")%>">
 <%} %>
@@ -23,12 +28,19 @@
 	        <label>말머리</label>
 	        <select name="boardHead" class="form-input fill input-round">
 	            <option value="">선택</option>
+	           	<%if(memberDto.getMemberGrade().equals("관리자")){%>
 	            <option>공지</option>
 	            <option>자유</option>
 	            <option>팁</option>
 	            <option>후기</option>
 	            <option>문의</option>
 	        </select>
+	       	<%}else { %>
+	       	 	<option>자유</option>
+	            <option>팁</option>
+	            <option>후기</option>
+	            <option>문의</option>
+	            <%} %>
 	    </div>
 	    <div class="row">
 	        <label>제목</label>

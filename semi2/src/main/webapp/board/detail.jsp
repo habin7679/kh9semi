@@ -69,8 +69,9 @@
 	<tr>
 		<td align="right">
 			<a href="write.jsp">글쓰기</a>
+			<%if(isAdmin){ %>
 			<a href="write.jsp?superNo=<%=boardNo%>">답글</a>
-			
+			<%} %>
 			<%if(isOwner || isAdmin){ %>
 			<a href="edit.jsp?boardNo=<%=boardNo%>">수정</a>
 			<a href="delete.kh?boardNo=<%=boardNo%>">삭제</a>
