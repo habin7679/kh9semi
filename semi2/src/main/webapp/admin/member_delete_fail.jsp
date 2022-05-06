@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>이지어트</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<h1>회원 등록 성공!</h1>
-	<h2><a href="member_list.jsp">회원목록</a></h2>
+ <h1>회원삭제 실패!</h1>
 </body>
 </html>

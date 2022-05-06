@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import semi2.beans.MemberDao;
 import semi2.beans.MemberDto;
-@WebServlet(urlPatterns = "/admin/update.ez")
+@WebServlet(urlPatterns = "/admin/member_update.ez")
 public class MemberUpdateServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,9 +32,14 @@ public class MemberUpdateServlet extends HttpServlet {
 			memberDto.setMemberJoindate(memberjoinDate);
 
 			MemberDao memberDao = new MemberDao();
-			boolean success = memberDao.update(memberDto);
-			resp.sendRedirect(req.getContextPath()+"/member/detail.jsp?memberId=" + memberDto.getMemberId());
-		
+			boolean success = memberDao.updateAll(memberDto);
+			
+			if(success) {
+				resp.sendRedirect("member_detail.jsp?memberId=" + memberDto.getMemberId());
+			}
+			else {
+				resp.sendRedirect("member_update_fail.jsp");
+			}
 		}
 		catch (Exception e) {
 			e.printStackTrace();

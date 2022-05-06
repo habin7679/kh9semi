@@ -1,6 +1,7 @@
 package semi2.servlet.admin;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,29 +13,28 @@ import javax.servlet.http.HttpServletResponse;
 import semi2.beans.MemberDao;
 import semi2.beans.MemberDto;
 
-@WebServlet(urlPatterns = "/admin/search.ez")
+@WebServlet(urlPatterns = "/admin/member_search.ez")
 public class MemberSearchServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-
+			req.setCharacterEncoding("UTF-8");
 			String type = req.getParameter("type");
 			String keyword = req.getParameter("keyword");
 	
 			boolean isSearch = type != null && keyword != null;
 			MemberDao memberDao = new MemberDao();
 			List<MemberDto> list;
+			
 			if(isSearch) {
 				list = memberDao.selectList(type, keyword);
 			}
 			else {
-				list = memberDao.listAll();
+				list = Collections.emptyList();
 			}
 			
-			//출력
-			resp.getWriter().println("결과 수 : "+list.size());
 			if(list.isEmpty()) {
-				resp.getWriter().println("결과 없음");
+				resp.getWriter().println("결과없음");
 			}
 			else {
 				for(MemberDto memberDto : list) {

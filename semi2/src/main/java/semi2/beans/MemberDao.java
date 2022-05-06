@@ -94,7 +94,7 @@ public class MemberDao {
 		public List<MemberDto> listAll() throws Exception {
 		Connection con= JdbcUtils.getConnection();
 			
-		String sql = "select * from member";
+		String sql = "select * from member order by member_id asc";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 			
@@ -195,7 +195,7 @@ public class MemberDao {
 		public boolean delete(String memberId) throws Exception {
 			Connection con = JdbcUtils.getConnection();
 
-			String sql = "delete score where memberId = ?";
+			String sql = "delete member where member_id = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, memberId);
 			int count = ps.executeUpdate();

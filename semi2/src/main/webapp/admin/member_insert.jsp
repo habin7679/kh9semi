@@ -9,7 +9,7 @@
 <title>이지어트</title>
 </head>
 <body>
-	<form action="insert.ez" method="post">
+	<form action="member_insert.ez" method="post">
 	<div>
 		<div>
 			<h1>회원추가</h1>

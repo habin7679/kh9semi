@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import semi2.beans.MemberDao;
 import semi2.beans.MemberDto;
 
-@WebServlet("/admin/memberlist.ez")
+@WebServlet("/admin/member_list.ez")
 public class MemberListServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
