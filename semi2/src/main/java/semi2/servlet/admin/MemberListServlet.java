@@ -1,4 +1,4 @@
-package semi2.servlet.member;
+package semi2.servlet.admin;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import semi2.beans.MemberDao;
 import semi2.beans.MemberDto;
 
-@WebServlet("/member/list.ez")
+@WebServlet("/admin/memberlist.ez")
 public class MemberListServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
