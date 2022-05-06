@@ -11,8 +11,7 @@
 	LikeDto likeDto = new LikeDto();
 	LikeDao likeDao = new LikeDao();
 	
-	//memberId로 바꿔야함
-	List<LikeDto> list = likeDao.selectAll("testuser2");
+	List<LikeDto> list = likeDao.selectAll(memberId);
 	
 	ProductDao productDao = new ProductDao();
 	
@@ -26,6 +25,7 @@
 %>
 	<form action="delete.ez" method="post">
 		<div class="container">
+			<img src="<%=request.getContextPath()%>/image/product<%=productNo %>.jpg" width="200" height="200"><br><br>
 			<a href="detail.jsp?productNo=<%=productNo%>"><%=pDto.getProductName() %></a>
 			<input type="hidden" name="productNo" value="<%=pDto.getProductNo() %>">
 			<h4><%=pDto.getProductPrice() %></h4>		

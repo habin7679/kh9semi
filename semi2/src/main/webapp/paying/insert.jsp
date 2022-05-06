@@ -11,12 +11,13 @@
 	PayingDao payingDao = new PayingDao();
 	PayingDto payingDto = new PayingDto();
 	MemberDao mDao = new MemberDao();
-	MemberDto mDto = mDao.selectOne("testuser2");
+	MemberDto mDto = mDao.selectOne(memberId);
 	int totalPrice=payingDao.totalPrice(orderNo);
 	
 %>
 <jsp:include page="/template/header.jsp"></jsp:include>
 <form action="paying.ez" method="post">
+<div class="container">
 <div>
 	<input type="hidden" name="orderNo" value="<%=orderNo %>">
 	<div>
@@ -53,5 +54,6 @@
 	</div>
 </div>
 	<input type="submit" value="구매하기">
+</div>
 </form>
 <jsp:include page="/template/footer.jsp"></jsp:include>

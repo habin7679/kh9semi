@@ -38,6 +38,7 @@
 	배송희망일: <%=payingDto.getPayingDeliveryDate() %> 
 	배송희망시간: <%=payingDto.getPayingDeliveryTime()%>시
 </div>
+	주문상품
 <% 
 	OrderDao oDao = new OrderDao();
 	List<OrderDto> list = oDao.selectAll(oNo);
@@ -46,9 +47,14 @@
 		int pNo = oDto.getProductNo();
 		ProductDto productDto = productDao.selectOne(pNo);
 %>
-	주문상품
 	<div>
-	<%=productDto.getProductName() %>
+	<img src="<%=request.getContextPath() %>/image/product<%=pNo %>.jpg"width="200" height="200">
+	</div>
+	<div>
+	상품명: <%=productDto.getProductName() %>
+	</div>
+	<div>
+	상품수량: <%=oDto.getOrderCount() %>
 	</div>
 <%} %>
 <jsp:include page="/template/footer.jsp"/>
