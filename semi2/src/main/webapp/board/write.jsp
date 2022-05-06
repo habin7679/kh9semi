@@ -25,22 +25,15 @@ MemberDto memberDto = memberDao.selectOne(memberId);
 	        <h1>게시글 작성</h1>
 	    </div>
 	    <div class="row">
-	        <label>말머리</label>
+	        <label>카테고리</label>
 	        <select name="boardHead" class="form-input fill input-round">
 	            <option value="">선택</option>
-	           	<%if(memberDto.getMemberGrade().equals("관리자")){%>
 	            <option>공지</option>
 	            <option>자유</option>
 	            <option>팁</option>
 	            <option>후기</option>
 	            <option>문의</option>
 	        </select>
-	       	<%}else { %>
-	       	 	<option>자유</option>
-	            <option>팁</option>
-	            <option>후기</option>
-	            <option>문의</option>
-	            <%} %>
 	    </div>
 	    <div class="row">
 	        <label>제목</label>

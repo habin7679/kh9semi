@@ -21,7 +21,7 @@
 	//내 글인지 판정
 	//= 현재 로그인한 사용자가 게시글 작성자인지 확인
 	//= 세션에 있는 사용자의 아이디와 게시글의 작성자를 비교
-	String memberId = (String)session.getAttribute("login");
+	String memberId = (String)session.getAttribute("member");
 	boolean isLogin = memberId != null;
 	boolean isOwner = isLogin && memberId.equals(boardDto.getBoardWriter());
 	
@@ -51,17 +51,11 @@
 			</h2>
 		</td>
 	</tr>
-
+	<!--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 로그인 세션 추가 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+		<tr>
 		<td>
 			<%=boardDto.getBoardTime()%>
 			 조회수 <%=boardDto.getBoardReadcount()%>
-		</td>
-	</tr>
-	
-	<!-- 내용 표시 영역 -->
-	<tr height="250">
-		<td valign="top">
-			<pre><%=boardDto.getBoardContent()%></pre>
 		</td>
 	</tr>
 	
