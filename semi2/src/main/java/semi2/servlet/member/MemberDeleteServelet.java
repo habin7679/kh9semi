@@ -26,7 +26,7 @@ public class MemberDeleteServelet extends HttpServlet{
 				return;
 			}
 			
-			memberDao.delete(memberId);
+			memberDao.widthrow(memberId);
 			
 			req.getSession().removeAttribute("member");
 			req.getSession().removeAttribute("admin");

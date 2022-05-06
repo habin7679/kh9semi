@@ -67,6 +67,16 @@
 				<a href="<%=request.getContextPath()%>/member/mypage.jsp">마이페이지</a> &nbsp;&nbsp;&nbsp;
 				<a href="<%=request.getContextPath()%>/exam/list.jsp">주문/배송 조회</a> &nbsp;&nbsp;&nbsp;
 				<a href="<%=request.getContextPath()%>/product/list.jsp">상품관리</a> &nbsp;&nbsp;&nbsp;
+				<li>
+        			<a href="<%=request.getContextPath()%>/board/list.jsp">게시판</a>
+        			 <ul>
+        				<li><a href="<%=request.getContextPath()%>/board/notice_list.jsp">공지게시판</a></li>
+        				<li><a href="<%=request.getContextPath()%>/board/free_list.jsp">자유게시판</a></li>
+        				<li><a href="<%=request.getContextPath()%>/board/tip_list.jsp">팁게시판</a></li>
+        				<li><a href="<%=request.getContextPath()%>/board/review_list.jsp">후기게시판</a></li>
+        				<li><a href="<%=request.getContextPath()%>/board/qna_list.jsp">문의게시판</a></li>
+        			</ul>
+        		</li>
 				
 				<%-- 로그인 상태에 따라 다른 메뉴를 출력 --%>
 				<% if(login){ %>

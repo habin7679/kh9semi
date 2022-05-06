@@ -114,7 +114,7 @@ public class MemberDao {
 			memberDto.setMemberDetailAddress(rs.getString("member_detail_address"));
 			memberDto.setMemberPoint(rs.getInt("member_point"));
 			memberDto.setMemberGrade(rs.getString("member_grade"));
-			memberDto.setMemberJoindate(rs.getDate("member_join_date"));
+			memberDto.setMemberJoindate(rs.getDate("member_joindate"));
 			
 			list.add(memberDto);
 			}
@@ -149,7 +149,7 @@ public class MemberDao {
 				memberDto.setMemberDetailAddress(rs.getString("member_detail_address"));
 				memberDto.setMemberPoint(rs.getInt("member_point"));
 				memberDto.setMemberGrade(rs.getString("member_grade"));
-				memberDto.setMemberJoindate(rs.getDate("member_join_date"));
+				memberDto.setMemberJoindate(rs.getDate("member_joindate"));
 				
 				list.add(memberDto);
 			}
@@ -191,6 +191,50 @@ public class MemberDao {
 			return memberDto;
 		}
 		
+		//관리자 - 회원 삭제                                                                                                                       
+		public boolean delete(String memberId) throws Exception {
+			Connection con = JdbcUtils.getConnection();
+
+			String sql = "delete score where memberId = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, memberId);
+			int count = ps.executeUpdate();
+
+			con.close();
+
+			return count > 0;
+		}
+		//관리자 - 회원 추가
+		public void add(MemberDto memberDto) throws Exception {
+			Connection con = JdbcUtils.getConnection();
+			
+			String sql = "insert into member("
+								+ "member_id, member_pw, member_name, member_nick, member_birth, member_email, "
+								+ "member_phone, member_post, member_basic_address, member_detail_address, "
+								+ "member_point, member_grade, member_joindate)"
+							+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, to_date(?,'YYYY-MM-DD'))";
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setString(1, memberDto.getMemberId());
+			ps.setString(2, memberDto.getMemberPw());
+			ps.setString(3, memberDto.getMemberName());
+			ps.setString(4, memberDto.getMemberNick());
+			ps.setString(5, memberDto.getMemberBirth());
+			ps.setString(6, memberDto.getMemberEmail());
+			ps.setString(7, memberDto.getMemberPhone());
+			ps.setString(8, memberDto.getMemberPost());
+			ps.setString(9, memberDto.getMemberBasicAddress());
+			ps.setString(10, memberDto.getMemberDetailAddress());
+			ps.setInt(11, memberDto.getMemberPoint());
+			ps.setString(12, memberDto.getMemberGrade());
+			ps.setDate(13, memberDto.getMemberJoindate());
+			
+			ps.execute();
+			
+			con.close();
+			
+		}
+				
 		//아이디 찾기
 		public String findId(MemberDto memberDto) throws Exception{
 			Connection con= JdbcUtils.getConnection();
@@ -286,10 +330,11 @@ public class MemberDao {
 			con.close();
 			
 			return count>0;
+		
 		}
 		
 		//회원탈퇴
-		public boolean delete(String memberId) throws Exception{
+		public boolean widthrow(String memberId) throws Exception{
 			Connection con =JdbcUtils.getConnection();
 			
 			String sql="delete member where member_id=?";

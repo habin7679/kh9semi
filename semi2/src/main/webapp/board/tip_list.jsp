@@ -79,7 +79,7 @@
 <div class="container w950 m30">
 
 	<div class="row center">
-		<h1>전체 게시판</h1>
+		<h1>팁 게시판</h1>
 	</div>
 	
 	<div class="row right">

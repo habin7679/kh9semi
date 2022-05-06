@@ -1,4 +1,4 @@
-package semi2.servlet.member;
+package semi2.servlet.admin;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import semi2.beans.MemberDao;
 import semi2.beans.MemberDto;
 
-@WebServlet(urlPatterns = "/member/search.ez")
+@WebServlet(urlPatterns = "/admin/search.ez")
 public class MemberSearchServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,7 +32,6 @@ public class MemberSearchServlet extends HttpServlet{
 			}
 			
 			//출력
-			resp.setContentType("text/plain; charset=UTF-8");
 			resp.getWriter().println("결과 수 : "+list.size());
 			if(list.isEmpty()) {
 				resp.getWriter().println("결과 없음");

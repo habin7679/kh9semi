@@ -1,7 +1,6 @@
-package semi2.servlet.member;
+package semi2.servlet.admin;
 
 import java.io.IOException;
-import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,12 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import semi2.beans.MemberDao;
 import semi2.beans.MemberDto;
-@WebServlet(urlPatterns = "/member/update.ez")
+@WebServlet(urlPatterns = "/admin/update.ez")
 public class MemberUpdateServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			req.setCharacterEncoding("UTF-8");
 			MemberDto memberDto = new MemberDto();
 			memberDto.setMemberId(req.getParameter("memberId"));
 			memberDto.setMemberPw(req.getParameter("memberPw"));
@@ -31,7 +29,8 @@ public class MemberUpdateServlet extends HttpServlet {
 			memberDto.setMemberPoint(Integer.parseInt(req.getParameter("memberPoint")));
 			memberDto.setMemberGrade(req.getParameter("memberGrade"));
 			java.sql.Date memberjoinDate = java.sql.Date.valueOf(req.getParameter("memberJoindate"));
-			memberDto.setMemberJoindate(memberjoinDate);			
+			memberDto.setMemberJoindate(memberjoinDate);
+
 			MemberDao memberDao = new MemberDao();
 			boolean success = memberDao.update(memberDto);
 			resp.sendRedirect(req.getContextPath()+"/member/detail.jsp?memberId=" + memberDto.getMemberId());
