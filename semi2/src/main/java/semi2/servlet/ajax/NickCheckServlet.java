@@ -22,10 +22,10 @@ public class NickCheckServlet extends HttpServlet{
 			MemberDao memberDao = new MemberDao();
 			MemberDto memberDto = memberDao.checkNick(memberNick);
 			
-			//출력 - 어쨌든 문자열로 나감
+			
 			resp.setContentType("text/plain; charset=UTF-8");
 			if(memberDto != null) {//사용중
-				resp.getWriter().print("N	N");
+				resp.getWriter().print("NN");
 			}
 			else {//사용가능
 				resp.getWriter().print("NY");
