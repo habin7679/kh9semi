@@ -29,13 +29,13 @@ public class BuyDao {
 		ps.execute();
 		con.close();
 	}
-	public boolean updateStatus(BuyDto buyDto) throws Exception{
+	public boolean updateStatus(String buyStatus, int buyNo) throws Exception{
 		Connection con = JdbcUtils.getConnection();
 		String sql = "update buy set buy_status = ? where buy_no=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
-		ps.setString(1, buyDto.getBuyStatus());
-		ps.setInt(2, buyDto.getBuyNo());
+		ps.setString(1, buyStatus);
+		ps.setInt(2, buyNo);
 		
 		int count = ps.executeUpdate();
 		

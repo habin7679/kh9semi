@@ -121,7 +121,7 @@
                         <a href="<%=request.getContextPath()%>/member/login.jsp">로그인</a> &nbsp;&nbsp;&nbsp;
                         <a href="<%=request.getContextPath()%>#">회원가입</a> &nbsp;&nbsp;&nbsp;
                         <a href="<%=request.getContextPath()%>/member/login.jsp">마이페이지</a> &nbsp;&nbsp;&nbsp;
-                        <a href="<%=request.getContextPath()%>/member/login.jsp">주문/배송조회</a> &nbsp;&nbsp;&nbsp;
+                        <a href="<%=request.getContextPath()%>/buy/list.jsp">주문/배송조회</a> &nbsp;&nbsp;&nbsp;
                     </ul>
                 </ul>
             </div>

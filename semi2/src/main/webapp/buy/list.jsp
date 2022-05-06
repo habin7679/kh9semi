@@ -9,7 +9,7 @@
 <%
 	String memberId = (String)session.getAttribute("member");
 	BuyDao bDao = new BuyDao();
-	List<BuyDto> list = bDao.selectAll("testuser2");
+	List<BuyDto> list = bDao.selectAll(memberId);
 	PayingDao payingDao = new PayingDao();
 %>
 
@@ -25,6 +25,9 @@
 <a href="detail.jsp?orderNo=<%=oNo%>"><%=date %>자 주문</a><br><br>
 송장번호: <%if(bDto.getBuyInvoice()==0){%>상품준비중<% }else{%><%=bDto.getBuyInvoice()%><%}%><br><br>
 주문현황: <%=bDto.getBuyStatus() %><br><br>
+<%if(bDto.getBuyStatus().equals("입금전")||bDto.getBuyStatus().equals("결제완료")) {%>
+<a href="cancel.ez?buyNo=<%=bDto.getBuyNo() %>">취소하기</a>
+<%} %>
 <hr>
 <%} %>
 
