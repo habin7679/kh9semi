@@ -3,7 +3,7 @@
 
 <%
 	//세션에 login 이라는 이름으로 저장된 데이터를 꺼낸다
-	String memberId = (String) session.getAttribute("login");
+	String memberId = (String) session.getAttribute("member");
 	//memberId가 있으면 로그인 상태라고 판정하고 없으면 로그아웃 상태라고 판정
 	boolean login = memberId != null;
 	
