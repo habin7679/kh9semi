@@ -40,7 +40,7 @@
 					<td><%=memberDto.getMemberNick()%></td>
 					<td><%=memberDto.getMemberGrade()%></td>
 					<td><%=memberDto.getMemberPoint()%></td>
-					<td><a href = "member_detail.jsp" class="link">상세보기</a></td>
+					<td><a href = "member_detail.jsp?memberId=<%=memberDto.getMemberId()%>" class="link">상세보기</a></td>
 					</tr>
 				<%} %>
 			</tbody>
