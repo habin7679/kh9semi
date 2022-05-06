@@ -114,7 +114,7 @@ public class MemberDao {
 			memberDto.setMemberDetailAddress(rs.getString("member_detail_address"));
 			memberDto.setMemberPoint(rs.getInt("member_point"));
 			memberDto.setMemberGrade(rs.getString("member_grade"));
-			memberDto.setMemberJoindate(rs.getDate("member_join_date"));
+			memberDto.setMemberJoindate(rs.getDate("member_joindate"));
 			
 			list.add(memberDto);
 			}
@@ -149,7 +149,7 @@ public class MemberDao {
 				memberDto.setMemberDetailAddress(rs.getString("member_detail_address"));
 				memberDto.setMemberPoint(rs.getInt("member_point"));
 				memberDto.setMemberGrade(rs.getString("member_grade"));
-				memberDto.setMemberJoindate(rs.getDate("member_join_date"));
+				memberDto.setMemberJoindate(rs.getDate("member_joindate"));
 				
 				list.add(memberDto);
 			}
@@ -190,6 +190,20 @@ public class MemberDao {
 			con.close();
 			return memberDto;
 		}
+		
+		//관리자 - 회원 삭제                                                                                                                       
+				public boolean delete(String memberId) throws Exception {
+					Connection con = JdbcUtils.getConnection();
+
+					String sql = "delete score where memberId = ?";
+					PreparedStatement ps = con.prepareStatement(sql);
+					ps.setString(1, memberId);
+					int count = ps.executeUpdate();
+
+					con.close();
+
+					return count > 0;
+				}
 		
 		//아이디 찾기
 		public String findId(MemberDto memberDto) throws Exception{
@@ -286,5 +300,6 @@ public class MemberDao {
 			con.close();
 			
 			return count>0;
+		
 		}
 }
