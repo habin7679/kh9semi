@@ -303,4 +303,36 @@ public class MemberDao {
 			
 			
 		}
+		//닉네임 중복검사
+		public MemberDto checkNick(String memberNick) throws Exception {
+			Connection con = JdbcUtils.getConnection();
+			
+			String sql = "select * from member where member_nick = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, memberNick);
+			ResultSet rs = ps.executeQuery();
+			
+			MemberDto memberDto;
+			if(rs.next()) {
+				memberDto = new MemberDto();
+				memberDto.setMemberId(rs.getString("member_id"));
+				memberDto.setMemberPw(rs.getString("member_pw"));
+				memberDto.setMemberName(rs.getString("member_name"));
+				memberDto.setMemberNick(rs.getString("member_nick"));
+				memberDto.setMemberBirth(rs.getString("member_birth"));
+				memberDto.setMemberEmail(rs.getString("member_email"));
+				memberDto.setMemberPhone(rs.getString("member_phone"));
+				memberDto.setMemberPost(rs.getString("member_post"));
+				memberDto.setMemberBasicAddress(rs.getString("member_basic_address"));
+				memberDto.setMemberDetailAddress(rs.getString("member_detail_address"));
+				memberDto.setMemberPoint(rs.getInt("member_point"));
+				memberDto.setMemberGrade(rs.getString("member_grade"));
+				memberDto.setMemberJoindate(rs.getDate("member_joindate"));	
+			}
+			else {
+				memberDto = null;
+			}
+			con.close();
+			return memberDto;
+		}
 }

@@ -30,6 +30,9 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/commons.css">
 <%-- <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/test.css"> --%>
 
+<!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
 
     <meta charset="UTF-8">
 <title>이지어트 메인 페이지</title>
@@ -61,7 +64,7 @@
 				<!-- (주의) 템플릿 페이지에서는 절대 경로로 모든 것을 작성해야 한다 -->
 				<a href="<%=request.getContextPath()%>">로그인</a>&nbsp;&nbsp;&nbsp;
 				<a href="<%=request.getContextPath()%>/olympic/list.jsp">장바구니</a> &nbsp;&nbsp;&nbsp;
-				<a href="<%=request.getContextPath()%>/score/list.jsp">마이패이지</a> &nbsp;&nbsp;&nbsp;
+				<a href="<%=request.getContextPath()%>/member/mypage.jsp">마이페이지</a> &nbsp;&nbsp;&nbsp;
 				<a href="<%=request.getContextPath()%>/exam/list.jsp">주문/배송 조회</a> &nbsp;&nbsp;&nbsp;
 				<a href="<%=request.getContextPath()%>/product/list.jsp">상품관리</a> &nbsp;&nbsp;&nbsp;
 				
