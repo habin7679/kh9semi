@@ -77,13 +77,13 @@ public class ProductDao {
         
         return list;
    }
-    //상품-카테고리
-    public List<ProductDto> listUser(String productSort) throws Exception {
+    //상품-사용자검색
+    public List<ProductDto> listUser(String productName) throws Exception {
         Connection con = JdbcUtils.getConnection();
 
-        String sql = "select * from product where product_sort = ?";
+        String sql = "select * from product where instr(product_name, ?) > 0 order by product_name asc";
         PreparedStatement ps = con.prepareStatement(sql);
-        ps.setString(1, productSort);
+        ps.setString(1, productName);
 		ResultSet rs = ps.executeQuery();
 
         List<ProductDto> list = new ArrayList<>();
@@ -115,7 +115,7 @@ public class ProductDao {
     public ProductDto selectOne(int productNo) throws Exception {
         Connection con = JdbcUtils.getConnection();
 
-        String sql = "select*from product where product_no=?";
+        String sql = "select * from product where product_no=?";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, productNo);
         ResultSet rs = ps.executeQuery();
@@ -175,7 +175,7 @@ public class ProductDao {
     	return count > 0;	
     }
     
-    //상품 검색
+    //상품 관리자 검색
     public List<ProductDto> selectList(String type, String keyword) throws Exception {
     	Connection con = JdbcUtils.getConnection();
     	
@@ -210,6 +210,37 @@ public class ProductDao {
 		}
     	con.close();
     	return list;
+    }
+    //상품 카테고리
+    public ProductDto katgorie(String productSort) throws Exception {
+        Connection con = JdbcUtils.getConnection();
+
+        String sql = "select * from product where product_sort=?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, productSort);
+        ResultSet rs = ps.executeQuery();
+        ProductDto productDto = null;
+
+        if(rs.next()) {
+            productDto = new ProductDto();
+            productDto.setProductNo(rs.getInt("product_no"));
+            productDto.setProductName(rs.getString("product_name"));
+            productDto.setProductSort(rs.getString("product_sort"));
+            productDto.setProductPrice(rs.getInt("product_price"));
+            productDto.setProductStock(rs.getInt("product_stock"));
+            productDto.setProductCompany(rs.getString("product_company"));
+            productDto.setProductMade(rs.getDate("product_made"));
+            productDto.setProductExpire(rs.getDate("product_expire"));
+            productDto.setProductEvent(rs.getString("product_event"));
+            productDto.setProductKcal(rs.getInt("product_kcal"));
+            productDto.setProductProtein(rs.getInt("product_protein"));
+            productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
+            productDto.setProductFat(rs.getInt("product_fat"));
+            productDto.setProductInfo(rs.getString("product_info"));
+            productDto.setProductImg(rs.getString("product_img"));
+        }
+        con.close();
+        return productDto;
     }
     
 }

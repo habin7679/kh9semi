@@ -4,6 +4,7 @@ public class CartDto {
 	private String memberId;
 	private int productNo;
 	private int cartAmount;
+	
 	public String getMemberId() {
 		return memberId;
 	}

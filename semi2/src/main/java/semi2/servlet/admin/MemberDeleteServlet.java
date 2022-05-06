@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import semi2.beans.MemberDao;
 
-@WebServlet(urlPatterns = "/admin/delete.ez")
+@WebServlet(urlPatterns = "/admin/member_delete.ez")
 public class MemberDeleteServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

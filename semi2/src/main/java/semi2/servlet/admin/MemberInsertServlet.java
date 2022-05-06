@@ -14,7 +14,7 @@ import org.eclipse.jdt.internal.compiler.lookup.MemberTypeBinding;
 import semi2.beans.MemberDao;
 import semi2.beans.MemberDto;
 
-@WebServlet(urlPatterns = "/admin/insert.ez")
+@WebServlet(urlPatterns = "/admin/member_insert.ez")
 public class MemberInsertServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -39,7 +39,7 @@ public class MemberInsertServlet extends HttpServlet {
 		MemberDao memberDao = new MemberDao();
 		memberDao.add(memberDto);
 		
-		resp.sendRedirect("member_insert_success.jsp");
+		resp.sendRedirect("member_detail.jsp?memberId="+ memberDto.getMemberId());
 	}
 	catch (Exception e) {
 		e.printStackTrace();
