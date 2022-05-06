@@ -1,3 +1,4 @@
+<%@page import="java.sql.Date"%>
 <%@page import="semi2.beans.OrderDto"%>
 <%@page import="java.util.List"%>
 <%@page import="semi2.beans.OrderDao"%>
@@ -17,7 +18,7 @@
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 <div>
-	주문일: <%=payingDto.getPayingDate() %>
+	주문일시: <%=payingDto.getPayingDate() %>
 </div>
 <div>
 	수령인: <%=payingDto.getPayingName() %>
@@ -35,7 +36,7 @@
 	상세주소: <%=payingDto.getPayingDetailAddress() %>
 </div>
 <div>
-	배송희망일: <%=payingDto.getPayingDeliveryDate() %> 
+	배송희망일: <%=payingDto.getPayingDeliveryDate() %> &nbsp; 
 	배송희망시간: <%=payingDto.getPayingDeliveryTime()%>시
 </div>
 	주문상품
