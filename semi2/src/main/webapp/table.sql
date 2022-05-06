@@ -75,7 +75,8 @@ paying_post number,
 paying_basic_address varchar2(300), 
 paying_detail_address varchar2(300), 
 paying_delivery_fee number, 
-paying_delivery_date date, 
+paying_delivery_date date,
+paying_delivery_time number check(paying_delivery_time>=0 and paying_delivery_time <24),
 paying_payway varchar2(15)
 );
 
@@ -114,8 +115,9 @@ buy_status varchar2(15) check(buy_status in('입금전','결제완료','배송�
 
 create table orderp(
 order_no number references paying(order_no) on delete cascade,
-member_id varchar2(20) references member(member_id), 
 product_no number references product(product_no), 
+product_price number, 
 order_count number check(order_count>0), 
+order_price number, 
 order_review char(1) default 'x' check(order_review in('o','x'))
 );
