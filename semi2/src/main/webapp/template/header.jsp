@@ -11,35 +11,107 @@
 	String auth = (String)session.getAttribute("auth");
 	boolean admin = auth != null && auth.equals("관리자");
 %>    
-
-
-<!DOCTYPE html>
-<html lang="ko">
-
+<html>
 <head>
-<<<<<<< HEAD
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<!-- 구글 폰트 CDN -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+ <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/style.css">
+    <title>이지어트 메인 페이지</title>
 
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/reset.css">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/layout.css">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/commons.css">
-<%-- <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/test.css"> --%>
+<style>
+        /* 중간 사이드 바!! */
+        ul.bar,
+        ul.bar ul {
+            list-style: none;
 
-=======
-    <meta charset="UTF-8">
-<title>이지어트 메인 페이지</title>
->>>>>>> refs/remotes/origin/main
+            padding: 0;
+            margin: 0;
+        }
+
+        /* ul의 마지막 clear / li는 float로 배치 */
+        ul.bar::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        ul.bar>li {
+            float: left;
+            width: 300px;
+        }
+
+        /* 2차 이상의 메뉴 숨김 */
+        ul.bar ul {
+            display: none;
+        }
+
+        /* 바 항목에 마우스가 올라가면 하위 메뉴를 표시 */
+        ul.bar li:hover>ul {
+            display: block;
+        }
+
+        ul.bar li {
+            position: relative;
+        }
+
+        ul.bar ul {
+            position: absolute;
+            top: 100%;
+            left: 0%;
+        }
+
+        ul.bar ul {
+            width: 100%;
+        }
+
+        ul.bar {
+            font-size: 16px;
+        }
+
+        ul.bar,
+        ul.bar ul {
+            background-color: #2ecc71;
+        }
+
+        ul.bar li {
+            padding: 0.35em;
+            text-align: center;
+        }
+
+        ul.bar a {
+            text-decoration: none;
+            color: white;
+        }
+
+        /*커서 올리면 바뀌는 색*/
+        ul.bar li:hover {
+            background-color: #326339;
+        }
+
+        ul.bar a {
+            display: block;
+            /*width: 150%;*/
+        }
+
+        /* 3차메뉴 이상 선택 */
+        ul.bar>li>ul ul {
+            top: 0%;
+            left: 100%;
+        }
+
+        ul.bar a {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    </style>
+    
 </head>
 <body>
 
-	<!-- 4줄 1칸 테이블 -->
-	<table border="1" width="1000" align="center">
-	
+
 		<!-- 정보 확인용 공간 -->
 		<tr>
 			<td>
@@ -49,22 +121,76 @@
 		</tr>
 
 		<!-- 헤더(header) -->
-		<tr height="120">
-			<td align="center">
-				<h1>이지어트 메인 페이지</h1>
-			</td>
-		</tr>
+		  <div class="wrap">
+        <div class="intro_bg">
+            <div class="header">
+                <div class="searchArea">
+                    <form>
+                        <input type="search" placeholder="Search">
+                        <button>검색</button>
+                    </form>
+                </div>
+                <ul>
 
-		<!-- 메뉴(nav, navbar) -->
-		<tr>
-			<td>
-				<!-- (주의) 템플릿 페이지에서는 절대 경로로 모든 것을 작성해야 한다 -->
-				<a href="<%=request.getContextPath()%>">로그인</a>&nbsp;&nbsp;&nbsp;
-				<a href="<%=request.getContextPath()%>/olympic/list.jsp">장바구니</a> &nbsp;&nbsp;&nbsp;
-				<a href="<%=request.getContextPath()%>/score/list.jsp">마이패이지</a> &nbsp;&nbsp;&nbsp;
-				<a href="<%=request.getContextPath()%>/exam/list.jsp">주문/배송 조회</a> &nbsp;&nbsp;&nbsp;
-				<a href="<%=request.getContextPath()%>/product/list.jsp">상품관리</a> &nbsp;&nbsp;&nbsp;
-				<li>
+                    <ul class="nav">
+                                        
+                        <a href="<%=request.getContextPath()%>/member/login.jsp">로그인</a> &nbsp;&nbsp;&nbsp;
+                        <a href="<%=request.getContextPath()%>#">회원가입</a> &nbsp;&nbsp;&nbsp;
+                        <a href="<%=request.getContextPath()%>/member/login.jsp">마이페이지</a> &nbsp;&nbsp;&nbsp;
+                        <a href="<%=request.getContextPath()%>/member/login.jsp">주문/배송조회</a> &nbsp;&nbsp;&nbsp;
+                    </ul>
+                </ul>
+            </div>
+        </div>
+
+		
+		
+        <div class="content" style="height:100px;justify-content:space-around;">
+            <img src="/image/logo.png" style="width:210px;height:100px;">
+        </div>
+          <div class="content">
+            <ul class="bar" style="width:100%;display:flex;justify-content:space-between;">
+                <li>
+                    <a href="<%=request.getContextPath()%>#">PRODUCT</a>
+                    <ul style="z-index: 100;">
+
+        				<li><a href="<%=request.getContextPath()%>#">정기배송</a></li>
+        				<li><a href="<%=request.getContextPath()%>#">닭가슴살</a></li>
+        				<li><a href="<%=request.getContextPath()%>#">샐러드</a></li>
+        				<li><a href="<%=request.getContextPath()%>#">소고기</a></li>
+        				<li><a href="<%=request.getContextPath()%>#">간식</a></li>
+        				<li><a href="<%=request.getContextPath()%>#">도시락</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="<%=request.getContextPath()%>#">칼로리사전</a>
+                    <ul style="z-index: 100;">
+        				<li><a href="<%=request.getContextPath()%>#">음식칼로리</a></li>
+        				<li><a href="<%=request.getContextPath()%>#">운동칼로리</a></li>
+        				<li><a href="<%=request.getContextPath()%>#">칼로리처방</a></li>
+                    </ul>
+                </li>
+                <li>
+        			<a href="<%=request.getContextPath()%>/board/list.jsp">게시판</a>
+        			 <ul>
+        				<li><a href="<%=request.getContextPath()%>/board/notice_list.jsp">공지게시판</a></li>
+        				<li><a href="<%=request.getContextPath()%>/board/free_list.jsp">자유게시판</a></li>
+        				<li><a href="<%=request.getContextPath()%>/board/tip_list.jsp">팁게시판</a></li>
+        				<li><a href="<%=request.getContextPath()%>/board/review_list.jsp">후기게시판</a></li>
+        				<li><a href="<%=request.getContextPath()%>/board/qna_list.jsp">문의게시판</a></li>
+        			</ul>
+                </li>
+                <li>
+                    <a href="<%=request.getContextPath()%>#">고객센터</a>
+                    <ul style="z-index: 100;">
+        				<li><a href="<%=request.getContextPath()%>#">자주찾는질문</a></li>
+        				<li><a href="<%=request.getContextPath()%>#">1:1 고객문의</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <!--
         			<a href="<%=request.getContextPath()%>/board/list.jsp">게시판</a>
         			 <ul>
         				<li><a href="<%=request.getContextPath()%>/board/notice_list.jsp">공지게시판</a></li>
@@ -74,7 +200,9 @@
         				<li><a href="<%=request.getContextPath()%>/board/qna_list.jsp">문의게시판</a></li>
         			</ul>
         		</li>
+				-->
 				
+				<!--
 				<%-- 로그인 상태에 따라 다른 메뉴를 출력 --%>
 				<% if(login){ %>
 				<a href="<%=request.getContextPath()%>/member/mypage.jsp">내정보</a>&nbsp;&nbsp;&nbsp;
@@ -83,6 +211,8 @@
 				<a href="<%=request.getContextPath()%>/member/join.jsp">회원가입</a> &nbsp;&nbsp;&nbsp;
 				<a href="<%=request.getContextPath()%>/member/login.jsp">로그인</a> &nbsp;&nbsp;&nbsp;
 				<% } %>
+				-->
+				
 				
 				<%-- 관리자라면 관리 메뉴를 출력 --%>
 				<%if(admin){ %>
