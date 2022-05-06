@@ -31,7 +31,8 @@
 						password="khsemi2"
 						
 						maxTotal="20"
-						maxIdle="5"
+						maxIdle="30"
+						maxActive="100"
 						maxWaitMillis="3000"></Resource>
 	
 
@@ -62,7 +63,8 @@
                   password="khsemi2"
                   
                   maxTotal="20"
-                  maxIdle="5"
+                  maxIdle="30"
+                  maxActive="100"
                   maxWaitMillis="3000"></Resource>
    -->
 
