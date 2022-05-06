@@ -22,7 +22,7 @@ public class LikeDao {
 	}
 	public LikeDto selectOne(LikeDto likeDto) throws Exception{
 		Connection con = JdbcUtils.getConnection();
-		String sql = "select * from like where member_id=? and product_no=?";
+		String sql = "select * from likep where member_id=? and product_no=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, likeDto.getMemberId());
 		ps.setInt(2, likeDto.getProductNo());
