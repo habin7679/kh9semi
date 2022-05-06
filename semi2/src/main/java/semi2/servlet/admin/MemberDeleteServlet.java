@@ -1,7 +1,6 @@
 package semi2.servlet.admin;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,24 +9,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import semi2.beans.MemberDao;
-import semi2.beans.MemberDto;
 
-@WebServlet("/admin/memberlist.ez")
-public class MemberListServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/admin/delete.ez")
+public class MemberDeleteServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+			String memberId = req.getParameter("memberId");
 			MemberDao memberDao = new MemberDao();
-			List<MemberDto> list = memberDao.listAll();
+			boolean success = memberDao.delete(memberId);
 			
-			for(MemberDto memberDto : list) {
-				resp.getWriter().println(memberDto);
+			if(success) {
+				resp.sendRedirect("member_list.jsp");
 			}
-			
-		} catch (Exception e) {
+			else {
+				resp.sendRedirect("member_delete_fail.jsp");
+			}
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			resp.sendError(500);
-		
 		}
 	}
+	
 }
