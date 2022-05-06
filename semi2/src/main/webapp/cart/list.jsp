@@ -37,7 +37,9 @@
 	
 	<br><br>
 <%} %>
+	<%if(list.size()>0) {%>
 	<input type="submit" value="구매하기">
+	<%} %>
 </form>
 	
 
