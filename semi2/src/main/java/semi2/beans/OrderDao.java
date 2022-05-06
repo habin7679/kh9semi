@@ -10,19 +10,20 @@ public class OrderDao {
 	public void insert(OrderDto orderDto) throws Exception{
 		Connection con = JdbcUtils.getConnection();
 		
-		String sql = "insert into orderp(order_no, member_id, product_no, order_count) values(?,?,?)";
+		String sql = "insert into orderp(order_no, product_no, product_price, order_count, order_price) values(?,?,?,?,?)";
 		
 		PreparedStatement ps = con.prepareStatement(sql);
 		
 		ps.setInt(1, orderDto.getOrderNo());
-		ps.setString(2, orderDto.getMemberId());
-		ps.setInt(3, orderDto.getProductNo());
+		ps.setInt(2, orderDto.getProductNo());
+		ps.setInt(3, orderDto.getProductPrice());
 		ps.setInt(4, orderDto.getOrderCount());
+		ps.setInt(5, orderDto.getOrderPrice());
 		
 		ps.execute();
 		con.close();
 	}
-	public boolean delete(int orderNo, int productNo)throws Exception{
+	public boolean deleteProduct(int orderNo, int productNo)throws Exception{
 		Connection con = JdbcUtils.getConnection();
 		String sql = "delete from orderp where order_no=? and product_no=?";
 		PreparedStatement ps =con.prepareStatement(sql);
@@ -35,13 +36,24 @@ public class OrderDao {
 		con.close();
 		return count>0;
 	}
-	public List<OrderDto> selectAll(int orderNo, String memberId) throws Exception{
+	public boolean deleteOrder(int orderNo) throws Exception{
 		Connection con = JdbcUtils.getConnection();
-		String sql = "select * from orderp where order_no=? and member_id=?";
+		String sql = "delete from orderp where order_no=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
 		ps.setInt(1, orderNo);
-		ps.setString(2, memberId);
+
+		int count = ps.executeUpdate();
+		
+		con.close();
+		return count>0;
+	}
+	public List<OrderDto> selectAll(int orderNo) throws Exception{
+		Connection con = JdbcUtils.getConnection();
+		String sql = "select * from orderp where order_no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setInt(1, orderNo);
 		
 		ResultSet rs = ps.executeQuery();
 		
@@ -50,23 +62,13 @@ public class OrderDao {
 		while(rs.next()) {
 			OrderDto orderDto = new OrderDto();
 			orderDto.setProductNo(rs.getInt("product_no"));
+			orderDto.setProductPrice(rs.getInt("product_price"));
 			orderDto.setOrderCount(rs.getInt("order_count"));
+			orderDto.setOrderPrice(rs.getInt("order_price"));
+			orderDto.setOrderReview(rs.getString("order_review"));
+			list.add(orderDto);
 		}
 		con.close();
 		return list;
 	}
-	public boolean updateAmount(OrderDto orderDto, int orderCount) throws Exception{
-		Connection con = JdbcUtils.getConnection();
-		String sql = "update orderp set order_count=? where member_id=? and product_no=?";
-		
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setInt(1, orderCount);
-		ps.setString(2, orderDto.getMemberId());
-		ps.setInt(3, orderDto.getProductNo());
-		
-		int count = ps.executeUpdate();
-		con.close();
-		return count>0;
-	} 	
-	
 }

@@ -52,7 +52,6 @@
          - maxIdle : 최대 유휴 연결 수
          - minIdle : 최소 유휴 연결 수(기본값 0)
          - maxWaitMillis : 최대 연결 대기시간(0이면 무제한)
-   -->
    
    <Resource    name="jdbc/oracle"
                   type="javax.sql.DataSource"
@@ -67,5 +66,6 @@
                   maxIdle="30"
                   maxActive="100"
                   maxWaitMillis="3000"></Resource>
+   -->
 
 </Context>
