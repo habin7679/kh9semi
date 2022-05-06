@@ -287,4 +287,20 @@ public class MemberDao {
 			
 			return count>0;
 		}
+		
+		//회원탈퇴
+		public boolean delete(String memberId) throws Exception{
+			Connection con =JdbcUtils.getConnection();
+			
+			String sql="delete member where member_id=?";
+			PreparedStatement ps= con.prepareStatement(sql);
+			ps.setString(1, memberId);
+			int count=ps.executeUpdate();
+			
+			con.close();
+			
+			return count>0;
+			
+			
+		}
 }

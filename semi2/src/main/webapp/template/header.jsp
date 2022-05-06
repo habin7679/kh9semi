@@ -3,12 +3,12 @@
 
 <%
 	//세션에 login 이라는 이름으로 저장된 데이터를 꺼낸다
-	String memberId = (String) session.getAttribute("login");
+	String memberId = (String) session.getAttribute("member");
 	//memberId가 있으면 로그인 상태라고 판정하고 없으면 로그아웃 상태라고 판정
 	boolean login = memberId != null;
 	
 	//관리자 검사
-	String auth = (String)session.getAttribute("auth");
+	String auth = (String)session.getAttribute("admin");
 	boolean admin = auth != null && auth.equals("관리자");
 %>    
 
@@ -17,7 +17,7 @@
 <html lang="ko">
 
 <head>
-<<<<<<< HEAD
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- 구글 폰트 CDN -->
@@ -30,10 +30,10 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/commons.css">
 <%-- <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/test.css"> --%>
 
-=======
+
     <meta charset="UTF-8">
 <title>이지어트 메인 페이지</title>
->>>>>>> refs/remotes/origin/main
+
 </head>
 <body>
 
