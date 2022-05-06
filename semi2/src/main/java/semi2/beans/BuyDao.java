@@ -55,12 +55,12 @@ public class BuyDao {
 		
 		return count>0;
 	}
-	public List<BuyDto> selectAll(BuyDto buyDto) throws Exception{
+	public List<BuyDto> selectAll(String memberId) throws Exception{
 		Connection con = JdbcUtils.getConnection();
 		String sql = "select * from buy where member_id=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
-		ps.setString(1, buyDto.getMemberId());
+		ps.setString(1, memberId);
 		
 		ResultSet rs = ps.executeQuery();
 		List<BuyDto> list = new ArrayList<>();
