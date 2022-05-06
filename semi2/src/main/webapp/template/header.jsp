@@ -8,7 +8,7 @@
 	boolean login = memberId != null;
 	
 	//관리자 검사
-	String auth = (String)session.getAttribute("auth");
+	String auth = (String)session.getAttribute("admin");
 	boolean admin = auth != null && auth.equals("관리자");
 %>    
 <html>
