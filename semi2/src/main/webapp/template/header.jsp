@@ -25,82 +25,66 @@
         ul.bar,
         ul.bar ul {
             list-style: none;
-
             padding: 0;
             margin: 0;
         }
-
         /* ul의 마지막 clear / li는 float로 배치 */
         ul.bar::after {
             content: "";
             display: block;
             clear: both;
         }
-
         ul.bar>li {
             float: left;
             width: 300px;
         }
-
         /* 2차 이상의 메뉴 숨김 */
         ul.bar ul {
             display: none;
         }
-
         /* 바 항목에 마우스가 올라가면 하위 메뉴를 표시 */
         ul.bar li:hover>ul {
             display: block;
         }
-
         ul.bar li {
             position: relative;
         }
-
         ul.bar ul {
             position: absolute;
             top: 100%;
             left: 0%;
         }
-
         ul.bar ul {
             width: 100%;
         }
-
         ul.bar {
             font-size: 16px;
         }
-
         ul.bar,
         ul.bar ul {
             background-color: #2ecc71;
         }
-
         ul.bar li {
             padding: 0.35em;
             text-align: center;
         }
-
         ul.bar a {
             text-decoration: none;
             color: white;
         }
-
         /*커서 올리면 바뀌는 색*/
         ul.bar li:hover {
             background-color: #326339;
         }
-
         ul.bar a {
             display: block;
             /*width: 150%;*/
         }
-
         /* 3차메뉴 이상 선택 */
         ul.bar>li>ul ul {
             top: 0%;
             left: 100%;
         }
-
         ul.bar a {
             overflow: hidden;
             white-space: nowrap;
