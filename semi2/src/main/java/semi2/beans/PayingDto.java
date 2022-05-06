@@ -1,6 +1,7 @@
 package semi2.beans;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class PayingDto {
 	private int orderNo;
@@ -15,6 +16,16 @@ public class PayingDto {
 	private int payingDeliveryFee;
 	private Date payingDeliveryDate;
 	private String payingPayway;
+	private int payingDeliveryTime;
+	
+	
+	
+	public int getPayingDeliveryTime() {
+		return payingDeliveryTime;
+	}
+	public void setPayingDeliveryTime(int payingDeliveryTime) {
+		this.payingDeliveryTime = payingDeliveryTime;
+	}
 	public int getOrderNo() {
 		return orderNo;
 	}

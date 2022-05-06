@@ -39,7 +39,7 @@ public class LikeDao {
 	public boolean delete(String memberId, int productNo) throws Exception{
 		Connection con = JdbcUtils.getConnection();
 		
-		String sql = "delete from likep where member_id=? and product_no=?";
+		String sql = "delete likep where member_id=? and product_no=?";
 		
 		PreparedStatement ps = con.prepareStatement(sql);
 		
