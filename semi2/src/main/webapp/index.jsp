@@ -123,7 +123,7 @@
             </div>
         </div>
         <div class="content" style="height:100px;justify-content:space-around;">
-            <img src="img.jpg" style="width:100px;height:100px;">
+            <img src="./image/logo.png" style="width:210px;height:100px;">
         </div>
         <div class="content">
             <ul class="bar" style="width:100%;display:flex;justify-content:space-between;">
@@ -207,12 +207,6 @@
         </div>
 
     </div>
-
-    <footer style="text-align: center;">
-        문의: 010-1234-5678<br>
-        CONTACT:<br>
-        개발:
-    </footer>
     <style>
         .swiper {
             width: 100%;
