@@ -94,7 +94,7 @@ public class MemberDao {
 		public List<MemberDto> listAll() throws Exception {
 		Connection con= JdbcUtils.getConnection();
 			
-		String sql = "select * from member";
+		String sql = "select * from member order by member_id asc";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 			
