@@ -43,7 +43,7 @@ public class ProductDao {
 		con.close();			
 		}
 	
-	//관리자 - 상품목록
+	//상품목록
     public List<ProductDto> listAll() throws Exception {
         Connection con = JdbcUtils.getConnection();
 
@@ -77,7 +77,7 @@ public class ProductDao {
         
         return list;
    }
-    
+    //상품-카테고리
     public List<ProductDto> listUser(String productSort) throws Exception {
         Connection con = JdbcUtils.getConnection();
 
@@ -179,7 +179,7 @@ public class ProductDao {
     public List<ProductDto> selectList(String type, String keyword) throws Exception {
     	Connection con = JdbcUtils.getConnection();
     	
-    	String sql = "select * from product where instr(#1, ?) > 0 order by product_no asc";
+    	String sql = "select * from product where instr(#1, ?) > 0 order by #1 asc";
     	sql = sql.replace("#1", type);
     	
     	PreparedStatement ps = con.prepareStatement(sql);
