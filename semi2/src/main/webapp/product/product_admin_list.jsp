@@ -112,7 +112,7 @@ if (list.isEmpty()) {
 				<td><%=productDto.getProductMade()%></td>
 				<td><%=productDto.getProductExpire()%></td>
 				<td><%=productDto.getProductEvent()%></td>
-				<td><a href="detail.jsp" class="link">상세보기</a></td>
+				<td><a href="product_admin_detail.jsp?product_no=<%=productDto.getProductNo() %>" class="link">상세보기</a></td>
 			</tr>
 			<%
 			}
