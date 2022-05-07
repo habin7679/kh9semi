@@ -22,7 +22,7 @@ test-
         <div class="content">
             <div class="swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="./image/img.jpg" style="width:100%;"></div>
+                    <div class="swiper-slide"><img src="<%=request.getContextPath()%>/image/chicken.jpg" style="width:100%;"></div>
                     <div class="swiper-slide"><img src="img02.jpg" style="width:100%;"></div>
                     <div class="swiper-slide"><img src="img02.jpg" style="width:100%;"></div>
                 </div>
