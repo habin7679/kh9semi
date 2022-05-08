@@ -15,11 +15,12 @@
 				if(!judge){
 					$(this).next().css("color", "red");
 					$(this).next("span").text("비밀번호를 형식에 맞게 작성하세요")
-					return;
+					return false;
 				}
 				else{
 					$(this).next().css("color", "green");
 					span.text("사용가능한 비밀번호 입니다");
+					return true;
 				}
 			
 	        });
@@ -31,11 +32,12 @@
 	         if(judge1&&judge2){
 	         	$(this).next().css("color", "green");
 	             $(this).next("span").text("비밀번호가 일치합니다");
+	             return true;
 	         }
 	         else{
 	         	$(this).next().css("color", "red");
 	         	$(this).next("span").text("비밀번호가 일치하지 않습니다");
-	             return;
+	             return false;
 	         }
 			});
 	});
