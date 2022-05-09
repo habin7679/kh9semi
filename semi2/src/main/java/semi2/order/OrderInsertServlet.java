@@ -44,7 +44,7 @@ public class OrderInsertServlet extends HttpServlet{
 				
 			}
 			
-			resp.sendRedirect(req.getContextPath()+"/paying/paying.jsp?orderNo="+no);
+			resp.sendRedirect(req.getContextPath()+"/paying/insert.jsp?orderNo="+no);
 		} catch (Exception e) {
 			e.printStackTrace();
 			resp.sendError(500);
