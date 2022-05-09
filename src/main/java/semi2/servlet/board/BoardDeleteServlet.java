@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import semi2.beans.BoardDao;
 
-@WebServlet(urlPatterns = "/board/delete.kh")
+@WebServlet(urlPatterns = "/board/delete.ez")
 public class BoardDeleteServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

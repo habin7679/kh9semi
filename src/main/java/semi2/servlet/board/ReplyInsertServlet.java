@@ -12,7 +12,7 @@ import semi2.beans.BoardDao;
 import semi2.beans.ReplyDao;
 import semi2.beans.ReplyDto;
 
-@WebServlet(urlPatterns = "/board/reply_insert.kh")
+@WebServlet(urlPatterns = "/board/reply_insert.ez")
 public class ReplyInsertServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -21,7 +21,7 @@ public class ReplyInsertServlet extends HttpServlet{
 			ReplyDto replyDto = new ReplyDto();
 			replyDto.setReplyContent(req.getParameter("replyContent"));
 			replyDto.setReplyTarget(Integer.parseInt(req.getParameter("replyTarget")));
-			replyDto.setReplyWriter((String)req.getSession().getAttribute("login"));
+			replyDto.setReplyWriter((String)req.getSession().getAttribute("member"));
 			
 			//처리
 			ReplyDao replyDao = new ReplyDao();

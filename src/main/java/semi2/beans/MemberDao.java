@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import oracle.jdbc.proxy.annotation.Pre;
-
 public class MemberDao {
 		//회원가입
 	public void join(MemberDto memberDto) throws Exception {
