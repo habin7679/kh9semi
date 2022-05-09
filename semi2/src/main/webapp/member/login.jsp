@@ -21,7 +21,7 @@
 		
 		<div>
 			<label>비밀번호</label>
-			<input type="text" name="memberPw" placeholder="비밀번호">
+			<input type="password" name="memberPw" placeholder="비밀번호">
 		</div>
 		
 		<div>

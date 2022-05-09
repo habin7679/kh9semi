@@ -13,6 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebFilter(filterName="f2", urlPatterns = {
 		
+		"/member/mypage.jsp",
+		"/member/password.jsp", "/member/password.ez",
+		"/member/edit.jsp", "/member/information.ez",
+		"/member/exit.jsp", "/member/exit.ez",
+		"/board/write.jsp", "/board/write.ez",
+		"/board/edit.jsp", "/board/edit.ez",
+		"/board/delete.ez",
+		
 })
 public class LoginFilter implements Filter{
 	@Override

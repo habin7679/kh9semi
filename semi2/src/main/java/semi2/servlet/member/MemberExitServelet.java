@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import semi2.beans.MemberDao;
 import semi2.beans.MemberDto;
 @WebServlet(urlPatterns = "/member/delete.ez")
-public class MemberDeleteServelet extends HttpServlet{
+public class MemberExitServelet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
