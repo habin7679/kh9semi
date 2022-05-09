@@ -36,6 +36,7 @@
 	<input type="text" readonly name="orderPrice" value="<%=total%>"/>
 	<a href="delete.ez?productNo=<%=pNo %>">삭제하기</a>
 	
+	
 	<br><br>
 <%} %>
 	<%if(list.size()>0) {%>
