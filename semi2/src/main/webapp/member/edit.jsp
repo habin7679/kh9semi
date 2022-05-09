@@ -91,7 +91,7 @@
 	        <input type="password" name="memberPw2">
 	    </div>
 	    <div class="row">
-	        <button type="submit" class="btn btn-primary fill">정보 변경하기</button>
+	        <button type="submit">정보 변경하기</button>
 	    </div>
 	    
 		<% if(request.getParameter("error") != null){ %>

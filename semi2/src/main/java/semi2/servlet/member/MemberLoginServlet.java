@@ -26,11 +26,11 @@ public class MemberLoginServlet extends HttpServlet {
 			MemberDao memberDao= new MemberDao();
 			MemberDto memberDto=memberDao.Login(memberId);
 			
-			boolean login= memberDto !=null;
-			boolean login2=memberDto.getMemberPw().equals(memberPw);
+			boolean login= memberDto !=null&&memberDto.getMemberPw().equals(memberPw);
+			
 			
 			//출력
-			if(login&&login2) {
+			if(login) {
 				req.getSession().setAttribute("member", memberId);
 				req.getSession().setAttribute("admin", memberDto.getMemberGrade());
 				
@@ -45,11 +45,9 @@ public class MemberLoginServlet extends HttpServlet {
 				resp.sendRedirect("login.jsp?error");
 			}
 			
-		}catch(
-
-	Exception e)
-	{
+		}catch(Exception e){
 		e.printStackTrace();
 		resp.sendError(500);
 	}
-}}
+}
+	}
