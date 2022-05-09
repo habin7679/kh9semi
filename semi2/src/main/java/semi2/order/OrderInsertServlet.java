@@ -33,7 +33,7 @@ public class OrderInsertServlet extends HttpServlet{
 			ProductDao pDao = new ProductDao();
 			for(int i =0; i<productNo.length; i++) {
 				ProductDto pDto = pDao.selectOne(Integer.parseInt(productNo[i]));
-				cDao.delete("testuser2", Integer.parseInt(productNo[i]));
+				cDao.delete(memberId, Integer.parseInt(productNo[i]));
 				OrderDto orderDto = new OrderDto();
 				orderDto.setOrderNo(no);
 				orderDto.setProductNo(Integer.parseInt(productNo[i]));
