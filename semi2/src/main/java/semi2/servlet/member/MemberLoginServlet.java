@@ -50,6 +50,6 @@ public class MemberLoginServlet extends HttpServlet {
 	Exception e)
 	{
 		e.printStackTrace();
-		resp.sendError(5000);
+		resp.sendError(500);
 	}
 }}
