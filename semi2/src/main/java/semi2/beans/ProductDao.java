@@ -8,8 +8,6 @@ import java.util.List;
 
 import semi2.beans.JdbcUtils;
 
-
-
 public class ProductDao {
 	//상품 등록
 	public void add(ProductDto productDto) throws Exception {
@@ -305,4 +303,5 @@ public class ProductDao {
 		return count > 0;
 	}
     
+
 }
