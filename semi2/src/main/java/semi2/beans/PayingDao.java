@@ -62,7 +62,7 @@ public class PayingDao {
 		if(rs.next()) {
 			totalPrice = rs.getInt("sum(order_price)");
 		}
-		
+		con.close();
 		return totalPrice;
 	}
 	public boolean insertRest(PayingDto payingDto) throws Exception{
