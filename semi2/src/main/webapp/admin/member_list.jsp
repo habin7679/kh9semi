@@ -6,9 +6,27 @@
 
 <%-- 준비 --%>
 <%
-request.setCharacterEncoding("UTF-8");
-String type = request.getParameter("type");
-String keyword = request.getParameter("keyword");
+	request.setCharacterEncoding("UTF-8");
+	String type = request.getParameter("type");
+	String keyword = request.getParameter("keyword");
+	
+	int p;
+		try {
+			p = Integer.parseInt(request.getParameter("p"));
+			if(p <= 0)	throw new Exception();
+		}
+		catch(Exception e){
+			p = 1;
+		}
+	
+	int s;
+		try {
+			s = Integer.parseInt(request.getParameter("s"));
+			if(s <= 0) throw new Exception();
+		}
+		catch(Exception e){
+			s = 10;
+		}
 %>
 <%
 boolean isSearch = type != null && !type.equals("") && keyword != null && !keyword.equals("");
