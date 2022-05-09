@@ -196,9 +196,11 @@
 
 				<%-- 관리자라면 관리 메뉴를 출력 --%>
 				<%if(auth){ %>
-				<a href="<%=request.getContextPath()%>/admin/list.jsp">회원관리</a>&nbsp;&nbsp;&nbsp;
-				<a href="<%=request.getContextPath()%>/admin/statistics.jsp">사이트관리</a>&nbsp;&nbsp;&nbsp;
-				<a href="<%=request.getContextPath()%>/admin/statistics.jsp">주문관리</a>&nbsp;&nbsp;&nbsp;
+				<a href="<%=request.getContextPath()%>/admin/member_list.jsp">회원관리</a>&nbsp;&nbsp;&nbsp;
+				<a href="<%=request.getContextPath()%>/product/product_admin_list.jsp">상품관리</a>&nbsp;&nbsp;&nbsp;
+				<a href="<%=request.getContextPath()%>/admin/buy_list.jsp">주문배송관리</a>&nbsp;&nbsp;&nbsp;
+				<a href="<%=request.getContextPath()%>/admin/site.jsp">사이트관리</a>&nbsp;&nbsp;&nbsp;
+				<a href="<%=request.getContextPath()%>/admin/statistics.jsp">통계</a>&nbsp;&nbsp;&nbsp;
 				
 				<%} %>
 			</td> 
