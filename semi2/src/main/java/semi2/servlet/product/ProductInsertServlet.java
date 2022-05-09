@@ -10,9 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.oreilly.servlet.MultipartRequest;
-
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import semi2.beans.AttachmentDao;
+import semi2.beans.AttachmentDto;
 import semi2.beans.ProductDao;
 import semi2.beans.ProductDto;
 
@@ -22,7 +23,7 @@ public class ProductInsertServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 			try {
-				String path = System.getProperty("user.home") + "/upload";//운영체제에서 사용자에게 제공되는 home 폴더
+				String path = System.getProperty("user.home")  + "/git/kh9semi/semi2/src/main/webapp/image";//운영체제에서 사용자에게 제공되는 home 폴더
 				System.out.println("path = " + path);//확인을 위한 출력
 				
 				File dir = new File(path);
@@ -41,13 +42,13 @@ public class ProductInsertServlet extends HttpServlet {
 				
 				//업로드된 파일의 정보를 분석하는 코드
 				//1. 파일의 업로드이름
-				String uploadName = mRequest.getOriginalFileName("attach");
+				String uploadName = mRequest.getOriginalFileName("productImg");
 				//2. 파일의 실제 저장이름
-				String saveName = mRequest.getFilesystemName("attach");
+				String saveName = mRequest.getFilesystemName("productImg");
 				//3. 파일의 유형
-				String contentType = mRequest.getContentType("attach");
+				String contentType = mRequest.getContentType("productImg");
 				//4. 파일의 크기(옵션)
-				File target = mRequest.getFile("attach");//파일 객체를 구해와서
+				File target = mRequest.getFile("productImg");//파일 객체를 구해와서
 				long fileSize = 0L;
 				if(target != null){
 					fileSize = target.length();
@@ -80,7 +81,6 @@ public class ProductInsertServlet extends HttpServlet {
 				productDto.setProductCarbohydrate(Integer.parseInt(req.getParameter("productCarbohydrate")));
 				productDto.setProductFat(Integer.parseInt(req.getParameter("productFat")));
 				productDto.setProductInfo(req.getParameter("productInfo"));
-				productDto.setProductImg(req.getParameter("productImg"));
 				
 				ProductDao productDao = new ProductDao();
 				productDao.add(productDto);
