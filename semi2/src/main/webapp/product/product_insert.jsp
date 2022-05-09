@@ -99,8 +99,7 @@
 		<tr>
 			<th>상품이미지</th>
 			<td>
-				<input type="file" name="productImg">
-				<input type="submit" value="File Upload">
+				<input type="file" name="attach">
 			</td>
 		</tr>
 		
