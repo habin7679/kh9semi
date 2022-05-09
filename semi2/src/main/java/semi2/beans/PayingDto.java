@@ -7,7 +7,7 @@ public class PayingDto {
 	private int orderNo;
 	private String memberId;
 	private int payingTotal;
-	private Date payingDate;
+	private String payingDate;
 	private String payingName;
 	private String payingPhone;
 	private int payingPost;
@@ -44,10 +44,10 @@ public class PayingDto {
 	public void setPayingTotal(int payingTotal) {
 		this.payingTotal = payingTotal;
 	}
-	public Date getPayingDate() {
+	public String getPayingDate() {
 		return payingDate;
 	}
-	public void setPayingDate(Date payingDate) {
+	public void setPayingDate(String payingDate) {
 		this.payingDate = payingDate;
 	}
 	public String getPayingName() {

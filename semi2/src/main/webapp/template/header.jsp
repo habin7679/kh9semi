@@ -3,7 +3,7 @@
 
 <%
 	//세션에 login 이라는 이름으로 저장된 데이터를 꺼낸다
-	String memberId = (String) session.getAttribute("login");
+	String memberId = (String) session.getAttribute("member");
 	//memberId가 있으면 로그인 상태라고 판정하고 없으면 로그아웃 상태라고 판정
 	boolean login = memberId != null;
 	
@@ -20,7 +20,7 @@
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/style.css">
     <title>이지어트 메인 페이지</title>
 
-<style>
+<style>   
         /* 중간 사이드 바!! */
         ul.bar,
         ul.bar ul {
@@ -121,7 +121,7 @@
                         <a href="<%=request.getContextPath()%>/member/login.jsp">로그인</a> &nbsp;&nbsp;&nbsp;
                         <a href="<%=request.getContextPath()%>#">회원가입</a> &nbsp;&nbsp;&nbsp;
                         <a href="<%=request.getContextPath()%>/member/login.jsp">마이페이지</a> &nbsp;&nbsp;&nbsp;
-                        <a href="<%=request.getContextPath()%>/member/login.jsp">주문/배송조회</a> &nbsp;&nbsp;&nbsp;
+                        <a href="<%=request.getContextPath()%>/buy/list.jsp">주문/배송조회</a> &nbsp;&nbsp;&nbsp;
                     </ul>
                 </ul>
             </div>
@@ -130,7 +130,7 @@
 		
 		
         <div class="content" style="height:100px;justify-content:space-around;">
-            <img src="/image/logo.png" style="width:210px;height:100px;">
+            <img src="<%=request.getContextPath()%>/image/logo.png" style="width:210px;height:100px;">
         </div>
           <div class="content">
             <ul class="bar" style="width:100%;display:flex;justify-content:space-between;">

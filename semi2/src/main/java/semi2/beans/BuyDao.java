@@ -29,13 +29,13 @@ public class BuyDao {
 		ps.execute();
 		con.close();
 	}
-	public boolean updateStatus(BuyDto buyDto) throws Exception{
+	public boolean updateStatus(String buyStatus, int buyNo) throws Exception{
 		Connection con = JdbcUtils.getConnection();
 		String sql = "update buy set buy_status = ? where buy_no=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
-		ps.setString(1, buyDto.getBuyStatus());
-		ps.setInt(2, buyDto.getBuyNo());
+		ps.setString(1, buyStatus);
+		ps.setInt(2, buyNo);
 		
 		int count = ps.executeUpdate();
 		
@@ -77,5 +77,25 @@ public class BuyDao {
 		}
 		con.close();
 		return list;
+	}
+	public BuyDto selectOne(int buyNo) throws Exception{
+		Connection con = JdbcUtils.getConnection();
+		String sql = "select * from buy where buy_no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setInt(1, buyNo);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		BuyDto bDto = new BuyDto();
+		if(rs.next()) {
+			bDto.setBuyNo(buyNo);
+			bDto.setMemberId(rs.getString("member_id"));
+			bDto.setOrderNo(rs.getInt("order_no"));
+			bDto.setBuyInvoice(rs.getInt("buy_invoice"));
+			bDto.setBuyStatus(rs.getString("buy_status"));
+		}
+		con.close();
+		return bDto;
 	}
 }

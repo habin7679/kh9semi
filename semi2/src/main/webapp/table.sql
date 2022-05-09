@@ -110,7 +110,7 @@ buy_no number primary key,
 member_id varchar2(20) references member(member_id), 
 order_no number references paying(order_no) on delete cascade, 
 buy_invoice number, 
-buy_status varchar2(15) check(buy_status in('입금전','결제완료','배송준비중','배송중','배송완료'))
+buy_status varchar2(15) check(buy_status in('입금전','결제완료','배송준비중','배송중','배송완료', '취소완료'))
 );
 
 create table orderp(
