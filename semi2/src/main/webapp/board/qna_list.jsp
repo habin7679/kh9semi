@@ -83,7 +83,7 @@
 	</div>
 	
 	<div class="row right">
-		<a href="write.jsp" class="link link-btn">글쓰기</a>
+		<a href="write_qna.jsp" class="link link-btn">글쓰기</a>
 	</div>		
 	
 	<div class="row">
