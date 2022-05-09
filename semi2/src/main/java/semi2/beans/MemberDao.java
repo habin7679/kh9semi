@@ -99,7 +99,7 @@ public class MemberDao {
 		ResultSet rs = ps.executeQuery();
 			
 		List<MemberDto> list = new ArrayList<>();
-			
+		
 		while(rs.next()) {
 			MemberDto memberDto = new MemberDto();
 			memberDto.setMemberId(rs.getString("member_id"));
