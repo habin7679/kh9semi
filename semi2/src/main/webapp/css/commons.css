@@ -228,13 +228,13 @@ textarea.form-input {
 }
 
 .btn.btn-primary {
-    border-color: #0984e3;
-    background-color: #0984e3;
+    border-color: #2ecc71;
+    background-color: #2ecc71;
     color:white;
 }
 .btn.btn-primary:hover {
-    border-color: #0769b5;
-    background-color:#0769b5;
+    border-color: #2ecc71;
+    background-color:#2ecc71;
 }
 
 .btn.btn-secondary {
