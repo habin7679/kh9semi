@@ -180,7 +180,7 @@
             $(".address-find-btn").click(findAddress);
         });
     </script>
-    </script>
+    
 	<form action="join.ez" method="post">
 	<div>
 		<div>
