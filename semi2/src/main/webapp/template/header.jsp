@@ -151,12 +151,12 @@
                     <a href="<%=request.getContextPath()%>#">PRODUCT</a>
                     <ul style="z-index: 100;">
 
-        				<li><a href="<%=request.getContextPath()%>#">정기배송</a></li>
-        				<li><a href="<%=request.getContextPath()%>#">닭가슴살</a></li>
-        				<li><a href="<%=request.getContextPath()%>#">샐러드</a></li>
-        				<li><a href="<%=request.getContextPath()%>#">소고기</a></li>
-        				<li><a href="<%=request.getContextPath()%>#">간식</a></li>
-        				<li><a href="<%=request.getContextPath()%>#">도시락</a></li>
+        				<li><a href="<%=request.getContextPath()%>/product/product_user_list.jsp?product_sort=정기배송">정기배송</a></li>
+        				<li><a href="<%=request.getContextPath()%>/product/product_user_list.jsp?product_sort=닭가슴살">닭가슴살</a></li>
+        				<li><a href="<%=request.getContextPath()%>/product/product_user_list.jsp?product_sort=샐러드">샐러드</a></li>
+        				<li><a href="<%=request.getContextPath()%>/product/product_user_list.jsp?product_sort=소고기">소고기</a></li>
+        				<li><a href="<%=request.getContextPath()%>/product/product_user_list.jsp?product_sort=간식">간식</a></li>
+        				<li><a href="<%=request.getContextPath()%>/product/product_user_list.jsp?product_sort=도시락">도시락</a></li>
                     </ul>
                 </li>
                 <li>
