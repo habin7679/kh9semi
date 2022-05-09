@@ -27,7 +27,7 @@ if (isSearch) {
 <div class="container w1000 m30">
 	<div class="row center">
 		<h1>
-			<a href="member_list.jsp">상품 목록</a>
+			<a href="member_list.jsp">회원 목록</a>
 		</h1>
 	</div>
 	<form action="member_list.jsp" method="get">
