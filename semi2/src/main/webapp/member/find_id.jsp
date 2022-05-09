@@ -28,7 +28,7 @@
 		</div>
 		
 		<%if(request.getParameter("error") !=null) {%>
-		<span>존재하지 않는 회원입니다</span>
+		<span style="color:red;">존재하지 않는 회원입니다</span>
 		<%} %>
 	</div>
 	</form>

@@ -207,7 +207,7 @@
 	    
 	    <div>
 	        <label>닉네임</label>
-	        <input type="text" name="memberNick" placeholder="한글 10자 이내" autocomplete="off">
+	        <input type="text" name="memberNick" placeholder="한글,숫자 10자 이내" autocomplete="off">
 	        <span></span>
 	    </div>
 	    
@@ -228,7 +228,7 @@
 	    
 	    <div>
 	        <label>이메일</label>
-	        <input type="email" name="memberEmail" class="form-input fill input-round" autocomplete="off">
+	        <input type="email" name="memberEmail" autocomplete="off">
 	    </div>
 	    
 	    <div>

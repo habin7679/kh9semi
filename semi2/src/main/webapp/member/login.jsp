@@ -27,6 +27,11 @@
 		<div>
 			<input type="submit" value="로그인">
 		</div>
+		<% if(request.getParameter("error") !=null){ %>
+		<div>
+			<span style="color:red;">로그인 정보가 일치하지 않습니다</span>
+		</div>
+		<%} %>
 		
 		<div>
 			<a href="find_id.jsp">아이디 찾기</a>
@@ -36,11 +41,7 @@
 			<a href="Change_pw.jsp">비밀번호 변경하기</a>
 		</div>
 	</div>
-	<% if(request.getParameter("error") !=null){ %>
-	<div>
-		<sapn>로그인 정보가 일치하지 않습니다</sapn>
-	</div>
-	<%} %>
+	
 	</form>
 	
 <jsp:include page="/template/footer.jsp"></jsp:include>

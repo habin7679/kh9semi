@@ -21,7 +21,7 @@ public class MemberEditServlet extends HttpServlet{
 
 			MemberDto memberDto = new MemberDto();
 			
-			memberDto.setMemberId((String) req.getSession().getAttribute("login"));
+			memberDto.setMemberId((String) req.getSession().getAttribute("member"));
 			
 			memberDto.setMemberNick(req.getParameter("memberNick"));
 			memberDto.setMemberBirth(req.getParameter("memberBirth"));
@@ -40,12 +40,12 @@ public class MemberEditServlet extends HttpServlet{
 			boolean isPasswordCorrect = memberDto.getMemberPw().equals(findDto.getMemberPw());
 			
 			if(!isPasswordCorrect) {
-				resp.sendRedirect("information.jsp?error");
+				resp.sendRedirect("edit.jsp?error");
 				return;
 			}
 			
 			//2. 개인정보 변경
-			memberDao.update(memberDto);
+			memberDao.edit(memberDto);
 			
 			//출력
 			resp.sendRedirect("mypage.jsp");
