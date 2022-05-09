@@ -60,7 +60,9 @@ else
 					<th>평점</th>
 				</tr>
 			</thead>
-			<tbody>
+				
+				<tbody>
+				
 				<%
 				for (int i = 0; i < list2.size(); i ++) {
 					ProductDto productDto = list2.get(i);
@@ -72,13 +74,12 @@ else
 					</a></td>
 					<td><%=productDto.getProductName()%></td>
 					<td><%=productDto.getProductPrice()%></td>
-
+					</tr>
+					<%}%>
 			</tbody>
 	</table>
 	</div>
-<%
-}
-%>
+
 
 
 <%} else {%>
@@ -113,9 +114,8 @@ if (list.isEmpty()) {
 					</a></td>
 					<td><%=productDto.getProductName()%></td>
 					<td><%=productDto.getProductPrice()%></td>
-					<%
-					}
-					%>
+					</tr>
+					<%}%>
 			</tbody>
 	</table>
 	</div>
