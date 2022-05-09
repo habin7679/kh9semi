@@ -74,6 +74,7 @@ else
 					</a></td>
 					<td><%=productDto.getProductName()%></td>
 					<td><%=productDto.getProductPrice()%></td>
+					<td>
 					</tr>
 					<%}%>
 			</tbody>
