@@ -6,8 +6,7 @@
     pageEncoding="UTF-8"%>
 <%
 	String memberId = (String)session.getAttribute("member");
-	//int orderNo = Integer.parseInt(request.getParameter("orderNo"));
-	int orderNo=1;
+	int orderNo = Integer.parseInt(request.getParameter("orderNo"));
 	PayingDao payingDao = new PayingDao();
 	PayingDto payingDto = new PayingDto();
 	MemberDao mDao = new MemberDao();

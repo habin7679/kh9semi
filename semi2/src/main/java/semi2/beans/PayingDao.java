@@ -2,6 +2,7 @@ package semi2.beans;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.time.LocalDateTime;
 import java.sql.*;
 
 public class PayingDao {
@@ -138,7 +139,7 @@ public class PayingDao {
 		
 		PayingDto pDto = new PayingDto();
 		if(rs.next()) {
-			pDto.setPayingDate(rs.getDate("paying_date"));
+			pDto.setPayingDate(rs.getString("paying_date"));
 			pDto.setPayingName(rs.getString("paying_name"));
 			pDto.setPayingPhone(rs.getString("paying_phone"));
 			pDto.setPayingPost(rs.getInt("paying_post"));

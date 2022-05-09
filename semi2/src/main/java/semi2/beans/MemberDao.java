@@ -380,4 +380,28 @@ public class MemberDao {
 			con.close();
 			return memberDto;
 		}
+		
+				//회원정보 변경
+				public boolean edit(MemberDto memberDto) throws Exception {
+				Connection con = JdbcUtils.getConnection();
+				
+				String sql = "update member set member_nick = ?, member_birth = ?, "
+						+ "member_email = ?, member_phone = ?, member_post = ?, member_basic_address = ?, member_detail_address = ? "
+						+ "where member_id = ?";
+				
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setString(1, memberDto.getMemberNick());
+				ps.setString(2, memberDto.getMemberBirth());
+				ps.setString(3, memberDto.getMemberEmail());
+				ps.setString(4, memberDto.getMemberPhone());
+				ps.setString(5, memberDto.getMemberPost());
+				ps.setString(6, memberDto.getMemberBasicAddress());
+				ps.setString(7, memberDto.getMemberDetailAddress());
+				ps.setString(8, memberDto.getMemberId());
+				
+				int count = ps.executeUpdate();
+				con.close();
+				
+				return count > 0;
+			}
 }

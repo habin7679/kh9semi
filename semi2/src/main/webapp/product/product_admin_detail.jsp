@@ -90,7 +90,7 @@
 <%} %>
 
 <h2><a href="product_admin_list.jsp">목록으로 돌아가기</a></h2>
-<h2><a href="edit.jsp?product_no=<%=productDto.getProductNo()%>">상품 수정</a></h2>
-<h2><a href="delete.kh?product_no=<%=productDto.getProductNo()%>">상품 삭제</a></h2>
+<h2><a href="product_edit.jsp?product_no=<%=productDto.getProductNo()%>">상품 수정</a></h2>
+<h2><a href="delete.ez?product_no=<%=productDto.getProductNo()%>">상품 삭제</a></h2>
 		
 <jsp:include page="/template/footer.jsp"></jsp:include>

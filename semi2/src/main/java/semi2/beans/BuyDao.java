@@ -94,6 +94,7 @@ public class BuyDao {
 		con.close();
 		return list;
 	}
+<<<<<<< HEAD
 	
 	//관리자 - 주문목록 조회
 	public List<BuyDto> selectAllForAdmin() throws Exception{
@@ -184,5 +185,26 @@ public class BuyDao {
 		con.close();
 
 		return count > 0;
+=======
+	public BuyDto selectOne(int buyNo) throws Exception{
+		Connection con = JdbcUtils.getConnection();
+		String sql = "select * from buy where buy_no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setInt(1, buyNo);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		BuyDto bDto = new BuyDto();
+		if(rs.next()) {
+			bDto.setBuyNo(buyNo);
+			bDto.setMemberId(rs.getString("member_id"));
+			bDto.setOrderNo(rs.getInt("order_no"));
+			bDto.setBuyInvoice(rs.getInt("buy_invoice"));
+			bDto.setBuyStatus(rs.getString("buy_status"));
+		}
+		con.close();
+		return bDto;
+>>>>>>> refs/remotes/origin/main
 	}
 }

@@ -17,10 +17,10 @@ public class CartDeleteServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			int productNo = Integer.parseInt(req.getParameter("productNo"));
-			//String memberId = (String)req.getSession().getAttribute("member");
+			String memberId = (String)req.getSession().getAttribute("member");
 
 			CartDao cDao = new CartDao();
-			cDao.delete("testuser2", productNo);
+			cDao.delete(memberId, productNo);
 			
 			resp.sendRedirect(req.getContextPath()+"/cart/list.jsp");
 			

@@ -8,8 +8,8 @@
 	boolean login = memberId != null;
 	
 	//관리자 검사
-	String auth = (String)session.getAttribute("admin");
-	boolean admin = auth != null && auth.equals("관리자");
+	String admin = (String)session.getAttribute("admin");
+	boolean auth = admin != null && admin.equals("관리자");
 %>    
 <html>
 <head>
@@ -18,6 +18,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/style.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/layout.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/commons.css">
+    
+    
+    <%-- 
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/commons.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/test/commons.css">
+    --%>
     <title>이지어트 메인 페이지</title>
 
 <style>   
@@ -117,20 +126,31 @@
                 <ul>
 
                     <ul class="nav">
-                                        
-                        <a href="<%=request.getContextPath()%>/member/login.jsp">로그인</a> &nbsp;&nbsp;&nbsp;
-                        <a href="<%=request.getContextPath()%>#">회원가입</a> &nbsp;&nbsp;&nbsp;
-                        <a href="<%=request.getContextPath()%>/member/login.jsp">마이페이지</a> &nbsp;&nbsp;&nbsp;
+
+                <% if(login){ %>
+				<a href="<%=request.getContextPath()%>/member/logout.ez">로그아웃</a> &nbsp;&nbsp;&nbsp;
+				<% } 
+				else { %>
+				<a href="<%=request.getContextPath()%>/member/login.jsp">로그인</a> &nbsp;&nbsp;&nbsp;
+				<a href="<%=request.getContextPath()%>/member/join.jsp">회원가입</a> &nbsp;&nbsp;&nbsp;
+				<% } %>
+				    <a href="<%=request.getContextPath()%>/member/mypage.jsp">마이페이지</a> &nbsp;&nbsp;&nbsp;
                         <a href="<%=request.getContextPath()%>/buy/list.jsp">주문/배송조회</a> &nbsp;&nbsp;&nbsp;
+			
                     </ul>
                 </ul>
             </div>
         </div>
+		
+		  <a href="<%=request.getContextPath()%>/index.jsp">
+        <div class="content" style="height:100px;justify-content:center;">
+            <img src="<%=request.getContextPath()%>/image/logo.png" style="width:250px;height:100px;">
+        </a> &nbsp;&nbsp;&nbsp;
+        
+        
 
-		
-		
-        <div class="content" style="height:100px;justify-content:space-around;">
-            <img src="<%=request.getContextPath()%>/image/logo.png" style="width:210px;height:100px;">
+
+        
         </div>
           <div class="content">
             <ul class="bar" style="width:100%;display:flex;justify-content:space-between;">
@@ -159,49 +179,27 @@
         			 <ul>
         				<li><a href="<%=request.getContextPath()%>/board/notice_list.jsp">공지게시판</a></li>
         				<li><a href="<%=request.getContextPath()%>/board/free_list.jsp">자유게시판</a></li>
-        				<li><a href="<%=request.getContextPath()%>/board/tip_list.jsp">팁게시판</a></li>
         				<li><a href="<%=request.getContextPath()%>/board/review_list.jsp">후기게시판</a></li>
-        				<li><a href="<%=request.getContextPath()%>/board/qna_list.jsp">문의게시판</a></li>
+        				<li><a href="<%=request.getContextPath()%>/board/tip_list.jsp">팁게시판</a></li>
         			</ul>
                 </li>
                 <li>
                     <a href="<%=request.getContextPath()%>#">고객센터</a>
                     <ul style="z-index: 100;">
         				<li><a href="<%=request.getContextPath()%>#">자주찾는질문</a></li>
-        				<li><a href="<%=request.getContextPath()%>#">1:1 고객문의</a></li>
+        				<li><a href="<%=request.getContextPath()%>/board/qna_list.jsp">1:1 고객문의</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
         
-        <!--
-        			<a href="<%=request.getContextPath()%>/board/list.jsp">게시판</a>
-        			 <ul>
-        				<li><a href="<%=request.getContextPath()%>/board/notice_list.jsp">공지게시판</a></li>
-        				<li><a href="<%=request.getContextPath()%>/board/free_list.jsp">자유게시판</a></li>
-        				<li><a href="<%=request.getContextPath()%>/board/tip_list.jsp">팁게시판</a></li>
-        				<li><a href="<%=request.getContextPath()%>/board/review_list.jsp">후기게시판</a></li>
-        				<li><a href="<%=request.getContextPath()%>/board/qna_list.jsp">문의게시판</a></li>
-        			</ul>
-        		</li>
-				-->
-				
-				<!--
-				<%-- 로그인 상태에 따라 다른 메뉴를 출력 --%>
-				<% if(login){ %>
-				<a href="<%=request.getContextPath()%>/member/mypage.jsp">내정보</a>&nbsp;&nbsp;&nbsp;
-				<a href="<%=request.getContextPath()%>/member/logout.kh">로그아웃</a> &nbsp;&nbsp;&nbsp;
-				<% } else { %>
-				<a href="<%=request.getContextPath()%>/member/join.jsp">회원가입</a> &nbsp;&nbsp;&nbsp;
-				<a href="<%=request.getContextPath()%>/member/login.jsp">로그인</a> &nbsp;&nbsp;&nbsp;
-				<% } %>
-				-->
-				
-				
+
 				<%-- 관리자라면 관리 메뉴를 출력 --%>
-				<%if(admin){ %>
+				<%if(auth){ %>
 				<a href="<%=request.getContextPath()%>/admin/list.jsp">회원관리</a>&nbsp;&nbsp;&nbsp;
 				<a href="<%=request.getContextPath()%>/admin/statistics.jsp">사이트관리</a>&nbsp;&nbsp;&nbsp;
+				<a href="<%=request.getContextPath()%>/admin/statistics.jsp">주문관리</a>&nbsp;&nbsp;&nbsp;
+				
 				<%} %>
 			</td> 
 		</tr>

@@ -5,7 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+
+import semi2.beans.JdbcUtils;
 
 
 
@@ -144,13 +145,13 @@ public class ProductDao {
     }
     
     //상품 정보 수정
-    public boolean update(ProductDto productDto) throws Exception {
+    public boolean edit(ProductDto productDto) throws Exception {
     	Connection con = JdbcUtils.getConnection();
     	
     	String sql = "update product set product_name = ?, product_sort = ?, product_price = ?, "
-    			+ "product_stock = ?, product_company = ?, product_made = ?, product_exprire = ?, "
+    			+ "product_stock = ?, product_company = ?, product_made = ?, product_expire = ?, "
     			+ "product_event = ?, product_kcal = ?, product_protein = ?, product_carbohydrate = ?, "
-    			+ "procuct_fat = ?, product_info = ?, product_img = ? where product_no = ?";
+    			+ "product_fat = ?, product_info = ?, product_img = ? where product_no = ?";
     	
     	PreparedStatement ps = con.prepareStatement(sql);
     	ps.setString(1, productDto.getProductName());
@@ -242,5 +243,63 @@ public class ProductDao {
         con.close();
         return productDto;
     }
+    //재고
+    public boolean stockMinus(int productNo, int orderAmount) throws Exception{
+        Connection con = JdbcUtils.getConnection();
+        String sql = "update product set product_stock = product_stock - ? where product_no=?";
+        PreparedStatement ps = con.prepareStatement(sql);
+
+        ps.setInt(1, orderAmount);
+        ps.setInt(2, productNo);
+
+        int count = ps.executeUpdate();
+
+        con.close();
+        return count>0;
+    }
+    public boolean stockPlus(int productNo, int orderAmount) throws Exception{
+        Connection con = JdbcUtils.getConnection();
+        String sql = "update product set product_stock = product_stock + ? where product_no=?";
+        PreparedStatement ps = con.prepareStatement(sql);
+
+        ps.setInt(1, orderAmount);
+        ps.setInt(2, productNo);
+
+        int count = ps.executeUpdate();
+
+        con.close();
+        return count>0;
+    }
+    
+    public boolean stockCheck(int productNo, int orderAmount) throws Exception{
+        Connection con = JdbcUtils.getConnection();
+
+        String sql = "select product_stock from product where product_no=?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, productNo);
+
+        ResultSet rs = ps.executeQuery();
+        int stock = 0;
+        if(rs.next()) {
+            stock = rs.getInt("product_stock");
+        }
+        con.close();
+
+        return stock >= orderAmount;
+    }
+    
+    //삭제
+	public boolean delete(int no) throws Exception{
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "delete product where product_no = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, no);
+		int count = ps.executeUpdate();
+		
+		con.close();
+		
+		return count > 0;
+	}
     
 }

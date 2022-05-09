@@ -26,6 +26,7 @@ public class BoardDao {
 			boardDto.setBoardTime(rs.getDate("board_time"));
 			boardDto.setBoardReadcount(rs.getInt("board_readcount"));
 			boardDto.setBoardWriter(rs.getString("board_writer"));
+			boardDto.setBoardProductNo(rs.getInt("board_product_no"));
 			//변경된 컬럼에 따라 추가 조회구문 작성
 			boardDto.setBoardReplycount(rs.getInt("board_replycount"));
 			//계층형 게시판 컬럼 추가 조회구문 작성
@@ -61,6 +62,7 @@ public class BoardDao {
 			boardDto.setBoardTime(rs.getDate("board_time"));
 			boardDto.setBoardReadcount(rs.getInt("board_readcount"));
 			boardDto.setBoardWriter(rs.getString("board_writer"));
+			boardDto.setBoardProductNo(rs.getInt("board_product_no"));
 			//추가한 컬럼 정보를 같이 조회하도록 변경
 			boardDto.setBoardReplycount(rs.getInt("board_replycount"));
 			//계층형 게시판 컬럼 추가 조회구문 작성
@@ -96,6 +98,7 @@ public class BoardDao {
 			boardDto.setBoardTime(rs.getDate("board_time"));
 			boardDto.setBoardReadcount(rs.getInt("board_readcount"));
 			boardDto.setBoardWriter(rs.getString("board_writer"));
+			boardDto.setBoardProductNo(rs.getInt("board_product_no"));
 			//추가한 컬럼 정보를 같이 조회하도록 변경
 			boardDto.setBoardReplycount(rs.getInt("board_replycount"));
 			//계층형 게시판 컬럼 추가 조회구문 작성
@@ -161,6 +164,30 @@ public class BoardDao {
 		ps.setInt(6, boardDto.getGroupNo());
 		ps.setInt(7, boardDto.getSuperNo());
 		ps.setInt(8, boardDto.getDepth());
+		ps.execute();
+		
+		con.close();
+	}
+	
+	public void insertReview(BoardDto boardDto) throws Exception {
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "insert into board("
+								+ "board_no, board_head, board_title, board_content, board_writer, "
+								+ "group_no, super_no, depth"
+							+ ") "
+//						+ "values(board_seq.nextval, ?, ?, ?, ?)";//번호를 미리 만들지 않은 경우
+						+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";//번호를 미리 만든 경우
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, boardDto.getBoardNo());
+		ps.setString(2, boardDto.getBoardHead());
+		ps.setString(3, boardDto.getBoardTitle());
+		ps.setString(4, boardDto.getBoardContent());
+		ps.setString(5, boardDto.getBoardWriter());
+		ps.setInt(6, boardDto.getBoardProductNo());
+		ps.setInt(7, boardDto.getGroupNo());
+		ps.setInt(8, boardDto.getSuperNo());
+		ps.setInt(9, boardDto.getDepth());
 		ps.execute();
 		
 		con.close();

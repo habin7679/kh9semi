@@ -31,7 +31,7 @@ MemberDto memberDto = memberDao.selectOne(memberId);
 	            <option>공지</option>
 	            <option>자유</option>
 	            <option>팁</option>
-	            <option>후기</option>
+	            <!-- <option>후기</option>-->
 	            <option>문의</option>
 	        </select>
 	    </div>
