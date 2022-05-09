@@ -42,7 +42,8 @@ public class BuyDao {
 		con.close();
 		return count>0;
 	}
-	//송장번호 입력 -> 배송중
+	
+	// 송장입력-->배송중
 	public boolean updateInvoice(BuyDto buyDto) throws Exception{
 		Connection con = JdbcUtils.getConnection();
 		String sql = "update buy set buy_status = '배송중', buy_invoice=? where buy_no=?";
@@ -56,14 +57,13 @@ public class BuyDao {
 		
 		return count>0;
 	}
-	
 	//관리자 - 주문취소
-	public boolean cancelInvoice (BuyDto buyDto) throws Exception{
+	public boolean cancelInvoice (int buyNo) throws Exception{
 		Connection con = JdbcUtils.getConnection();
 		String sql = "update buy set buy_status = '취소완료' where buy_no=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
-		ps.setInt(1, buyDto.getBuyNo());
+		ps.setInt(1, buyNo);
 		
 		int count = ps.executeUpdate();
 		con.close();

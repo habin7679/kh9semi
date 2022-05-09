@@ -15,6 +15,7 @@ public class BuyCancelServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+			resp.setContentType("text/plain; charset = UTF-8");
 			int buyNo = Integer.parseInt(req.getParameter("buyNo"));
 			BuyDao buyDao = new BuyDao();
 			boolean success = buyDao.cancelInvoice(buyNo);
