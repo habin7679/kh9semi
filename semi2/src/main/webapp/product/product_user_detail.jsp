@@ -60,6 +60,9 @@
 		<th>상품이미지</th>
 			<td><%=productDto.getProductImg()%></td>
 	</tr>
+	<tr>
+			<td><button>구매하기</button></td>
+	</tr>
 	
 	
 </table>

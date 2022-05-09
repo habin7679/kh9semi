@@ -67,7 +67,7 @@ if (list.isEmpty()) {
 				for (ProductDto productDto : list) {
 				%>
 				<tr>
-					<div type="hidden" <%=productDto.getProductNo()%>></div>
+					<input type="hidden" name="productNo" value="<%=productDto.getProductNo()%>">
 					<td><%=productDto.getProductSort() %></td>
 					<td><a href="product_user_detail.jsp?product_no=<%=productDto.getProductNo()%>" class="link"> <%=productDto.getProductImg()%>
 					</a></td>

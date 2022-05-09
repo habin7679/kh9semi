@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import semi2.beans.JdbcUtils;
+
 
 
 public class ProductDao {
@@ -287,11 +289,17 @@ public class ProductDao {
     }
     
     //삭제
-    public boolean delete(int no) throws Exception{
-    	Connection con = JdbcUtils.getConnection();
-    	
-    	String sql = "delete product where no = ?";
-    	PreparedStatement ps = con.prepareStatement(sql);
-    }
+	public boolean delete(int no) throws Exception{
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "delete product where product_no = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, no);
+		int count = ps.executeUpdate();
+		
+		con.close();
+		
+		return count > 0;
+	}
     
 }
