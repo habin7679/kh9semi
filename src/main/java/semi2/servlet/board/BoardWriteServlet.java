@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import semi2.beans.BoardDao;
 import semi2.beans.BoardDto;
+import semi2.beans.MemberDto;
 
-@WebServlet(urlPatterns = "/board/write.kh")
+@WebServlet(urlPatterns = "/board/write.ez")
 public class BoardWriteServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -21,13 +22,13 @@ public class BoardWriteServlet extends HttpServlet{
 			//답글일 경우 - boardHead, boardTitle, boardContent, superNo
 			
 			BoardDto boardDto = new BoardDto();
+			
 			boardDto.setBoardHead(req.getParameter("boardHead"));
 			boardDto.setBoardTitle(req.getParameter("boardTitle"));
 			boardDto.setBoardContent(req.getParameter("boardContent"));
 			
-			String memberId = (String) req.getSession().getAttribute("login");
+			String memberId = (String) req.getSession().getAttribute("member");
 			boardDto.setBoardWriter(memberId);
-			
 			//처리
 			BoardDao boardDao = new BoardDao();
 			boardDto.setBoardNo(boardDao.getSequence());

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import semi2.beans.BoardDao;
 import semi2.beans.BoardDto;
 
-@WebServlet(urlPatterns = "/board/edit.kh")
+@WebServlet(urlPatterns = "/board/edit.ez")
 public class BoardEditServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

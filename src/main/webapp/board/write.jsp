@@ -13,7 +13,7 @@ MemberDto memberDto = memberDao.selectOne(memberId);
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 
-<form action="write.kh" method="post">
+<form action="write.ez" method="post">
 
 
 <%if(request.getParameter("superNo") != null){ %>   

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import semi2.beans.BoardDao;
 import semi2.beans.ReplyDao;
 
-@WebServlet(urlPatterns = "/board/reply_delete.kh")
+@WebServlet(urlPatterns = "/board/reply_delete.ez")
 public class ReplyDeleteServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

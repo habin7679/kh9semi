@@ -231,7 +231,7 @@ public class BoardDao {
 		Connection con = JdbcUtils.getConnection();
 		
 		String sql = "update board set board_replycount = ("
-									+ "select count(*) from reply where reply_board_no = ?"
+									+ "select count(*) from reply where reply_target = ?"
 						+ ") where board_no = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, boardNo);

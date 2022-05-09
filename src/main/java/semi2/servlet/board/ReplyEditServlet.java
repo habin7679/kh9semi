@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import semi2.beans.ReplyDao;
 import semi2.beans.ReplyDto;
 
-@WebServlet(urlPatterns = "/board/reply_edit.kh")
+@WebServlet(urlPatterns = "/board/reply_edit.ez")
 public class ReplyEditServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

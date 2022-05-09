@@ -16,7 +16,7 @@
 <%-- 출력 --%>
 <jsp:include page="/template/header.jsp"></jsp:include>
 
-<form action="edit.kh" method="post">
+<form action="edit.ez" method="post">
 <input type="hidden" name="boardNo" value="<%=boardDto.getBoardNo()%>">
 
 	<div class="container w800 m30">

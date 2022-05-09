@@ -68,7 +68,7 @@
 			<%} %>
 			<%if(isOwner || isAdmin){ %>
 			<a href="edit.jsp?boardNo=<%=boardNo%>">수정</a>
-			<a href="delete.kh?boardNo=<%=boardNo%>">삭제</a>
+			<a href="delete.ez?boardNo=<%=boardNo%>">삭제</a>
 			<%} %>
 			<a href="list.jsp">목록</a>
 		</td>
@@ -78,7 +78,7 @@
 	<tr>
 		<td align="right">
 			<%if(isLogin){ %>
-			<form action="reply_insert.kh" method="post">
+			<form action="reply_insert.ez" method="post">
 				<input type="hidden" name="replyTarget" value="<%=boardDto.getBoardNo()%>">
 				<textarea name="replyContent" rows="4" cols="100"></textarea>
 				<input type="submit" value="댓글 작성">
@@ -123,7 +123,7 @@
 							
 							<%-- 댓글 삭제 아이콘 : 본인 글이거나 관리자이거나 둘 중 하나에 해당하면 등장해야함 --%>
 							<%if(isReplyOwner || isAdmin) { %>
-							<a href="reply_delete.kh?replyNo=<%=replyDto.getReplyNo()%>&replyTarger=<%=replyDto.getReplyTarget()%>">
+							<a href="reply_delete.ez?replyNo=<%=replyDto.getReplyNo()%>&replyTarger=<%=replyDto.getReplyTarget()%>">
 							<img src="<%=request.getContextPath()%>/image/trash.jpg" width="20">
 							</a>
 							<%} %>
@@ -135,7 +135,7 @@
 					<%if(isReplyOwner){ %>
 						<tr align="right" class="edit-row">
 							<td colspan="3">
-								<form action="reply_edit.kh" method="post">
+								<form action="reply_edit.ez" method="post">
 									<input type="hidden" name="replyNo" value="<%=replyDto.getReplyNo()%>">
 									<input type="hidden" name="replyTarget" value="<%=replyDto.getReplyTarget()%>">
 									<textarea name="replyContent" rows="4" cols="100"><%=replyDto.getReplyContent()%></textarea>
