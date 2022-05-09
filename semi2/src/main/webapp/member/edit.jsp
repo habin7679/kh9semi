@@ -55,7 +55,6 @@
 	    <div class="row center">
 	        <h1>개인정보 변경</h1>
 	    </div>
-	    
 	    <div class="row">
 	        <label>닉네임</label>
 	        <input type="text" name="memberNick" autocomplete="off" value="<%=memberDto.getMemberNick()%>">
@@ -85,14 +84,21 @@
 	    </div>
 	     <div class="row">
 	        <label>비밀번호</label>
-	        <input type="password" name="memberPw" id="memberPw1">
+	        <input type="password" name="memberPw">
 	    </div>
 	    <div class="row">
 	        <label>비밀번호 확인</label>
-	        <input type="password" name="memberPw"id="memberPw1">
+	        <input type="password" name="memberPw2">
 	    </div>
 	    <div class="row">
-	        <button type="submit">정보 변경하기</button>
+	        <button type="submit" class="btn btn-primary fill">정보 변경하기</button>
 	    </div>
+	    
+		<% if(request.getParameter("error") != null){ %>
+		<div class="row center">
+			<h3 style="color:red;">비밀번호가 일치하지 않습니다</h3>		
+		</div>	    
+		<%} %>
+	</div>
 </form>
 <jsp:include page="/template/footer.jsp"></jsp:include>
