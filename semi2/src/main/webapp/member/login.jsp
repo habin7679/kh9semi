@@ -38,7 +38,7 @@
 	</div>
 	<% if(request.getParameter("error") !=null){ %>
 	<div>
-		<sapn>로그인 정보가 일치하지 않습니다</sapn>
+		<span>로그인 정보가 일치하지 않습니다</span>
 	</div>
 	<%} %>
 	</form>

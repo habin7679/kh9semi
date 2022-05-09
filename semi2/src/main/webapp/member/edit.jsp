@@ -85,13 +85,15 @@
 	     <div class="row">
 	        <label>비밀번호</label>
 	        <input type="password" name="memberPw">
+	        <span></span>
 	    </div>
 	    <div class="row">
 	        <label>비밀번호 확인</label>
 	        <input type="password" name="memberPw2">
+	        <span></span>
 	    </div>
 	    <div class="row">
-	        <button type="submit" class="btn btn-primary fill">정보 변경하기</button>
+	        <button type="submit">정보 변경하기</button>
 	    </div>
 	    
 		<% if(request.getParameter("error") != null){ %>

@@ -13,6 +13,6 @@
 	</div>
 	
 	<div>
-		<a href="changePw">비밀번호 변경하기</a>
+		<a href="change_pw.jsp">비밀번호 변경하기</a>
 	</div>
 <jsp:include page="/template/footer.jsp"></jsp:include>
