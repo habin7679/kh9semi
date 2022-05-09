@@ -1,12 +1,11 @@
 package semi2.beans;
 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-
-import semi2.beans.JdbcUtils;
 
 
 
@@ -213,7 +212,7 @@ public class ProductDao {
     	return list;
     }
     //상품 카테고리
-    public List<ProductDto> categorie(String productSort) throws Exception {
+    public ProductDto katgorie(String productSort) throws Exception {
         Connection con = JdbcUtils.getConnection();
 
         String sql = "select * from product where product_sort=?";
@@ -222,8 +221,7 @@ public class ProductDao {
         ResultSet rs = ps.executeQuery();
         ProductDto productDto = null;
 
-        List<ProductDto> list = new ArrayList<>();
-        while(rs.next()) {
+        if(rs.next()) {
             productDto = new ProductDto();
             productDto.setProductNo(rs.getInt("product_no"));
             productDto.setProductName(rs.getString("product_name"));
@@ -240,11 +238,9 @@ public class ProductDao {
             productDto.setProductFat(rs.getInt("product_fat"));
             productDto.setProductInfo(rs.getString("product_info"));
             productDto.setProductImg(rs.getString("product_img"));
-            
-            list.add(productDto);
         }
         con.close();
-        return list;
+        return productDto;
     }
     //재고
     public boolean stockMinus(int productNo, int orderAmount) throws Exception{

@@ -30,6 +30,7 @@ if (isSearch) {
 			<a href="product_admin_list.jsp">상품 목록</a>
 		</h1>
 	</div>
+	
 	<form action="product_admin_list.jsp" method="get">
 
 		<%
