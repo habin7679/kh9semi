@@ -159,16 +159,15 @@
         			 <ul>
         				<li><a href="<%=request.getContextPath()%>/board/notice_list.jsp">공지게시판</a></li>
         				<li><a href="<%=request.getContextPath()%>/board/free_list.jsp">자유게시판</a></li>
-        				<li><a href="<%=request.getContextPath()%>/board/tip_list.jsp">팁게시판</a></li>
         				<li><a href="<%=request.getContextPath()%>/board/review_list.jsp">후기게시판</a></li>
-        				<li><a href="<%=request.getContextPath()%>/board/qna_list.jsp">문의게시판</a></li>
+        				<li><a href="<%=request.getContextPath()%>/board/tip_list.jsp">팁게시판</a></li>
         			</ul>
                 </li>
                 <li>
                     <a href="<%=request.getContextPath()%>#">고객센터</a>
                     <ul style="z-index: 100;">
         				<li><a href="<%=request.getContextPath()%>#">자주찾는질문</a></li>
-        				<li><a href="<%=request.getContextPath()%>#">1:1 고객문의</a></li>
+        				<li><a href="<%=request.getContextPath()%>/board/qna_list.jsp">1:1 고객문의</a></li>
                     </ul>
                 </li>
             </ul>
