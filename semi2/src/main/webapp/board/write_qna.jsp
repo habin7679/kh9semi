@@ -6,7 +6,7 @@
 
 <!-- 카테고리 선택하기 위한 회원등급 값 불러오기 -->
 <%	
-String memberId = (String)session.getAttribute("member");
+String memberId = (String)session.getAttribute("login");
 MemberDao memberDao = new MemberDao();
 MemberDto memberDto = memberDao.selectOne(memberId);
 %>
@@ -25,19 +25,9 @@ MemberDto memberDto = memberDao.selectOne(memberId);
 	        <h1>게시글 작성</h1>
 	    </div>
 	    <div class="row">
-	       <label>카테고리</label>
+	        <label>카테고리</label>
 	        <select name="boardHead" class="form-input fill input-round">
-	            <option value="자유">선택</option>
-	           	<%if(memberDto.getMemberGrade().equals("관리자")){%>
-	            <option>공지</option>
-	            <option>자유</option>
-	            <option>팁</option>
-	            <option>후기</option>
 	            <option>문의</option>
-	       	<%}else { %>
-	       	 	<option>자유</option>
-	            <option>팁</option>
-	            <%} %>
 	        </select>
 	    </div>
 	    <div class="row">
