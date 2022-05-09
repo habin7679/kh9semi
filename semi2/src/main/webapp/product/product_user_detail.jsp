@@ -58,10 +58,10 @@
 	</tr>
 	<tr>
 		<th>상품이미지</th>
-			<td><%=productDto.getProductImg()%></td>
+				<td> <img src = "<%=request.getContextPath() %>/image/product<%=productNo%>.jpg" width="200" height="200"></td>
 	</tr>
 	<tr>
-			<td><button>구매하기</button></td>
+		<td><input type="button" value="구매하기"></td>
 	</tr>
 	
 	

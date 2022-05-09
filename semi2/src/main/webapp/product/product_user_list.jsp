@@ -11,6 +11,8 @@
 
 
 String productName = request.getParameter("product_name");
+
+String productSort = request.getParameter("product_sort");
 Format f = new DecimalFormat("0.00");
 %>
 
@@ -22,6 +24,7 @@ if(isSearch)
 	list = productDao.listUser(productName);
 else
 	list = productDao.listAll();
+
 %>
 <%-- 출력 --%>
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -43,6 +46,43 @@ else
 	</div>
 
 <!-- 검색결과 -->
+<%if(productName == null){
+	List<ProductDto> list2;
+	list2 = productDao.categorie(productSort);
+	%>
+		<div class="row">
+		<table class="table table-border table-hover" >
+			<thead>
+				<tr>
+					<th>상품이미지</th>
+					<th>제품명</th>
+					<th>제품 가격</th>
+					<th>평점</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%
+				for (int i = 0; i < list2.size(); i ++) {
+					ProductDto productDto = list2.get(i);
+				%>
+				<tr>
+					<input type="hidden" name="productNo" value="<%=productDto.getProductNo()%>">
+					<%-- <td><%=productDto.getProductSort() %></td>--%>
+					<td><a href="product_user_detail.jsp?product_no=<%=productDto.getProductNo()%>" class="link"><img src = "<%=request.getContextPath() %>/image/product<%=productDto.getProductNo()%>.jpg" width="200" height="200">
+					</a></td>
+					<td><%=productDto.getProductName()%></td>
+					<td><%=productDto.getProductPrice()%></td>
+
+			</tbody>
+	</table>
+	</div>
+<%
+}
+%>
+
+
+<%} else {%>
+
 <%
 if (list.isEmpty()) {
 %>
@@ -68,8 +108,8 @@ if (list.isEmpty()) {
 				%>
 				<tr>
 					<input type="hidden" name="productNo" value="<%=productDto.getProductNo()%>">
-					<td><%=productDto.getProductSort() %></td>
-					<td><a href="product_user_detail.jsp?product_no=<%=productDto.getProductNo()%>" class="link"> <%=productDto.getProductImg()%>
+					<%-- <td><%=productDto.getProductSort() %></td>--%>
+					<td><a href="product_user_detail.jsp?product_no=<%=productDto.getProductNo()%>" class="link"><img src = "<%=request.getContextPath() %>/image/product<%=productDto.getProductNo()%>.jpg" width="200" height="200">
 					</a></td>
 					<td><%=productDto.getProductName()%></td>
 					<td><%=productDto.getProductPrice()%></td>
@@ -80,7 +120,7 @@ if (list.isEmpty()) {
 	</table>
 	</div>
 <%
-}
+}}
 %>
 </div>
 
