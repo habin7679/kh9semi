@@ -82,9 +82,9 @@
 		<h1>후기 게시판</h1>
 	</div>
 	
-	<div class="row right">
+	<!--<div class="row right">
 		<a href="write.jsp" class="link link-btn">글쓰기</a>
-	</div>		
+	</div>	-->	
 	
 	<div class="row">
 		<table class="table table-border">
