@@ -34,6 +34,8 @@ public class payingInsertServlet extends HttpServlet {
 			payingDto.setPayingDeliveryDate(payingDeliveryDate);
 			payingDto.setPayingDeliveryTime(Integer.parseInt(req.getParameter("payingDeliveryTime")));
 			
+			String memberId = (String)req.getSession().getAttribute("member");
+			
 			boolean is = payingDao.insertRest2(payingDto);
 			if(is) {
 				BuyDao bDao = new BuyDao();
