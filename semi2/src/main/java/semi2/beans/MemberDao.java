@@ -402,4 +402,30 @@ public class MemberDao {
 				
 				return count > 0;
 			}
+	public boolean pointAdd(int totalPrice, String memberId) throws Exception{
+		Connection con = JdbcUtils.getConnection();
+		String sql = "update member set member_point = member_point+?*0.1 where member_id =?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setInt(1, totalPrice);
+		ps.setString(2, memberId);
+		
+		int count = ps.executeUpdate();
+		
+		con.close();
+		return count>0;
+	}
+	public boolean pointMinus (int totalPrice, String memberId) throws Exception{
+		Connection con = JdbcUtils.getConnection();
+		String sql ="update member set member_point = member_point-(?*0.1) where member_id = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setInt(1, totalPrice);
+		ps.setString(2, memberId);
+		
+		int count = ps.executeUpdate();
+		
+		con.close();
+		return count>0;
+	}
 }
