@@ -18,6 +18,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/style.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/layout.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/commons.css">
+    
+    
+    <%-- 
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/commons.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/test/commons.css">
+    --%>
     <title>이지어트 메인 페이지</title>
 
 <style>   
@@ -117,17 +126,15 @@
                 <ul>
 
                     <ul class="nav">
-                                                             
-                        <a href="<%=request.getContextPath()%>/member/login.jsp">마이페이지</a> &nbsp;&nbsp;&nbsp;
-                        <a href="<%=request.getContextPath()%>/buy/list.jsp">주문/배송조회</a> &nbsp;&nbsp;&nbsp;
-                        				<% if(login){ %>
+
+                <% if(login){ %>
 				<a href="<%=request.getContextPath()%>/member/logout.ez">로그아웃</a> &nbsp;&nbsp;&nbsp;
 				<% } 
 				else { %>
 				<a href="<%=request.getContextPath()%>/member/login.jsp">로그인</a> &nbsp;&nbsp;&nbsp;
 				<a href="<%=request.getContextPath()%>/member/join.jsp">회원가입</a> &nbsp;&nbsp;&nbsp;
 				<% } %>
-				    <a href="<%=request.getContextPath()%>/member/login.jsp">마이페이지</a> &nbsp;&nbsp;&nbsp;
+				    <a href="<%=request.getContextPath()%>/member/mypage.jsp">마이페이지</a> &nbsp;&nbsp;&nbsp;
                         <a href="<%=request.getContextPath()%>/buy/list.jsp">주문/배송조회</a> &nbsp;&nbsp;&nbsp;
 			
                     </ul>
