@@ -23,7 +23,7 @@
 		int oNo = bDto.getOrderNo();
 		PayingDto payingDto = payingDao.selectOne(oNo);
 %>
-<a href="detail.jsp?orderNo=<%=oNo%>"><%=payingDto.getPayingDate() %> 주문</a><br><br>
+<a href="detail.jsp?buyNo=<%=bDto.getBuyNo()%>"><%=payingDto.getPayingDate() %>주문</a><br><br>
 송장번호: <%if(bDto.getBuyInvoice()==0){%>상품준비중<% }else{%><%=bDto.getBuyInvoice()%><%}%><br><br>
 주문현황: <%=bDto.getBuyStatus() %><br><br>
 <%if(bDto.getBuyStatus().equals("입금전")||bDto.getBuyStatus().equals("결제완료")) {%>

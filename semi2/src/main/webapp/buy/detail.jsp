@@ -1,3 +1,5 @@
+<%@page import="semi2.beans.BuyDto"%>
+<%@page import="semi2.beans.BuyDao"%>
 <%@page import="java.sql.Date"%>
 <%@page import="semi2.beans.OrderDto"%>
 <%@page import="java.util.List"%>
@@ -10,9 +12,12 @@
     pageEncoding="UTF-8"%>
 <%
 	String memberId = (String)session.getAttribute("member");
-	int oNo = Integer.parseInt(request.getParameter("orderNo"));
+	int bNo = Integer.parseInt(request.getParameter("buyNo"));
+	BuyDao bDao = new BuyDao();
+	BuyDto bDto = bDao.selectOne(bNo);
+	
 	PayingDao payingDao = new PayingDao();
-	PayingDto payingDto = payingDao.selectOne(oNo);
+	PayingDto payingDto = payingDao.selectOne(bDto.getOrderNo());
 	ProductDao productDao = new ProductDao();
 %>
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -39,10 +44,14 @@
 	배송희망일: <%=payingDto.getPayingDeliveryDate() %> &nbsp; 
 	배송희망시간: <%=payingDto.getPayingDeliveryTime()%>시
 </div>
+<div>
+	현재 배송상태: <%=bDto.getBuyStatus() %>
+	운송장번호: <%=bDto.getBuyInvoice() %>
+</div>
 	주문상품
 <% 
 	OrderDao oDao = new OrderDao();
-	List<OrderDto> list = oDao.selectAll(oNo);
+	List<OrderDto> list = oDao.selectAll(bDto.getOrderNo());
 	for(int i =0; i<list.size(); i++){
 		OrderDto oDto = list.get(i);
 		int pNo = oDto.getProductNo();
@@ -57,5 +66,8 @@
 	<div>
 	상품수량: <%=oDto.getOrderCount() %>
 	</div>
+	<%if(oDto.getOrderReview().equals("x")&&bDto.getBuyStatus().equals("배송완료")) {%>
+	<a href="<%=request.getContextPath() %>/board/write.jsp?productNo="<%=productDto.getProductNo() %>>리뷰쓰기</a>
+	<%} %>
 <%} %>
 <jsp:include page="/template/footer.jsp"/>
