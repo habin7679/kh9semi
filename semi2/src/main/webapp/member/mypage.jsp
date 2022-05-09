@@ -13,14 +13,13 @@
 	 <div>
 	  <div><%=memberDto.getMemberNick()%></div>
 	  <div><%=memberDto.getMemberPoint() %>point</div>
-	  <div><a href="update.jsp">내 정보 변경하기</a></div>
-	  <div><a href="#">포인트 적립내역</a></div>
+	  <div><a href="edit.jsp">내 정보 변경하기</a></div>
 	  <div><a href="<%=request.getContextPath() %>/buy/list.jsp">구매내역</a></div>
 	  <div><a href="#">최근 본 상품</a></div>
 	  <div><a href="#">배송지 관리</a></div>
 	  <div><a href="#">정기배송 신청하기</a></div>
-	  <div><a href="#">내 후기내역</a></div>
-	  <div><a href="#">내 문의내역</a></div>
+	  <div><a href="<%=request.getContextPath()%>/review_list.jsp">내 후기내역</a></div>
+	  <div><a href="<%=request.getContextPath()%>/qna_list.jsp">내 문의내역</a></div>
 	  
 	  <div><a href="exit.jsp">회원 탈퇴하기</a></div>
 	  

@@ -15,14 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 		
 		"/member/mypage.jsp",
 		"/member/password.jsp", "/member/password.ez",
-		"/member/information.jsp", "/member/information.ez",
+		"/member/edit.jsp", "/member/information.ez",
 		"/member/exit.jsp", "/member/exit.ez",
 		"/board/write.jsp", "/board/write.ez",
 		"/board/edit.jsp", "/board/edit.ez",
-		"/board/delete.kh",
-		"/board/reply_insert.kh",
-		"/board/reply_edit.kh",
-		"/board/reply_delete.kh"
+		"/board/delete.ez",
+		
 })
 public class LoginFilter implements Filter{
 	@Override
