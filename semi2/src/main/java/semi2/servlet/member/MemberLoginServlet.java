@@ -20,7 +20,7 @@ public class MemberLoginServlet extends HttpServlet {
 			//준비
 			String memberId= req.getParameter("memberId");
 			String memberPw= req.getParameter("memberPw");
-			String referer=req.getParameter("reperer");
+			String referer=req.getParameter("referer");
 			
 			//처리
 			MemberDao memberDao= new MemberDao();

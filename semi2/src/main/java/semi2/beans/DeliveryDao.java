@@ -136,4 +136,31 @@ public class DeliveryDao {
 					
 					con.close();
 				}
+				
+				//배송지 삭제
+				public boolean delete(String memberId, String deliveryPost /*
+														 * , String deliveryPost, String deliveryBasicAddress, String
+														 * deliveryDetailAddress
+														 */) throws Exception{
+					Connection con =JdbcUtils.getConnection();
+					
+					String sql="delete delivery where member_id=? and delivery_post=?";// and delivery_basic_address=? and delivery_detail_address=?";
+					PreparedStatement ps= con.prepareStatement(sql);
+					ps.setString(1, memberId);
+					ps.setString(2, deliveryPost);
+				
+					/*
+					 * ps.setString(2, deliveryPost); ps.setString(3, deliveryBasicAddress);
+					 * ps.setString(4, deliveryDetailAddress);
+					 */
+					int count=ps.executeUpdate();
+					
+					con.close();
+					
+					return count>0;
+					
+					
+					
+				}
+				
 }
