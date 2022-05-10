@@ -1,4 +1,4 @@
-package semi2.servlet.delivary;
+package semi2.servlet.delivery;
 
 import java.io.IOException;
 
@@ -18,7 +18,8 @@ public class DeliveryInsertServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			DeliveryDto deliveryDto= new DeliveryDto();
-			String memberId= (String)req.getSession().getAttribute("member");
+			deliveryDto.setMemberId((String) req.getSession().getAttribute("member"));
+			
 			deliveryDto.setDeliveryName(req.getParameter("deliveryName"));
 			deliveryDto.setDeliveryPhone(req.getParameter("deliveryPhone"));
 			deliveryDto.setDeliveryPost(req.getParameter("deliveryPost"));
@@ -27,7 +28,7 @@ public class DeliveryInsertServlet extends HttpServlet{
 			
 			
 			DeliveryDao deliveryDao= new DeliveryDao();
-			deliveryDao.insert(deliveryDto);
+			deliveryDao.insertBasic(deliveryDto);
 			
 			resp.sendRedirect(req.getContextPath()+"/delivery/delivery_list.jsp");
 			

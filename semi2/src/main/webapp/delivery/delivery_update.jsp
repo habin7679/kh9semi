@@ -1,8 +1,14 @@
+<%@page import="semi2.beans.DeliveryDto"%>
+<%@page import="semi2.beans.DeliveryDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="/template/header.jsp"></jsp:include>
+
 <%
 String memberId=(String)session.getAttribute("member");
+
+DeliveryDao deliveryDao= new DeliveryDao();
+DeliveryDto deliveryDto=deliveryDao.selectOne(memberId);
 %>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -68,7 +74,7 @@ String memberId=(String)session.getAttribute("member");
             $(".address-find-btn").click(findAddress);
         });
     </script>
-<form action="<%=request.getContextPath() %>/delivery/insert.ez" method="post">   
+<form action="<%=request.getContextPath() %>/delivery/update.ez" method="post">   
 <div>
 	<div>
 		<h1>배송지 추가</h1>
@@ -80,24 +86,24 @@ String memberId=(String)session.getAttribute("member");
 	
 	<div>
 		<label>받는분</label>
-		<input type="text" name="deliveryName" placeholder="이름" autocomplete="off">
+		<input type="text" name="deliveryName" placeholder="이름" autocomplete="off" value="<%=deliveryDto.getDeliveryName()%>">
 	</div>
 	
 	<div>
 	        <label>주소</label><br>
-                <input type="text" name="deliveryPost" placeholder="우편번호" autocomplete="off">
+                <input type="text" name="deliveryPost" placeholder="우편번호" autocomplete="off" value="<%=deliveryDto.getDeliveryPost()%>">
                  <input type="button" class="address-find-btn" value="우편번호 찾기"><br>
             </div>
             <div>
-                <input type="text" name="deliveryBasicAddress" placeholder="기본주소" autocomplete="off">
+                <input type="text" name="deliveryBasicAddress" placeholder="기본주소" autocomplete="off" value="<%=deliveryDto.getDeliveryBasicAddress()%>">
             </div>
             <div>
-                <input type="text" name="deliveryDetailAddress" placeholder="상세주소" autocomplete="off">
+                <input type="text" name="deliveryDetailAddress" placeholder="상세주소" autocomplete="off" value="<%=deliveryDto.getDeliveryDetailAddress()%>">
 	    </div>
 	
 	<div>
 		<label>휴대폰 번호</label>
-		<input type="tel" name="deliveryPhone" placeholder="숫자만 입력하세요" autocomplete="off">
+		<input type="tel" name="deliveryPhone" placeholder="숫자만 입력하세요" autocomplete="off" value="<%=deliveryDto.getDeliveryPhone()%>">
 	</div>
 	
 	
@@ -106,5 +112,4 @@ String memberId=(String)session.getAttribute("member");
 	</div>
 </div>
 </form>
-
 <jsp:include page="/template/footer.jsp"></jsp:include>
