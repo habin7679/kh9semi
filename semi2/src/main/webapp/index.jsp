@@ -55,27 +55,35 @@
 				<th>서둘러요! 지금은 할인중</th>
 				<br>
 				<br>
-			</tr>		
-				
-			<img class="wid" src="<%=request.getContextPath()%>#">
+
+			</tr>
 		</div>
 		<div
-			style="display: block; width: 256px; height:256px; border: none; overflow:hidden; border-radius: 8px; ">
-			<img class="wid" src="<%=request.getContextPath()%>#" style="vertical-align: top;">
+			style="display: block; width: 256px; height: 256px; border: none; overflow: hidden; border-radius: 8px;">
+			<img class="wid" src="<%=request.getContextPath()%>/image/sample.png" style="vertical-align: top;">
 		</div>
 		<div
-			style="transition-duration: .0s; transform: scale(1.05); display: block; width: 256px; height:256px; border:none; overflow:hidden; border-radius:8px; ">
-			<img class="wid" src="<%=request.getContextPath()%>#" style="vertical-align: top;">
+			style="display: block; width: 256px; height: 256px; border: none; overflow: hidden; border-radius: 8px;">
+			<img class="wid" src="<%=request.getContextPath()%>/image/sample.png"
+				style="vertical-align: top;">
+		</div>
+		<div
+			style="transition-duration: .0s; transform: scale(1.05); display: block; width: 256px; height: 256px; border: none; overflow: hidden; border-radius: 8px;">
+			<img class="wid" src="<%=request.getContextPath()%>/image/sample.png"
+				style="vertical-align: top;">
 		</div>
 	</div>
 </div>
 
 <div class="content">
 	<div style="display: flex;">
-		<div style="display: block; position: relative; padding: 10px 0px; margin: 0px 0px; text-align: left; color: #222; font-size: 27px; font-weight: 500; letter-spacing: -0.09em;">
+		<div
+			style="display: block; position: relative; padding: 10px 0px; margin: 0px 0px; text-align: left; color: #222; font-size: 27px; font-weight: 500; letter-spacing: -0.09em;">
 
 			<tr>
 				<th>세상 쉬운 야채 챙기기</th>
+				<br>
+				<br>
 			</tr>
 			<img class="wid" src="<%=request.getContextPath()%>#">
 		</div>
@@ -92,10 +100,13 @@
 
 <div class="content">
 	<div style="display: flex;">
-		<div style="display: block; position: relative; padding: 10px 0px; margin: 0px 0px; text-align: left; color: #222; font-size: 27px; font-weight: 500; letter-spacing: -0.09em;">
+		<div
+			style="display: block; position: relative; padding: 10px 0px; margin: 0px 0px; text-align: left; color: #222; font-size: 27px; font-weight: 500; letter-spacing: -0.09em;">
 
 			<tr>
 				<th>지금 잘 팔려요</th>
+				<br>
+				<br>
 			</tr>
 			<img class="wid" src="<%=request.getContextPath()%>#">
 		</div>
@@ -117,27 +128,27 @@
 }
 
 .wid {
-	width: 50%;
+	width: 80%;
 }
 </style>
 <script>
-        const swiper = new Swiper('.swiper', {
-            loop: true,
+	const swiper = new Swiper('.swiper', {
+		loop : true,
 
-            pagination: {
-                el: '.swiper-pagination',
-            },
+		pagination : {
+			el : '.swiper-pagination',
+		},
 
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
+		navigation : {
+			nextEl : '.swiper-button-next',
+			prevEl : '.swiper-button-prev',
+		},
 
-            scrollbar: {
-                el: '.swiper-scrollbar',
-            },
-        });
-    </script>
+		scrollbar : {
+			el : '.swiper-scrollbar',
+		},
+	});
+</script>
 </body>
 </html>
 <jsp:include page="/template/footer.jsp"></jsp:include>
