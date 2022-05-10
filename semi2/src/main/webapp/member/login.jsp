@@ -11,7 +11,7 @@
 			<h1>로그인</h1>
 		</div>
 		<%if(referer !=null){%>
-			<input type="hidden" value="<%=referer %>">
+			<input type="hidden" name="referer" value="<%=referer %>">
 		<%}%>
 		
 		<div>

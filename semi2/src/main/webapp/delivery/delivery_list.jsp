@@ -38,8 +38,7 @@ List<DeliveryDto> list=delivaeryDao.select(memberId);
 					<td><%=deliveryDto.getDeliveryName() %></td>
 					<td>[대표배송지]<%=deliveryDto.getDeliveryPost() %><%=deliveryDto.getDeliveryBasicAddress() %><%=deliveryDto.getDeliveryDetailAddress() %></td>
 					<td><%=deliveryDto.getDeliveryPhone() %></td>
-					<td><a href="#">삭제</a></td>
-				<hr>
+					<td><a href=""<%=request.getContextPath()%>/delivery/delete.ez?deliveryPost=<%=deliveryDto.getDeliveryPost() %>">삭제</a></td>
 				</tr>
 				<%} else{%>
 				<tr>
@@ -47,8 +46,7 @@ List<DeliveryDto> list=delivaeryDao.select(memberId);
 					<td><%=deliveryDto.getDeliveryName() %></td>
 					<td><%=deliveryDto.getDeliveryPost() %><%=deliveryDto.getDeliveryBasicAddress() %><%=deliveryDto.getDeliveryDetailAddress() %></td>
 					<td><%=deliveryDto.getDeliveryPhone() %></td>
-					<td><a href="#">삭제</a></td>
-				<hr>
+					<td><a href="<%=request.getContextPath()%>/delivery/delete.ez?deliveryPost=<%=deliveryDto.getDeliveryPost() %>">삭제</a></td>
 				</tr>
 				<%} %>
 				<%} %> 
