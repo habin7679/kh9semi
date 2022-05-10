@@ -40,7 +40,8 @@
                             status.id = false;
                         }
                         else if(resp == "Y"){
-                            $(that).next("span").text("사용 가능한 아이디입니다");
+                            $(that).next().css("color", "green");
+                        	$(that).next("span").text("사용 가능한 아이디입니다");
                             status.id = true;
                         }
                     }
@@ -180,7 +181,7 @@
             $(".address-find-btn").click(findAddress);
         });
     </script>
-    </script>
+    
 	<form action="join.ez" method="post">
 	<div>
 		<div>
