@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@page import="semi2.beans.MemberDto"%>
 <%@page import="semi2.beans.MemberDao"%>
+<%@ page import="java.io.File" %>
+<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
+<%@ page import="com.oreilly.servlet.MultipartRequest" %>
 
 
 <!-- 카테고리 선택하기 위한 회원등급 값 불러오기 -->
@@ -13,7 +16,7 @@ MemberDto memberDto = memberDao.selectOne(memberId);
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 
-<form action="write.ez" method="post">
+<form method="post" encType = "multipart/form-data" action="write.ez">
 
 
 <%if(request.getParameter("superNo") != null){ %>   
@@ -47,6 +50,10 @@ MemberDto memberDto = memberDao.selectOne(memberId);
 	    <div class="row">
 	        <label>내용</label>
 	        <textarea name="boardContent" required class="form-input fill input-round" rows="12"></textarea>
+	    </div>
+	    	    <div class="row">
+	    	<label>첨부파일</label><br>
+	    	<input type="file" name="attach" class="form-input input-round">
 	    </div>
 	    <div class="row">
 	        <button type="submit" class="btn btn-primary fill">등록</button>
