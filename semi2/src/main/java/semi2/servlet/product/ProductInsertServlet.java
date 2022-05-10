@@ -56,10 +56,14 @@ public class ProductInsertServlet extends HttpServlet {
 				productDto.setProductCarbohydrate(Integer.parseInt(mRequest.getParameter("productCarbohydrate")));
 				productDto.setProductFat(Integer.parseInt(mRequest.getParameter("productFat")));
 				productDto.setProductInfo(mRequest.getParameter("productInfo"));
-				//productDto.setProductImg(req.getParameter("productImg"));
+			//	productDto.setProductImg(req.getParameter("productImg"));
+				
 				
 				ProductDao productDao = new ProductDao();
+				int no = productDao.getSequence();
+				productDto.setProductNo(no);
 				productDao.add(productDto);
+				
 				
 				if(mRequest.getFile("productImg") != null) {
 					AttachmentDto attachmentDto = new AttachmentDto();
@@ -74,7 +78,7 @@ public class ProductInsertServlet extends HttpServlet {
 					attachmentDao.insert(attachmentDto);
 					
 					ProductAttachmentDto productAttachmentDto = new ProductAttachmentDto();
-					productAttachmentDto.setProductNo(productDto.getProductNo());
+					productAttachmentDto.setProductNo(no);
 					productAttachmentDto.setAttachmentNo(attachmentDto.getAttachmentNo());
 					
 					ProductAttachmentDao productAttachmentDao = new ProductAttachmentDao();

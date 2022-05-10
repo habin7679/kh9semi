@@ -99,7 +99,7 @@
 		<tr>
 			<th>상품이미지</th>
 			<td>
-				<input type="file" name="productImg" accept=".jap, .png">
+				<input type="file" name="productImg">
 			</td>
 		</tr>
 		
