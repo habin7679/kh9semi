@@ -25,7 +25,7 @@ public class ProductInsertServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 			try {
-				String path = System.getProperty("user.home") + "/upload";//운영체제에서 사용자에게 제공되는 home 폴더
+				String path = System.getProperty("user.home") + "/git/kh9semi/semi2/src/main/webapp/image";//운영체제에서 사용자에게 제공되는 home 폴더
 				System.out.println("path = " + path);//확인을 위한 출력
 				
 				File dir = new File(path);

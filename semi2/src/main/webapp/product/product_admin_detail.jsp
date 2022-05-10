@@ -1,5 +1,7 @@
 <%@page import="semi2.beans.ProductDto"%>
 <%@page import="semi2.beans.ProductDao"%>
+<%@page import="semi2.beans.ProductAttachmentDto"%>
+<%@page import="semi2.beans.ProductAttachmentDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -11,6 +13,8 @@
 
 <%-- 처리 --%>    
 <%
+ProductAttachmentDao productattachmentDao = new ProductAttachmentDao();
+ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(productNo);
 	ProductDao productDao = new ProductDao();
 	ProductDto productDto = productDao.selectOne(productNo);
 %>
@@ -80,10 +84,11 @@
 		<th>상품정보</th>
 			<td><%=productDto.getProductInfo()%></td>
 	</tr>
-	<tr>
+	<%-- <tr>
 		<th>상품이미지</th>
-			<td> <img src = "<%=request.getContextPath() %>/image/product<%=productNo%>.jpg" width="200" height="200"></td>
+			<td> <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"></td>
 	</tr>
+	--%>
 	
 	
 </table>
