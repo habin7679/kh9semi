@@ -46,11 +46,11 @@ public class BuyDao {
 	// 송장입력-->배송중
 	public boolean updateInvoice(BuyDto buyDto) throws Exception{
 		Connection con = JdbcUtils.getConnection();
-		String sql = "update buy set buy_status = '배송중', buy_invoice=? where buy_no=?";
+		String sql = "update buy set buy_status = '배송중', buy_invoice=? where order_no=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
 		ps.setLong(1, buyDto.getBuyInvoice());
-		ps.setInt(2, buyDto.getBuyNo());
+		ps.setInt(2, buyDto.getOrderNo());
 		
 		int count = ps.executeUpdate();
 		con.close();
