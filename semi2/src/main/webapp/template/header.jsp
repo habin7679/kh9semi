@@ -1,3 +1,5 @@
+<%@page import="semi2.beans.MemberDao"%>
+<%@page import="semi2.beans.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -10,6 +12,9 @@
 	//관리자 검사
 	String admin = (String)session.getAttribute("admin");
 	boolean auth = admin != null && admin.equals("관리자");
+	
+	MemberDao memberDao=new MemberDao();
+	MemberDto memberDto=memberDao.selectOne(memberId);
 %>    
 <html>
 <head>
@@ -126,9 +131,15 @@
                 <ul>
 
                     <ul class="nav">
+ 
+ 
 
                 <% if(login){ %>
 				<a href="<%=request.getContextPath()%>/member/logout.ez">로그아웃</a> &nbsp;&nbsp;&nbsp;
+			<div> 
+				<%=memberDto.getMemberNick()%>님 환영합니다
+				
+				</div>
 				<% } 
 				else { %>
 				<a href="<%=request.getContextPath()%>/member/login.jsp">로그인</a> &nbsp;&nbsp;&nbsp;
