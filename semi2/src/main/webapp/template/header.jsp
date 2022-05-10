@@ -1,3 +1,5 @@
+<%@page import="semi2.beans.MemberDao"%>
+<%@page import="semi2.beans.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -10,6 +12,9 @@
 	//관리자 검사
 	String admin = (String)session.getAttribute("admin");
 	boolean auth = admin != null && admin.equals("관리자");
+	
+	MemberDao memberDao=new MemberDao();
+	MemberDto memberDto=memberDao.selectOne(memberId);
 %>    
 <html>
 <head>
@@ -126,9 +131,15 @@
                 <ul>
 
                     <ul class="nav">
+ 
+ 
 
                 <% if(login){ %>
 				<a href="<%=request.getContextPath()%>/member/logout.ez">로그아웃</a> &nbsp;&nbsp;&nbsp;
+			<div> 
+				<%=memberDto.getMemberNick()%>님 환영합니다
+				
+				</div>
 				<% } 
 				else { %>
 				<a href="<%=request.getContextPath()%>/member/login.jsp">로그인</a> &nbsp;&nbsp;&nbsp;
@@ -196,9 +207,11 @@
 
 				<%-- 관리자라면 관리 메뉴를 출력 --%>
 				<%if(auth){ %>
-				<a href="<%=request.getContextPath()%>/admin/list.jsp">회원관리</a>&nbsp;&nbsp;&nbsp;
-				<a href="<%=request.getContextPath()%>/admin/statistics.jsp">사이트관리</a>&nbsp;&nbsp;&nbsp;
-				<a href="<%=request.getContextPath()%>/admin/statistics.jsp">주문관리</a>&nbsp;&nbsp;&nbsp;
+				<a href="<%=request.getContextPath()%>/admin/member_list.jsp">회원관리</a>&nbsp;&nbsp;&nbsp;
+				<a href="<%=request.getContextPath()%>/product/product_admin_list.jsp">상품관리</a>&nbsp;&nbsp;&nbsp;
+				<a href="<%=request.getContextPath()%>/admin/buy_list.jsp">주문배송관리</a>&nbsp;&nbsp;&nbsp;
+				<a href="<%=request.getContextPath()%>/admin/banner.jsp">배너관리</a>&nbsp;&nbsp;&nbsp;
+				<a href="<%=request.getContextPath()%>/admin/statistics.jsp">통계</a>&nbsp;&nbsp;&nbsp;
 				
 				<%} %>
 			</td> 

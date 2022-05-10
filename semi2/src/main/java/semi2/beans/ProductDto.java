@@ -21,6 +21,7 @@ public class ProductDto {
 	private String productInfo;
 	private String productImg;
 	
+
 	
 	@Override
 	public String toString() {
@@ -32,8 +33,6 @@ public class ProductDto {
 				+ productProtein + ", productCarbohydrate=" + productCarbohydrate + ", productFat=" + productFat
 				+ ", productInfo=" + productInfo + ", productImg=" + productImg + "]";
 	}
-
-	
 	public int getProductNo() {
 		return productNo;
 	}

@@ -4,12 +4,12 @@
 
 <h1>상품 정보 입력</h1>
 
-<form action="add.ez" method="post" enctype="multipart/form-data">
+<form action="add.ez" method="post"  enctype="multipart/form-data">
 	<table>
 		<tr>
 			<th>상품이름</th>
 			<td>
-				<input type="text" name="productName" required>
+				<input type="text" name="productName" required >
 			</td>
 		</tr>
 		<tr>
@@ -100,7 +100,6 @@
 			<th>상품이미지</th>
 			<td>
 				<input type="file" name="productImg">
-				<input type="submit" value="File Upload">
 			</td>
 		</tr>
 		

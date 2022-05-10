@@ -7,21 +7,18 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	String memberId = request.getParameter("memberId");
-%>
-
-<%
+	
 	MemberDao memberDao = new MemberDao();
-	MemberDto memberDto = memberDao.selectOne("memberId");
+	MemberDto memberDto = memberDao.selectOne(memberId);
 %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 <h1> 회원 정보 수정 </h1>
 <form action = "member_update.ez" method="post">
-	
 		<div>
 			<label>아이디</label>
-			<input type="hidden" name="memberId" value="<%=memberDto.getMemberId()%>" required>
+			<input type="text" name="memberId" value="<%=memberDto.getMemberId()%>" required readonly>
 		</div>
 		<div>
 			<label>비밀번호</label>
@@ -64,12 +61,31 @@
 	    </div>
 	    <div>
 	    		<label>회원등급</label>
-	    		<select name="memberGrade" value="<%=memberDto.getMemberGrade()%>" required>
-	    			<option value="">선택</option>
-	    			<option>일반회원</option>
-	    			<option>우수회원</option>
-	    			<option>vip</option>
-	    			<option>관리자</option>
+	    		<select name="memberGrade" required>
+	    			<%if(memberDto.getMemberGrade().equals("일반회원")){ %>
+					<option selected>일반회원</option>
+					<%}else{ %>
+					<option>일반회원</option>
+					<%} %>
+					
+	    			<%if(memberDto.getMemberGrade().equals("우수회원")){ %>
+					<option selected>우수회원</option>
+					<%}else{ %>
+					<option>우수회원</option>
+					<%} %>
+					
+	    			<%if(memberDto.getMemberGrade().equals("vip")){ %>
+					<option selected>vip</option>
+					<%}else{ %>
+					<option>vip</option>
+					<%} %>					
+					
+	    			<%if(memberDto.getMemberGrade().equals("관리자")){ %>
+					<option selected>관리자</option>
+					<%}else{ %>
+					<option>관리자</option>
+					<%} %>
+					
 	    		</select>
 	    </div>
 	    <div>
@@ -81,7 +97,7 @@
 			  <a href="member_detail.jsp?memberId=<%=memberDto.getMemberId()%>">취소</a>
 	        <button type="submit">수정</button>
 	    </div>
-	</div>
+
 	</form>
 </body>
 
