@@ -303,5 +303,22 @@ public class BuyDao {
 		con.close();
 		return count;
 	}
-	
+	public int bNoExtraction(int orderNo) throws Exception{
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select * from buy where order_no=?";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setInt(1, orderNo);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		int extraction = 0;
+		if(rs.next()) {
+			extraction = rs.getInt("buy_no");
+		}
+		con.close();
+		return extraction;
+	}
 }
