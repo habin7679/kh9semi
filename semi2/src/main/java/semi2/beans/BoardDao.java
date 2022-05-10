@@ -261,6 +261,7 @@ public class BoardDao {
 									+ "order siblings by group_no desc, board_no asc "
 								+ ") TMP"
 						+ ") where rn between ? and ?";
+
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, begin);
 		ps.setInt(2, end);

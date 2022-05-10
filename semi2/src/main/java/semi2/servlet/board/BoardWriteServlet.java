@@ -46,6 +46,7 @@ public class BoardWriteServlet extends HttpServlet{
 			
 			String memberId = (String) req.getSession().getAttribute("member");
 			boardDto.setBoardWriter(memberId);
+			
 			//처리
 			BoardDao boardDao = new BoardDao();
 			boardDto.setBoardNo(boardDao.getSequence());
