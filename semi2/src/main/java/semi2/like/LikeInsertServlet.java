@@ -20,7 +20,9 @@ public class LikeInsertServlet extends HttpServlet{
 			LikeDto lDto = new LikeDto();
 
 			lDto.setMemberId((String)req.getSession().getAttribute("member"));
-			lDto.setProductNo(Integer.parseInt(req.getParameter("productNo")));
+			int a = Integer.parseInt(req.getParameter("productNo"));
+			
+			lDto.setProductNo(a);
 
 			LikeDao lDao = new LikeDao();
 			if(lDao.selectOne(lDto)!=null) {
