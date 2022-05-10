@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import semi2.beans.JdbcUtils;
+
 
 public class ProductDao {
 	//상품 등록
@@ -316,4 +318,5 @@ public class ProductDao {
 		return count > 0;
 	}
     
+
 }
