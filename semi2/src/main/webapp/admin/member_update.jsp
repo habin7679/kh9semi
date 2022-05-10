@@ -18,7 +18,7 @@
 <form action = "member_update.ez" method="post">
 		<div>
 			<label>아이디</label>
-			<input type="hidden" name="memberId" value="<%=memberDto.getMemberId()%>" required>
+			<input type="text" name="memberId" value="<%=memberDto.getMemberId()%>" required readonly>
 		</div>
 		<div>
 			<label>비밀번호</label>

@@ -2,9 +2,12 @@ package semi2.beans;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.PseudoColumnUsage;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+
+import oracle.net.aso.m;
 
 public class MemberDao {
 		//회원가입
@@ -379,28 +382,28 @@ public class MemberDao {
 			return memberDto;
 		}
 		
-				//회원정보 변경
-				public boolean edit(MemberDto memberDto) throws Exception {
-				Connection con = JdbcUtils.getConnection();
-				
-				String sql = "update member set member_nick = ?, member_birth = ?, "
-						+ "member_email = ?, member_phone = ?, member_post = ?, member_basic_address = ?, member_detail_address = ? "
-						+ "where member_id = ?";
-				
-				PreparedStatement ps = con.prepareStatement(sql);
-				ps.setString(1, memberDto.getMemberNick());
-				ps.setString(2, memberDto.getMemberBirth());
-				ps.setString(3, memberDto.getMemberEmail());
-				ps.setString(4, memberDto.getMemberPhone());
-				ps.setString(5, memberDto.getMemberPost());
-				ps.setString(6, memberDto.getMemberBasicAddress());
-				ps.setString(7, memberDto.getMemberDetailAddress());
-				ps.setString(8, memberDto.getMemberId());
-				
-				int count = ps.executeUpdate();
-				con.close();
-				
-				return count > 0;
+		//회원정보 변경
+		public boolean edit(MemberDto memberDto) throws Exception {
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "update member set member_nick = ?, member_birth = ?, "
+				+ "member_email = ?, member_phone = ?, member_post = ?, member_basic_address = ?, member_detail_address = ? "
+				+ "where member_id = ?";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, memberDto.getMemberNick());
+		ps.setString(2, memberDto.getMemberBirth());
+		ps.setString(3, memberDto.getMemberEmail());
+		ps.setString(4, memberDto.getMemberPhone());
+		ps.setString(5, memberDto.getMemberPost());
+		ps.setString(6, memberDto.getMemberBasicAddress());
+		ps.setString(7, memberDto.getMemberDetailAddress());
+		ps.setString(8, memberDto.getMemberId());
+		
+		int count = ps.executeUpdate();
+		con.close();
+		
+		return count > 0;
 			}
 	public boolean pointAdd(int totalPrice, String memberId) throws Exception{
 		Connection con = JdbcUtils.getConnection();
@@ -427,5 +430,120 @@ public class MemberDao {
 		
 		con.close();
 		return count>0;
+	}
+	
+	//페이징이 구현된 회원 목록
+	public List<MemberDto> listAllByPaging(int p, int s) throws Exception{
+		int end = p * s;
+		int begin = end - (s-1);
+		
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select * from ("
+				+ "select rownum rn, TMP.* from ("
+			       + "select * from member order by member_joindate desc"
+			        + ") TMP"
+			+ ")where rn between ? and ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, begin);
+		ps.setInt(2, end);
+		ResultSet rs = ps.executeQuery();
+		
+		List<MemberDto> list = new ArrayList<>();
+		
+		while(rs.next()) {
+			MemberDto memberDto = new MemberDto();
+			memberDto.setMemberId(rs.getString("member_id"));
+			memberDto.setMemberPw(rs.getString("member_pw"));
+			memberDto.setMemberName(rs.getString("member_name"));
+			memberDto.setMemberNick(rs.getString("member_nick"));
+			memberDto.setMemberBirth(rs.getString("member_birth"));
+			memberDto.setMemberEmail(rs.getString("member_email"));
+			memberDto.setMemberPhone(rs.getString("member_phone"));
+			memberDto.setMemberPost(rs.getString("member_post"));
+			memberDto.setMemberBasicAddress(rs.getString("member_basic_address"));
+			memberDto.setMemberDetailAddress(rs.getString("member_detail_address"));
+			memberDto.setMemberPoint(rs.getInt("member_point"));
+			memberDto.setMemberGrade(rs.getString("member_grade"));
+			memberDto.setMemberJoindate(rs.getDate("member_joindate"));
+			
+			list.add(memberDto);
+			}
+			con.close();
+			return list;
+	}
+	
+	
+	//페이징이 구현된 회원 검색
+	public List<MemberDto> selectListByPaging(int p, int s, String type, String keyword) throws Exception{
+		int end = p * s;
+		int begin = end - (s-1);
+		
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select * from ("
+				+ "select rownum rn, TMP.* from ("
+			       + "select * from member where instr(#1,?) > 0 order by member_joindate desc"
+			        + ") TMP"
+			+ ")where rn between ? and ?";
+		
+		sql = sql.replace("#1", type);
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, keyword);
+		ps.setInt(2, begin);
+		ps.setInt(3, end);
+		ResultSet rs = ps.executeQuery();
+		
+		List<MemberDto> list = new ArrayList<>();
+		
+		while(rs.next()) {
+			MemberDto memberDto = new MemberDto();
+			memberDto.setMemberId(rs.getString("member_id"));
+			memberDto.setMemberPw(rs.getString("member_pw"));
+			memberDto.setMemberName(rs.getString("member_name"));
+			memberDto.setMemberNick(rs.getString("member_nick"));
+			memberDto.setMemberBirth(rs.getString("member_birth"));
+			memberDto.setMemberEmail(rs.getString("member_email"));
+			memberDto.setMemberPhone(rs.getString("member_phone"));
+			memberDto.setMemberPost(rs.getString("member_post"));
+			memberDto.setMemberBasicAddress(rs.getString("member_basic_address"));
+			memberDto.setMemberDetailAddress(rs.getString("member_detail_address"));
+			memberDto.setMemberPoint(rs.getInt("member_point"));
+			memberDto.setMemberGrade(rs.getString("member_grade"));
+			memberDto.setMemberJoindate(rs.getDate("member_joindate"));
+			
+			list.add(memberDto);
+			}
+			con.close();
+			return list;
+	}
+	
+	// 회원목록 페이지 번호 계산
+	public int countByPaging() throws Exception {
+		Connection con = JdbcUtils.getConnection();
+		String sql = "select count(*) from member";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		int count = rs.getInt(1);
+		
+		con.close();
+		return count;
+	}
+	
+	// 회원검색 페이지 번호 계산
+	public int countByPaging(String type, String keyword) throws Exception {
+		Connection con = JdbcUtils.getConnection();
+		String sql = "select count(*) from member where instr(#1,?) > 0";
+		sql = sql.replace("#1", type);
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, keyword);
+		
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		int count = rs.getInt(1);
+		
+		con.close();
+		return count;
 	}
 }
