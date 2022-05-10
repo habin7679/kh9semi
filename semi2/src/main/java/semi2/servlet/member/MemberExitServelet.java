@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import semi2.beans.MemberDao;
 import semi2.beans.MemberDto;
-@WebServlet(urlPatterns = "/member/delete.ez")
+@WebServlet(urlPatterns = "/member/exit.ez")
 public class MemberExitServelet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

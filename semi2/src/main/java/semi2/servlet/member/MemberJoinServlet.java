@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import semi2.beans.DeliveryDao;
+import semi2.beans.DeliveryDto;
 import semi2.beans.MemberDao;
 import semi2.beans.MemberDto;
 @WebServlet(urlPatterns = "/member/join.ez")
@@ -18,19 +20,46 @@ public class MemberJoinServlet extends HttpServlet{
 			resp.setContentType("text/plain; charset=UTF-8");
 			
 			MemberDto memberDto= new MemberDto();
-			memberDto.setMemberId(req.getParameter("memberId"));
+			String memberId=req.getParameter("memberId");
+			memberDto.setMemberId(memberId);
+			
 			memberDto.setMemberPw(req.getParameter("memberPw"));
+			
 			memberDto.setMemberNick(req.getParameter("memberNick"));
-			memberDto.setMemberName(req.getParameter("memberName"));
+			
+			String memberName=req.getParameter("memberName");
+			memberDto.setMemberName(memberName);
+			
 			memberDto.setMemberBirth(req.getParameter("memberBirth"));
+			
 			memberDto.setMemberEmail(req.getParameter("memberEmail"));
-			memberDto.setMemberPhone(req.getParameter("memberPhone"));
-			memberDto.setMemberPost(req.getParameter("memberPost"));
-			memberDto.setMemberBasicAddress(req.getParameter("memberBasicAddress"));
-			memberDto.setMemberDetailAddress(req.getParameter("memberDetailAddress"));
+			
+			String memberPhone=req.getParameter("memberPhone");
+			memberDto.setMemberPhone(memberPhone);
+			
+			String memberPost=req.getParameter("memberPost");
+			memberDto.setMemberPost(memberPost);
+			
+			String memberBasicAddress=req.getParameter("memberBasicAddress");
+			memberDto.setMemberBasicAddress(memberBasicAddress);
+			
+			String memberDetailAddress=req.getParameter("memberDetailAddress");
+			memberDto.setMemberDetailAddress(memberDetailAddress);
 			
 			MemberDao memberDao= new MemberDao();
 			memberDao.join(memberDto);
+			
+			DeliveryDto deliveryDto= new DeliveryDto();
+			deliveryDto.setMemberId(memberId);
+			deliveryDto.setDeliveryName(memberName);
+			deliveryDto.setDeliveryPhone(memberPhone);
+			deliveryDto.setDeliveryPost(memberPost);
+			deliveryDto.setDeliveryBasicAddress(memberBasicAddress);
+			deliveryDto.setDeliveryDetailAddress(memberDetailAddress);
+			
+			DeliveryDao deliveryDao= new DeliveryDao();
+			deliveryDao.insert(deliveryDto);
+			
 			resp.sendRedirect("join_success.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();

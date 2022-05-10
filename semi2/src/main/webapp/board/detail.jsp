@@ -5,15 +5,19 @@
 <%@page import="semi2.beans.MemberDao"%>
 <%@page import="semi2.beans.BoardDto"%>
 <%@page import="semi2.beans.BoardDao"%>
+<%@page import="semi2.beans.BoardAttachmentDao"%>
+<%@page import="semi2.beans.BoardAttachmentDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <%
 	int boardNo = Integer.parseInt(request.getParameter("boardNo"));
-
 	BoardDao boardDao = new BoardDao();
 	boardDao.plusReadcount(boardNo);//조회수 증가 
 	BoardDto boardDto = boardDao.selectOne(boardNo);//게시글을 불러온다 
+	
+	BoardAttachmentDao boardAttachmentDao = new BoardAttachmentDao();
+	BoardAttachmentDto boardAttachmentDto = boardAttachmentDao.selectOne(boardNo);
 	
 	MemberDao memberDao = new MemberDao();
 	MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자 모든 정보 조회
@@ -32,12 +36,13 @@
 	//현재 글에 대한 댓글 목록을 조회
 	ReplyDao replyDao = new ReplyDao();
 	List<ReplyDto> replyList = replyDao.selectList(boardDto.getBoardNo()); 
+	
 %>    
     
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 <h1><%=boardDto.getBoardNo()%>번 게시글 보기</h1>
-
+<img src="/semi2/file/download.ez?attachmentNo=<%=boardAttachmentDto.getAttachmentNo()%>">
 <table border="1" width="750">
 	<tr>
 		<td>
@@ -51,7 +56,13 @@
 			</h2>
 		</td>
 	</tr>
-	<!--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 로그인 세션 추가 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+	<tr>
+		<td>
+			<%=boardDto.getBoardWriter()%>
+		 	(<%=memberDto.getMemberGrade()%>)
+		</td>
+	</tr>
+
 		<tr>
 		<td>
 			<%=boardDto.getBoardTime()%>
@@ -175,16 +186,3 @@
 </script>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -169,6 +169,7 @@ public class BoardDao {
 		con.close();
 	}
 	
+	
 	public void insertReview(BoardDto boardDto) throws Exception {
 		Connection con = JdbcUtils.getConnection();
 		
@@ -839,5 +840,6 @@ public class BoardDao {
 		
 		return count;
 	}
+	
 	
 }
