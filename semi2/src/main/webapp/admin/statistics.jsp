@@ -14,31 +14,31 @@
 
 <h1>관리자 대시보드</h1>
 
-<h2>연도별 현황</h2>
-<table border="1" width="500">
-	<thead>
-		<tr>
-			<th>연도</th>
-			<th>가입 인원 수</th> 
-			<th>최소 포인트</th>
-			<th>최대 포인트</th>
-			<th>포인트 합계</th>
-			<th>포인트 평균</th>
-		</tr>
-	</thead>
-	<tbody align="center">
-		<%for(YearStatusDto yearStatusDto : yearlyList){ %>
-		<tr>
-			<td><%=yearStatusDto.getYear()%></td>
-			<td><%=yearStatusDto.getCnt()%></td>
-			<td><%=yearStatusDto.getMin()%></td>
-			<td><%=yearStatusDto.getMax()%></td>
-			<td><%=yearStatusDto.getSum()%></td>
-			<td><%=yearStatusDto.getAvg()%></td>
-		</tr>
-		<%} %>
-	</tbody>
-</table>
+	<h2>연도별 현황</h2>
+	<table border="1" width="500">
+		<thead>
+			<tr>
+				<th>연도</th>
+				<th>가입 인원 수</th> 
+				<th>최소포인트</th>
+				<th>최대포인트</th>
+				<th>포인트합계</th>
+				<th>포인트평균</th>
+			</tr>
+		</thead>
+		<tbody align="center">
+			<%for(YearStatusDto yearStatusDto : yearlyList){ %>
+			<tr>
+				<td><%=yearStatusDto.getYear()%></td>
+				<td><%=yearStatusDto.getCnt()%></td>
+				<td><%=yearStatusDto.getMin()%></td>
+				<td><%=yearStatusDto.getMax()%></td>
+				<td><%=yearStatusDto.getSum()%></td>
+				<td><%=yearStatusDto.getAvg()%></td>
+			</tr>
+			<%} %>
+		</tbody>
+	</table>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
 
