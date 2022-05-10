@@ -19,6 +19,9 @@ public class MemberDeleteServlet extends HttpServlet{
 			MemberDao memberDao = new MemberDao();
 			boolean success = memberDao.delete(memberId);
 			
+			req.getSession().removeAttribute("member");
+			req.getSession().removeAttribute("admin");
+			
 			if(success) {
 				resp.sendRedirect("member_list.jsp");
 			}
