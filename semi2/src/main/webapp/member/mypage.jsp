@@ -24,7 +24,6 @@
 	  <div><a href="exit.jsp">회원 탈퇴하기</a></div>
 	  
 	  
-	  
 	 </div>
 	
 	
