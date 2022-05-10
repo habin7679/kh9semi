@@ -1,7 +1,5 @@
 package semi2.beans;
 
-//DB와 상관없이 일회용으로 쓰기 위한 클래스
-//값이 담겨있는 객체라고 해서 VO(Value Object)라고 부름
 public class StatisticVO {
 	private String type;
 	private int count, min, max;
