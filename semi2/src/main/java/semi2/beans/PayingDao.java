@@ -152,17 +152,3 @@ public class PayingDao {
 		return pDto;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
