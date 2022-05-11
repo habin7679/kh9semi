@@ -29,13 +29,13 @@ public class BuyDao {
 		ps.execute();
 		con.close();
 	}
-	public boolean updateStatus(String buyStatus, int buyNo) throws Exception{
+	public boolean updateStatus(String buyStatus, int orderNo) throws Exception{
 		Connection con = JdbcUtils.getConnection();
-		String sql = "update buy set buy_status = ? where buy_no=?";
+		String sql = "update buy set buy_status = ? where order_no=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
 		ps.setString(1, buyStatus);
-		ps.setInt(2, buyNo);
+		ps.setInt(2, orderNo);
 		
 		int count = ps.executeUpdate();
 		
@@ -58,12 +58,12 @@ public class BuyDao {
 		return count>0;
 	}
 	//관리자 - 주문취소
-	public boolean cancelInvoice (int buyNo) throws Exception{
+	public boolean cancelInvoice (int orderNo) throws Exception{
 		Connection con = JdbcUtils.getConnection();
-		String sql = "update buy set buy_status = '취소완료' where buy_no=?";
+		String sql = "update buy set buy_status = '취소완료' where order_no=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
-		ps.setInt(1, buyNo);
+		ps.setInt(1, orderNo);
 		
 		int count = ps.executeUpdate();
 		con.close();
