@@ -3,12 +3,15 @@ package semi2.beans;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
+//@@@@@ attachmentDao attachmentDto 수정시 다른분들게 말씀 후 수정 부탁드립니다 @@@@@
+//@@@@@ attachmentDao attachmentDto 수정시 다른분들게 말씀 후 수정 부탁드립니다 @@@@@
+//@@@@@ attachmentDao attachmentDto 수정시 다른분들게 말씀 후 수정 부탁드립니다 @@@@@
 //DAO : 영속성(Persistant) 항목을 접근하는 객체. 영원히 변하지 않는 것들을 관리(DB, File)
 public class AttachmentDao {
 	
 	//저장 위치를 지정
-	public static final String path = System.getProperty("user.home") + "/git/kh9semi/semi2/src/main/webapp/image";
+	//public static final String path = System.getProperty("user.home") + "/git/kh9semi/semi2/src/main/webapp/image";
+	public static final String path = System.getProperty("user.home") + "/upload";
 	
 	//등록 : 번호 생성 + 등록
 	public int getSequence() throws Exception {
