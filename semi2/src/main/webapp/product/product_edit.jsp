@@ -15,7 +15,7 @@
 <jsp:include page="/template/header.jsp"></jsp:include>
 <h1>상품 정보 수정</h1>
 
-<form action="edit.ez" method="post">
+<form action="edit.ez" method="post" enctype="multipart/form-data">
 <input type="hidden" name="productNo" value="<%=productDto.getProductNo()%>">
 <table>
 	<tr>
@@ -104,11 +104,11 @@
 		</td>
 	</tr>
 		<tr>
-		<th>상품이미지</th>
-		<td>
-			<input type="text" name="productImg" value="<%=productDto.getProductImg()%>">
-		</td>
-	</tr>
+			<th>상품이미지</th>
+			<td>
+				<input type="file" name="productImg">
+			</td>
+		</tr>
 	<tr>
 		<td align="right" colspan="2">
 			<input type="submit" value="수정하기">
