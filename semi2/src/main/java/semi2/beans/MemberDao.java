@@ -213,7 +213,7 @@ public class MemberDao {
 								+ "member_id, member_pw, member_name, member_nick, member_birth, member_email, "
 								+ "member_phone, member_post, member_basic_address, member_detail_address, "
 								+ "member_point, member_grade, member_joindate)"
-							+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, to_date(?,'YYYY-MM-DD'))";
+							+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, to_date(?,'YY-MM-DD'))";
 			PreparedStatement ps = con.prepareStatement(sql);
 			
 			ps.setString(1, memberDto.getMemberId());

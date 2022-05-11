@@ -76,14 +76,14 @@ boolean isSearch = type != null && !type.equals("") && keyword != null && !keywo
 			%>
 			<select name="type" class="form-input input-round">
 				<option value="member_id" selected>아이디</option>
-				<option value="member_name">이름</option>
+				<option value="member_grade">회원등급</option>
 			</select>
 			<%
 			} else {
 			%>
 			<select name="type" class="form-input input-round">
 				<option value="member_id">아이디</option>
-				<option value="member_name" selected>이름</option>
+				<option value="member_grade" selected>회원등급</option>
 			</select>
 			<%
 			}
