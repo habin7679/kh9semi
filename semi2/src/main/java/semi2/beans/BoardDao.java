@@ -78,6 +78,41 @@ public class BoardDao {
 		return list;
 	}
 	
+	//마이리뷰페이지
+	public List<BoardDto> myselectList(String type, String keyword) throws Exception {
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select * from board_review where instr(board_writer, ?) > 0 order by board_no desc";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, keyword);
+		ResultSet rs = ps.executeQuery();
+		
+		List<BoardDto> list = new ArrayList<>();
+		while(rs.next()) {
+			BoardDto boardDto = new BoardDto();
+			
+			boardDto.setBoardNo(rs.getInt("board_no"));
+			boardDto.setBoardHead(rs.getString("board_head"));
+			boardDto.setBoardTitle(rs.getString("board_title"));
+			boardDto.setBoardTime(rs.getDate("board_time"));
+			boardDto.setBoardReadcount(rs.getInt("board_readcount"));
+			boardDto.setBoardWriter(rs.getString("board_writer"));
+			boardDto.setBoardProductNo(rs.getInt("board_product_no"));
+			//추가한 컬럼 정보를 같이 조회하도록 변경
+			boardDto.setBoardReplycount(rs.getInt("board_replycount"));
+			//계층형 게시판 컬럼 추가 조회구문 작성
+			boardDto.setGroupNo(rs.getInt("group_no"));
+			boardDto.setSuperNo(rs.getInt("super_no"));
+			boardDto.setDepth(rs.getInt("depth"));
+			
+			list.add(boardDto);
+		}
+		
+		con.close();
+		
+		return list;
+	}
+	
 //	상세보기
 	public BoardDto selectOne(int boardNo) throws Exception {
 		Connection con = JdbcUtils.getConnection();

@@ -117,7 +117,7 @@
 
 						
 						<!-- 게시글 제목 링크 -->
-						<a href="detail_qna.jsp?boardNo=<%=boardDto.getBoardNo()%>">
+						<a href="detail.jsp?boardNo=<%=boardDto.getBoardNo()%>">
 							<%=boardDto.getBoardTitle()%>
 						</a>
 						
