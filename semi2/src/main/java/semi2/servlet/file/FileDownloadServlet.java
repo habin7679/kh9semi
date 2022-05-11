@@ -22,7 +22,7 @@ public class FileDownloadServlet extends HttpServlet{
 			//준비 : attachmentNo
 			int attachmentNo = Integer.parseInt(req.getParameter("attachmentNo"));
 			
-			//처리
+
 			AttachmentDao attachmentDao = new AttachmentDao();
 			AttachmentDto attachmentDto = attachmentDao.selectOne(attachmentNo);
 			if(attachmentDto == null) {

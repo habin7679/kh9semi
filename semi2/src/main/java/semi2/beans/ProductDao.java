@@ -6,9 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-
-
-import semi2.beans.JdbcUtils;
+import semi2.beans.ProductDto;
 
 
 public class ProductDao {
@@ -86,7 +84,7 @@ public class ProductDao {
         productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
         productDto.setProductFat(rs.getInt("product_fat"));
         productDto.setProductInfo(rs.getString("product_info"));
-       productDto.setProductImg(rs.getString("product_img"));
+       //productDto.setProductImg(rs.getString("product_img"));
 
         list.add(productDto);
     }
@@ -121,7 +119,7 @@ public class ProductDao {
         productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
         productDto.setProductFat(rs.getInt("product_fat"));
         productDto.setProductInfo(rs.getString("product_info"));
-        productDto.setProductImg(rs.getString("product_img"));
+       // productDto.setProductImg(rs.getString("product_img"));
         list.add(productDto);
         }
         con.close();
@@ -154,7 +152,7 @@ public class ProductDao {
             productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
             productDto.setProductFat(rs.getInt("product_fat"));
             productDto.setProductInfo(rs.getString("product_info"));
-            productDto.setProductImg(rs.getString("product_img"));
+           // productDto.setProductImg(rs.getString("product_img"));
         }
         con.close();
         return productDto;
@@ -229,7 +227,7 @@ public class ProductDao {
     	return list;
     }
     //상품 카테고리
-    public ProductDto katgorie(String productSort) throws Exception {
+    public List<ProductDto> categorie(String productSort) throws Exception {
         Connection con = JdbcUtils.getConnection();
 
         String sql = "select * from product where product_sort=?";
@@ -237,8 +235,10 @@ public class ProductDao {
         ps.setString(1, productSort);
         ResultSet rs = ps.executeQuery();
         ProductDto productDto = null;
+        
+        List<ProductDto> list  = new ArrayList<>();
 
-        if(rs.next()) {
+        while(rs.next()) {
             productDto = new ProductDto();
             productDto.setProductNo(rs.getInt("product_no"));
             productDto.setProductName(rs.getString("product_name"));
@@ -255,9 +255,12 @@ public class ProductDao {
             productDto.setProductFat(rs.getInt("product_fat"));
             productDto.setProductInfo(rs.getString("product_info"));
             productDto.setProductImg(rs.getString("product_img"));
+            
+            list.add(productDto);
         }
         con.close();
-        return productDto;
+    
+        return list;
     }
     //재고
     public boolean stockMinus(int productNo, int orderAmount) throws Exception{

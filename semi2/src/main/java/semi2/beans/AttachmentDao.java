@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 public class AttachmentDao {
 	
 	//저장 위치를 지정
-	public static final String path = System.getProperty("user.home") + "/upload";
+	public static final String path = System.getProperty("user.home") + "/git/kh9semi/semi2/src/main/webapp/image";
 	
 	//등록 : 번호 생성 + 등록
 	public int getSequence() throws Exception {
@@ -51,7 +51,7 @@ public class AttachmentDao {
 		ps.setInt(1, attachmentNo);
 		ResultSet rs = ps.executeQuery();
 		
-		AttachmentDto attachmentDto;
+		AttachmentDto attachmentDto = null;
 		if(rs.next()) {
 			attachmentDto = new AttachmentDto();
 			
@@ -61,13 +61,21 @@ public class AttachmentDao {
 			attachmentDto.setAttachmentType(rs.getString("attachment_type"));
 			attachmentDto.setAttachmentSize(rs.getLong("attachment_size"));
 		}
-		else {
-			attachmentDto = null;
-		}
 		
 		con.close();
 		
 		return attachmentDto;
 	}
-	
+	public boolean delete(int no) throws Exception{
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "delete attachment where attachment_no = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, no);
+		int count = ps.executeUpdate();
+		
+		con.close();
+		
+		return count > 0;
+	}
 }
