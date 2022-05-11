@@ -308,12 +308,12 @@ public class ProductDao {
     }
     
     //삭제
-	public boolean delete(int productNo) throws Exception{
+	public boolean delete(int no) throws Exception{
 		Connection con = JdbcUtils.getConnection();
 		
 		String sql = "delete product where product_no = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setInt(1, productNo);
+		ps.setInt(1, no);
 		int count = ps.executeUpdate();
 		
 		con.close();

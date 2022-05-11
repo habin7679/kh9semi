@@ -84,11 +84,11 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
 		<th>상품정보</th>
 			<td><%=productDto.getProductInfo()%></td>
 	</tr>
-	<%-- <tr>
+	 <tr>
 		<th>상품이미지</th>
-			<td> <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"></td>
+			<td> <img src="/semi2/file/download.ez?attachmentNo=10"></td>
 	</tr>
-	--%>
+	
 	
 	
 </table>
@@ -96,6 +96,6 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
 
 <h2><a href="product_admin_list.jsp">목록으로 돌아가기</a></h2>
 <h2><a href="product_edit.jsp?product_no=<%=productDto.getProductNo()%>">상품 수정</a></h2>
-<h2><a href="delete.ez?product_no=<%=productDto.getProductNo()%>">상품 삭제</a></h2>
+<h2><a href="delete.ez?product_no=<%=productDto.getProductNo()%>" >상품 삭제</a></h2>
 		
 <jsp:include page="/template/footer.jsp"></jsp:include>

@@ -66,5 +66,16 @@ public class AttachmentDao {
 		
 		return attachmentDto;
 	}
-	
+	public boolean delete(int no) throws Exception{
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "delete attachment where attachment_no = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, no);
+		int count = ps.executeUpdate();
+		
+		con.close();
+		
+		return count > 0;
+	}
 }
