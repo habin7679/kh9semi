@@ -45,7 +45,7 @@
 </script>
 
 	<form action="change_pw.ez" method="post">
-	<div>
+	<div class="container w500">
 		<div>
 			<h1>비밀번호 변경</h1>
 		</div>
@@ -56,18 +56,18 @@
 		
 		<div>
 			<label>새 비밀번호</label>
-			<input type="text" name="memberPw" placeholder="첫자 영어 대문자,영어, 숫자, 특수문자 8~16자로 작성">
+			<input type="text" name="memberPw" placeholder="첫자 영어 대문자,영어, 숫자, 특수문자 8~16자로 작성" class="form-input fill">
 			<span></span>
 		</div>
 		
 		<div>
 			<label>새 비밀번호 확인</label>
-			<input type="text" name="memberPw2" placeholder="첫자 영어 대문자,영어, 숫자, 특수문자 8~16자로 작성">
+			<input type="text" name="memberPw2" placeholder="첫자 영어 대문자,영어, 숫자, 특수문자 8~16자로 작성" class="form-input fill">
 			<span></span>
 		</div>
 		
 		<div>
-			<input type="submit" value="비밀번호  변경하기">
+			<input type="submit" value="비밀번호  변경하기" class="btn btn-primary fill">
 		</div>
 	</div>
 	</form>

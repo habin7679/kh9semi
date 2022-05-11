@@ -51,47 +51,47 @@
 </script>
 
 <form action="edit.ez" method="post">
-	<div>
+	<div class="container w500">
 	    <div class="row center">
 	        <h1>개인정보 변경</h1>
 	    </div>
 	    <div class="row">
 	        <label>닉네임</label>
-	        <input type="text" name="memberNick" autocomplete="off" value="<%=memberDto.getMemberNick()%>">
+	        <input type="text" name="memberNick" autocomplete="off" value="<%=memberDto.getMemberNick()%>" class="form-input fill">
 	    </div>
 	    <div class="row">
 	        <label>생년월일</label><br>
-	        <input type="date" name="memberBirth" autocomplete="off" value="<%=memberDto.getMemberBirth()%>">
+	        <input type="date" name="memberBirth" autocomplete="off" value="<%=memberDto.getMemberBirth()%>" class="form-input fill">
 	    </div>
 	    <div class="row">
 	        <label>전화번호</label>
-	        <input type="tel" name="memberPhone" autocomplete="off" value="<%=memberDto.getMemberPhone()%>">
+	        <input type="tel" name="memberPhone" autocomplete="off" value="<%=memberDto.getMemberPhone()%>" class="form-input fill">
 	    </div>
 	    <div class="row">
 	        <label>이메일</label>
-	        <input type="email" name="memberEmail" autocomplete="off" value="<%=memberDto.getMemberEmail()%>">
+	        <input type="email" name="memberEmail" autocomplete="off" value="<%=memberDto.getMemberEmail()%>" class="form-input fill">
 	    </div>
 	    <div class="row">
 	        <label>주소</label><br>
-	        <input type="text" name="memberPost" autocomplete="off" placeholder="우편번호" value="<%=memberDto.getMemberPost()%>">
+	        <input type="text" name="memberPost" autocomplete="off" placeholder="우편번호" value="<%=memberDto.getMemberPost()%>" class="form-input fill">
 	        <a href="#" class="link link-btn">검색</a>
 	    </div>
 	    <div class="row">
-	        <input type="text" name="memberBasicAddress" autocomplete="off" placeholder="기본주소" value="<%=memberDto.getMemberBasicAddress()%>">
+	        <input type="text" name="memberBasicAddress" autocomplete="off" placeholder="기본주소" value="<%=memberDto.getMemberBasicAddress()%>" class="form-input fill">
 	    </div>
 	    <div class="row">
-	        <input type="text" name="memberDetailAddress" autocomplete="off" placeholder="상세주소" value="<%=memberDto.getMemberDetailAddress()%>">
+	        <input type="text" name="memberDetailAddress" autocomplete="off" placeholder="상세주소" value="<%=memberDto.getMemberDetailAddress()%>" class="form-input fill">
 	    </div>
 	     <div class="row">
 	        <label>비밀번호</label>
-	        <input type="password" name="memberPw">
+	        <input type="password" name="memberPw" class="form-input fill">
 	    </div>
 	    <div class="row">
 	        <label>비밀번호 확인</label>
-	        <input type="password" name="memberPw2">
+	        <input type="password" name="memberPw2" class="form-input fill">
 	    </div>
 	    <div class="row">
-	        <button type="submit">정보 변경하기</button>
+	        <button type="submit" class="btn fill btn-primary">정보 변경하기</button>
 	    </div>
 	    
 		<% if(request.getParameter("error") != null){ %>

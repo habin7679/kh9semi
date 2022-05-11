@@ -15,12 +15,13 @@ public class DeliveryUpdateServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			String memberId=(String) req.getSession().getAttribute("member");
+			String memberId=(String)req.getSession().getAttribute("member");
 			String deliveryPost=req.getParameter("deliveryPost");
 			
 			DeliveryDao deliveryDao= new DeliveryDao();
-			deliveryDao.update2(memberId, deliveryPost);
 			deliveryDao.update1(memberId);
+			deliveryDao.update2(memberId, deliveryPost);
+			
 			
 			resp.sendRedirect(req.getContextPath()+"/delivery/delivery_list.jsp");
 		} catch (Exception e) {

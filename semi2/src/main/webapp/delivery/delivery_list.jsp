@@ -14,11 +14,11 @@ List<DeliveryDto> list=delivaeryDao.select(memberId);
 <div>
 	<h1>배송지 관리</h1>
 	<div>
-		<button type="submit">+ 신규배송지 추가</button>
+		<button type="submit" class="btn">+ 신규배송지 추가</button>
 	</div>
 	
-	<div>
-		<table>
+	<div class="container w800">
+		<table class="table">
 			<thead>
 				<tr>
 					<th>받는분</th>
@@ -46,7 +46,7 @@ List<DeliveryDto> list=delivaeryDao.select(memberId);
 					<td><%=deliveryDto.getDeliveryPost() %><%=deliveryDto.getDeliveryBasicAddress() %><%=deliveryDto.getDeliveryDetailAddress() %></td>
 					<td><%=deliveryDto.getDeliveryPhone() %></td>
 					<td>
-					<a href="<%=request.getContextPath()%>/delivery/delete.ez?deliveryPost=<%=deliveryDto.getDeliveryPost() %>">삭제</a>
+					<a href="<%=request.getContextPath()%>/delivery/delete.ez?deliveryPost=<%=deliveryDto.getDeliveryPost() %>">삭제</a><br>
 					<a href="<%=request.getContextPath()%>/delivery/update.ez?deliveryPost=<%=deliveryDto.getDeliveryPost()%>">대표배송지로 설정</a>
 					</td>
 				</tr>

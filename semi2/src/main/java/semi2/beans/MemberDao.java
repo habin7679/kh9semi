@@ -273,6 +273,7 @@ public class MemberDao {
 				memberDto = new MemberDto();
 				memberDto.setMemberId(rs.getString("member_id"));
 				memberDto.setMemberPw(rs.getString("member_pw"));
+				memberDto.setMemberGrade("member_grade");
 			
 			}
 			else {

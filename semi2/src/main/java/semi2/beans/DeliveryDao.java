@@ -99,7 +99,7 @@ public class DeliveryDao {
 		public boolean update1(String memberId) throws Exception {
 			Connection con = JdbcUtils.getConnection();
 			
-			String sql = "update delivery set delivery_menu='일반배송지' where delivery_menu='대표배송지' and member_id=?'";
+			String sql = "update delivery set delivery_menu='일반배송지' where delivery_menu='대표배송지' and member_id=?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, memberId);
 			int count = ps.executeUpdate();
@@ -110,13 +110,13 @@ public class DeliveryDao {
 		}
 		
 		//수정
-				public boolean update2(String memberId, String deliveryPost) throws Exception {
+			public boolean update2(String memberId, String deliveryPost) throws Exception {
 					Connection con = JdbcUtils.getConnection();
 					
-					String sql = "update delivery set delivery_menu='대표배송지' where delivery_post=? and member_id=?'";
+					String sql = "update delivery set delivery_menu='대표배송지' where member_id=? and delivery_post=?";
 					PreparedStatement ps = con.prepareStatement(sql);
-					ps.setString(1, deliveryPost);
-					ps.setString(2, memberId);
+					ps.setString(1, memberId);
+					ps.setString(2, deliveryPost);
 					int count = ps.executeUpdate();
 					
 					con.close();
