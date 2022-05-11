@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import semi2.beans.BuyDao;
 import semi2.beans.BuyDto;
+import semi2.beans.MemberDao;
 import semi2.beans.OrderDao;
 import semi2.beans.OrderDto;
 import semi2.beans.ProductDao;
@@ -30,12 +31,15 @@ public class BuyCancelServlet extends HttpServlet{
 				OrderDao oDao = new OrderDao();
 				List<OrderDto> list = oDao.selectAll(oNo);
 				ProductDao productDao = new ProductDao();
-				
+				int totalPrice = 0;
 				for(int i =0; i<list.size(); i++) {
 					int productNo = list.get(i).getProductNo();
 					int orderAmount = list.get(i).getOrderCount();
 					productDao.stockPlus(productNo, orderAmount);
+					totalPrice+=list.get(i).getOrderPrice();
 				}
+				MemberDao mDao = new MemberDao();
+				mDao.pointMinus(totalPrice, (String)req.getSession().getAttribute("member"));
 				resp.sendRedirect(req.getContextPath()+"/buy/list.jsp");				
 				
 			}

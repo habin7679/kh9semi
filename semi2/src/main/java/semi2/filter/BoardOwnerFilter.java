@@ -1,5 +1,4 @@
 package semi2.filter;
-
 import java.io.IOException;
 
 import javax.servlet.Filter;
@@ -13,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import semi2.beans.BoardDao;
 import semi2.beans.BoardDto;
+import semi2.beans.MemberDao;
+import semi2.beans.MemberDto;
 
 @WebFilter(filterName="f3", urlPatterns = {
 		"/board/edit.jsp", "/board/edit.kh",
@@ -27,14 +28,17 @@ public class BoardOwnerFilter implements Filter{
 		try {
 			//준비 : 파라미터의 게시글번호(boardNo)와 세션의 권한(auth) 아이디(login)
 			//[1] 관리자인지 확인해서 관리자라면 통과!
-			String memberGrade = (String) req.getSession().getAttribute("auth");
-			if(memberGrade.equals("관리자")) {
+			String memberId = (String)req.getSession().getAttribute("member");
+			MemberDao memberDao = new MemberDao();
+			MemberDto memberDto = memberDao.selectOne(memberId);
+					
+					
+			if(memberDto.getMemberGrade().equals("관리자")) {
 				chain.doFilter(request, response);
 				return;
 			}
 			
 			//[2] 작성자 본인인지 확인
-			String memberId = (String)req.getSession().getAttribute("member");
 			int boardNo = Integer.parseInt(req.getParameter("boardNo"));
 			
 			BoardDao boardDao = new BoardDao();

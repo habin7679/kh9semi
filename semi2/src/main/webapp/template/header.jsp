@@ -132,12 +132,16 @@
 
                     <ul class="nav">
  
- 
+          	<div>
+            <% if(login){ %>
+            	<%=memberDto.getMemberNick()%>님 환영합니다 &nbsp;&nbsp;&nbsp;
+            <% } %>
+				</div>
 
                 <% if(login){ %>
 				<a href="<%=request.getContextPath()%>/member/logout.ez">로그아웃</a> &nbsp;&nbsp;&nbsp;
 			<div> 
-				<%=memberDto.getMemberNick()%>님 환영합니다
+			
 				
 				</div>
 				<% } 
@@ -145,9 +149,10 @@
 				<a href="<%=request.getContextPath()%>/member/login.jsp">로그인</a> &nbsp;&nbsp;&nbsp;
 				<a href="<%=request.getContextPath()%>/member/join.jsp">회원가입</a> &nbsp;&nbsp;&nbsp;
 				<% } %>
-				    <a href="<%=request.getContextPath()%>/member/mypage.jsp">마이페이지</a> &nbsp;&nbsp;&nbsp;
-                        <a href="<%=request.getContextPath()%>/buy/list.jsp">주문/배송조회</a> &nbsp;&nbsp;&nbsp;
-			
+				<a href="<%=request.getContextPath()%>/member/mypage.jsp">마이페이지</a> &nbsp;&nbsp;&nbsp;
+            <a href="<%=request.getContextPath()%>/buy/list.jsp">주문/배송조회</a> &nbsp;&nbsp;&nbsp;<br>
+         	
+
                     </ul>
                 </ul>
             </div>

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import semi2.beans.BuyDao;
 import semi2.beans.BuyDto;
+import semi2.beans.MemberDao;
 import semi2.beans.OrderDao;
 import semi2.beans.OrderDto;
 import semi2.beans.PayingDao;
@@ -36,6 +37,7 @@ public class payingInsertServlet extends HttpServlet {
 //			java.sql.Timestamp payingDeliveryDate = java.sql.TimeStamp.valueOf(req.getParameter("payingDeliveryDate"));
 			java.sql.Date payingDeliveryDate = java.sql.Date.valueOf(req.getParameter("payingDeliveryDate"));
 			payingDto.setPayingDeliveryDate(payingDeliveryDate);
+			payingDto.setPayingDeliveryFee(Integer.parseInt(req.getParameter("deliveryFee")));
 			payingDto.setPayingDeliveryTime(Integer.parseInt(req.getParameter("payingDeliveryTime")));
 			
 			String memberId = (String)req.getSession().getAttribute("member");
@@ -44,12 +46,18 @@ public class payingInsertServlet extends HttpServlet {
 			OrderDao orderDao = new OrderDao();
 
 			List<OrderDto> list = orderDao.selectAll(orderNo);
+			
+			int totalPrice = 0;
+			
 			for(int i =0; i<list.size(); i++) {
 				int productNo = list.get(i).getProductNo();
 				int orderAmount = list.get(i).getOrderCount();
-
+				totalPrice+=list.get(i).getOrderPrice();
 				productDao.stockMinus(productNo, orderAmount);
 			}
+			
+			MemberDao mDao = new MemberDao();
+			mDao.pointAdd(totalPrice, memberId);
 			
 			boolean is = payingDao.insertRest2(payingDto);
 			if(is) {
@@ -58,7 +66,8 @@ public class payingInsertServlet extends HttpServlet {
 				bDto.setMemberId(memberId);
 				bDto.setOrderNo(orderNo);
 				bDao.insertCredit(bDto);
-				resp.sendRedirect(req.getContextPath()+"/buy/detail.jsp?orderNo="+orderNo);
+				int buyNo = bDao.bNoExtraction(orderNo);
+				resp.sendRedirect(req.getContextPath()+"/buy/detail.jsp?buyNo="+buyNo);
 			}
 			else {
 				resp.sendRedirect(req.getContextPath());
@@ -69,3 +78,4 @@ public class payingInsertServlet extends HttpServlet {
 		}
 	}
 }
+

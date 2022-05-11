@@ -96,4 +96,3 @@ public class ProductInsertServlet extends HttpServlet {
 			
 		}
 	}
-

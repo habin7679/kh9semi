@@ -27,6 +27,7 @@
 	
 	//관리자인지 판정
 	String memberGrade = (String)session.getAttribute("auth");
+	String boardhead = boardDto.getBoardHead();
 	boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
 	
 	//현재 글에 대한 댓글 목록을 조회
@@ -134,7 +135,7 @@
 				
 					<%-- 본인 글인 경우 수정을 할 수 있도록 준비된 줄 (본인글 : replyWriter == 세션의 회원아이디) --%>
 					
-					<%if(isReplyOwner){ %>
+					<%if(boardhead.equals("문의")) {%>
 						<tr align="right" class="edit-row">
 							<td colspan="3">
 								<form action="reply_edit.ez" method="post">
@@ -143,19 +144,34 @@
 									<textarea name="replyContent" rows="4" cols="100"><%=replyDto.getReplyContent()%></textarea>
 									<input type="button" value="변경 취소" class="cancel-btn">
 									<input type="submit" value="댓글 수정">
-								</form>
-							</td>
-						</tr>
-					<%} %>
-				<%} %>
+									</form>
+						</td>
+					</tr>
+				<%}else {
+					if(isReplyOwner){ %>
+						<tr align="right" class="edit-row">
+							<td colspan="3">
+								<form action="reply_edit.ez" method="post">
+									<input type="hidden" name="replyNo" value="<%=replyDto.getReplyNo()%>">
+									<input type="hidden" name="replyTarget" value="<%=replyDto.getReplyTarget()%>">
+									<textarea name="replyContent" rows="4" cols="100"><%=replyDto.getReplyContent()%></textarea>
+									<input type="button" value="변경 취소" class="cancel-btn">
+									<input type="submit" value="댓글 수정">
+									
+							</form>
+						</td>
+					</tr>
 			</table>
-
 		</td>
 	</tr>
 </table>
-<%} else{%>
+<%}else{%>
 <h1>작성자가 아닙니다.</h1>
-<%} %>
+	<% } %>
+<% } %>
+<% } %>
+<% } %>
+
 
 <!-- 특별출연 : 프론트엔드 스크립트인 jQuery를 이용하여 수정버튼과 취소버튼을 누르면 화면이 변경되도록 구현  -->
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>

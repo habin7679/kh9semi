@@ -169,6 +169,7 @@ public class BoardDao {
 		con.close();
 	}
 	
+	
 	public void insertReview(BoardDto boardDto) throws Exception {
 		Connection con = JdbcUtils.getConnection();
 		
@@ -260,6 +261,7 @@ public class BoardDao {
 									+ "order siblings by group_no desc, board_no asc "
 								+ ") TMP"
 						+ ") where rn between ? and ?";
+
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, begin);
 		ps.setInt(2, end);
@@ -839,5 +841,6 @@ public class BoardDao {
 		
 		return count;
 	}
+	
 	
 }

@@ -205,14 +205,13 @@ public class BuyDao {
 		return count > 0;
 		
 	}
-	
 	//페이징이 구현된 주문 목록
 	public List<BuyDto> listAllByPaging(int p, int s) throws Exception{
 		int end = p * s;
 		int begin = end - (s-1);
-		
+
 		Connection con = JdbcUtils.getConnection();
-		
+
 		String sql = "select * from ("
 				+ "select rownum rn, TMP.* from ("
 			       + "select * from buy order by buy_no desc"
@@ -222,9 +221,9 @@ public class BuyDao {
 		ps.setInt(1, begin);
 		ps.setInt(2, end);
 		ResultSet rs = ps.executeQuery();
-		
+
 		List<BuyDto> list = new ArrayList<>();
-		
+
 		while(rs.next()) {
 			BuyDto bDto = new BuyDto();
 			bDto.setBuyNo(rs.getInt("buy_no"));
@@ -232,36 +231,36 @@ public class BuyDao {
 			bDto.setOrderNo(rs.getInt("order_no"));
 			bDto.setBuyInvoice(rs.getLong("buy_invoice"));
 			bDto.setBuyStatus(rs.getString("buy_status"));
-			
+
 			list.add(bDto);
 		}
 		con.close();
 		return list;
 	}
-	
-	
+
+
 	//페이징이 구현된 회원 검색
 	public List<BuyDto> selectListByPaging(int p, int s, String type, String keyword) throws Exception{
 		int end = p * s;
 		int begin = end - (s-1);
-		
+
 		Connection con = JdbcUtils.getConnection();
-		
+
 		String sql = "select * from ("
 				+ "select rownum rn, TMP.* from ("
 			       + "select * from buy where instr(#1,?) > 0 order by buy_no desc"
 			        + ") TMP"
 			+ ")where rn between ? and ?";
-		
+
 		sql = sql.replace("#1", type);
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, keyword);
 		ps.setInt(2, begin);
 		ps.setInt(3, end);
 		ResultSet rs = ps.executeQuery();
-		
+
 		List<BuyDto> list = new ArrayList<>();
-		
+
 		while(rs.next()) {
 			BuyDto bDto = new BuyDto();
 			bDto.setBuyNo(rs.getInt("buy_no"));
@@ -269,13 +268,13 @@ public class BuyDao {
 			bDto.setOrderNo(rs.getInt("order_no"));
 			bDto.setBuyInvoice(rs.getLong("buy_invoice"));
 			bDto.setBuyStatus(rs.getString("buy_status"));
-			
+
 			list.add(bDto);
 		}
 		con.close();
 		return list;
 	}
-	
+
 	// 회원목록 페이지 번호 계산
 	public int countByPaging() throws Exception {
 		Connection con = JdbcUtils.getConnection();
@@ -284,11 +283,11 @@ public class BuyDao {
 		ResultSet rs = ps.executeQuery();
 		rs.next();
 		int count = rs.getInt(1);
-		
+
 		con.close();
 		return count;
 	}
-	
+
 	// 회원검색 페이지 번호 계산
 	public int countByPaging(String type, String keyword) throws Exception {
 		Connection con = JdbcUtils.getConnection();
@@ -296,13 +295,30 @@ public class BuyDao {
 		sql = sql.replace("#1", type);
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, keyword);
-		
+
 		ResultSet rs = ps.executeQuery();
 		rs.next();
 		int count = rs.getInt(1);
-		
+
 		con.close();
 		return count;
 	}
-	
+	public int bNoExtraction(int orderNo) throws Exception{
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select * from buy where order_no=?";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setInt(1, orderNo);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		int extraction = 0;
+		if(rs.next()) {
+			extraction = rs.getInt("buy_no");
+		}
+		con.close();
+		return extraction;
+	}
 }
