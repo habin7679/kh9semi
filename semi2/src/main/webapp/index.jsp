@@ -24,7 +24,7 @@
 	<div class="swiper">
 		<div class="swiper-wrapper">
 			<div class="swiper-slide">
-				<img src="<%=request.getContextPath()%>/image/Banner1.png"
+				<img src="/semi2/file/download.ez?attachmentNo="
 					style="width: 50%; text-align: center; display: block; margin-left: auto; margin-right: auto;">
 			</div>
 			<div class="swiper-slide">
