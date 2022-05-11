@@ -116,7 +116,7 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
 	</tr>
 	<tr>
 		<th>상품이미지</th>
-				<td><img src="/semi2/file/download.ez?attachmentNo=11<%--<%=productattachmentDto.getAttachmentNo()%>--%>"  width="200" height="200"></td>
+				<td><img src="/semi2/file/download.ez?attachmentNo=5<%--<%=productattachmentDto.getAttachmentNo()%>--%>"  width="200" height="200"></td>
 	</tr>
 	<tr>
 		<td><input type="button" value="구매하기"></td>

@@ -650,4 +650,3 @@ public class ProductDao {
     		return extraction;
     	}
 }
-}
