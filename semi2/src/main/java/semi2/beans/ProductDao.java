@@ -320,6 +320,22 @@ public class ProductDao {
 		
 		return count > 0;
 	}
-    
+	
+        public ProductDto selectOneCart(int productNo) throws Exception {
+        	Connection con = JdbcUtils.getConnection();
+
+        	String sql = "select * from product where product_no=?";
+        	PreparedStatement ps = con.prepareStatement(sql);
+        	ps.setInt(1, productNo);
+        	ResultSet rs = ps.executeQuery();
+        	ProductDto productDto = new ProductDto();
+
+        	if(rs.next()) {
+            		productDto.setProductName(rs.getString("product_name"));
+            		productDto.setProductPrice(rs.getInt("product_price"));
+        	}
+        	con.close();
+        	return productDto;
+    }
 
 }
