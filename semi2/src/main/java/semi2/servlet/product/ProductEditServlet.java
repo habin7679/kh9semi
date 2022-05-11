@@ -87,9 +87,8 @@ public class ProductEditServlet extends HttpServlet {
 			int no1 = Integer.parseInt(mRequest.getParameter("productNo"));
 			boolean result = productDao.delete(no1);
 			AttachmentDao attachmentDao = new AttachmentDao();
-			boolean result1 = attachmentDao.delete(ano); 
 			
-			if(result&&result1) {
+			if(result) {
 				resp.sendRedirect("product_edit_success.jsp");
 			}
 			else {
