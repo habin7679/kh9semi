@@ -6,19 +6,57 @@
 
 <%-- 준비 --%>
 <%
-request.setCharacterEncoding("UTF-8");
-String type = request.getParameter("type");
-String keyword = request.getParameter("keyword");
+	request.setCharacterEncoding("UTF-8");
+	String type = request.getParameter("type");
+	String keyword = request.getParameter("keyword");
+	
+	int p;
+	try {
+		p = Integer.parseInt(request.getParameter("p"));
+		if(p <= 0)	throw new Exception();
+	}
+	catch(Exception e){
+		p = 1;
+	}
+	
+	int s;
+	try {
+		s = Integer.parseInt(request.getParameter("s"));
+		if(s <= 0) throw new Exception();
+	}
+	catch(Exception e){
+		s = 10;
+}
 %>
 <%
 boolean isSearch = type != null && !type.equals("") && keyword != null && !keyword.equals("");
-ProductDao productDao = new ProductDao();
-List<ProductDto> list;
-if (isSearch) {
-	list = productDao.selectList(type, keyword);
-} else {
-	list = productDao.listAll();
-}
+	ProductDao productDao = new ProductDao();
+	List<ProductDto> list;
+		if (isSearch) {
+			list = productDao.selectListByPagingForAdmin(p, s, type, keyword);
+		} else {
+			list = productDao.listByPagingForAdmin(p, s);
+		}
+%>
+<%
+	int count;
+	if(isSearch){
+		count = productDao.countByPaging(type, keyword);
+	}
+	else{
+		count = productDao.countByPaging();
+	}
+	
+	int lastPage = (count + s - 1) / s;
+	
+	int blockSize = 10;
+	
+	int endBlock = (p + blockSize - 1) / blockSize * blockSize;
+	int startBlock = endBlock - (blockSize - 1);
+	
+	if(endBlock > lastPage){
+		endBlock = lastPage;
+	}
 %>
 
 <%-- 출력 --%>
@@ -93,8 +131,6 @@ if (list.isEmpty()) {
 				<th>제품 가격</th>
 				<th>재고</th>
 				<th>제조사</th>
-				<th>제조일</th>
-				<th>폐기일</th>
 				<th>행사 여부</th>
 				<th>기타</th>
 			</tr>
@@ -109,9 +145,7 @@ if (list.isEmpty()) {
 				<td><%=productDto.getProductSort()%></td>
 				<td><%=productDto.getProductPrice()%></td>
 				<td><%=productDto.getProductStock()%></td>
-				<td><%=productDto.getProductCompany()%></td>
 				<td><%=productDto.getProductMade()%></td>
-				<td><%=productDto.getProductExpire()%></td>
 				<td><%=productDto.getProductEvent()%></td>
 				<td><a href="product_admin_detail.jsp?product_no=<%=productDto.getProductNo() %>" class="link">상세보기</a></td>
 			</tr>
@@ -121,11 +155,61 @@ if (list.isEmpty()) {
 		</tbody>
 	</table>
 </div>
-<%
-}
-%>
-</div>
-
+<div>
+	<%
+	}
+	%>
+	</div>
+	<div class="row center pagination">
+		<%if(p > 1){ %>
+			<%if(isSearch){ %>
+			<a href="product_admin_list.jsp?p=1&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&laquo;</a>
+			<%} else { %>
+			<a href="product_admin_list.jsp?p=1&s=<%=s%>">&laquo;</a>
+			<%} %>
+		<%} %>
+		
+		<%if(startBlock > 1){ %>
+			<%if(isSearch){ %>
+			<a href="product_admin_list.jsp?p=<%=startBlock-1%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&lt;</a>
+			<%} else { %>
+			<a href="product_admin_list.jsp?p=<%=startBlock-1%>&s=<%=s%>">&lt;</a>
+			<%} %>
+		<%} %>
+		
+		<%for(int i=startBlock; i <= endBlock; i++){ %>
+			<%if(isSearch){ %>
+				<%if(i == p){ %>
+				<a class="active" href="product_admin_list.jsp?p=<%=i%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>"><%=i%></a>	
+				<%} else { %>
+				<a href="product_admin_list.jsp?p=<%=i%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>"><%=i%></a>
+				<%} %>
+			<%} else { %>
+				<%if(i == p){ %>
+				<a class="active" href="product_admin_list.jsp?p=<%=i%>&s=<%=s%>"><%=i%></a>	
+				<%} else { %>
+				<a href="product_admin_list.jsp?p=<%=i%>&s=<%=s%>"><%=i%></a>
+				<%} %>
+			<%} %>
+		<%} %>
+		
+		<%if(endBlock < lastPage){ %>
+			<%if(isSearch){ %>
+			<a href="product_admin_list.jsp?p=<%=endBlock+1%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&gt;</a>
+			<%} else { %>
+			<a href="product_admin_list.jsp?p=<%=endBlock+1%>&s=<%=s%>">&gt;</a>
+			<%} %>
+		<%} %>
+		
+		<%if(p < lastPage){ %>
+			<%if(isSearch){ %>
+			<a href="product_admin_list.jsp?p=<%=lastPage%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&raquo;</a>
+			<%} else { %>
+			<a href="product_admin_list.jsp?p=<%=lastPage%>&s=<%=s%>">&raquo;</a>
+			<%} %>
+		<%} %>
+		
+	</div>
 
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

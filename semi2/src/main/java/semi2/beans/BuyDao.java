@@ -239,7 +239,7 @@ public class BuyDao {
 	}
 
 
-	//페이징이 구현된 회원 검색
+	//페이징이 구현된 주문 검색
 	public List<BuyDto> selectListByPaging(int p, int s, String type, String keyword) throws Exception{
 		int end = p * s;
 		int begin = end - (s-1);
@@ -275,7 +275,7 @@ public class BuyDao {
 		return list;
 	}
 
-	// 회원목록 페이지 번호 계산
+	// 주문목록 페이지 번호 계산
 	public int countByPaging() throws Exception {
 		Connection con = JdbcUtils.getConnection();
 		String sql = "select count(*) from buy";
@@ -288,7 +288,7 @@ public class BuyDao {
 		return count;
 	}
 
-	// 회원검색 페이지 번호 계산
+	// 주문검색 페이지 번호 계산
 	public int countByPaging(String type, String keyword) throws Exception {
 		Connection con = JdbcUtils.getConnection();
 		String sql = "select count(*) from buy where instr(#1,?) > 0";
