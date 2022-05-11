@@ -337,6 +337,7 @@ public class ProductDao {
         	con.close();
         	return productDto;
     }
+
         
       //페이징이 구현된 상품 목록 - 관리자
     	public List<ProductDto> listByPagingForAdmin(int p, int s) throws Exception{
@@ -648,4 +649,5 @@ public class ProductDao {
     		con.close();
     		return extraction;
     	}
+}
 }

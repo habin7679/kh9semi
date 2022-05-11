@@ -16,7 +16,7 @@ import semi2.beans.ProductDao;
 @WebServlet(urlPatterns="/product/delete.ez")
 public class ProductDeleteServlet extends HttpServlet {
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			int no = Integer.parseInt(req.getParameter("product_no"));
 		//int no = 98;

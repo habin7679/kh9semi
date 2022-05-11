@@ -16,7 +16,40 @@
 
 %>    
 <jsp:include page="/template/header.jsp"></jsp:include>
+
+    <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+    $(function(){
+        refreshTotal();
+        $(".qty").on("input", refreshTotal);
+        $(".select-item").on("input", refreshTotal);
+    	
+        $(".all").on("input", function(){
+            $(".select-item").prop("checked", $(this).prop("checked"));
+            refreshTotal();
+        });
+    
+            function refreshTotal(){
+                //(Q) .qty의 수량이 변경되면 .total에 체크된 상품의 .sub-total 금액합계를 출력
+                var total = 0;
+                $(".select-item").filter(":checked").each(function(){
+                    //this == 해당 회차의 체크된 체크박스
+                    var qty = $(this).nextAll(".qty").val();
+                    var price = $(this).nextAll("input[name=price]").val();
+                    var subTotal = qty * price;
+                    $(this).nextAll(".sub-total").val(subTotal);
+                    total += subTotal;
+                });
+                $(".total").text(total);
+            }
+        });
+
+    </script>
+
+
 <form action="http://localhost:8080/semi2/order/order.ez" method="post">
+모두 구매하기<input type="checkbox" class="all">
 <%
 	for(int i =0; i<list.size(); i++) {
 		CartDto cDto = list.get(i);
@@ -26,18 +59,25 @@
 		int amount = cDto.getCartAmount();
 		int total = price*amount;
 %>
-	<input type="checkbox">
+	<div class="row">
 	<img src="<%=request.getContextPath() %>/image/product<%=pNo %>.jpg" width="200" height="200">
+	<br><br>
 	<a href="detail.jsp?productNo=<%=pNo%>"><%=pDto.getProductName() %></a>
 	<br><br>
-	<%=price %>
+	
 	<input type="hidden" name="productNo" value="<%=pNo %>">
-	<input type="number" name="cartAmount" value="<%=amount %>"/>
-	<input type="text" readonly name="orderPrice" value="<%=total%>"/>
+	구매하기: <input type="checkbox" class="select-item ind" name="checkProduct" value="<%=pNo%>">	<br><br>
+	주문 개수: <input type="number" name="cartAmount" class="qty" value="<%=amount %>"/>	<br><br>
+	가격: <input type="number" name="price" value="<%=price%>" readonly>	<br><br>
+	총 가격: <input type="text" readonly name="orderPrice" class="sub-total" value="<%=total%>"readonly/>	<br><br>
 	<a href="delete.ez?productNo=<%=pNo %>">삭제하기</a>
+	</div>
 	
 	<br><br>
 <%} %>
+	<div class="row">
+	총 주문금액: <span class="total"></span>
+	</div>
 	<%if(list.size()>0) {%>
 	<input type="submit" value="구매하기">
 	<%} %>

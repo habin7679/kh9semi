@@ -71,4 +71,45 @@ public class OrderDao {
 		con.close();
 		return list;
 	}
+	public List<OrderDto> selectAllBuy(int orderNo) throws Exception{
+		Connection con = JdbcUtils.getConnection();
+		String sql = "select * from orderp where order_no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setInt(1, orderNo);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		List<OrderDto> list = new ArrayList<>();
+		
+		while(rs.next()) {
+			OrderDto orderDto = new OrderDto();
+			orderDto.setProductNo(rs.getInt("product_no"));
+			orderDto.setOrderCount(rs.getInt("order_count"));
+			list.add(orderDto);
+		}
+		con.close();
+		return list;
+	}	
+	public List<OrderDto> selectAllPaying(int orderNo) throws Exception{
+		Connection con = JdbcUtils.getConnection();
+		String sql = "select * from orderp where order_no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setInt(1, orderNo);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		List<OrderDto> list = new ArrayList<>();
+		
+		while(rs.next()) {
+			OrderDto orderDto = new OrderDto();
+			orderDto.setProductNo(rs.getInt("product_no"));
+			orderDto.setOrderCount(rs.getInt("order_count"));
+			orderDto.setOrderPrice(rs.getInt("order_price"));
+			list.add(orderDto);
+		}
+		con.close();
+		return list;
+	}
 }

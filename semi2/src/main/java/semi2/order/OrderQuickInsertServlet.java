@@ -15,8 +15,8 @@ import semi2.beans.PayingDao;
 import semi2.beans.ProductDao;
 import semi2.beans.ProductDto;
 
-@WebServlet(urlPatterns="/order/order.ez")
-public class OrderInsertServlet extends HttpServlet{
+@WebServlet(urlPatterns="/order/quickOrder.ez")
+public class OrderQuickInsertServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
@@ -26,34 +26,19 @@ public class OrderInsertServlet extends HttpServlet{
 			payingDao.insertNo(memberId, no);
 
 			OrderDao orderDao = new OrderDao();
-			String[] buyPNo = req.getParameterValues("checkProduct");
-			String[] productNo = req.getParameterValues("productNo");
-			String[] orderAmount = req.getParameterValues("cartAmount");
-
-			CartDao cDao = new CartDao();
+			int productNo = Integer.parseInt(req.getParameter("productNo"));
+			int orderAmount = Integer.parseInt(req.getParameter("orderAmount"));
 			ProductDao pDao = new ProductDao();
-			int count = 0;
-			for(int i =0; i<buyPNo.length; i++) {
-				for(int j = 0; j<productNo.length; j++) {
-					if(buyPNo[i].equals(productNo[j])){
-						count++;
-						break;
-					}
-				}
-				if(count>0) {					
-					ProductDto pDto = pDao.selectOne(Integer.parseInt(productNo[i]));
-					cDao.delete(memberId, Integer.parseInt(productNo[i]));
-					OrderDto orderDto = new OrderDto();
-					orderDto.setOrderNo(no);
-					orderDto.setProductNo(Integer.parseInt(productNo[i]));
-					orderDto.setOrderCount(Integer.parseInt(orderAmount[i]));
-					orderDto.setProductPrice(pDto.getProductPrice());
-					orderDto.setOrderPrice();
-					orderDao.insert(orderDto);
-					count=0;
-				}
-				
-			}
+	
+			ProductDto pDto = pDao.selectOne(productNo);
+			OrderDto orderDto = new OrderDto();
+			orderDto.setOrderNo(no);
+			orderDto.setProductNo(productNo);
+			orderDto.setOrderCount(orderAmount);
+			//가격만 뽑는 productDao 만들기
+			orderDto.setProductPrice(pDto.getProductPrice());
+			orderDto.setOrderPrice();
+			orderDao.insert(orderDto);
 			
 			resp.sendRedirect(req.getContextPath()+"/paying/insert.jsp?orderNo="+no);
 		} catch (Exception e) {

@@ -7,6 +7,7 @@ public class OrderDto {
 	private int orderCount;
 	private int orderPrice;
 	private String orderReview;
+	
 	public int getOrderNo() {
 		return orderNo;
 	}
