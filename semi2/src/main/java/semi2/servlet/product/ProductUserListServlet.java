@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import semi2.beans.ProductDao;
 import semi2.beans.ProductDto;
 
-@WebServlet(urlPatterns="/product/list.kh")
+@WebServlet(urlPatterns="/product/list.ez")
 public class ProductUserListServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

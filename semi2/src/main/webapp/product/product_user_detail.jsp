@@ -1,5 +1,9 @@
 <%@page import="semi2.beans.ProductDto"%>
 <%@page import="semi2.beans.ProductDao"%>
+<%@page import="semi2.beans.ProductAttachmentDto"%>
+<%@page import="semi2.beans.ProductAttachmentDao"%>
+<%@page import="semi2.beans.AttachmentDto"%>
+<%@page import="semi2.beans.AttachmentDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -11,6 +15,9 @@
 
 <%-- 처리 --%>    
 <%
+ProductAttachmentDao productattachmentDao = new ProductAttachmentDao();
+ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(productNo);
+
 	ProductDao productDao = new ProductDao();
 	ProductDto productDto = productDao.selectOne(productNo);
 %>
@@ -21,6 +28,7 @@
 <%if(productDto == null){ %>
 <h1>해당 상품은 존재하지 않습니다</h1>
 <%} else { %>
+
 <h1>상품 상세정보 보기</h1>
 
 <table border="1">
@@ -31,10 +39,6 @@
 	<tr>
 		<th>가격</th>
 			<td><%=productDto.getProductPrice()%></td>
-	</tr>
-	<tr>
-		<th>행사여부</th>
-			<td><%=productDto.getProductEvent()%></td>
 	</tr>
 	<tr>
 		<th>칼로리</th>
@@ -58,7 +62,7 @@
 	</tr>
 	<tr>
 		<th>상품이미지</th>
-				<td> <img src = "<%=request.getContextPath() %>/image/product<%=productNo%>.jpg" width="200" height="200"></td>
+				<td> <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"></td>
 	</tr>
 	<tr>
 		<td><input type="button" value="구매하기"></td>

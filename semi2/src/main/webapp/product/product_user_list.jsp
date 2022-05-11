@@ -1,24 +1,26 @@
 <%@page import="java.text.DecimalFormat"%>
-<%@page import="java.text.Format"%>
 <%@page import="semi2.beans.ProductDto"%>
 <%@page import="java.util.List"%>
 <%@page import="semi2.beans.ProductDao"%>
+<%@page import="semi2.beans.ProductAttachmentDto"%>
+<%@page import="semi2.beans.ProductAttachmentDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <%-- 준비 --%>
 <%
-
+request.setCharacterEncoding("UTF-8");
 
 String productName = request.getParameter("product_name");
-
 String productSort = request.getParameter("product_sort");
-Format f = new DecimalFormat("0.00");
 %>
 
 <%
 boolean isSearch = productName != null && !productName.trim().equals("");
 ProductDao productDao = new ProductDao();
+
+
+
 List<ProductDto> list;
 if(isSearch)
 	list = productDao.listUser(productName);
@@ -47,8 +49,7 @@ else
 
 <!-- 검색결과 -->
 <%if(productName == null){
-	List<ProductDto> list2;
-	list2 = productDao.categorie(productSort);
+	List<ProductDto>  list2 = productDao.categorie(productSort);
 	%>
 		<div class="row">
 		<table class="table table-border table-hover" >
@@ -66,11 +67,15 @@ else
 				<%
 				for (int i = 0; i < list2.size(); i ++) {
 					ProductDto productDto = list2.get(i);
+					int productNo = productDto.getProductNo();
+					ProductAttachmentDao productattachmentDao = new ProductAttachmentDao();
+					ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(productNo);
 				%>
 				<tr>
 					<input type="hidden" name="productNo" value="<%=productDto.getProductNo()%>">
 					<%-- <td><%=productDto.getProductSort() %></td>--%>
-					<td><a href="product_user_detail.jsp?product_no=<%=productDto.getProductNo()%>" class="link"><img src = "<%=request.getContextPath() %>/image/product<%=productDto.getProductNo()%>.jpg" width="200" height="200">
+					<td><a href="product_user_detail.jsp?product_no=<%=productDto.getProductNo()%>" class="link">
+					<img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="200" height="200">
 					</a></td>
 					<td><%=productDto.getProductName()%></td>
 					<td><%=productDto.getProductPrice()%></td>
@@ -107,11 +112,14 @@ if (list.isEmpty()) {
 			<tbody>
 				<%
 				for (ProductDto productDto : list) {
+					int productNo = productDto.getProductNo();
+					ProductAttachmentDao productattachmentDao = new ProductAttachmentDao();
+					ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(productNo);
 				%>
 				<tr>
-					<input type="hidden" name="productNo" value="<%=productDto.getProductNo()%>">
 					<%-- <td><%=productDto.getProductSort() %></td>--%>
-					<td><a href="product_user_detail.jsp?product_no=<%=productDto.getProductNo()%>" class="link"><img src = "<%=request.getContextPath() %>/image/product<%=productDto.getProductNo()%>.jpg" width="200" height="200">
+					<td><a href="product_user_detail.jsp?product_no=<%=productDto.getProductNo()%>" class="link">
+					<td><img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="200"  height="200">
 					</a></td>
 					<td><%=productDto.getProductName()%></td>
 					<td><%=productDto.getProductPrice()%></td>
