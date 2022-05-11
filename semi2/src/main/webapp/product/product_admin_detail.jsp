@@ -86,7 +86,7 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
 	</tr>
 	 <tr>
 		<th>상품이미지</th>
-			<td> <img src="/semi2/file/download.ez?attachmentNo=10"></td>
+			<td> <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"></td>
 	</tr>
 	
 	
