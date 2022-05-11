@@ -95,7 +95,7 @@ public class PayingDao {
 		
 		String sql = "update paying set paying_total=?, paying_date=sysdate, paying_name=?, paying_phone=?, "
 				+ "paying_post=?, paying_basic_address=?, paying_detail_address=?, paying_delivery_date=to_date(?, 'yyyy-mm-dd'), "
-				+ "paying_delivery_time=? where order_no=?";
+				+ "paying_delivery_time=?, paying_delivery_fee=? where order_no=?";
 		
 		PreparedStatement ps = con.prepareStatement(sql);
 		
@@ -107,7 +107,8 @@ public class PayingDao {
 		ps.setString(6, payingDto.getPayingDetailAddress());
 		ps.setDate(7, payingDto.getPayingDeliveryDate());
 		ps.setInt(8, payingDto.getPayingDeliveryTime());
-		ps.setInt(9, payingDto.getOrderNo());
+		ps.setInt(9, payingDto.getPayingDeliveryFee());
+		ps.setInt(10, payingDto.getOrderNo());
 		
 		int count = ps.executeUpdate();
 		con.close();
@@ -147,13 +148,13 @@ public class PayingDao {
 			pDto.setPayingDetailAddress(rs.getString("paying_detail_address"));
 			pDto.setPayingDeliveryDate(rs.getDate("paying_delivery_date"));
 			pDto.setPayingDeliveryTime(rs.getInt("paying_delivery_time"));
+			pDto.setPayingDeliveryFee(rs.getInt("paying_delivery_fee"));
+			pDto.setPayingTotal(rs.getInt("paying_total"));
 		}
 		con.close();
 		return pDto;
 	}
 }
-
-
 
 
 
