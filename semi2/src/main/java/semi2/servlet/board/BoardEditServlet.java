@@ -38,13 +38,15 @@ public class BoardEditServlet extends HttpServlet{
 			
 			
 			//준비
+			//글번호 가져오기
 			BoardDto boardDto = new BoardDto();
 			boardDto.setBoardNo(Integer.parseInt(mRequest.getParameter("boardNo")));
 			
+			
+			//새로 작성
 			boardDto.setBoardHead(mRequest.getParameter("boardHead"));
 			boardDto.setBoardTitle(mRequest.getParameter("boardTitle"));
 			boardDto.setBoardContent(mRequest.getParameter("boardContent"));
-			
 			String memberId = (String) req.getSession().getAttribute("member");
 			boardDto.setBoardWriter(memberId);
 			
@@ -74,7 +76,7 @@ public class BoardEditServlet extends HttpServlet{
 				boardDto.setDepth(originDto.getDepth() + 1);
 			}
 			
-			
+			//글 생성
 			int no = boardDao.getSequence();
 			boardDto.setBoardNo(no);
 			boardDao.insert(boardDto);
