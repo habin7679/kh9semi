@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import semi2.beans.CartDao;
 import semi2.beans.CartDto;
 
-@WebServlet(urlPatterns="/cart/insert.ez")
-public class CartInsertServlet extends HttpServlet{
+@WebServlet(urlPatterns="/cart/insertAmount.ez")
+public class CartInsertAmountServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
@@ -21,8 +21,10 @@ public class CartInsertServlet extends HttpServlet{
 			
 			cDto.setProductNo(Integer.parseInt(req.getParameter("productNo")));
 			cDto.setMemberId((String)req.getSession().getAttribute("member"));
+			cDto.setCartAmount(Integer.parseInt(req.getParameter("cartAmount")));
 			
-			cDao.insert(cDto);
+			cDao.insertAmount(cDto);
+			
 			resp.sendRedirect(req.getContextPath()+"/cart/list.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();

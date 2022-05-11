@@ -24,8 +24,13 @@ public class payingInsertServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			int orderNo = Integer.parseInt(req.getParameter("orderNo"));
+			String memberId = (String)req.getSession().getAttribute("member");
+			
 			PayingDao payingDao = new PayingDao();
-			PayingDto payingDto = new PayingDto();
+			PayingDto payingDto = new PayingDto();			
+			ProductDao productDao = new ProductDao();
+			OrderDao orderDao = new OrderDao();
+			
 			payingDto.setOrderNo(orderNo);
 			payingDto.setPayingTotal(Integer.parseInt(req.getParameter("payingTotal")));
 			payingDto.setPayingName(req.getParameter("payingName"));
@@ -39,13 +44,8 @@ public class payingInsertServlet extends HttpServlet {
 			payingDto.setPayingDeliveryDate(payingDeliveryDate);
 			payingDto.setPayingDeliveryFee(Integer.parseInt(req.getParameter("deliveryFee")));
 			payingDto.setPayingDeliveryTime(Integer.parseInt(req.getParameter("payingDeliveryTime")));
-			
-			String memberId = (String)req.getSession().getAttribute("member");
-			
-			ProductDao productDao = new ProductDao();
-			OrderDao orderDao = new OrderDao();
 
-			List<OrderDto> list = orderDao.selectAll(orderNo);
+			List<OrderDto> list = orderDao.selectAllPaying(orderNo);
 			
 			int totalPrice = 0;
 			

@@ -154,6 +154,22 @@ public class PayingDao {
 		con.close();
 		return pDto;
 	}
+	public PayingDto selectOneDate(int orderNo) throws Exception{
+		Connection con = JdbcUtils.getConnection();
+		String sql = "select * from paying where order_no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setInt(1, orderNo);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		PayingDto pDto = new PayingDto();
+		if(rs.next()) {
+			pDto.setPayingDate(rs.getString("paying_date"));
+		}
+		con.close();
+		return pDto;
+	}
 }
 
 

@@ -9,12 +9,25 @@ import java.util.List;
 public class CartDao {
 	public void insert(CartDto cartDto) throws Exception{
 		Connection con = JdbcUtils.getConnection();
-		String sql = "insert into cart(member_id, product_no) valuse(?,?)";
+		String sql = "insert into cart(member_id, product_no) values(?,?)";
 		
 		PreparedStatement ps = con.prepareStatement(sql);
 		
 		ps.setString(1, cartDto.getMemberId());
 		ps.setInt(2, cartDto.getProductNo());
+		
+		ps.execute();
+		con.close();
+	}
+	public void insertAmount(CartDto cartDto) throws Exception{
+		Connection con = JdbcUtils.getConnection();
+		String sql = "insert into cart values(?,?,?)";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setString(1, cartDto.getMemberId());
+		ps.setInt(2, cartDto.getProductNo());
+		ps.setInt(3, cartDto.getCartAmount());
 		
 		ps.execute();
 		con.close();
@@ -32,10 +45,13 @@ public class CartDao {
 			cDto.setMemberId(rs.getString("member_id"));
 			cDto.setProductNo(rs.getInt("product_no"));
 			cDto.setCartAmount(rs.getInt("cart_amount"));
+			con.close();
 			return cDto;
 		}else {
+			con.close();
 			return cDto;
 		}
+		
 	}
 	public boolean amountUpdate(CartDto cartDto) throws Exception{
 		Connection con = JdbcUtils.getConnection();
