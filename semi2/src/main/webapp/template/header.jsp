@@ -187,7 +187,7 @@
                     <ul style="z-index: 100;">
         				<li><a href="<%=request.getContextPath()%>#">음식칼로리</a></li>
         				<li><a href="<%=request.getContextPath()%>#">운동칼로리</a></li>
-        				<li><a href="<%=request.getContextPath()%>#">칼로리처방</a></li>
+        				<li><a href="<%=request.getContextPath()%>/dict/main.jsp">칼로리처방</a></li>
                     </ul>
                 </li>
                 <li>
