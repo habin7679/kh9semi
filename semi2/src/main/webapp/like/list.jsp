@@ -29,7 +29,8 @@
 			<a href="detail.jsp?productNo=<%=productNo%>"><%=pDto.getProductName() %></a>
 			<input type="hidden" name="productNo" value="<%=pDto.getProductNo() %>">
 			<h4><%=pDto.getProductPrice() %></h4>		
-			<input type="submit" value="삭제하기">	
+			<input type="submit" value="삭제하기">
+			<a href="<%=request.getContextPath()%>/cart/insert.ez?productNo=<%=productNo %>">장바구니에 추가하기</a>
 		</div>
 	</form>
 <%} %>

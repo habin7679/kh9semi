@@ -27,19 +27,31 @@ public class BuyCancelServlet extends HttpServlet{
 			
 			if(is) {
 				BuyDto bDto = bDao.selectOne(bNo);
+				
 				int oNo = bDto.getOrderNo();
+				
 				OrderDao oDao = new OrderDao();
-				List<OrderDto> list = oDao.selectAll(oNo);
+				
+				List<OrderDto> list = oDao.selectAllBuy(oNo);
+				//넘버, 어마운트
+				
 				ProductDao productDao = new ProductDao();
+				
 				int totalPrice = 0;
+				
 				for(int i =0; i<list.size(); i++) {
+					
 					int productNo = list.get(i).getProductNo();
 					int orderAmount = list.get(i).getOrderCount();
+					
 					productDao.stockPlus(productNo, orderAmount);
+					
 					totalPrice+=list.get(i).getOrderPrice();
 				}
 				MemberDao mDao = new MemberDao();
+				
 				mDao.pointMinus(totalPrice, (String)req.getSession().getAttribute("member"));
+				
 				resp.sendRedirect(req.getContextPath()+"/buy/list.jsp");				
 				
 			}
