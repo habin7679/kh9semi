@@ -6,9 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-
-
-import semi2.beans.JdbcUtils;
+import semi2.beans.ProductDto;
 
 
 public class ProductDao {
@@ -22,7 +20,7 @@ public class ProductDao {
 				+ "product_event,product_kcal,product_protein,product_carbohydrate,"
 				+ "product_fat,product_info"
 				+ ") values("
-				+"?,?,?,?,?,?,to_date(?,'YY-MM-DD'), to_date(?,'YY-MM-DD'),"
+				+"?,?,?,?,?,?,to_date(?,'YYYY-MM-DD'), to_date(?,'YYYY-MM-DD'),"
 				+"?,?,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, productDto.getProductNo());
@@ -86,7 +84,7 @@ public class ProductDao {
         productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
         productDto.setProductFat(rs.getInt("product_fat"));
         productDto.setProductInfo(rs.getString("product_info"));
-       productDto.setProductImg(rs.getString("product_img"));
+       //productDto.setProductImg(rs.getString("product_img"));
 
         list.add(productDto);
     }
@@ -121,7 +119,7 @@ public class ProductDao {
         productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
         productDto.setProductFat(rs.getInt("product_fat"));
         productDto.setProductInfo(rs.getString("product_info"));
-        productDto.setProductImg(rs.getString("product_img"));
+       // productDto.setProductImg(rs.getString("product_img"));
         list.add(productDto);
         }
         con.close();
@@ -154,7 +152,7 @@ public class ProductDao {
             productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
             productDto.setProductFat(rs.getInt("product_fat"));
             productDto.setProductInfo(rs.getString("product_info"));
-            productDto.setProductImg(rs.getString("product_img"));
+           // productDto.setProductImg(rs.getString("product_img"));
         }
         con.close();
         return productDto;
@@ -229,7 +227,7 @@ public class ProductDao {
     	return list;
     }
     //상품 카테고리
-    public ProductDto katgorie(String productSort) throws Exception {
+    public List<ProductDto> categorie(String productSort) throws Exception {
         Connection con = JdbcUtils.getConnection();
 
         String sql = "select * from product where product_sort=?";
@@ -237,8 +235,10 @@ public class ProductDao {
         ps.setString(1, productSort);
         ResultSet rs = ps.executeQuery();
         ProductDto productDto = null;
+        
+        List<ProductDto> list  = new ArrayList<>();
 
-        if(rs.next()) {
+        while(rs.next()) {
             productDto = new ProductDto();
             productDto.setProductNo(rs.getInt("product_no"));
             productDto.setProductName(rs.getString("product_name"));
@@ -255,9 +255,12 @@ public class ProductDao {
             productDto.setProductFat(rs.getInt("product_fat"));
             productDto.setProductInfo(rs.getString("product_info"));
             productDto.setProductImg(rs.getString("product_img"));
+            
+            list.add(productDto);
         }
         con.close();
-        return productDto;
+    
+        return list;
     }
     //재고
     public boolean stockMinus(int productNo, int orderAmount) throws Exception{
@@ -317,315 +320,332 @@ public class ProductDao {
 		
 		return count > 0;
 	}
-    
-	//페이징이 구현된 상품 목록 - 관리자
-		public List<ProductDto> listByPagingForAdmin(int p, int s) throws Exception{
-			int end = p * s;
-			int begin = end - (s-1);
+	
+        public ProductDto selectOneCart(int productNo) throws Exception {
+        	Connection con = JdbcUtils.getConnection();
 
-			Connection con = JdbcUtils.getConnection();
+        	String sql = "select * from product where product_no=?";
+        	PreparedStatement ps = con.prepareStatement(sql);
+        	ps.setInt(1, productNo);
+        	ResultSet rs = ps.executeQuery();
+        	ProductDto productDto = new ProductDto();
 
-			String sql = "select * from ("
-					+ "select rownum rn, TMP.* from ("
-				       + "select * from product order by product_no desc"
-				        + ") TMP"
-				+ ")where rn between ? and ?";
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, begin);
-			ps.setInt(2, end);
-			ResultSet rs = ps.executeQuery();
+        	if(rs.next()) {
+            		productDto.setProductName(rs.getString("product_name"));
+            		productDto.setProductPrice(rs.getInt("product_price"));
+        	}
+        	con.close();
+        	return productDto;
+    }
+        
+      //페이징이 구현된 상품 목록 - 관리자
+    	public List<ProductDto> listByPagingForAdmin(int p, int s) throws Exception{
+    		int end = p * s;
+    		int begin = end - (s-1);
 
-			List<ProductDto> list = new ArrayList<>();
+    		Connection con = JdbcUtils.getConnection();
 
-			 while(rs.next()) {
-			        ProductDto productDto = new ProductDto();
-			        productDto.setProductNo(rs.getInt("product_no"));
-			        productDto.setProductName(rs.getString("product_name"));
-			        productDto.setProductSort(rs.getString("product_sort"));
-			        productDto.setProductPrice(rs.getInt("product_price"));
-			        productDto.setProductStock(rs.getInt("product_stock"));
-			        productDto.setProductCompany(rs.getString("product_company"));
-			        productDto.setProductMade(rs.getDate("product_made"));
-			        productDto.setProductExpire(rs.getDate("product_expire"));
-			        productDto.setProductEvent(rs.getString("product_event"));
-			        productDto.setProductKcal(rs.getInt("product_kcal"));
-			        productDto.setProductProtein(rs.getInt("product_protein"));
-			        productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
-			        productDto.setProductFat(rs.getInt("product_fat"));
-			        productDto.setProductInfo(rs.getString("product_info"));
-			       productDto.setProductImg(rs.getString("product_img"));
+    		String sql = "select * from ("
+    				+ "select rownum rn, TMP.* from ("
+    			       + "select * from product order by product_no desc"
+    			        + ") TMP"
+    			+ ")where rn between ? and ?";
+    		PreparedStatement ps = con.prepareStatement(sql);
+    		ps.setInt(1, begin);
+    		ps.setInt(2, end);
+    		ResultSet rs = ps.executeQuery();
 
-				list.add(productDto);
-			}
-			con.close();
-			return list;
-		}
-		
+    		List<ProductDto> list = new ArrayList<>();
 
-		//페이징이 구현된 주문 검색 - 관리자
-		public List<ProductDto> selectListByPagingForAdmin(int p, int s, String type, String keyword) throws Exception{
-			int end = p * s;
-			int begin = end - (s-1);
+    		 while(rs.next()) {
+    		        ProductDto productDto = new ProductDto();
+    		        productDto.setProductNo(rs.getInt("product_no"));
+    		        productDto.setProductName(rs.getString("product_name"));
+    		        productDto.setProductSort(rs.getString("product_sort"));
+    		        productDto.setProductPrice(rs.getInt("product_price"));
+    		        productDto.setProductStock(rs.getInt("product_stock"));
+    		        productDto.setProductCompany(rs.getString("product_company"));
+    		        productDto.setProductMade(rs.getDate("product_made"));
+    		        productDto.setProductExpire(rs.getDate("product_expire"));
+    		        productDto.setProductEvent(rs.getString("product_event"));
+    		        productDto.setProductKcal(rs.getInt("product_kcal"));
+    		        productDto.setProductProtein(rs.getInt("product_protein"));
+    		        productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
+    		        productDto.setProductFat(rs.getInt("product_fat"));
+    		        productDto.setProductInfo(rs.getString("product_info"));
+    		       productDto.setProductImg(rs.getString("product_img"));
 
-			Connection con = JdbcUtils.getConnection();
+    			list.add(productDto);
+    		}
+    		con.close();
+    		return list;
+    	}
+    	
 
-			String sql = "select * from ("
-					+ "select rownum rn, TMP.* from ("
-				       + "select * from product where instr(#1,?) > 0 order by product_no desc"
-				        + ") TMP"
-				+ ")where rn between ? and ?";
+    	//페이징이 구현된 주문 검색 - 관리자
+    	public List<ProductDto> selectListByPagingForAdmin(int p, int s, String type, String keyword) throws Exception{
+    		int end = p * s;
+    		int begin = end - (s-1);
 
-			sql = sql.replace("#1", type);
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, keyword);
-			ps.setInt(2, begin);
-			ps.setInt(3, end);
-			ResultSet rs = ps.executeQuery();
+    		Connection con = JdbcUtils.getConnection();
 
-			List<ProductDto> list = new ArrayList<>();
+    		String sql = "select * from ("
+    				+ "select rownum rn, TMP.* from ("
+    			       + "select * from product where instr(#1,?) > 0 order by product_no desc"
+    			        + ") TMP"
+    			+ ")where rn between ? and ?";
 
-			 while(rs.next()) {
-			        ProductDto productDto = new ProductDto();
-			        productDto.setProductNo(rs.getInt("product_no"));
-			        productDto.setProductName(rs.getString("product_name"));
-			        productDto.setProductSort(rs.getString("product_sort"));
-			        productDto.setProductPrice(rs.getInt("product_price"));
-			        productDto.setProductStock(rs.getInt("product_stock"));
-			        productDto.setProductCompany(rs.getString("product_company"));
-			        productDto.setProductMade(rs.getDate("product_made"));
-			        productDto.setProductExpire(rs.getDate("product_expire"));
-			        productDto.setProductEvent(rs.getString("product_event"));
-			        productDto.setProductKcal(rs.getInt("product_kcal"));
-			        productDto.setProductProtein(rs.getInt("product_protein"));
-			        productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
-			        productDto.setProductFat(rs.getInt("product_fat"));
-			        productDto.setProductInfo(rs.getString("product_info"));
-			       productDto.setProductImg(rs.getString("product_img"));
+    		sql = sql.replace("#1", type);
+    		PreparedStatement ps = con.prepareStatement(sql);
+    		ps.setString(1, keyword);
+    		ps.setInt(2, begin);
+    		ps.setInt(3, end);
+    		ResultSet rs = ps.executeQuery();
 
-				list.add(productDto);
-			}
-			con.close();
-			return list;
-		}
+    		List<ProductDto> list = new ArrayList<>();
 
-		//페이징이 구현된 상품 목록 - 회원(신상품순)
-		public List<ProductDto> listSortLast(int p, int s) throws Exception{
-			int end = p * s;
-			int begin = end - (s-1);
+    		 while(rs.next()) {
+    		        ProductDto productDto = new ProductDto();
+    		        productDto.setProductNo(rs.getInt("product_no"));
+    		        productDto.setProductName(rs.getString("product_name"));
+    		        productDto.setProductSort(rs.getString("product_sort"));
+    		        productDto.setProductPrice(rs.getInt("product_price"));
+    		        productDto.setProductStock(rs.getInt("product_stock"));
+    		        productDto.setProductCompany(rs.getString("product_company"));
+    		        productDto.setProductMade(rs.getDate("product_made"));
+    		        productDto.setProductExpire(rs.getDate("product_expire"));
+    		        productDto.setProductEvent(rs.getString("product_event"));
+    		        productDto.setProductKcal(rs.getInt("product_kcal"));
+    		        productDto.setProductProtein(rs.getInt("product_protein"));
+    		        productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
+    		        productDto.setProductFat(rs.getInt("product_fat"));
+    		        productDto.setProductInfo(rs.getString("product_info"));
+    		       productDto.setProductImg(rs.getString("product_img"));
 
-			Connection con = JdbcUtils.getConnection();
+    			list.add(productDto);
+    		}
+    		con.close();
+    		return list;
+    	}
 
-			String sql = "select * from ("
-					+ "select rownum rn, TMP.* from ("
-				       + "select * from product order by product_no desc"
-				        + ") TMP"
-				+ ")where rn between ? and ?";
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, begin);
-			ps.setInt(2, end);
-			ResultSet rs = ps.executeQuery();
+    	//페이징이 구현된 상품 목록 - 회원(신상품순)
+    	public List<ProductDto> listSortLast(int p, int s) throws Exception{
+    		int end = p * s;
+    		int begin = end - (s-1);
 
-			List<ProductDto> list = new ArrayList<>();
+    		Connection con = JdbcUtils.getConnection();
 
-			 while(rs.next()) {
-			        ProductDto productDto = new ProductDto();
-			        productDto.setProductNo(rs.getInt("product_no"));
-			        productDto.setProductName(rs.getString("product_name"));
-			        productDto.setProductSort(rs.getString("product_sort"));
-			        productDto.setProductPrice(rs.getInt("product_price"));
-			        productDto.setProductStock(rs.getInt("product_stock"));
-			        productDto.setProductCompany(rs.getString("product_company"));
-			        productDto.setProductMade(rs.getDate("product_made"));
-			        productDto.setProductExpire(rs.getDate("product_expire"));
-			        productDto.setProductEvent(rs.getString("product_event"));
-			        productDto.setProductKcal(rs.getInt("product_kcal"));
-			        productDto.setProductProtein(rs.getInt("product_protein"));
-			        productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
-			        productDto.setProductFat(rs.getInt("product_fat"));
-			        productDto.setProductInfo(rs.getString("product_info"));
-			       productDto.setProductImg(rs.getString("product_img"));
+    		String sql = "select * from ("
+    				+ "select rownum rn, TMP.* from ("
+    			       + "select * from product order by product_no desc"
+    			        + ") TMP"
+    			+ ")where rn between ? and ?";
+    		PreparedStatement ps = con.prepareStatement(sql);
+    		ps.setInt(1, begin);
+    		ps.setInt(2, end);
+    		ResultSet rs = ps.executeQuery();
 
-				list.add(productDto);
-			}
-			con.close();
-			return list;
-		}
-		
-		//페이징이 구현된 상품 목록 - 회원(낮은가격순)
-		public List<ProductDto> listSortLowPrice(int p, int s) throws Exception{
-			int end = p * s;
-			int begin = end - (s-1);
+    		List<ProductDto> list = new ArrayList<>();
 
-			Connection con = JdbcUtils.getConnection();
+    		 while(rs.next()) {
+    		        ProductDto productDto = new ProductDto();
+    		        productDto.setProductNo(rs.getInt("product_no"));
+    		        productDto.setProductName(rs.getString("product_name"));
+    		        productDto.setProductSort(rs.getString("product_sort"));
+    		        productDto.setProductPrice(rs.getInt("product_price"));
+    		        productDto.setProductStock(rs.getInt("product_stock"));
+    		        productDto.setProductCompany(rs.getString("product_company"));
+    		        productDto.setProductMade(rs.getDate("product_made"));
+    		        productDto.setProductExpire(rs.getDate("product_expire"));
+    		        productDto.setProductEvent(rs.getString("product_event"));
+    		        productDto.setProductKcal(rs.getInt("product_kcal"));
+    		        productDto.setProductProtein(rs.getInt("product_protein"));
+    		        productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
+    		        productDto.setProductFat(rs.getInt("product_fat"));
+    		        productDto.setProductInfo(rs.getString("product_info"));
+    		       productDto.setProductImg(rs.getString("product_img"));
 
-			String sql = "select * from ("
-					+ "select rownum rn, TMP.* from ("
-				       + "select * from product order by product_price asc"
-				        + ") TMP"
-				+ ")where rn between ? and ?";
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, begin);
-			ps.setInt(2, end);
-			ResultSet rs = ps.executeQuery();
+    			list.add(productDto);
+    		}
+    		con.close();
+    		return list;
+    	}
+    	
+    	//페이징이 구현된 상품 목록 - 회원(낮은가격순)
+    	public List<ProductDto> listSortLowPrice(int p, int s) throws Exception{
+    		int end = p * s;
+    		int begin = end - (s-1);
 
-			List<ProductDto> list = new ArrayList<>();
+    		Connection con = JdbcUtils.getConnection();
 
-			 while(rs.next()) {
-			        ProductDto productDto = new ProductDto();
-			        productDto.setProductNo(rs.getInt("product_no"));
-			        productDto.setProductName(rs.getString("product_name"));
-			        productDto.setProductSort(rs.getString("product_sort"));
-			        productDto.setProductPrice(rs.getInt("product_price"));
-			        productDto.setProductStock(rs.getInt("product_stock"));
-			        productDto.setProductCompany(rs.getString("product_company"));
-			        productDto.setProductMade(rs.getDate("product_made"));
-			        productDto.setProductExpire(rs.getDate("product_expire"));
-			        productDto.setProductEvent(rs.getString("product_event"));
-			        productDto.setProductKcal(rs.getInt("product_kcal"));
-			        productDto.setProductProtein(rs.getInt("product_protein"));
-			        productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
-			        productDto.setProductFat(rs.getInt("product_fat"));
-			        productDto.setProductInfo(rs.getString("product_info"));
-			       productDto.setProductImg(rs.getString("product_img"));
+    		String sql = "select * from ("
+    				+ "select rownum rn, TMP.* from ("
+    			       + "select * from product order by product_price asc"
+    			        + ") TMP"
+    			+ ")where rn between ? and ?";
+    		PreparedStatement ps = con.prepareStatement(sql);
+    		ps.setInt(1, begin);
+    		ps.setInt(2, end);
+    		ResultSet rs = ps.executeQuery();
 
-				list.add(productDto);
-			}
-			con.close();
-			return list;
-		}
+    		List<ProductDto> list = new ArrayList<>();
 
-		//페이징이 구현된 상품 목록 - 회원(높은가격순)
-		public List<ProductDto> listSortHighPrice(int p, int s) throws Exception{
-			int end = p * s;
-			int begin = end - (s-1);
+    		 while(rs.next()) {
+    		        ProductDto productDto = new ProductDto();
+    		        productDto.setProductNo(rs.getInt("product_no"));
+    		        productDto.setProductName(rs.getString("product_name"));
+    		        productDto.setProductSort(rs.getString("product_sort"));
+    		        productDto.setProductPrice(rs.getInt("product_price"));
+    		        productDto.setProductStock(rs.getInt("product_stock"));
+    		        productDto.setProductCompany(rs.getString("product_company"));
+    		        productDto.setProductMade(rs.getDate("product_made"));
+    		        productDto.setProductExpire(rs.getDate("product_expire"));
+    		        productDto.setProductEvent(rs.getString("product_event"));
+    		        productDto.setProductKcal(rs.getInt("product_kcal"));
+    		        productDto.setProductProtein(rs.getInt("product_protein"));
+    		        productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
+    		        productDto.setProductFat(rs.getInt("product_fat"));
+    		        productDto.setProductInfo(rs.getString("product_info"));
+    		       productDto.setProductImg(rs.getString("product_img"));
 
-			Connection con = JdbcUtils.getConnection();
+    			list.add(productDto);
+    		}
+    		con.close();
+    		return list;
+    	}
 
-			String sql = "select * from ("
-					+ "select rownum rn, TMP.* from ("
-				       + "select * from product order by product_price desc"
-				        + ") TMP"
-				+ ")where rn between ? and ?";
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, begin);
-			ps.setInt(2, end);
-			ResultSet rs = ps.executeQuery();
+    	//페이징이 구현된 상품 목록 - 회원(높은가격순)
+    	public List<ProductDto> listSortHighPrice(int p, int s) throws Exception{
+    		int end = p * s;
+    		int begin = end - (s-1);
 
-			List<ProductDto> list = new ArrayList<>();
+    		Connection con = JdbcUtils.getConnection();
 
-			 while(rs.next()) {
-			        ProductDto productDto = new ProductDto();
-			        productDto.setProductNo(rs.getInt("product_no"));
-			        productDto.setProductName(rs.getString("product_name"));
-			        productDto.setProductSort(rs.getString("product_sort"));
-			        productDto.setProductPrice(rs.getInt("product_price"));
-			        productDto.setProductStock(rs.getInt("product_stock"));
-			        productDto.setProductCompany(rs.getString("product_company"));
-			        productDto.setProductMade(rs.getDate("product_made"));
-			        productDto.setProductExpire(rs.getDate("product_expire"));
-			        productDto.setProductEvent(rs.getString("product_event"));
-			        productDto.setProductKcal(rs.getInt("product_kcal"));
-			        productDto.setProductProtein(rs.getInt("product_protein"));
-			        productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
-			        productDto.setProductFat(rs.getInt("product_fat"));
-			        productDto.setProductInfo(rs.getString("product_info"));
-			       productDto.setProductImg(rs.getString("product_img"));
+    		String sql = "select * from ("
+    				+ "select rownum rn, TMP.* from ("
+    			       + "select * from product order by product_price desc"
+    			        + ") TMP"
+    			+ ")where rn between ? and ?";
+    		PreparedStatement ps = con.prepareStatement(sql);
+    		ps.setInt(1, begin);
+    		ps.setInt(2, end);
+    		ResultSet rs = ps.executeQuery();
 
-				list.add(productDto);
-			}
-			con.close();
-			return list;
-		}
-		//페이징이 구현된 주문 검색 - 회원
-		public List<ProductDto> selectListByPaging(int p, int s, String type, String keyword) throws Exception{
-			int end = p * s;
-			int begin = end - (s-1);
+    		List<ProductDto> list = new ArrayList<>();
 
-			Connection con = JdbcUtils.getConnection();
+    		 while(rs.next()) {
+    		        ProductDto productDto = new ProductDto();
+    		        productDto.setProductNo(rs.getInt("product_no"));
+    		        productDto.setProductName(rs.getString("product_name"));
+    		        productDto.setProductSort(rs.getString("product_sort"));
+    		        productDto.setProductPrice(rs.getInt("product_price"));
+    		        productDto.setProductStock(rs.getInt("product_stock"));
+    		        productDto.setProductCompany(rs.getString("product_company"));
+    		        productDto.setProductMade(rs.getDate("product_made"));
+    		        productDto.setProductExpire(rs.getDate("product_expire"));
+    		        productDto.setProductEvent(rs.getString("product_event"));
+    		        productDto.setProductKcal(rs.getInt("product_kcal"));
+    		        productDto.setProductProtein(rs.getInt("product_protein"));
+    		        productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
+    		        productDto.setProductFat(rs.getInt("product_fat"));
+    		        productDto.setProductInfo(rs.getString("product_info"));
+    		       productDto.setProductImg(rs.getString("product_img"));
 
-			String sql = "select * from ("
-					+ "select rownum rn, TMP.* from ("
-				       + "select * from product where instr(#1,?) > 0 order by product_no desc"
-				        + ") TMP"
-				+ ")where rn between ? and ?";
+    			list.add(productDto);
+    		}
+    		con.close();
+    		return list;
+    	}
+    	//페이징이 구현된 주문 검색 - 회원
+    	public List<ProductDto> selectListByPaging(int p, int s, String type, String keyword) throws Exception{
+    		int end = p * s;
+    		int begin = end - (s-1);
 
-			sql = sql.replace("#1", type);
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, keyword);
-			ps.setInt(2, begin);
-			ps.setInt(3, end);
-			ResultSet rs = ps.executeQuery();
+    		Connection con = JdbcUtils.getConnection();
 
-			List<ProductDto> list = new ArrayList<>();
+    		String sql = "select * from ("
+    				+ "select rownum rn, TMP.* from ("
+    			       + "select * from product where instr(#1,?) > 0 order by product_no desc"
+    			        + ") TMP"
+    			+ ")where rn between ? and ?";
 
-			 while(rs.next()) {
-			        ProductDto productDto = new ProductDto();
-			        productDto.setProductNo(rs.getInt("product_no"));
-			        productDto.setProductName(rs.getString("product_name"));
-			        productDto.setProductSort(rs.getString("product_sort"));
-			        productDto.setProductPrice(rs.getInt("product_price"));
-			        productDto.setProductStock(rs.getInt("product_stock"));
-			        productDto.setProductCompany(rs.getString("product_company"));
-			        productDto.setProductMade(rs.getDate("product_made"));
-			        productDto.setProductExpire(rs.getDate("product_expire"));
-			        productDto.setProductEvent(rs.getString("product_event"));
-			        productDto.setProductKcal(rs.getInt("product_kcal"));
-			        productDto.setProductProtein(rs.getInt("product_protein"));
-			        productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
-			        productDto.setProductFat(rs.getInt("product_fat"));
-			        productDto.setProductInfo(rs.getString("product_info"));
-			       productDto.setProductImg(rs.getString("product_img"));
+    		sql = sql.replace("#1", type);
+    		PreparedStatement ps = con.prepareStatement(sql);
+    		ps.setString(1, keyword);
+    		ps.setInt(2, begin);
+    		ps.setInt(3, end);
+    		ResultSet rs = ps.executeQuery();
 
-				list.add(productDto);
-			}
-			con.close();
-			return list;
-		}
-		
-		// 주문목록 페이지 번호 계산
-		public int countByPaging() throws Exception {
-			Connection con = JdbcUtils.getConnection();
-			String sql = "select count(*) from product";
-			PreparedStatement ps = con.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			rs.next();
-			int count = rs.getInt(1);
+    		List<ProductDto> list = new ArrayList<>();
 
-			con.close();
-			return count;
-		}
+    		 while(rs.next()) {
+    		        ProductDto productDto = new ProductDto();
+    		        productDto.setProductNo(rs.getInt("product_no"));
+    		        productDto.setProductName(rs.getString("product_name"));
+    		        productDto.setProductSort(rs.getString("product_sort"));
+    		        productDto.setProductPrice(rs.getInt("product_price"));
+    		        productDto.setProductStock(rs.getInt("product_stock"));
+    		        productDto.setProductCompany(rs.getString("product_company"));
+    		        productDto.setProductMade(rs.getDate("product_made"));
+    		        productDto.setProductExpire(rs.getDate("product_expire"));
+    		        productDto.setProductEvent(rs.getString("product_event"));
+    		        productDto.setProductKcal(rs.getInt("product_kcal"));
+    		        productDto.setProductProtein(rs.getInt("product_protein"));
+    		        productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
+    		        productDto.setProductFat(rs.getInt("product_fat"));
+    		        productDto.setProductInfo(rs.getString("product_info"));
+    		       productDto.setProductImg(rs.getString("product_img"));
 
-		// 주문검색 페이지 번호 계산
-		public int countByPaging(String type, String keyword) throws Exception {
-			Connection con = JdbcUtils.getConnection();
-			String sql = "select count(*) from product where instr(#1,?) > 0";
-			sql = sql.replace("#1", type);
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, keyword);
+    			list.add(productDto);
+    		}
+    		con.close();
+    		return list;
+    	}
+    	
+    	// 주문목록 페이지 번호 계산
+    	public int countByPaging() throws Exception {
+    		Connection con = JdbcUtils.getConnection();
+    		String sql = "select count(*) from product";
+    		PreparedStatement ps = con.prepareStatement(sql);
+    		ResultSet rs = ps.executeQuery();
+    		rs.next();
+    		int count = rs.getInt(1);
 
-			ResultSet rs = ps.executeQuery();
-			rs.next();
-			int count = rs.getInt(1);
+    		con.close();
+    		return count;
+    	}
 
-			con.close();
-			return count;
-		}
-		public int bNoExtraction(int orderNo) throws Exception{
-			Connection con = JdbcUtils.getConnection();
-			
-			String sql = "select * from buy where order_no=?";
-			
-			PreparedStatement ps = con.prepareStatement(sql);
-			
-			ps.setInt(1, orderNo);
-			
-			ResultSet rs = ps.executeQuery();
-			
-			int extraction = 0;
-			if(rs.next()) {
-				extraction = rs.getInt("buy_no");
-			}
-			con.close();
-			return extraction;
-		}
+    	// 주문검색 페이지 번호 계산
+    	public int countByPaging(String type, String keyword) throws Exception {
+    		Connection con = JdbcUtils.getConnection();
+    		String sql = "select count(*) from product where instr(#1,?) > 0";
+    		sql = sql.replace("#1", type);
+    		PreparedStatement ps = con.prepareStatement(sql);
+    		ps.setString(1, keyword);
+
+    		ResultSet rs = ps.executeQuery();
+    		rs.next();
+    		int count = rs.getInt(1);
+
+    		con.close();
+    		return count;
+    	}
+    	public int bNoExtraction(int orderNo) throws Exception{
+    		Connection con = JdbcUtils.getConnection();
+    		
+    		String sql = "select * from buy where order_no=?";
+    		
+    		PreparedStatement ps = con.prepareStatement(sql);
+    		
+    		ps.setInt(1, orderNo);
+    		
+    		ResultSet rs = ps.executeQuery();
+    		
+    		int extraction = 0;
+    		if(rs.next()) {
+    			extraction = rs.getInt("buy_no");
+    		}
+    		con.close();
+    		return extraction;
+    	}
 }

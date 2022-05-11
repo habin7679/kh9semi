@@ -131,8 +131,6 @@ if (list.isEmpty()) {
 				<th>제품 가격</th>
 				<th>재고</th>
 				<th>제조사</th>
-				<th>제조일</th>
-				<th>폐기일</th>
 				<th>행사 여부</th>
 				<th>기타</th>
 			</tr>
@@ -147,9 +145,7 @@ if (list.isEmpty()) {
 				<td><%=productDto.getProductSort()%></td>
 				<td><%=productDto.getProductPrice()%></td>
 				<td><%=productDto.getProductStock()%></td>
-				<td><%=productDto.getProductCompany()%></td>
 				<td><%=productDto.getProductMade()%></td>
-				<td><%=productDto.getProductExpire()%></td>
 				<td><%=productDto.getProductEvent()%></td>
 				<td><a href="product_admin_detail.jsp?product_no=<%=productDto.getProductNo() %>" class="link">상세보기</a></td>
 			</tr>
