@@ -22,6 +22,7 @@
 	MemberDao memberDao = new MemberDao();
 	MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자 모든 정보 조회
 	
+	
 	//내 글인지 판정
 	//= 현재 로그인한 사용자가 게시글 작성자인지 확인
 	//= 세션에 있는 사용자의 아이디와 게시글의 작성자를 비교

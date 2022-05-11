@@ -5,10 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/layout.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/layout1.css">
 </head>
 <body>
 <div id='wrap'>
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'main' of https://github.com/habin7679/kh9semi
 <footer>
 
 KH정보교육원 ｜ 사업자등록번호 : 851-87-00622 ｜ 서울 강남 제2014-01호 ｜ 대표자 : 양진선 ｜ 책임자 : 최홍석 ｜  개인정보관리책임자 : 양진선
