@@ -208,7 +208,7 @@
 	
 	<div class="row center">
 		<!-- 검색창 -->
-		<form action="review_list.jsp" method="get">
+		<form action="my_review_list.jsp" method="get">
 			<select name="type" class="form-input input-round">
 				<option value="board_title">제목</option>
 				<option value="board_content">내용</option>
