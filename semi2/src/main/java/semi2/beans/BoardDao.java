@@ -115,12 +115,12 @@ public class BoardDao {
 	
 	//해당상품 리뷰 페이지
 	//마이리뷰페이지
-	public List<BoardDto> productselectList(String type, String keyword) throws Exception {
+	public List<BoardDto> productselectList(int productNo) throws Exception {
 		Connection con = JdbcUtils.getConnection();
 		
-		String sql = "select * from board_review where instr(board_product_no, ?) > 0 order by board_no desc";
+		String sql = "select * from board_review where board_product_no = ? order by board_no desc";
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, keyword);
+		ps.setInt(1, productNo);
 		ResultSet rs = ps.executeQuery();
 		
 		List<BoardDto> list = new ArrayList<>();
@@ -694,6 +694,7 @@ public class BoardDao {
 			
 			return list;
 		}
+		
 		
 		
 //	페이징이 구현된 리스트
