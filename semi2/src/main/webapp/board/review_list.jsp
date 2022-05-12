@@ -213,6 +213,7 @@
 				<option value="board_title">제목</option>
 				<option value="board_content">내용</option>
 				<option value="board_writer">작성자</option>
+				<option value="board_product_no">후기</option>
 			</select>
 			
 			<input type="search" name="keyword" placeholder="검색어 입력" required class="form-input input-round">

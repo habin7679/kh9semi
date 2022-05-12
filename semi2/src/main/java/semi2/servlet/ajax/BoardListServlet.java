@@ -22,7 +22,7 @@ public class BoardListServlet extends HttpServlet {
 			//준비
 			int p = Integer.parseInt(req.getParameter("p"));//페이지번호
 			int s = Integer.parseInt(req.getParameter("s"));//페이지크기
-			String type = "boardProductNo";
+			String type = "board_product_no";
 			int intKeyword = Integer.parseInt(req.getParameter("productNo"));
 			String keyword = Integer.toString(intKeyword);
 
@@ -37,7 +37,7 @@ public class BoardListServlet extends HttpServlet {
 			
 			//출력
 			//resp.getWriter().print(list);//자바스크립트에서 알아들을 수 없는 형태
-				
+			
 			//Jackson-databind 라는 라이브러리를 이용하여 list를 JSON 형태로 변환 후 출력할 예정
 			//[1] ObjectMapper라는 클래스의 객체를 생성한다.
 			ObjectMapper mapper = new ObjectMapper();
