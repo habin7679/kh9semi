@@ -10,8 +10,8 @@ import java.sql.ResultSet;
 public class AttachmentDao {
 	
 	//저장 위치를 지정
-	//public static final String path = System.getProperty("user.home") + "/git/kh9semi/semi2/src/main/webapp/image";
-	public static final String path = System.getProperty("user.home") + "/upload";
+	public static final String path = System.getProperty("user.home") + "/git/kh9semi/semi2/src/main/webapp/image";
+	public static final String path1 = System.getProperty("user.home") + "/upload";
 	
 	//등록 : 번호 생성 + 등록
 	public int getSequence() throws Exception {

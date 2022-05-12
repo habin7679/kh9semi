@@ -102,7 +102,7 @@ public class BoardWriteServlet extends HttpServlet{
 			else {				
 				BoardAttachmentDto boardAttachmentDto = new BoardAttachmentDto();
 				boardAttachmentDto.setBoardNo(no);
-				boardAttachmentDto.setAttachmentNo(7);	
+				boardAttachmentDto.setAttachmentNo(1);	
 				
 				BoardAttachmentDao boardAttachmentDao = new BoardAttachmentDao();
 				boardAttachmentDao.insert(boardAttachmentDto);
