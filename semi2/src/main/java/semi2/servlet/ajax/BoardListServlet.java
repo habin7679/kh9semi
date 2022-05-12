@@ -25,7 +25,7 @@ public class BoardListServlet extends HttpServlet {
 			
 			//처리
 			BoardDao boardDao = new BoardDao();
-			List<BoardDto> list = boardDao.selectListByPaging(p, s);
+			List<BoardDto> list = boardDao.selectReviewListByPaging(p, s);
 			
 			//출력
 			//resp.getWriter().print(list);//자바스크립트에서 알아들을 수 없는 형태
