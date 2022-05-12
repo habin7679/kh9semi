@@ -184,68 +184,68 @@
     
 	<form action="join.ez" method="post">
 	<div>
-		<div>
+		<div class="row">
 			<h1>회원가입</h1>
 		</div>
 		
-		<div>
+		<div class="row">
 			<label>아이디</label>
-			<input type="text" name="memberId" placeholder="영문 소문자, 숫자 8~20자로 작성" autocomplete="off">
+			<input type="text" name="memberId" placeholder="영문 소문자, 숫자 8~20자로 작성" autocomplete="off" class="form-input fill">
 			<span></span>
 		</div>
 		
-		<div>
+		<div class="row">
 			<label>비밀번호</label>
-	        <input type="text" name="memberPw" placeholder="첫자 영어 대문자,영어, 숫자, 특수문자 8~16자로 작성">
+	        <input type="text" name="memberPw" placeholder="첫자 영어 대문자,영어, 숫자, 특수문자 8~16자로 작성" class="form-input fill">
 	        <span></span>
 	    </div>
 	    
-	    <div>
+	    <div class="row">
 			<label>비밀번호 확인</label>
-	        <input type="text" name="memberPw2" placeholder="첫자 영어 대문자,영어, 숫자, 특수문자 8~16자로 작성">
+	        <input type="text" name="memberPw2" placeholder="첫자 영어 대문자,영어, 숫자, 특수문자 8~16자로 작성" class="form-input fill">
 	        <span></span>
 	    </div>
 	    
-	    <div>
+	    <div class="row">
 	        <label>닉네임</label>
-	        <input type="text" name="memberNick" placeholder="한글,숫자 10자 이내" autocomplete="off">
+	        <input type="text" name="memberNick" placeholder="한글,숫자 10자 이내" autocomplete="off" class="form-input fill">
 	        <span></span>
 	    </div>
 	    
-	    <div>
+	    <div class="row">
 	    	<label>이름</label>
-	    		<input type="text" name="memberName" placeholder="이름" autocomplete="off">
+	    		<input type="text" name="memberName" placeholder="이름" autocomplete="off" class="form-input fill">
 	    </div>
 	    
-	    <div>
+	    <div class="row">
 	        <label>생년월일</label><br>
-	        <input type="date" name="memberBirth" autocomplete="off">
+	        <input type="date" name="memberBirth" autocomplete="off" class="form-input fill">
 	    </div>
 	    
-	    <div>
+	    <div class="row">
 	        <label>전화번호</label>
-	        <input type="tel" name="memberPhone" placeholder="숫자만 입력" autocomplete="off">
+	        <input type="tel" name="memberPhone" placeholder="숫자만 입력" autocomplete="off" class="form-input fill">
 	    </div>
 	    
-	    <div>
+	    <div class="row">
 	        <label>이메일</label>
-	        <input type="email" name="memberEmail" autocomplete="off">
+	        <input type="email" name="memberEmail" autocomplete="off" class="form-input fill">
 	    </div>
 	    
-	    <div>
+	    <div class="row">
 	        <label>주소</label><br>
-                <input type="text" name="memberPost" placeholder="우편번호" autocomplete="off">
+                <input type="text" name="memberPost" placeholder="우편번호" autocomplete="off" class="form-input fill">
                  <input type="button" class="address-find-btn" value="우편번호 찾기"><br>
             </div>
-            <div>
-                <input type="text" name="memberBasicAddress" placeholder="기본주소" autocomplete="off">
+            <div class="row">
+                <input type="text" name="memberBasicAddress" placeholder="기본주소" autocomplete="off" class="form-input fill">
             </div>
-            <div>
-                <input type="text" name="memberDetailAddress" placeholder="상세주소" autocomplete="off">
+            <div class="row">
+                <input type="text" name="memberDetailAddress" placeholder="상세주소" autocomplete="off" class="form-input fill">
 	    </div>
 	    
-		<div>
-	        <button type="submit">회원가입</button>
+		<div class="row">
+	        <button type="submit" class="btn fill btn-primary">회원가입</button>
 	    </div>
 	</div>
 	</form>

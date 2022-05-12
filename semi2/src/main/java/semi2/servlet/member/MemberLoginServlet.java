@@ -32,7 +32,7 @@ public class MemberLoginServlet extends HttpServlet {
 			//출력
 			if(login) {
 				req.getSession().setAttribute("member", memberId);
-				req.getSession().setAttribute("admin", memberDto.getMemberGrade());
+				req.getSession().setAttribute("admin", "관리자");
 				
 				if(referer !=null) {
 					resp.sendRedirect(referer);

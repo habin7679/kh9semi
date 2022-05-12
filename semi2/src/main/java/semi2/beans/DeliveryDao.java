@@ -96,19 +96,12 @@ public class DeliveryDao {
 		}
 		
 		//수정
-		public boolean update(DeliveryDto deliveryDto) throws Exception {
+		public boolean update1(String memberId) throws Exception {
 			Connection con = JdbcUtils.getConnection();
 			
-			String sql = "update delivery "
-								+ "set memberId, delivery_name = ? , delivery_post = ? , delivery_basic_address = ? , delivery_detail_adress = ?,delivery_phone "
-								+ "where exam_id = ?";
+			String sql = "update delivery set delivery_menu='일반배송지' where delivery_menu='대표배송지' and member_id=?";
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, deliveryDto.getMemberId());
-			ps.setString(2, deliveryDto.getDeliveryName());
-			ps.setString(3, deliveryDto.getDeliveryPost());
-			ps.setString(4, deliveryDto.getDeliveryBasicAddress());
-			ps.setString(5, deliveryDto.getDeliveryDetailAddress());
-			ps.setString(6, deliveryDto.getDeliveryPhone());
+			ps.setString(1, memberId);
 			int count = ps.executeUpdate();
 			
 			con.close();
@@ -116,6 +109,20 @@ public class DeliveryDao {
 			return count > 0;
 		}
 		
+		//수정
+			public boolean update2(String memberId, String deliveryPost) throws Exception {
+					Connection con = JdbcUtils.getConnection();
+					
+					String sql = "update delivery set delivery_menu='대표배송지' where member_id=? and delivery_post=?";
+					PreparedStatement ps = con.prepareStatement(sql);
+					ps.setString(1, memberId);
+					ps.setString(2, deliveryPost);
+					int count = ps.executeUpdate();
+					
+					con.close();
+					
+					return count > 0;
+				}
 		//배송지 등록
 				public void insertBasic(DeliveryDto deliveryDto) throws Exception {
 					Connection con = JdbcUtils.getConnection();
@@ -162,5 +169,7 @@ public class DeliveryDao {
 					
 					
 				}
+
+			
 				
 }

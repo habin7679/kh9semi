@@ -6,29 +6,29 @@
 %>
 
 	<form action="login.ez" method="post">
-	<div>
-		<div>
+	<div class="container w500">
+		<div class="row">
 			<h1>로그인</h1>
 		</div>
 		<%if(referer !=null){%>
-			<input type="hidden" name="referer" value="<%=referer %>">
+			<input type="hidden" name="referer" value="<%=referer %>" class="form-input fill">
 		<%}%>
 		
-		<div>
+		<div class="row">
 			<label>아이디</label>
-			<input type="text" name="memberId" autocomplete="off" placeholder="아이디">
+			<input type="text" name="memberId" autocomplete="off" placeholder="아이디" class="form-input fill">
 		</div>
 		
-		<div>
+		<div class="row">
 			<label>비밀번호</label>
-			<input type="password" name="memberPw" placeholder="비밀번호">
+			<input type="password" name="memberPw" placeholder="비밀번호" class="form-input fill">
 		</div>
 		
-		<div>
-			<input type="submit" value="로그인">
+		<div class="row">
+			<input type="submit" value="로그인" class="btn fill btn-primary">
 		</div>
 		<% if(request.getParameter("error") !=null){ %>
-		<div>
+		<div class="row">
 			<span style="color:red;">로그인 정보가 일치하지 않습니다</span>
 		</div>
 		<%} %>
