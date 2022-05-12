@@ -78,6 +78,10 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
         if (recentProdArr == null) {
         	recentProdArr = [];
         }
+
+        
+        
+        
 		console.log(recentProdArr);
         recentProdArr.push(<%=productNo%>);
         localStorage.setItem("recentProdArr", JSON.stringify(recentProdArr));
@@ -196,7 +200,10 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
 	}
 %>
 
-
+<%//
+	//List<BoardDto> replyList = boardDao.productselectList(productNo);
+%>//
+<%//=replyList%>
 
 <div class="container w950 m30">
 
