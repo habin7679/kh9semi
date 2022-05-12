@@ -30,7 +30,6 @@ public class BoardListServlet extends HttpServlet {
 			//처리
 			BoardDao boardDao = new BoardDao();
 
-			List<BoardDto> list = boardDao.selectReviewListByPaging(p, s);
 
 			List<BoardDto> list = boardDao.selectReviewListByPaging(p, s, type, keyword);
 
