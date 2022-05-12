@@ -79,6 +79,17 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
                 });
             }
         });
+       
+        var recentProdArr = JSON.parse(localStorage.getItem("recentProdArr"));
+        if (recentProdArr == null) {
+        	recentProdArr = [];
+        }
+
+		console.log(recentProdArr);
+        recentProdArr.push(<%=productNo%>);
+        localStorage.setItem("recentProdArr", JSON.stringify(recentProdArr));
+        console.log(recentProdArr);
+        
     </script>
 		
 <%if(productDto == null){ %>
