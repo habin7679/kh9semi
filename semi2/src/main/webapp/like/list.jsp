@@ -21,16 +21,23 @@
 
 <%for(int i =0; i<list.size(); i++) {
 		int productNo = list.get(i).getProductNo();
-		ProductDto pDto = productDao.selectOne(productNo);
+		ProductDto pDto = productDao.selectOneCart(productNo);
 %>
 	<form action="delete.ez" method="post">
-		<div class="container">
+		<div class="row container center">
+
 			<img src="<%=request.getContextPath()%>/image/product<%=productNo %>.jpg" width="200" height="200"><br><br>
+
 			<a href="detail.jsp?productNo=<%=productNo%>"><%=pDto.getProductName() %></a>
-			<input type="hidden" name="productNo" value="<%=pDto.getProductNo() %>">
+
+			<input type="hidden" name="productNo" value="<%=productNo%>">
+
 			<h4><%=pDto.getProductPrice() %></h4>		
+
 			<input type="submit" value="삭제하기">
+
 			<a href="<%=request.getContextPath()%>/cart/insert.ez?productNo=<%=productNo %>">장바구니에 추가하기</a>
+
 		</div>
 	</form>
 <%} %>

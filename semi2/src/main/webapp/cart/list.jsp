@@ -18,7 +18,9 @@
 <jsp:include page="/template/header.jsp"></jsp:include>
 
     <!-- jquery cdn -->
+    
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    
     <script type="text/javascript">
     $(function(){
         refreshTotal();
@@ -54,16 +56,18 @@
 	for(int i =0; i<list.size(); i++) {
 		CartDto cDto = list.get(i);
 		int pNo = cDto.getProductNo();
-		ProductDto pDto = pDao.selectOne(pNo);
+		ProductDto pDto = pDao.selectOneCart(pNo);
 		int price = pDto.getProductPrice();
 		int amount = cDto.getCartAmount();
 		int total = price*amount;
 %>
-	<div class="row">
+	<div class="container w700">
+	<div class= "row center">
 	<img src="<%=request.getContextPath() %>/image/product<%=pNo %>.jpg" width="200" height="200">
-	<br><br>
+	</div>
+	<div class= "row center">
 	<a href="detail.jsp?productNo=<%=pNo%>"><%=pDto.getProductName() %></a>
-	<br><br>
+	</div>
 	
 	<input type="hidden" name="productNo" value="<%=pNo %>">
 	구매하기: <input type="checkbox" class="select-item ind" name="checkProduct" value="<%=pNo%>">	<br><br>
@@ -73,13 +77,12 @@
 	<a href="delete.ez?productNo=<%=pNo %>">삭제하기</a>
 	</div>
 	
-	<br><br>
 <%} %>
-	<div class="row">
+	<div class="row center">
 	총 주문금액: <span class="total"></span>
 	</div>
 	<%if(list.size()>0) {%>
-	<input type="submit" value="구매하기">
+	<input type="submit" value="구매하기" class="btn btn-primary">
 	<%} %>
 </form>
 	

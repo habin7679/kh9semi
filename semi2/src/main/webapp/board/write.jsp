@@ -18,7 +18,6 @@ MemberDto memberDto = memberDao.selectOne(memberId);
 
 <form method="post" encType = "multipart/form-data" action="write.ez">
 
-
 <%if(request.getParameter("superNo") != null){ %>   
 <input type="hidden" name="superNo" value="<%=request.getParameter("superNo")%>">
 <%} %>

@@ -69,40 +69,42 @@ String memberId=(String)session.getAttribute("member");
         });
     </script>
 <form action="<%=request.getContextPath() %>/delivery/insert.ez" method="post">   
-<div>
-	<div>
+<div class="container w500">
+	<div class="row">
 		<h1>배송지 추가</h1>
 	</div>
 	
-	<div>
+	<div class="row">
 		<input type="hidden" name=memberId value="<%=memberId %>">
 	</div>
 	
-	<div>
+	<div class="row">
 		<label>받는분</label>
-		<input type="text" name="deliveryName" placeholder="이름" autocomplete="off">
+		<input type="text" name="deliveryName" placeholder="이름" autocomplete="off" class="form-input fill">
 	</div>
 	
-	<div>
+	<div class="row">
 	        <label>주소</label><br>
-                <input type="text" name="deliveryPost" placeholder="우편번호" autocomplete="off">
+                <input type="text" name="deliveryPost" placeholder="우편번호" autocomplete="off" class="form-input fill">
                  <input type="button" class="address-find-btn" value="우편번호 찾기"><br>
             </div>
-            <div>
-                <input type="text" name="deliveryBasicAddress" placeholder="기본주소" autocomplete="off">
+           
+            <div class="row">
+                <input type="text" name="deliveryBasicAddress" placeholder="기본주소" autocomplete="off" class="form-input fill">
             </div>
-            <div>
-                <input type="text" name="deliveryDetailAddress" placeholder="상세주소" autocomplete="off">
+            
+            <div class="row">
+                <input type="text" name="deliveryDetailAddress" placeholder="상세주소" autocomplete="off" class="form-input fill">
 	    </div>
 	
-	<div>
+	<div class="row">
 		<label>휴대폰 번호</label>
-		<input type="tel" name="deliveryPhone" placeholder="숫자만 입력하세요" autocomplete="off">
+		<input type="tel" name="deliveryPhone" placeholder="숫자만 입력하세요" autocomplete="off" class="form-input fill">
 	</div>
 	
 	
-	<div>
-		<input type="submit" value="확인">
+	<div class="row">
+		<input type="submit" value="확인" class="btn fill btn-primary">
 	</div>
 </div>
 </form>

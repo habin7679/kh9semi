@@ -3,28 +3,28 @@
 <jsp:include page="/template/header.jsp"></jsp:include>
 	
 	<form action="find_id.ez" method="post">
-	<div>
-		<div>
+	<div class="container w700 m30">
+		<div class="row">
 			<h1>아이디 찾기</h1>
 		</div>
 		
-		<div>
+		<div class="row">
 			<label>이름</label>
-			<input type="text" name="memberName" autocomplete="off" placeholder="이름을 입력하세요">
+			<input type="text" name="memberName" autocomplete="off" placeholder="이름을 입력하세요" class="form-input fill">
 		</div>
 		
-		<div>
+		<div class="row">
 			<label>생년월일</label>
-			<input type="date" name="memberBirth" autocomplete="off">
+			<input type="date" name="memberBirth" autocomplete="off" class="form-input fill">
 		</div>
 		
-		<div>
+		<div class="row">
 			<label>전화번호</label>
-			<input type="tel" name="memberPhone" autocomplete="off" placeholder="숫자만 입력하세요">
+			<input type="tel" name="memberPhone" autocomplete="off" placeholder="숫자만 입력하세요" class="form-input fill">
 		</div>
 		
-		<div>
-			<input type="submit" value="아이디 찾기">
+		<div class="row">
+			<input type="submit" value="아이디 찾기" class="btn fill btn-primary">
 		</div>
 		
 		<%if(request.getParameter("error") !=null) {%>
