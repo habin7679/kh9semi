@@ -11,6 +11,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <%
 String memberId = (String) session.getAttribute("member");
 
@@ -33,6 +34,7 @@ List<Integer> falseList = new ArrayList<>();
 ProductDto productDto = new ProductDto();
 int deliveryFee = 0;
 %>
+
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -92,32 +94,39 @@ for (int i = 0; i < list.size(); i++) {
 }
 if (falseList.size() == 0) {
 %>
+
 <form action="paying.ez" method="post">
-	<div class="container">
-		<div>
+	<div class="container w450">
+		<div class="row center">
 			<input type="hidden" name="orderNo" value="<%=orderNo%>">
-			<div>
-				수령인 <input type="text" name="payingName"
-					value="<%=mDto.getMemberName()%>">
+		</div>
+			<div class="row">
+				<label>수령인 </label>
+				<input type="text" name="payingName"
+					value="<%=mDto.getMemberName()%>" class="form-input fill form-round">
 			</div>
-			<div>
-				연락처 <input type="tel" name="payingPhone"
-					value="<%=mDto.getMemberPhone()%>">
+			<div class="row">
+				<label>연락처</label> 
+				<input type="tel" name="payingPhone"
+					value="<%=mDto.getMemberPhone()%>" class="form-input fill form-round">
 			</div>
-			<div>
-				우편번호 <input type="text" name="payingPost"
-					value="<%=mDto.getMemberPost()%>">
+			<div class="row">
+				<label>우편번호</label> 
+				<input type="text" name="payingPost"
+					value="<%=mDto.getMemberPost()%>" class="form-input fill form-round">
 			</div>
-			<div>
-				기본주소 <input type="text" name="payingBasicAddress"
-					value="<%=mDto.getMemberBasicAddress()%>">
+			<div class="row">
+				<label>기본주소</label> 
+				<input type="text" name="payingBasicAddress"
+					value="<%=mDto.getMemberBasicAddress()%>" class="form-input fill form-round">
 			</div>
-			<div>
-				상세주소 <input type="text" name="payingDetailAddress"
-					value="<%=mDto.getMemberDetailAddress()%>">
+			<div class="row">
+				<label>상세주소</label> 
+				<input type="text" name="payingDetailAddress"
+					value="<%=mDto.getMemberDetailAddress()%>" class="form-input fill form-round">
 			</div>
-			<div>
-				<input type="date" name="payingDeliveryDate"> 원하는 시간대 <select
+			<div class="row">
+				<input type="date" name="payingDeliveryDate" class="form-input fill form-round"> 원하는 시간대 <select
 					name="payingDeliveryTime">
 					<option>1</option>
 					<option>2</option>
@@ -145,27 +154,30 @@ if (falseList.size() == 0) {
 					<option>24</option>
 				</select>
 			</div>
-			<div>
+			<div class="row">
 				<span>배송비 선불</span> 
 				<input type="checkbox" class="inclusion">
 			</div>
-			<div>
-				<span class="fee" hidden >제주도, 산간지역 체크</span> 
-				<input type="checkbox" name="payingDeliveryFee" class="expensive fee" hidden >
+			<div class="row">
+				<span class="fee" hidden>제주도, 산간지역 체크</span>
+				<input type="checkbox" name="payingDeliveryFee" class="expensive fee" hidden>
 			</div>
-			<div>
-				<span class="fee" hidden >배송비</span> 
-				<input type="number" hidden name="deliveryFee" class="deliveryFee fee">
+			<div class="row">
+				<span class="fee" hidden>배송비</span>
+				<input type="number" hidden name="deliveryFee" class="deliveryFee fee" readonly>
 			</div>
 
-			<div>
-				상품 총 가격 <input type="number" name="payingTotal" value="<%=payingDao.totalPrice(orderNo)%>" class="pPrice">
+			<div class="row">
+				<label>상품 총 가격</label> 
+				<input type="number" name="payingTotal" value="<%=payingDao.totalPrice(orderNo)%>" class="pPrice form-input fill form-round" readonly>
 			</div>
-			<div>
-				총 결제 금액<input type="numbeer" class="total">
+			<div class="row">
+				<label>총 결제 금액</label> 
+				<input type="number" class="total form-input fill form-round" readonly>
 			</div>
-			<div>
-				<input type="submit" value="구매하기">
+			<div class="row">
+				<input type="submit" value="구매하기" class="btn btn-primary fill">
+			</div>
 			</div>
 </form>
 <%
@@ -174,7 +186,7 @@ for (int i = 0; i < falseList.size(); i++) {
 	int falseProductNo = falseList.get(i);
 	productDto = productDao.selectOne(falseProductNo);
 %>
-<div>
+<div class="container">
 	<%=productDto.getProductName()%>
 	<%
 	if (i < falseList.size() - 1) {
@@ -187,8 +199,9 @@ for (int i = 0; i < falseList.size(); i++) {
 <%
 }
 %>
-<div>재고가 부족합니다.</div>
-<a href="<%=request.getContextPath()%>/product/list.jsp">다른 상품 보러가기</a>
+<div class="container">
+<label>재고가 부족합니다.</label>
+</div>
 <%
 }
 %>
