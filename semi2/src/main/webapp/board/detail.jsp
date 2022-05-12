@@ -41,19 +41,16 @@
 %>    
     
 <jsp:include page="/template/header.jsp"></jsp:include>
-
-<h1><%=boardDto.getBoardNo()%>번 게시글 보기</h1>
+<div class="container w800 m30">
+<div class="row left">
+<h1>[<%=boardDto.getBoardHead()%>]<%=boardDto.getBoardTitle()%></h1>
+</div>
 <img src="/semi2/file/download.ez?attachmentNo=<%=boardAttachmentDto.getAttachmentNo()%>">
 <table border="1" width="750">
 	<tr>
 		<td>
 			<h2>
-				<%-- 말머리가 있으면 출력 --%>
-				<%if(boardDto.getBoardHead() != null){ %>
-				[<%=boardDto.getBoardHead()%>]
-				<%} %>
-				
-				<%=boardDto.getBoardTitle()%>
+				<%=boardDto.getBoardContent()%>
 			</h2>
 		</td>
 	</tr>
@@ -70,7 +67,7 @@
 			 조회수 <%=boardDto.getBoardReadcount()%>
 		</td>
 	</tr>
-	
+	</div>
 	<!-- 버튼 영역 -->
 	<tr>
 		<td align="right">
