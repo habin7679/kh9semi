@@ -24,14 +24,21 @@
 		int oNo = bDto.getOrderNo();
 		PayingDto payingDto = payingDao.selectOneDate(oNo);
 %>
-
-<a href="detail.jsp?buyNo=<%=bDto.getBuyNo()%>"><%=payingDto.getPayingDate() %>주문</a><br><br>
-송장번호: <%if(bDto.getBuyInvoice()==0){%>상품준비중<% }else{%><%=bDto.getBuyInvoice()%><%}%><br><br>
-주문현황: <%=bDto.getBuyStatus() %><br><br>
+<div class="container center row fill">
+<a href="detail.jsp?buyNo=<%=bDto.getBuyNo()%>"><%=payingDto.getPayingDate() %>주문</a>
+</div>
+<div class="center row fill">
+송장번호: <%if(bDto.getBuyInvoice()==0){%>상품준비중<% }else{%><%=bDto.getBuyInvoice()%><%}%>
+</div>
+<div class="center row fill">
+주문현황: <%=bDto.getBuyStatus() %>
+</div>
+<div class="center row fill">
 <%if(bDto.getBuyStatus().equals("입금전")||bDto.getBuyStatus().equals("결제완료")) {%>
 <a href="cancel.ez?buyNo=<%=bDto.getBuyNo() %>">취소하기</a>
 <%} %>
-<hr>
+</div>
+
 <%} %>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

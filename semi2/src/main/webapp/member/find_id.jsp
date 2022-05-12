@@ -3,7 +3,7 @@
 <jsp:include page="/template/header.jsp"></jsp:include>
 	
 	<form action="find_id.ez" method="post">
-	<div>
+	<div class="container w700 m30">
 		<div class="row">
 			<h1>아이디 찾기</h1>
 		</div>

@@ -3,7 +3,7 @@
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 	
-<div class="container w500">
+<div class="container w500 m30">
 	<div>
 	<h1>회원가입이 완료되었습니다!</h1>
 	</div><br>
