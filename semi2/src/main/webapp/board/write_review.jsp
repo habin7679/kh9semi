@@ -14,7 +14,7 @@ int productNo = Integer.parseInt(request.getParameter("productNo"));
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 
-<form method="post" encType = "multipart/form-data" action="write_reivew.ez">
+<form method="post" encType = "multipart/form-data" action="write_review.ez">
 <input type="hidden" name="productNo" value="<%=productNo%>">
 
 
