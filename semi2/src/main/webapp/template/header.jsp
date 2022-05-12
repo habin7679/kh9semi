@@ -4,17 +4,20 @@
     pageEncoding="UTF-8"%>
 
 <%
+	
 	//세션에 login 이라는 이름으로 저장된 데이터를 꺼낸다
 	String memberId = (String) session.getAttribute("member");
 	//memberId가 있으면 로그인 상태라고 판정하고 없으면 로그아웃 상태라고 판정
 	boolean login = memberId != null;
 	
-	//관리자 검사
-	String admin = (String)session.getAttribute("admin");
-	boolean auth = admin != null && admin.equals("관리자");
+
 	
 	MemberDao memberDao=new MemberDao();
 	MemberDto memberDto=memberDao.selectOne(memberId);
+	
+	//관리자 검사
+		String admin = (String)session.getAttribute("admin");
+		boolean auth = admin != null && memberDto.getMemberGrade().equals("관리자");
 %>    
 <html>
 <head>

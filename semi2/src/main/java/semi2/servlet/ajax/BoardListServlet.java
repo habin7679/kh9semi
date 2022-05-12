@@ -22,10 +22,18 @@ public class BoardListServlet extends HttpServlet {
 			//준비
 			int p = Integer.parseInt(req.getParameter("p"));//페이지번호
 			int s = Integer.parseInt(req.getParameter("s"));//페이지크기
+			String type = "boardProductNo";
+			int intKeyword = Integer.parseInt(req.getParameter("productNo"));
+			String keyword = Integer.toString(intKeyword);
+
 			
 			//처리
 			BoardDao boardDao = new BoardDao();
+
 			List<BoardDto> list = boardDao.selectReviewListByPaging(p, s);
+
+			List<BoardDto> list = boardDao.selectReviewListByPaging(p, s, type, keyword);
+
 			
 			//출력
 			//resp.getWriter().print(list);//자바스크립트에서 알아들을 수 없는 형태

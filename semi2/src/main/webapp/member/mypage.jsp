@@ -10,21 +10,20 @@
 		
 	
 	%>
-	 <div>
-		  <div>
-		  	<h1><%=memberDto.getMemberNick()%></h1>
-		  	<a href="edit.jsp">내 정보 변경하기</a>
+	 <div class="container w500">
+		  <div class="row center">
+		  	<h1><%=memberDto.getMemberNick()%><h3>님 반갑습니다</h3></h1>
+		  	<%=memberDto.getMemberPoint() %>point
 		  </div>
-		  <div><%=memberDto.getMemberPoint() %>point</div>
-		  <div><a href="<%=request.getContextPath() %>/buy/list.jsp">구매내역</a></div>
-		  <div><a href="#">최근 본 상품</a></div>
-		  <div><a href="<%=request.getContextPath() %>/delivery/delivery_list.jsp">배송지 관리</a></div>
-		  <div><a href="#">정기배송 신청하기</a></div>
-		  <div><a href="<%=request.getContextPath()%>/review_list.jsp">내 후기내역</a></div>
-		  <div><a href="<%=request.getContextPath()%>/qna_list.jsp">내 문의내역</a></div>
-		  
-		  <div><a href="exit.jsp">회원 탈퇴하기</a></div>
-	  
+		  <table class="table">
+		  	<tr><a href="edit.jsp">내 정보 변경하기</a></td>
+		  	<tr><a href="<%=request.getContextPath() %>/buy/list.jsp">구매내역</a></tr>
+		  	<tr><a href="#">최근 본 상품</a></tr>
+		  	<tr><a href="<%=request.getContextPath() %>/delivery/delivery_list.jsp">배송지 관리</a></tr>
+		  	<tr><a href="<%=request.getContextPath()%>/board/my_review_list.jsp">내 후기내역</a></tr>
+		  	<tr><a href="<%=request.getContextPath()%>/board/my_qna_list.jsp">내 문의내역</a>	</tr>  
+		  	<tr><a href="exit.jsp">회원 탈퇴하기</a></tr>
+		</table>
 	  
 	 </div>
 	
