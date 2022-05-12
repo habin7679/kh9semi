@@ -30,7 +30,7 @@ else
 %>
 <%-- 출력 --%>
 <jsp:include page="/template/header.jsp"></jsp:include>
-
+<body>
 <div class="container w1000 m30">
 			<div class="row center">
 		<h1><a href="product_user_list.jsp">상품 목록</a></h1>
@@ -133,7 +133,7 @@ if (list.isEmpty()) {
 </div>
 
 
-
+</body>
 <jsp:include page="/template/footer.jsp"></jsp:include>
 
 
