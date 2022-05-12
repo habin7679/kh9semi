@@ -20,7 +20,7 @@ import semi2.beans.BoardDao;
 import semi2.beans.BoardDto;
 
 
-@WebServlet(urlPatterns = "/board/writeReview.ez")
+@WebServlet(urlPatterns = "/board/write_review.ez")
 public class BoardWriteReviewServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -78,7 +78,7 @@ public class BoardWriteReviewServlet extends HttpServlet{
 			
 			int no = boardDao.getSequence();
 			boardDto.setBoardNo(no);
-			boardDao.insert(boardDto);
+			boardDao.insertReview(boardDto);
 			
 			
 			if(mRequest.getFile("attach") != null) {

@@ -245,11 +245,11 @@ public class BoardDao {
 		Connection con = JdbcUtils.getConnection();
 		
 		String sql = "insert into board("
-								+ "board_no, board_head, board_title, board_content, board_writer, "
+								+ "board_no, board_head, board_title, board_content, board_writer, board_product_no "
 								+ "group_no, super_no, depth"
 							+ ") "
 //						+ "values(board_seq.nextval, ?, ?, ?, ?)";//번호를 미리 만들지 않은 경우
-						+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";//번호를 미리 만든 경우
+							+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";//번호를 미리 만든 경우
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, boardDto.getBoardNo());
 		ps.setString(2, boardDto.getBoardHead());

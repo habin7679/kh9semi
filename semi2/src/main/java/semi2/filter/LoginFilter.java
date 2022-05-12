@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 		"/member/exit.jsp", "/member/exit.ez",
 		"/board/write.jsp", "/board/write.ez",
 		"/board/edit.jsp", "/board/edit.ez",
-		"/board/delete.ez",
+		"/board/delete.ez", "/board/write_review.ez"
 		
 })
 public class LoginFilter implements Filter{
