@@ -130,9 +130,11 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
     <div class="container w800 m30">
 
         <div class="row center m30">
-   <h1>후기보기</h1>
+   <h1>상품 후기</h1>
         </div>
-
+	<div class="row right">
+		<a href="http://localhost:8212/semi2/board/write_review.jsp?productNo=<%=productNo%>" class="link link-btn">글쓰기</a>
+	</div>
         <div class="row">
 
             <table class="table table-border">
