@@ -78,10 +78,6 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
         if (recentProdArr == null) {
         	recentProdArr = [];
         }
-        
-        
-        
-        
 		console.log(recentProdArr);
         recentProdArr.push(<%=productNo%>);
         localStorage.setItem("recentProdArr", JSON.stringify(recentProdArr));
