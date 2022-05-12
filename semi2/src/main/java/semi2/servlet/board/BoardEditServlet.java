@@ -24,7 +24,7 @@ public class BoardEditServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			String path = System.getProperty("user.home") + "/upload";//운영체제에서 사용자에게 제공되는 home 폴더
+			String path = AttachmentDao.path;
 			System.out.println("path = " + path);//확인을 위한 출력
 			
 			File dir = new File(path);
@@ -104,7 +104,7 @@ public class BoardEditServlet extends HttpServlet{
 			else {				
 				BoardAttachmentDto boardAttachmentDto = new BoardAttachmentDto();
 				boardAttachmentDto.setBoardNo(no);
-				boardAttachmentDto.setAttachmentNo(7);	
+				boardAttachmentDto.setAttachmentNo(1);	
 				
 				BoardAttachmentDao boardAttachmentDao = new BoardAttachmentDao();
 				boardAttachmentDao.insert(boardAttachmentDto);
