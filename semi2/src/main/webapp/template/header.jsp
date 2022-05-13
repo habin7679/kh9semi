@@ -29,6 +29,7 @@
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/reset.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/layout.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/commons.css">
+      <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/login.css">
     
     
     <%-- 
