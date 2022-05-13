@@ -22,7 +22,7 @@ public class BoardListServlet extends HttpServlet {
 			//준비
 			int p = Integer.parseInt(req.getParameter("p"));//페이지번호
 			int s = Integer.parseInt(req.getParameter("s"));//페이지크기
-			String type = "boardProductNo";
+			String type = "board_product_no";
 			int intKeyword = Integer.parseInt(req.getParameter("productNo"));
 			String keyword = Integer.toString(intKeyword);
 

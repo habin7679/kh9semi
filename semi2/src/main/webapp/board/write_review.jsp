@@ -10,12 +10,12 @@ String memberId = (String)session.getAttribute("member");
 MemberDao memberDao = new MemberDao();
 MemberDto memberDto = memberDao.selectOne(memberId);
 int productNo = Integer.parseInt(request.getParameter("productNo"));
-
 %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 
-<form method="post" encType = "multipart/form-data" action="writeReivew.ez">
+<form method="post" encType = "multipart/form-data" action="write_review.ez">
+<input type="hidden" name="productNo" value="<%=productNo%>">
 
 
 <%if(request.getParameter("superNo") != null){ %>   

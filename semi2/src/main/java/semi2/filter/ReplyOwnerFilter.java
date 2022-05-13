@@ -15,8 +15,8 @@ import semi2.beans.ReplyDao;
 import semi2.beans.ReplyDto;
 
 @WebFilter(filterName="f4", urlPatterns = {
-		"/board/reply_edit.kh",
-		"/board/reply_delete.kh"
+		"/board/reply_edit.ez",
+		"/board/reply_delete.ez"
 })
 public class ReplyOwnerFilter implements Filter{
 	@Override
