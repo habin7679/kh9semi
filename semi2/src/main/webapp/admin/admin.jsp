@@ -14,9 +14,11 @@
 		<lavel>Product</lavel><br>	
 			<a href="<%=request.getContextPath()%>/product/product_admin_list.jsp">상품관리</a>&nbsp;&nbsp;&nbsp;<br><br>
 		<lavel>Order</lavel><br>		
-			<a href="<%=request.getContextPath()%>/admin/buy_list.jsp">주문관리</a>&nbsp;&nbsp;&nbsp;<br><br>
+			<a href="<%=request.getContextPath()%>/admin/order_list.jsp">주문관리</a>&nbsp;&nbsp;&nbsp;<br><br>
+			<a href="<%=request.getContextPath()%>/admin/buy_list.jsp">배송관리</a>&nbsp;&nbsp;&nbsp;<br>
 		<lavel>Notice</lavel><br>		
-			<a href="<%=request.getContextPath()%>/board/write.jsp">게시판관리</a>&nbsp;&nbsp;&nbsp;<br><br>
+			<a href="<%=request.getContextPath()%>/board/list.jsp">게시글관리</a>&nbsp;&nbsp;&nbsp;<br>
+			<a href="<%=request.getContextPath()%>/board/write.jsp">게시글작성</a>&nbsp;&nbsp;&nbsp;<br><br>
 		<lavel>Banner</lavel><br>		
 			<a href="<%=request.getContextPath()%>/admin/banner.jsp">배너관리</a>&nbsp;&nbsp;&nbsp;<br><br>
 		<lavel>Statistics</lavel><br>	

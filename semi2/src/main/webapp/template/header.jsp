@@ -29,13 +29,13 @@
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/reset.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/layout.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/commons.css">
-    
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/login1.css">
     
     <%-- 
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/commons.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/test/commons.css">
     --%>
-    <title>이지어트 메인 페이지</title>
+    <title>이지어트</title>
 
 <style>   
         /* 중간 사이드 바!! */
@@ -140,7 +140,7 @@
             	<%=memberDto.getMemberNick()%>님 환영합니다! &nbsp;&nbsp;&nbsp;
             <% } %>
 				</div>
-								<%-- 관리자라면 관리 메뉴를 출력 --%>
+				<%-- 관리자라면 관리 메뉴를 출력 --%>
 				<%if(auth){ %>
 				<a href="<%=request.getContextPath()%>/admin/admin.jsp">관리자페이지</a>&nbsp;&nbsp;&nbsp;
 				
