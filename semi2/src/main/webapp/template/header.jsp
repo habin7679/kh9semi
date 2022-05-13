@@ -319,10 +319,8 @@ ul.bar a {
 					</ul>
 				</ul>
 			</div>
-		</div>
-	</div><%--한상혁 --%>	
+		</div>	
 
-	<%--한상혁 
 		<a href="<%=request.getContextPath()%>/index.jsp">
 			<div class="content" style="height: 100px; justify-content: center;">
 				<img src="<%=request.getContextPath()%>/image/logo.png"
@@ -330,6 +328,7 @@ ul.bar a {
 		</a> &nbsp;&nbsp;&nbsp;
 
 	</div>
+	<%--한상혁 
 	
 	<div class="content">
 		<ul class="bar"
