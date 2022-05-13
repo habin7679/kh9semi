@@ -4,21 +4,14 @@
 <%@page import="java.util.*"%>
 
 <%
-ProductDao pDao=new ProductDao();
-List<ProductDto> list=pDao.eventOutput();
-List<ProductDto> list2=pDao.categorie("샐러드");
+ProductDao pDao = new ProductDao();
+List<ProductDto> list = pDao.eventOutput();
+List<ProductDto> list2 = pDao.categorie("샐러드");
 
-List<ProductDto> list4=pDao.categorie("닭가슴살");
-//ProductAttachmentDao paDao=new 
+List<ProductDto> list4 = pDao.categorie("닭가슴살");
+ProductAttachmentDao paDao = new ProductAttachmentDao();
 %>
 
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
 	rel="stylesheet">
@@ -58,7 +51,6 @@ List<ProductDto> list4=pDao.categorie("닭가슴살");
 </div>
 <br>
 <br>
-<br>
 
 <div class="content">
 	<div style="display: flex; flex-direction: column;">
@@ -66,34 +58,30 @@ List<ProductDto> list4=pDao.categorie("닭가슴살");
 			style="display: block; position: relative; padding: 10px 0px; margin: 0px 0px; text-align: left; color: #222; font-size: 27px; font-weight: 500; letter-spacing: -0.09em;">
 			<tr>
 				<th>서둘러요! 지금은 할인중</th>
-				<br>
-				<br>
-
 			</tr>
 		</div>
 		<div style="display: flex;">
-						<%
-				for(int i=0; i<4; i++) {
-					ProductDto pDto = list.get(i);
-		
-				%>
+			<%
+			for (int i = 0; i < 4; i++) {
+				ProductDto pDto = list.get(i);
+
+				ProductAttachmentDto paDto = paDao.selectOne(pDto.getProductNo());
+			%>
 			<div
 				style="display: block; width: 256px; height: 256px; border: none; overflow: hidden; border-radius: 8px;">
-				<img class="wid"
-					src="<%=request.getContextPath()%>/image/
-					style="vertical-align: top; margin-top: 35px; ">
-					<br>
-					<br>
-					<label>
-				<%= pDto.getProductName() %>
-				</label>
-				<br>
-				<br>
-				<label>
-				<%= pDto.getProductPrice() %>
+				<a
+					href="<%=request.getContextPath()%>/product/product_user_detail.jsp?product_no=<%=pDto.getProductNo()%>">
+					<img class="wid"
+					src="/semi2/file/download.ez?attachmentNo=<%=paDto.getAttachmentNo()%>"
+					width="200" height="200"
+					style="vertical-align: top; margin-top: 35px;"><br>
+				</a> <br> <br> <label> <%=pDto.getProductName()%>
+				</label> <br> <br> <label> <%=pDto.getProductPrice()%>
 				</label>
 			</div>
-		<%} %>
+			<%
+			}
+			%>
 		</div>
 	</div>
 </div>
@@ -104,35 +92,30 @@ List<ProductDto> list4=pDao.categorie("닭가슴살");
 			style="display: block; position: relative; padding: 10px 0px; margin: 0px 0px; text-align: left; color: #222; font-size: 27px; font-weight: 500; letter-spacing: -0.09em;">
 			<tr>
 				<th>세상 쉬운 야채 챙기기</th>
-								<br>
-				<br>
-
 			</tr>
 		</div>
 		<div style="display: flex;">
-						<%
-				for(int i=0; i<2; i++) {
-					ProductDto pDto = list2.get(i);
-		
-				%>
+			<%
+			for (int i = 0; i < 2; i++) {
+				ProductDto pDto = list2.get(i);
+
+				ProductAttachmentDto paDto = paDao.selectOne(pDto.getProductNo());
+			%>
 			<div
 				style="display: block; width: 256px; height: 256px; border: none; overflow: hidden; border-radius: 8px;">
-				<img class="wid"
-					src="<%=request.getContextPath()%>/image/
-					style="vertical-align: top; margin-top: 35px; ">
-					<br>
-					<br>
-					<label>
-				<%= pDto.getProductName() %>
-				</label>
-				<br>
-				<br>
-				<label>
-				<%= pDto.getProductPrice() %>
+				<a
+					href="<%=request.getContextPath()%>/product/product_user_detail.jsp?product_no=<%=pDto.getProductNo()%>">
+					<img class="wid"
+					src="/semi2/file/download.ez?attachmentNo=<%=paDto.getAttachmentNo()%>"
+					width="200" height="200"
+					style="vertical-align: top; margin-top: 35px;"><br>
+				</a> <br> <br> <label> <%=pDto.getProductName()%>
+				</label> <br> <br> <label> <%=pDto.getProductPrice()%>
 				</label>
 			</div>
-		<%} %>
-		</div>
+			<%
+			}
+			%>
 		</div>
 	</div>
 </div>
@@ -143,9 +126,6 @@ List<ProductDto> list4=pDao.categorie("닭가슴살");
 			style="display: block; position: relative; padding: 10px 0px; margin: 0px 0px; text-align: left; color: #222; font-size: 27px; font-weight: 500; letter-spacing: -0.09em;">
 			<tr>
 				<th>지금 잘 팔려요</th>
-				<br>
-				<br>
-
 			</tr>
 		</div>
 		<div style="display: flex;">
@@ -154,19 +134,19 @@ List<ProductDto> list4=pDao.categorie("닭가슴살");
 				style="display: block; width: 256px; height: 256px; border: none; overflow: hidden; border-radius: 8px;">
 				<img class="wid"
 					src="<%=request.getContextPath()%>/image/곤약 쫀득이.png"
-					style="vertical-align: top; margin-top:19px;">
+					style="vertical-align: top; margin-top: 19px;">
 			</div>
 			<div
 				style="display: block; width: 256px; height: 256px; border: none; overflow: hidden; border-radius: 8px;">
 				<img class="wid"
 					src="<%=request.getContextPath()%>/image/doublechoco.png"
-					style="vertical-align: top; margin-top:8px;">
+					style="vertical-align: top; margin-top: 8px;">
 			</div>
 			<div
 				style="transition-duration: .0s; transform: scale(1.05); display: block; width: 256px; height: 256px; border: none; overflow: hidden; border-radius: 8px;">
 				<img class="wid"
 					src="<%=request.getContextPath()%>/image/본갈비살 로스.png"
-					style="vertical-align: top; margin-top: 35px; ">
+					style="vertical-align: top; margin-top: 35px;">
 			</div>
 			<div
 				style="transition-duration: .0s; transform: scale(1.05); display: block; width: 256px; height: 256px; border: none; overflow: hidden; border-radius: 8px;">
@@ -184,37 +164,31 @@ List<ProductDto> list4=pDao.categorie("닭가슴살");
 			style="display: block; position: relative; padding: 10px 0px; margin: 0px 0px; text-align: left; color: #222; font-size: 27px; font-weight: 500; letter-spacing: -0.09em;">
 			<tr>
 				<th>닭가슴살!</th>
-<br>
-				<br>
-
 			</tr>
 		</div>
 		<div style="display: flex;">
-						<%
-				for(int i=0; i<1; i++) {
-					ProductDto pDto = list4.get(i);
-		
-				%>
+			<%
+			for (int i = 0; i < 1; i++) {
+				ProductDto pDto = list4.get(i);
+				ProductAttachmentDto paDto = paDao.selectOne(pDto.getProductNo());
+			%>
 			<div
 				style="display: block; width: 256px; height: 256px; border: none; overflow: hidden; border-radius: 8px;">
-				<img class="wid"
-					src="<%=request.getContextPath()%>/image/
-					style="vertical-align: top; margin-top: 35px; ">
-					<br>
-					<br>
-					<label>
-				<%= pDto.getProductName() %>
-				</label>
-				<br>
-				<br>
-				<label>
-				<%= pDto.getProductPrice() %>
+				<a
+					href="<%=request.getContextPath()%>/product/product_user_detail.jsp?product_no=<%=pDto.getProductNo()%>">
+					<img class="wid"
+					src="/semi2/file/download.ez?attachmentNo=<%=paDto.getAttachmentNo()%>"
+					width="200" height="200"
+					style="vertical-align: top; margin-top: 35px;"><br>
+				</a> <br> <br> <label> <%=pDto.getProductName()%>
+				</label> <br> <br> <label> <%=pDto.getProductPrice()%>
 				</label>
 			</div>
-		<%} %>
+			<%
+			}
+			%>
 		</div>
 	</div>
-</div>
 </div>
 
 
@@ -251,4 +225,5 @@ List<ProductDto> list4=pDao.categorie("닭가슴살");
 </body>
 </html>
 <jsp:include page="/template/footer.jsp"></jsp:include>
+
 
