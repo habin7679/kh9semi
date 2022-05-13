@@ -113,7 +113,7 @@
 	%>
 	<div class="row center">
 		<h2>결과가 존재하지 않습니다</h2>
-	</div>
+	</div>	
 	<%
 	} else {
 	%>

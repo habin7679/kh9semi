@@ -4,14 +4,12 @@
 <%@page import="semi2.beans.ProductAttachmentDao"%>
 <%@page import="semi2.beans.AttachmentDto"%>
 <%@page import="semi2.beans.AttachmentDao"%>
-<<<<<<< HEAD
 <%@page import="semi2.beans.InfoAttachmentDto"%>
 <%@page import="semi2.beans.InfoAttachmentDao"%>
-=======
 <%@page import="semi2.beans.BoardDto"%>
 <%@page import="java.util.List"%>
 <%@page import="semi2.beans.BoardDao"%>
->>>>>>> refs/remotes/origin/main
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -60,7 +58,7 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
                     success:function(resp){
                         //목표 : resp에 들어있는 데이터를 기반으로 화면 생성을 한다
                         // -> 태그를 생성해서 데이터를 배치해야 한다.
-                        // -> $("<div>") 라고 작성하면 div를 생성하라는 의미
+                        // -> $("<div>") 라고 작성하면 div를 생성하라는 의미//
                         //페이지 크기보다 작은 개수가 불러와졌다면 더보기가 없는 것으로 간주
                         if(resp.length < size) {
                             $(".btn-more").remove();
@@ -111,7 +109,7 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 <%} else { %>
 
 <h1>상품 상세정보 보기</h1>
-
+<div class="container w950 m30">
 <table border="1">
 	<tr>
 		<th>이름</th>
@@ -139,11 +137,11 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 	</tr>
 	<tr>
 		<th>상품정보</th>
-			<td><img src="/semi2/file/download.ez?attachmentNo=5<%--<%=productattachmentDto.getAttachmentNo()%>--%>"  width="200" height="200"></td>
+			<td><img src="/semi2/file/download.ez?attachmentNo=<%=infoattachmentDto.getAttachmentNo()%>"  width="500" height="1500"></td>
 	</tr>
 	<tr>
 		<th>상품이미지</th>
-				<td><img src="/semi2/file/download.ez?attachmentNo=5<%--<%=productattachmentDto.getAttachmentNo()%>--%>"  width="200" height="200"></td>
+				<td><img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="200" height="200"></td>
 	</tr>
 	<tr>
 		<td><input type="button" value="구매하기"></td>
@@ -153,9 +151,8 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 </table>
 <%} %>
 
-<<<<<<< HEAD
+
     <div class="container w800 m30">
-=======
 <body>
    <%
 	//목록과 검색을 한페이지에서 한다
@@ -183,7 +180,6 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 		s = 10;
 	}
 %>
->>>>>>> refs/remotes/origin/main
 
 <%
 	boolean search = type != null && keyword != null;
@@ -220,12 +216,8 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 	}
 %>
 
-<%//
-	//List<BoardDto> replyList = boardDao.productselectList(productNo);
-%>//
-<%//=replyList%>
 
-<div class="container w950 m30">
+
 
 	<div class="row center">
 		<h1>상품 후기</h1>
@@ -264,13 +256,12 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 						<%} %>
 					
 
-<<<<<<< HEAD
+
     </div>
 
 <h2><a href="product_user_list.jsp">목록으로 돌아가기</a></h2>
 
 <h2><a href="#">상품 문의</a></h2>
-=======
 						
 						<!-- 게시글 제목 링크 -->
 						<a href="/semi2/board/detail.jsp?boardNo=<%=boardDto.getBoardNo()%>">
@@ -300,7 +291,6 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 			- 목록 = p, s
 			- 검색 = p, s, type, keyword
 		 --%>
->>>>>>> refs/remotes/origin/main
 		
 		<!-- 이전 버튼 영역 -->
 		
@@ -364,6 +354,9 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 	</div>
 
 	</div>
+	</body>
+	</div>
 	
 
+<button class="btn "><a href="qna_list.jsp">상품 문의하러 가기</</a></button><br><br>
 <jsp:include page="/template/footer.jsp"></jsp:include>
