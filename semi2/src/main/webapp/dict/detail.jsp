@@ -10,11 +10,11 @@
 %>
 
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/kal.css">
+	href="<%=request.getContextPath()%>/css/kal1.css">
 	
 <jsp:include page="/template/header.jsp"></jsp:include>
 
-<table class="type01">
+<table class="kal">
 <thead>
 <tr>
 <th scope="row"> 회원님의 기초대사량</th>
