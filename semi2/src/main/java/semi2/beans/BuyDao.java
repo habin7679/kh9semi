@@ -73,7 +73,7 @@ public class BuyDao {
 	
 	public List<BuyDto> selectAll(String memberId) throws Exception{
 		Connection con = JdbcUtils.getConnection();
-		String sql = "select * from buy where member_id=?";
+		String sql = "select * from buy where member_id=? order by buy_no desc";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
 		ps.setString(1, memberId);
