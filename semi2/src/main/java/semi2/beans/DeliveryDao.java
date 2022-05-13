@@ -185,9 +185,9 @@ public class DeliveryDao {
 						
 						deliveryDto.setMemberId(memberId);
 						deliveryDto.setDeliveryName(rs.getString("delivery_name"));
-						deliveryDto.setDeliveryPhone(rs.getString("member_phone"));
+						deliveryDto.setDeliveryPhone(rs.getString("delivery_phone"));
 						deliveryDto.setDeliveryPost(rs.getString("delivery_post"));
-						deliveryDto.setDeliveryBasicAddress(rs.getString("delvery_basic_address"));
+						deliveryDto.setDeliveryBasicAddress(rs.getString("delivery_basic_address"));
 						deliveryDto.setDeliveryDetailAddress(rs.getString("delivery_detail_address"));
 						deliveryDto.setDeliveryMenu(rs.getString("delivery_menu"));
 						

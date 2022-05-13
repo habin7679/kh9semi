@@ -1,6 +1,7 @@
 package semi2.cart;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,8 +23,14 @@ public class CartInsertServlet extends HttpServlet{
 			cDto.setProductNo(Integer.parseInt(req.getParameter("productNo")));
 			cDto.setMemberId((String)req.getSession().getAttribute("member"));
 			
-			cDao.insert(cDto);
-			resp.sendRedirect(req.getContextPath()+"/cart/list.jsp");
+			int size = cDao.selectSize((String)req.getSession().getAttribute("member"));
+			
+			if(size>10) {
+				resp.sendRedirect(req.getContextPath()+"/cart/error.jsp");
+			} else {
+				cDao.insert(cDto);				
+				resp.sendRedirect(req.getContextPath()+"/cart/list.jsp");				
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			resp.sendError(500);
