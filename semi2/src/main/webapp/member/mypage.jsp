@@ -54,6 +54,7 @@
 
 	  
 	 </div>
+	 </div>
 	<script>
 	var recentProdArr = JSON.parse(localStorage.getItem("recentProdArr"));
 	var target = document.getElementById("recentProd");
