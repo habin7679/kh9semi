@@ -17,11 +17,14 @@ MemberDto memberDto = memberDao.selectOne(memberId);
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 <form method="post" encType = "multipart/form-data" action="write.ez">
+<head>
+<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+</head>
 
 <%if(request.getParameter("superNo") != null){ %>   
 <input type="hidden" name="superNo" value="<%=request.getParameter("superNo")%>">
 <%} %>
-
+<body>
 	<div class="container w800 m30">
 	    <div class="row center">
 	        <h1>게시글 작성</h1>
@@ -48,8 +51,28 @@ MemberDto memberDto = memberDao.selectOne(memberId);
 	    </div>
 	    <div class="row">
 	        <label>내용</label>
-	        <textarea name="boardContent" required class="form-input fill input-round" rows="12"></textarea>
-	    </div>
+	        <div id="editor"></div> 
+	        <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+			<script> 
+				const Editor = toastui.Editor; 
+				const editor = new Editor({ 
+					el: document.querySelector('#editor'),
+					height: '600px',
+					initialEditType: 'markdown',
+					previewStyle: 'vertical' });
+					editor.on("change", function(){
+					console.log(editor.getMarkdown());
+				});
+					//editor.getMarkdown();
+				const [boardContent, setBoardContent] = useState();
+				setBoardContent(editor.getMarkdown());
+				
+				let boardContenet = editor.getMarkdown();
+		
+			</script>
+			
+	 	<input type="hidden" name="boardContent" value=boardContenet>
+
 	    	    <div class="row">
 	    	<label>첨부파일</label><br>
 	    	<input type="file" name="attach" class="form-input input-round">
@@ -62,5 +85,7 @@ MemberDto memberDto = memberDao.selectOne(memberId);
 	    </div>
 	</div>
 </form>
+
+</body>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
