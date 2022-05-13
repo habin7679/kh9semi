@@ -137,10 +137,14 @@
  
           	<div>
             <% if(login){ %>
-            	<%=memberDto.getMemberNick()%>님 환영합니다 &nbsp;&nbsp;&nbsp;
+            	<%=memberDto.getMemberNick()%>님 환영합니다! &nbsp;&nbsp;&nbsp;
             <% } %>
 				</div>
-
+								<%-- 관리자라면 관리 메뉴를 출력 --%>
+				<%if(auth){ %>
+				<a href="<%=request.getContextPath()%>/admin/admin.jsp">관리자페이지</a>&nbsp;&nbsp;&nbsp;
+				
+				<%} %>
                 <% if(login){ %>
 				<a href="<%=request.getContextPath()%>/member/logout.ez">로그아웃</a> &nbsp;&nbsp;&nbsp;
 			<div> 
@@ -213,15 +217,7 @@
         </div>
         
 
-				<%-- 관리자라면 관리 메뉴를 출력 --%>
-				<%if(auth){ %>
-				<a href="<%=request.getContextPath()%>/admin/member_list.jsp">회원관리</a>&nbsp;&nbsp;&nbsp;
-				<a href="<%=request.getContextPath()%>/product/product_admin_list.jsp">상품관리</a>&nbsp;&nbsp;&nbsp;
-				<a href="<%=request.getContextPath()%>/admin/buy_list.jsp">주문배송관리</a>&nbsp;&nbsp;&nbsp;
-				<a href="<%=request.getContextPath()%>/admin/banner.jsp">배너관리</a>&nbsp;&nbsp;&nbsp;
-				<a href="<%=request.getContextPath()%>/admin/statistics.jsp">통계</a>&nbsp;&nbsp;&nbsp;
-				
-				<%} %>
+
 			</td> 
 		</tr>
 		
