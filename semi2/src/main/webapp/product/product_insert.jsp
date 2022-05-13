@@ -2,113 +2,85 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="/template/header.jsp"></jsp:include>
 
-<h1>상품 정보 입력</h1>
-
-<form action="add.ez" method="post"  enctype="multipart/form-data">
-	<table>
-		<tr>
-			<th>상품이름</th>
-			<td>
-				<input type="text" name="productName" required >
-			</td>
-		</tr>
-		<tr>
-			<th>분류</th>
-			<td>
-				<select name="productSort" required>
-					<option value="">선택하세요</option>
-					<option>정기배송</option>
-					<option>닭가슴살</option>
-					<option>샐러드</option>
-					<option>소고기</option>	
-					<option>간식</option>		
-					<option>도시락</option>							
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<th>상품가격</th>
-			<td>
-				<input type="number" name="productPrice" required min="0" step="100">
-			</td>
-		</tr>
-		<tr>
-			<th>재고</th>
-			<td>
-				<input type="number" name="productStock" required  min="0" step="1">
-			</td>
-		</tr>
-		<tr>
-			<th>제조사</th>
-			<td>
-				<input type="text" name="productCompany" required>
-			</td>
-		</tr>
-		<tr>
-			<th>제조일</th>
-			<td>
-				<input type="date" name="productMade" required>
-			</td>
-		</tr>
-		<tr>
-			<th>폐기일</th>
-			<td>
-				<input type="date" name="productExpire" required>
-			</td>
-		</tr>
-		<tr>
-			<th>행사여부</th>
-			<td>
-				<select name="productEvent" required>
+ <div class="container w400 m50">
+	<div class="row center">
+	<h1>상품 정보 입력</h1>
+	</div>
+	<div class="row center">
+	<form action="add.ez" method="post"  enctype="multipart/form-data">
+		<div class="row">
+			<label>상품 이름</label>
+			<input type="text" name="productName" required class="form-input fill input-round" >
+		</div>
+		<div class="row">	
+			<label>상품 분류</label>
+			<select name="productSort" required  class="form-input fill input-round">
+				<option value="">선택하세요</option>
+				<option>정기배송</option>
+				<option>닭가슴살</option>
+				<option>샐러드</option>
+				<option>소고기</option>	
+				<option>간식</option>		
+				<option>도시락</option>							
+			</select>
+		</div>		
+		<div class="row">	
+			<label>상품 가격</label>
+			<input type="number" name="productPrice" required min="0" step="100" class="form-input fill input-round">
+		</div>
+		<div class="row">	
+			<label>재고</label>
+			<input type="number" name="productStock" required  min="0" step="1" class="form-input fill input-round">
+		</div>
+		<div class="row">
+			<label>제조사</label>
+			<input type="text" name="productCompany" required class="form-input fill input-round">
+		</div>
+		<div class="row">
+			<label>제조일</label>
+			<input type="date" name="productMade" required class="form-input fill input-round">
+		</div>	
+		<div class="row">
+			<label>폐기일</label>
+			<input type="date" name="productExpire" required class="form-input fill input-round">
+		</div>		
+		<div class="row">
+			<label>행사여부</label>
+			<select name="productEvent" required class="form-input fill input-round">
 				<option value="">선택하세요</option>
 				<option>0</option>
 				<option>1</option>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<th>칼로리</th>
-			<td>
-				<input type="number" name="productKcal" required>
-			</td>
-		</tr>
-		<tr>
-			<th>단백질 함량</th>
-			<td>
-				<input type="number" name="productProtein" required>
-			</td>
-		</tr>
-		<tr>
-			<th>탄수화물 함량</th>
-			<td>
-				<input type="number" name="productCarbohydrate" required>
-			</td>
-		</tr>
-		<tr>
-			<th>지방함량</th>
-			<td>
-				<input type="number" name="productFat" required>
-			</td>
-		</tr>
-		<tr>
-			<th>상품정보</th>
-			<td>
-			<textarea name="productInfo" required></textarea>
-			</td>
-		</tr>
-		<tr>
-			<th>상품이미지</th>
-			<td>
-				<input type="file" name="productImg">
-			</td>
-		</tr>
-		
-		<tr>
-			<td align="center" colspan="2">
-				<input type="submit" value="등록">
-			</td>
-		</tr>
-	</table>
-</form>
+			</select>
+		</div>
+		<div class="row">
+			<label>칼로리</label>
+			<input type="number" name="productKcal" required class="form-input fill input-round">
+		</div>
+		<div class="row">
+			<label>단백질 함량</label>
+			<input type="number" name="productProtein" required class="form-input fill input-round">
+		</div>	
+		<div class="row">
+			<label>탄수화물 함량</label>
+			<input type="number" name="productCarbohydrate" required class="form-input fill input-round">
+		</div>	
+		<div class="row">
+			<label>지방함량</label>
+			<input type="number" name="productFat" required class="form-input fill input-round">
+		</div>
+		<div class="row">
+			<label>상품정보</label>
+			<input type="file" name="productInfo" class=" fill ">
+		</div>
+		<div class="row">
+			<label>상품이미지</label>
+			<input type="file" name="productImg" class=" fill ">
+		</div>
+		<div class="row center" >
+			<button type="submit" class="btn">전송</button>
+		</div>
+	</form>
+	</div>
+	</div>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

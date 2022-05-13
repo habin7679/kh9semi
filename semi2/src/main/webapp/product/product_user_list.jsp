@@ -28,7 +28,7 @@ else
 	list = productDao.listAll();
 
 %>
-<%-- 출력 --%>
+
 <jsp:include page="/template/header.jsp"></jsp:include>
 <body>
 <div class="container w1000 m30">
@@ -36,7 +36,7 @@ else
 		<h1><a href="product_user_list.jsp">상품 목록</a></h1>
 		</div>
 	<div class="row center">
-		<!-- 검색창 -->
+<!-- 검색창 -->
 		<form action="product_user_list.jsp" >
 			<%if(productName == null){ %>
 			<input type="text" name="product_name" required class="form-input input-round">

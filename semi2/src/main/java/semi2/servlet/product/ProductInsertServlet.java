@@ -14,6 +14,8 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import semi2.beans.AttachmentDao;
 import semi2.beans.AttachmentDto;
+import semi2.beans.InfoAttachmentDao;
+import semi2.beans.InfoAttachmentDto;
 import semi2.beans.ProductAttachmentDao;
 import semi2.beans.ProductAttachmentDto;
 import semi2.beans.ProductDao;
@@ -25,7 +27,7 @@ public class ProductInsertServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 			try {
-				String path = System.getProperty("user.home") + "/git/kh9semi/semi2/src/main/webapp/image";//운영체제에서 사용자에게 제공되는 home 폴더
+				String path = System.getProperty("user.home") + "/upload";//운영체제에서 사용자에게 제공되는 home 폴더
 				System.out.println("path = " + path);//확인을 위한 출력
 				
 				File dir = new File(path);
@@ -55,7 +57,7 @@ public class ProductInsertServlet extends HttpServlet {
 				productDto.setProductProtein(Integer.parseInt(mRequest.getParameter("productProtein")));
 				productDto.setProductCarbohydrate(Integer.parseInt(mRequest.getParameter("productCarbohydrate")));
 				productDto.setProductFat(Integer.parseInt(mRequest.getParameter("productFat")));
-				productDto.setProductInfo(mRequest.getParameter("productInfo"));
+				//productDto.setProductInfo(mRequest.getParameter("productInfo"));
 			//	productDto.setProductImg(req.getParameter("productImg"));
 				
 				
@@ -84,6 +86,26 @@ public class ProductInsertServlet extends HttpServlet {
 					ProductAttachmentDao productAttachmentDao = new ProductAttachmentDao();
 					productAttachmentDao.insert(productAttachmentDto);
 					
+				}
+				
+				if(mRequest.getFile("productInfo") != null) {
+					AttachmentDto attachmentDto = new AttachmentDto();
+					AttachmentDao attachmentDao = new AttachmentDao();
+					attachmentDto.setAttachmentNo(attachmentDao.getSequence());
+					attachmentDto.setAttachmentUploadname(mRequest.getOriginalFileName("productInfo"));
+					attachmentDto.setAttachmentSavename(mRequest.getFilesystemName("productInfo"));
+					attachmentDto.setAttachmentType(mRequest.getContentType("productInfo"));
+					File target = mRequest.getFile("productInfo");
+					attachmentDto.setAttachmentSize(target.length());
+					
+					attachmentDao.insert(attachmentDto);
+					
+					InfoAttachmentDto infoAttachmentDto = new InfoAttachmentDto();
+					infoAttachmentDto.setProductNo(no);
+					infoAttachmentDto.setAttachmentNo(attachmentDto.getAttachmentNo());
+					
+					InfoAttachmentDao infoAttachmentDao = new InfoAttachmentDao();
+					infoAttachmentDao.insert(infoAttachmentDto);
 				}
 				
 				resp.sendRedirect("product_insert_success.jsp");
