@@ -81,4 +81,22 @@ public class AttachmentDao {
 		
 		return count > 0;
 	}
+	public boolean edit(AttachmentDto attachmentDto) throws Exception {
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "update attachment set "
+								+ "attachment_uploadname = ?, attachment_savename = ?, "
+								+ "attachment_type = ?, attachment_size = ?"
+							+ " where attachment_no = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, attachmentDto.getAttachmentUploadname());
+		ps.setString(2, attachmentDto.getAttachmentSavename());
+		ps.setString(3, attachmentDto.getAttachmentType());
+		ps.setLong(4, attachmentDto.getAttachmentSize());
+		ps.setInt(5, attachmentDto.getAttachmentNo());
+		int count = ps.executeUpdate();
+    	con.close();
+    	
+    	return count > 0;	
+	}
 }

@@ -97,18 +97,6 @@
 			<input type="text" name="productFat" value="<%=productDto.getProductFat()%>">
 		</td>
 	</tr>
-		<tr>
-		<th>상품정보</th>
-		<td>
-			<input type="text" name="productInfo" value="<%=productDto.getProductInfo()%>">
-		</td>
-	</tr>
-		<tr>
-			<th>상품이미지</th>
-			<td>
-				<input type="file" name="productImg">
-			</td>
-		</tr>
 	<tr>
 		<td align="right" colspan="2">
 			<input type="submit" value="수정하기">

@@ -4,9 +4,14 @@
 <%@page import="semi2.beans.ProductAttachmentDao"%>
 <%@page import="semi2.beans.AttachmentDto"%>
 <%@page import="semi2.beans.AttachmentDao"%>
+<<<<<<< HEAD
+<%@page import="semi2.beans.InfoAttachmentDto"%>
+<%@page import="semi2.beans.InfoAttachmentDao"%>
+=======
 <%@page import="semi2.beans.BoardDto"%>
 <%@page import="java.util.List"%>
 <%@page import="semi2.beans.BoardDao"%>
+>>>>>>> refs/remotes/origin/main
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -20,15 +25,18 @@
 <%
 ProductAttachmentDao productattachmentDao = new ProductAttachmentDao();
 ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(productNo);
+
+InfoAttachmentDao infoattachmentDao = new InfoAttachmentDao();
+InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
+
+
 	ProductDao productDao = new ProductDao();
 	ProductDto productDto = productDao.selectOne(productNo);
 %>
 
 <%-- 출력 --%>
 <jsp:include page="/template/header.jsp"></jsp:include>
-   <!-- jquery cdn -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
     <script type="text/javascript">
         $(function(){
             //[1] 1페이지를 불러와서 화면에 띄운다
@@ -43,7 +51,7 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
             
             function loadPage(page, size) {
                 $.ajax({
-                    url:"http://localhost:30000/semi2/ajax/board.ez",
+                    url:"http://localhost:30000/semi2/ajax/board.ez?product_no=<%=productDto.getProductNo()%>",
                     type:"post",
                     data:{
                         p : page,
@@ -131,8 +139,7 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
 	</tr>
 	<tr>
 		<th>상품정보</th>
-			<td><img src="<%=request.getContextPath()%>/image/product<%=productNo%>.jpg" width="200" height="200"><br>
-			<%=productDto.getProductInfo()%></td>
+			<td><img src="/semi2/file/download.ez?attachmentNo=5<%--<%=productattachmentDto.getAttachmentNo()%>--%>"  width="200" height="200"></td>
 	</tr>
 	<tr>
 		<th>상품이미지</th>
@@ -146,6 +153,9 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
 </table>
 <%} %>
 
+<<<<<<< HEAD
+    <div class="container w800 m30">
+=======
 <body>
    <%
 	//목록과 검색을 한페이지에서 한다
@@ -173,6 +183,7 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
 		s = 10;
 	}
 %>
+>>>>>>> refs/remotes/origin/main
 
 <%
 	boolean search = type != null && keyword != null;
@@ -253,6 +264,13 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
 						<%} %>
 					
 
+<<<<<<< HEAD
+    </div>
+
+<h2><a href="product_user_list.jsp">목록으로 돌아가기</a></h2>
+
+<h2><a href="#">상품 문의</a></h2>
+=======
 						
 						<!-- 게시글 제목 링크 -->
 						<a href="/semi2/board/detail.jsp?boardNo=<%=boardDto.getBoardNo()%>">
@@ -282,6 +300,7 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
 			- 목록 = p, s
 			- 검색 = p, s, type, keyword
 		 --%>
+>>>>>>> refs/remotes/origin/main
 		
 		<!-- 이전 버튼 영역 -->
 		
