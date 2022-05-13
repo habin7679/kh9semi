@@ -10,7 +10,6 @@
 	//memberId가 있으면 로그인 상태라고 판정하고 없으면 로그아웃 상태라고 판정
 	boolean login = memberId != null;
 	
-
 	
 	MemberDao memberDao=new MemberDao();
 	MemberDto memberDto=memberDao.selectOne(memberId);
@@ -59,7 +58,6 @@ ul.bar::after {
 	display: block;
 	clear: both;
 }
-
 ul.bar>li {
 	float: left;
 	width: 300px;
@@ -72,34 +70,27 @@ ul.bar ul {
 ul.bar li:hover>ul {
 	display: block;
 }
-
 ul.bar li {
 	position: relative;
 }
-
 ul.bar ul {
 	position: absolute;
 	top: 100%;
 	left: 0%;
 }
-
 ul.bar ul {
 	width: 100%;
 }
-
 ul.bar {
 	font-size: 16px;
 }
-
 ul.bar, ul.bar ul {
 	background-color: #1c683c;
 }
-
 ul.bar li {
 	padding: 0.35em;
 	text-align: center;
 }
-
 ul.bar a {
 	text-decoration: none;
 	color: white;
@@ -108,7 +99,6 @@ ul.bar a {
 ul.bar li:hover {
 	background-color: #2f985c;
 }
-
 ul.bar a {
 	display: block;
 	/*width: 150%;*/
@@ -118,7 +108,6 @@ ul.bar>li>ul ul {
 	top: 0%;
 	left: 100%;
 }
-
 ul.bar a {
 	overflow: hidden;
 	white-space: nowrap;
@@ -127,7 +116,6 @@ ul.bar a {
 </style>
 
 <!-- 한상혁
-
  <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -136,17 +124,13 @@ ul.bar a {
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/reset.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/layout.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/commons.css">
-
-
       <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/login.css">
-
     
     <%-- 
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/commons.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/test/commons.css">
     --%>
     <title>이지어트</title>
-
 <style>   
         /* 중간 사이드 바!! */
         ul.bar,
@@ -231,7 +215,6 @@ ul.bar a {
 			<%=session.getId()%>, auth = <%=auth%> , admin = <%=admin%>
 		</td>
 	</tr>
-
 	<!-- 헤더(header) -->
 	<div class="wrap">
 		<div class="intro_bg">
@@ -285,9 +268,7 @@ ul.bar a {
 				
 				</div>
 				<ul>
-
 					<ul class="nav">
-
  한상혁--%>
 						<div>
 							<% if(login){ %>
@@ -296,7 +277,6 @@ ul.bar a {
 				<%--한상혁
 				 <% } %>
 						</div>
-
 						<% if(login){ %>
 				 한상혁--%>			
 						<a href="<%=request.getContextPath()%>/member/logout.ez">로그아웃</a>
@@ -320,13 +300,12 @@ ul.bar a {
 				</ul>
 			</div>
 		</div>	
-
+		</div>
 		<a href="<%=request.getContextPath()%>/index.jsp">
 			<div class="content" style="height: 100px; justify-content: center;">
 				<img src="<%=request.getContextPath()%>/image/logo.png"
 					style="width: 250px; height: 100px;">
 		</a> &nbsp;&nbsp;&nbsp;
-
 	</div>
 	<%--한상혁 
 	
@@ -335,7 +314,6 @@ ul.bar a {
 			style="width: 100%; display: flex; justify-content: space-between; margin-top: 15px; margin-bottom: 16px; ">
 			<li><a href="<%=request.getContextPath()%>#">PRODUCT</a>
 				<ul style="z-index: 100;">
-
 					<li><a
 						href="<%=request.getContextPath()%>/product/product_user_list.jsp?product_sort=이벤트">이벤트</a></li>
 					<li><a
@@ -374,7 +352,6 @@ ul.bar a {
 				</ul></li>
 		</ul>
 	</div>
-
 	한상혁--%>	
 
 <!-- 한상혁
@@ -385,7 +362,6 @@ ul.bar a {
 	<a href="<%=request.getContextPath()%>/admin/buy_list.jsp">주문배송관리</a>&nbsp;&nbsp;&nbsp;
 	<a href="<%=request.getContextPath()%>/admin/banner.jsp">배너관리</a>&nbsp;&nbsp;&nbsp;
 	<a href="<%=request.getContextPath()%>/admin/statistics.jsp">통계</a>&nbsp;&nbsp;&nbsp;
-
 	<%} %>
 	</td>
 	</tr>
@@ -470,4 +446,3 @@ ul.bar a {
 		<tr height="450">
 			<td align="center" valign="top">
 				<br><br>
-
