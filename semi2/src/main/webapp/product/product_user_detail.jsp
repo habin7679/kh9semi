@@ -137,11 +137,11 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 	</tr>
 	<tr>
 		<th>상품정보</th>
-			<td><img src="/semi2/file/download.ez?attachmentNo=5<%--<%=productattachmentDto.getAttachmentNo()%>--%>"  width="200" height="200"></td>
+			<td><img src="/semi2/file/download.ez?attachmentNo=<%=infoattachmentDto.getAttachmentNo()%>"  width="500" height="1500"></td>
 	</tr>
 	<tr>
 		<th>상품이미지</th>
-				<td><img src="/semi2/file/download.ez?attachmentNo=5<%--<%=productattachmentDto.getAttachmentNo()%>--%>"  width="200" height="200"></td>
+				<td><img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="200" height="200"></td>
 	</tr>
 	<tr>
 		<td><input type="button" value="구매하기"></td>
