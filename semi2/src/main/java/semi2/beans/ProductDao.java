@@ -18,10 +18,10 @@ public class ProductDao {
 				+"product_no, product_name,product_sort,product_price,"
 				+ "product_stock,product_company, product_made,product_expire,"
 				+ "product_event,product_kcal,product_protein,product_carbohydrate,"
-				+ "product_fat,product_info"
+				+ "product_fat"
 				+ ") values("
-				+"?,?,?,?,?,?,to_date(?,'YYYY-MM-DD'), to_date(?,'YYYY-MM-DD'),"
-				+"?,?,?,?,?,?)";
+				+"?,?,?,?,?,?,?, ?,"
+				+"?,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, productDto.getProductNo());
 		ps.setString(2, productDto.getProductName());
@@ -36,7 +36,7 @@ public class ProductDao {
 		ps.setInt(11, productDto.getProductProtein());
 		ps.setInt(12, productDto.getProductCarbohydrate());
 		ps.setInt(13, productDto.getProductFat());
-		ps.setString(14, productDto.getProductInfo());
+		//ps.setString(14, productDto.getProductInfo());
 		//ps.setString(15, productDto.getProductImg());
 		ps.execute();
 		
@@ -83,7 +83,7 @@ public class ProductDao {
         productDto.setProductProtein(rs.getInt("product_protein"));
         productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
         productDto.setProductFat(rs.getInt("product_fat"));
-        productDto.setProductInfo(rs.getString("product_info"));
+        //productDto.setProductInfo(rs.getString("product_info"));
        //productDto.setProductImg(rs.getString("product_img"));
 
         list.add(productDto);
@@ -118,7 +118,7 @@ public class ProductDao {
         productDto.setProductProtein(rs.getInt("product_protein"));
         productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
         productDto.setProductFat(rs.getInt("product_fat"));
-        productDto.setProductInfo(rs.getString("product_info"));
+       // productDto.setProductInfo(rs.getString("product_info"));
        // productDto.setProductImg(rs.getString("product_img"));
         list.add(productDto);
         }
@@ -151,7 +151,7 @@ public class ProductDao {
             productDto.setProductProtein(rs.getInt("product_protein"));
             productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
             productDto.setProductFat(rs.getInt("product_fat"));
-            productDto.setProductInfo(rs.getString("product_info"));
+           // productDto.setProductInfo(rs.getString("product_info"));
            // productDto.setProductImg(rs.getString("product_img"));
         }
         con.close();
@@ -165,7 +165,7 @@ public class ProductDao {
     	String sql = "update product set product_name = ?, product_sort = ?, product_price = ?, "
     			+ "product_stock = ?, product_company = ?, product_made = ?, product_expire = ?, "
     			+ "product_event = ?, product_kcal = ?, product_protein = ?, product_carbohydrate = ?, "
-    			+ "product_fat = ?, product_info = ?, product_img = ? where product_no = ?";
+    			+ "product_fat = ? where product_no = ?";
     	
     	PreparedStatement ps = con.prepareStatement(sql);
     	ps.setString(1, productDto.getProductName());
@@ -180,9 +180,9 @@ public class ProductDao {
     	ps.setInt(10, productDto.getProductProtein());
     	ps.setInt(11, productDto.getProductCarbohydrate());
     	ps.setInt(12, productDto.getProductFat());
-    	ps.setString(13, productDto.getProductInfo());
-    	ps.setString(14, productDto.getProductImg());
-    	ps.setInt(15, productDto.getProductNo());
+    	//ps.setString(13, productDto.getProductInfo());
+    	//ps.setString(14, productDto.getProductImg());
+    	ps.setInt(13, productDto.getProductNo());
     	
     	int count = ps.executeUpdate();
     	con.close();

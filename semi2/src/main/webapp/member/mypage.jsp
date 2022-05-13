@@ -15,8 +15,6 @@
 		  	<h1><%=memberDto.getMemberNick()%><h3>님 반갑습니다</h3></h1>
 		  	<%=memberDto.getMemberPoint() %>point
 		  </div>
-
-		  <div><%=memberDto.getMemberPoint() %>point</div>
 		  <div><a href="<%=request.getContextPath() %>/buy/list.jsp">구매내역</a></div>
 		  <div>
 		  	<div class="content" style="margin: 0px; width:100%;">

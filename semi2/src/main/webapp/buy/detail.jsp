@@ -21,53 +21,85 @@
 	ProductDao productDao = new ProductDao();
 %>
 <jsp:include page="/template/header.jsp"></jsp:include>
+<table class="table table-border layer-3 container">
+	<tr>
+		<th>주문일시</th>
+		<td><%=payingDto.getPayingDate() %></td>
+		</tr>
+		<tr>
+		<th>수령인</th>
+		<td><%=payingDto.getPayingName() %></td>
+		</tr>
+		<tr>
+		<th>연락처</th>
+		<td><%=payingDto.getPayingPhone() %></td>
+		</tr>
+		<tr>
+		<th>우편번호</th>
+		<td><%=payingDto.getPayingPost() %></td>
+		</tr>
+		<tr>
+		<th>기본주소</th>
+		<td><%=payingDto.getPayingBasicAddress() %></td>
+		</tr>
+		<tr>
+		<th>상세주소</th>
+		<td><%=payingDto.getPayingDetailAddress() %></td>
+		</tr>
+		<tr>
+		<th>배송희망일</th>
+		<td><%=payingDto.getPayingDeliveryDate() %></td>
+		</tr>
+		<tr>
+		<th>배송희망시간(0~23)</th>
+		<td><%=payingDto.getPayingDeliveryTime()%>시</td>
+		</tr>
+		<tr>
+		<th>현재 배송상태</th>
+		<td><%=bDto.getBuyStatus() %></td>
+		</tr>
+		<tr>
+		<th>운송장번호</th>
+		<td><%=bDto.getBuyInvoice() %></td>
+		</tr>
+</table>
 
-<div>
-	주문일시: <%=payingDto.getPayingDate() %>
-</div>
-<div>
-	수령인: <%=payingDto.getPayingName() %>
-</div>
-<div>
-	연락처: <%=payingDto.getPayingPhone() %>
-</div>
-<div>
-	우편변호: <%=payingDto.getPayingPost() %>
-</div>
-<div>
-	기본주소: <%=payingDto.getPayingBasicAddress() %>
-</div>
-<div>
-	상세주소: <%=payingDto.getPayingDetailAddress() %>
-</div>
-<div>
-	배송희망일: <%=payingDto.getPayingDeliveryDate() %> &nbsp; 
-	배송희망시간: <%=payingDto.getPayingDeliveryTime()%>시
-</div>
-<div>
-	현재 배송상태: <%=bDto.getBuyStatus() %>
-	운송장번호: <%=bDto.getBuyInvoice() %>
-</div>
-	주문상품
+	<table class="table table-border layer-2 container">
+		<tr>
+			<th>제품사진</th>
+			<th>제품명</th>
+			<th>수량</th>
+			<th>제품 리뷰</th>
+		</tr>
 <% 
 	OrderDao oDao = new OrderDao();
 	List<OrderDto> list = oDao.selectAll(bDto.getOrderNo());
+	
 	for(int i =0; i<list.size(); i++){
+		
 		OrderDto oDto = list.get(i);
 		int pNo = oDto.getProductNo();
 		ProductDto productDto = productDao.selectOne(pNo);
 %>
-	<div>
-	<img src="<%=request.getContextPath() %>/image/product<%=pNo %>.jpg"width="200" height="200">
-	</div>
-	<div>
-	상품명: <%=productDto.getProductName() %>
-	</div>
-	<div>
-	상품수량: <%=oDto.getOrderCount() %>
-	</div>
-	<%if(oDto.getOrderReview().equals("x")&&bDto.getBuyStatus().equals("배송완료")) {%>
-	<a href="<%=request.getContextPath() %>/board/write.jsp?productNo="<%=productDto.getProductNo() %>>리뷰쓰기</a>
-	<%} %>
-<%} %>
+
+	<tr>
+		<td>
+			<img src="<%=request.getContextPath() %>/image/product<%=pNo %>.jpg"width="50" height="50">
+		</td>
+		<td><%=productDto.getProductName() %></td>
+		<td><%=oDto.getOrderCount() %></td>
+	<%if(bDto.getBuyStatus().equals("배송완료")){
+			if(oDto.getOrderReview().equals("x")) {%>
+				<td>
+					<a href="<%=request.getContextPath() %>/board/write.jsp?productNo="<%=productDto.getProductNo() %>>리뷰 작성하기</a>
+				</td>
+			<%}else {%>
+				<td>리뷰 작성완료</td>
+			<%} %>
+	<%} else { %>
+			<td>리뷰 작성불가</td>
+	<%} %>		
+	</tr>
+<%}%>
+	</table>
 <jsp:include page="/template/footer.jsp"/>

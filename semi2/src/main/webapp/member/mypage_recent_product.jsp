@@ -1,3 +1,10 @@
+
+
+
+
+<!--   페이지 신경쓰지 마세요!!! 버리기 아까워서 일단 냅둔 페이지-->
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>

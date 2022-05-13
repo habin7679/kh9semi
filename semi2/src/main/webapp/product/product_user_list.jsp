@@ -28,7 +28,7 @@ else
 	list = productDao.listAll();
 
 %>
-<%-- 출력 --%>
+
 <jsp:include page="/template/header.jsp"></jsp:include>
 <body>
 <div class="container w1000 m30">
@@ -36,7 +36,7 @@ else
 		<h1><a href="product_user_list.jsp">상품 목록</a></h1>
 		</div>
 	<div class="row center">
-		<!-- 검색창 -->
+<!-- 검색창 -->
 		<form action="product_user_list.jsp" >
 			<%if(productName == null){ %>
 			<input type="text" name="product_name" required class="form-input input-round">
@@ -75,7 +75,7 @@ else
 					<input type="hidden" name="productNo" value="<%=productDto.getProductNo()%>">
 					<%-- <td><%=productDto.getProductSort() %></td>--%>
 					<td><a href="product_user_detail.jsp?product_no=<%=productDto.getProductNo()%>" class="link">
-					<img src="/semi2/file/download.ez?attachmentNo=5<%--<%=productattachmentDto.getAttachmentNo()%>--%>"  width="200" height="200">
+					<img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="200" height="200">
 					</a></td>
 					<td><%=productDto.getProductName()%></td>
 					<td><%=productDto.getProductPrice()%></td>
@@ -119,7 +119,7 @@ if (list.isEmpty()) {
 				<tr>
 					<%-- <td><%=productDto.getProductSort() %></td>--%>
 					<td><a href="product_user_detail.jsp?product_no=<%=productDto.getProductNo()%>" class="link">
-					<img src="/semi2/file/download.ez?attachmentNo=5<%--<%=productattachmentDto.getAttachmentNo()%>--%>"  width="200" height="200"></a></td>
+					<img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="200" height="200"></a></td>
 					<td><%=productDto.getProductName()%></td>
 					<td><%=productDto.getProductPrice()%></td>
 					</tr>

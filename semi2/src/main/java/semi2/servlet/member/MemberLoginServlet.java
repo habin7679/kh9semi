@@ -34,7 +34,7 @@ public class MemberLoginServlet extends HttpServlet {
 				req.getSession().setAttribute("member", memberId);
 				req.getSession().setAttribute("admin", memberDto.getMemberGrade());
 				
-				if(referer !=null) {
+				if(referer !=null&& !referer.equals("login.jsp")) {
 					resp.sendRedirect(referer);
 				}
 				else {
