@@ -20,7 +20,6 @@
 <%
 ProductAttachmentDao productattachmentDao = new ProductAttachmentDao();
 ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(productNo);
-
 	ProductDao productDao = new ProductDao();
 	ProductDto productDto = productDao.selectOne(productNo);
 %>
@@ -36,7 +35,6 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
             var page = 1;
             var size = 10;
             loadPage(page, size);
-
             //[2] 더보기 버튼을 누르면 다음페이지를 화면에 띄운다
             $(".btn-more").click(function(){
                 page++;
@@ -55,12 +53,10 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
                         //목표 : resp에 들어있는 데이터를 기반으로 화면 생성을 한다
                         // -> 태그를 생성해서 데이터를 배치해야 한다.
                         // -> $("<div>") 라고 작성하면 div를 생성하라는 의미
-
                         //페이지 크기보다 작은 개수가 불러와졌다면 더보기가 없는 것으로 간주
                         if(resp.length < size) {
                             $(".btn-more").remove();
                         }
-
                         for(var i=0; i < resp.length; i++) {
                             var tr = $("<tr>");
                             var td1 = $("<td>").text(resp[i].boardNo);
@@ -68,10 +64,8 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
                             var td3 = $("<td>").text(resp[i].boardWriter);
                             var td4 = $("<td>").text(resp[i].boardTime);
                             var td5 = $("<td>").text(resp[i].boardReadcount);
-
                             //tr에 td1부터 td5까지 순차적으로 추가
                             tr.append(td1).append(td2).append(td3).append(td4).append(td5);
-
                             //#table-body에 tr을 추가
                             $("#table-body").append(tr);
                         }
@@ -83,6 +77,7 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
         if (recentProdArr == null) {
         	recentProdArr = [];     // 초기에 최근 본 상품 없을 경우 변수 초기화
         }
+
         
 		console.log(recentProdArr); // 기존 최근 본 상품 목록 로그  출력
 
@@ -93,6 +88,13 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
 
         localStorage.setItem("recentProdArr", JSON.stringify(recentProdArr.slice(0, 2))); // 로컬스토리지 업데이트 (slice로 배열 3개만 유지)
         console.log(recentProdArr); // 업데이트 된 최근 본 상품 목록 로그 출력
+
+
+
+		console.log(recentProdArr);
+        recentProdArr.push(<%=productNo%>);
+        localStorage.setItem("recentProdArr", JSON.stringify(recentProdArr));
+        console.log(recentProdArr);
         
     </script>
 		
@@ -176,14 +178,7 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
 	boolean search = type != null && keyword != null;
 	BoardDao boardDao = new BoardDao();
 	List<BoardDto> list;
-	if(search){
-// 		list = boardDao.selectList(type, keyword);
-		list = boardDao.selectReviewListByPaging(p, s, type, keyword); 
-	}
-	else {
-// 		list = boardDao.selectList();
-		list = boardDao.selectReviewListByPaging(p, s);
-	}
+		list = boardDao.productselectList(productNo);
 %>    
 
 <!-- 숫자(페이지네이션) 링크 -->
@@ -214,7 +209,10 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
 	}
 %>
 
-    
+<%//
+	//List<BoardDto> replyList = boardDao.productselectList(productNo);
+%>//
+<%//=replyList%>
 
 <div class="container w950 m30">
 
