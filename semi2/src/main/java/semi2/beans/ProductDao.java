@@ -649,6 +649,44 @@ public class ProductDao {
     		con.close();
     		return extraction;
     	}
+
+    	public List<ProductDto> eventOutput() throws Exception{
+    		Connection con=JdbcUtils.getConnection();
+    		
+    		String sql="select * from product where product_event='1'";
+    		
+    		PreparedStatement ps=con.prepareStatement(sql);
+    		
+    		ResultSet rs=ps.executeQuery();
+    		List<ProductDto> list=new ArrayList();
+    		
+   		 while(rs.next()) {
+		        ProductDto productDto = new ProductDto();
+		        productDto.setProductNo(rs.getInt("product_no"));
+		        productDto.setProductName(rs.getString("product_name"));
+		        productDto.setProductSort(rs.getString("product_sort"));
+		        productDto.setProductPrice(rs.getInt("product_price"));
+		        productDto.setProductStock(rs.getInt("product_stock"));
+		        productDto.setProductCompany(rs.getString("product_company"));
+		        productDto.setProductMade(rs.getDate("product_made"));
+		        productDto.setProductExpire(rs.getDate("product_expire"));
+		        productDto.setProductEvent(rs.getString("product_event"));
+		        productDto.setProductKcal(rs.getInt("product_kcal"));
+		        productDto.setProductProtein(rs.getInt("product_protein"));
+		        productDto.setProductCarbohydrate(rs.getInt("product_carbohydrate"));
+		        productDto.setProductFat(rs.getInt("product_fat"));
+		        productDto.setProductInfo(rs.getString("product_info"));
+		       productDto.setProductImg(rs.getString("product_img"));
+
+			list.add(productDto);
+		}
+		con.close();
+		
+		return list;
+    		
+    	}
+    	                                                   
+
     	//이벤트 상품목록
         public List<ProductDto> listEvent() throws Exception {
             Connection con = JdbcUtils.getConnection();
@@ -684,4 +722,5 @@ public class ProductDao {
             return list;
        }
     	
+
 }
