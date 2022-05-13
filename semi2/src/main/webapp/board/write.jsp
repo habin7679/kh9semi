@@ -56,7 +56,7 @@ MemberDto memberDto = memberDao.selectOne(memberId);
 				const Editor = toastui.Editor; 
 				const editor = new Editor({ 
 					el: document.querySelector('#editor'),
-					height: '600px',
+					height: '500px',
 					initialEditType: 'markdown',
 					previewStyle: 'markdown'
 				});
