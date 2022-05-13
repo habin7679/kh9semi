@@ -203,16 +203,155 @@ public class PayingDao {
 			con.close();
 			return list;
 		}
+	
+	//관리자 - 주문내역 검색
+	public List<PayingDto> selectList(String type, String keyword) throws Exception {
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select * from paying where instr(#1, ?) > 0 order by order_no desc";
+		sql = sql.replace("#1", type);
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, keyword);
+		ResultSet rs = ps.executeQuery();
+		
+		List<PayingDto> list = new ArrayList<>();
+		
+		while(rs.next()) {
+			PayingDto payingDto = new PayingDto();
+			payingDto.setOrderNo(rs.getInt("order_no"));
+			payingDto.setMemberId(rs.getString("member_id"));
+			payingDto.setPayingTotal(rs.getInt("paying_total"));
+			payingDto.setPayingDate(rs.getString("paying_date"));
+			payingDto.setPayingName(rs.getString("paying_name"));
+			payingDto.setPayingPhone(rs.getString("paying_phone"));
+			payingDto.setPayingPost(rs.getInt("paying_post"));
+			payingDto.setPayingBasicAddress(rs.getString("paying_basic_address"));
+			payingDto.setPayingDetailAddress(rs.getString("paying_detail.address"));
+			payingDto.setPayingDeliveryFee(rs.getInt("paying_delivery_fee"));
+			payingDto.setPayingDeliveryDate(rs.getDate("paying_delivery_date"));
+			payingDto.setPayingPayway(rs.getString("paying_payway"));
+			payingDto.setPayingDeliveryTime(rs.getInt("paying_delivery_time"));
+			
+			list.add(payingDto);
+		}
+		con.close();
+		
+		return list;
+	}
+	//페이징이 구현된 주문 목록
+		public List<PayingDto> listAllByPaging(int p, int s) throws Exception{
+			int end = p * s;
+			int begin = end - (s-1);
+			
+			Connection con = JdbcUtils.getConnection();
+			
+			String sql = "select * from ("
+					+ "select rownum rn, TMP.* from ("
+				       + "select * from paying order by order_no desc"
+				        + ") TMP"
+				+ ")where rn between ? and ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, begin);
+			ps.setInt(2, end);
+			ResultSet rs = ps.executeQuery();
+			
+			List<PayingDto> list = new ArrayList<>();
+			
+			while(rs.next()) {
+				PayingDto payingDto = new PayingDto();
+				payingDto.setOrderNo(rs.getInt("order_no"));
+				payingDto.setMemberId(rs.getString("member_id"));
+				payingDto.setPayingTotal(rs.getInt("paying_total"));
+				payingDto.setPayingDate(rs.getString("paying_date"));
+				payingDto.setPayingName(rs.getString("paying_name"));
+				payingDto.setPayingPhone(rs.getString("paying_phone"));
+				payingDto.setPayingPost(rs.getInt("paying_post"));
+				payingDto.setPayingBasicAddress(rs.getString("paying_basic_address"));
+				payingDto.setPayingDetailAddress(rs.getString("paying_detail.address"));
+				payingDto.setPayingDeliveryFee(rs.getInt("paying_delivery_fee"));
+				payingDto.setPayingDeliveryDate(rs.getDate("paying_delivery_date"));
+				payingDto.setPayingPayway(rs.getString("paying_payway"));
+				payingDto.setPayingDeliveryTime(rs.getInt("paying_delivery_time"));
+				
+				list.add(payingDto);
+				}
+				con.close();
+				return list;
+		}
+		
+		
+		//페이징이 구현된 주문 검색
+		public List<PayingDto> selectListByPaging(int p, int s, String type, String keyword) throws Exception{
+			int end = p * s;
+			int begin = end - (s-1);
+			
+			Connection con = JdbcUtils.getConnection();
+			
+			String sql = "select * from ("
+					+ "select rownum rn, TMP.* from ("
+				       + "select * from paying where instr(#1,?) > 0 order by order_no desc"
+				        + ") TMP"
+				+ ")where rn between ? and ?";
+			
+			sql = sql.replace("#1", type);
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, keyword);
+			ps.setInt(2, begin);
+			ps.setInt(3, end);
+			ResultSet rs = ps.executeQuery();
+			
+			List<PayingDto> list = new ArrayList<>();
+			
+			while(rs.next()) {
+				PayingDto payingDto = new PayingDto();
+				payingDto.setOrderNo(rs.getInt("order_no"));
+				payingDto.setMemberId(rs.getString("member_id"));
+				payingDto.setPayingTotal(rs.getInt("paying_total"));
+				payingDto.setPayingDate(rs.getString("paying_date"));
+				payingDto.setPayingName(rs.getString("paying_name"));
+				payingDto.setPayingPhone(rs.getString("paying_phone"));
+				payingDto.setPayingPost(rs.getInt("paying_post"));
+				payingDto.setPayingBasicAddress(rs.getString("paying_basic_address"));
+				payingDto.setPayingDetailAddress(rs.getString("paying_detail.address"));
+				payingDto.setPayingDeliveryFee(rs.getInt("paying_delivery_fee"));
+				payingDto.setPayingDeliveryDate(rs.getDate("paying_delivery_date"));
+				payingDto.setPayingPayway(rs.getString("paying_payway"));
+				payingDto.setPayingDeliveryTime(rs.getInt("paying_delivery_time"));
+				
+				list.add(payingDto);
+				}
+				con.close();
+				return list;
+		}
+		
+		// 주문목록 페이지 번호 계산
+		public int countByPaging() throws Exception {
+			Connection con = JdbcUtils.getConnection();
+			String sql = "select count(*) from paying";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			int count = rs.getInt(1);
+			
+			con.close();
+			return count;
+		}
+		
+		// 주문검색 페이지 번호 계산
+		public int countByPaging(String type, String keyword) throws Exception {
+			Connection con = JdbcUtils.getConnection();
+			String sql = "select count(*) from paying where instr(#1,?) > 0";
+			sql = sql.replace("#1", type);
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, keyword);
+			
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			int count = rs.getInt(1);
+			
+			con.close();
+			return count;
+		}
 }
-
-
-
-
-
-
-
-
-
-
-
 
