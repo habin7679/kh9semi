@@ -20,7 +20,7 @@
 			키<input type="text" name="height" class="form-input fill" placeholder="키를 입력하세요" autocomplete="off">
 		</div>
 		
-		<div>
+		<div class="row">
 			몸무게<input type="text" name="weight" class="form-input fill" placeholder="몸무게를 입력하세요" autocomplete="off">
 		</div>
 		
