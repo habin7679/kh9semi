@@ -1,3 +1,5 @@
+<%@page import="semi2.beans.InfoAttachmentDto"%>
+<%@page import="semi2.beans.InfoAttachmentDao"%>
 <%@page import="semi2.beans.ProductDto"%>
 <%@page import="semi2.beans.ProductDao"%>
 <%@page import="semi2.beans.ProductAttachmentDto"%>
@@ -17,6 +19,8 @@ ProductAttachmentDao productattachmentDao = new ProductAttachmentDao();
 ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(productNo);
 	ProductDao productDao = new ProductDao();
 	ProductDto productDto = productDao.selectOne(productNo);
+	InfoAttachmentDao infoattachmentDao = new InfoAttachmentDao();
+	InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 %>
 
 <%-- 출력 --%>
@@ -84,11 +88,11 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
         </tr>
         <tr>
             <th>상품정보</th>
-                <td><img src="/semi2/file/download.ez?attachmentNo=5<%-- <%=productattachmentDto.getAttachmentNo()%>--%>"></td>
+                <td><img src="/semi2/file/download.ez?attachmentNo=<%=infoattachmentDto.getAttachmentNo()%>"width="400" height="1500"></td>
         </tr>
          <tr>
             <th>상품이미지</th>
-                <td> <img src="/semi2/file/download.ez?attachmentNo=5<%-- <%=productattachmentDto.getAttachmentNo()%>--%>"></td>
+                <td> <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>" width="200" height="200"></td>
         </tr> 
     </table>
 
