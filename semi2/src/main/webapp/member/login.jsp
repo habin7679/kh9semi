@@ -7,7 +7,6 @@
 %>
 
 
-<<<<<<< HEAD
      <div class="container w500 m30">
             <div class="login-form">
                 <form action="login.ez" method="post">
@@ -15,10 +14,6 @@
             <%if(referer !=null){%>
                 <input type="hidden" name="referer" value="<%=referer %>">
             <%}%>
-=======
->>>>>>> refs/remotes/origin/main
-
-<<<<<<< HEAD
             <div class="input-area">
                 <input type="text" name="memberId" autocomplete="off"  id="id" required>
                 <label for="id">ID</label>
@@ -50,8 +45,7 @@
         </div>
         </form>
         </div>
-
-=======
+<%--한상혁 
 	 <div class="container w500 m30">
             <div class="login-form">
                 <form action="login.ez" method="post">
@@ -91,7 +85,7 @@
         </div>
         </form>
         </div>
+한상혁--%>	
 
 	
->>>>>>> refs/remotes/origin/main
 <jsp:include page="/template/footer.jsp"></jsp:include>

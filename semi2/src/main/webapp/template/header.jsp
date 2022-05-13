@@ -126,6 +126,7 @@ ul.bar a {
 }
 </style>
 
+<!-- 한상혁
 
  <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -218,11 +219,12 @@ ul.bar a {
         }
     </style>
     
+ 한상혁-->
 </head>
 <body>
 
 
-
+<%--한상혁
 	<!-- 정보 확인용 공간 -->
 	<tr>
 		<td>memberId = <%=memberId%> , login = <%=login%> , Session ID =
@@ -239,13 +241,16 @@ ul.bar a {
 						<input type="search" placeholder="Search">
 						<button>검색</button>
 					</form>
+한상혁 --%>
 		<!-- 정보 확인용 공간 -->
+		<table><%--한상혁 --%>
 		<tr>
 			<td>
 				memberId = <%=memberId%> , login = <%=login%> , Session ID = <%=session.getId()%>,
 				auth = <%=auth%> , admin = <%=admin%>
 			</td>
 		</tr>
+		</table><%--한상혁 --%>
 
 		<!-- 헤더(header) -->
 		  <div class="wrap">
@@ -259,19 +264,21 @@ ul.bar a {
                 </div>
                 <ul>
 
-                    <ul class="nav">
- 
+                <ul class="nav">
+ <%--한상혁
           	<div>
             <% if(login){ %>
             	<%=memberDto.getMemberNick()%>님 환영합니다! &nbsp;&nbsp;&nbsp;
             <% } %>
 				</div>
+ 한상혁 --%>
 				<%-- 관리자라면 관리 메뉴를 출력 --%>
 				<%if(auth){ %>
 				<a href="<%=request.getContextPath()%>/admin/admin.jsp">관리자페이지</a>&nbsp;&nbsp;&nbsp;
 				
 				<%} %>
-                <% if(login){ %>
+<%--한상혁
+        <% if(login){ %>
 				<a href="<%=request.getContextPath()%>/member/logout.ez">로그아웃</a> &nbsp;&nbsp;&nbsp;
 			<div> 
 			
@@ -281,18 +288,21 @@ ul.bar a {
 
 					<ul class="nav">
 
+ 한상혁--%>
 						<div>
 							<% if(login){ %>
 							<%=memberDto.getMemberNick()%>님 환영합니다 &nbsp;&nbsp;&nbsp;
-							<% } %>
+				<%--한상혁 --%>		</div>
+				<%--한상혁
+				 <% } %>
 						</div>
 
 						<% if(login){ %>
+				 한상혁--%>			
 						<a href="<%=request.getContextPath()%>/member/logout.ez">로그아웃</a>
 						&nbsp;&nbsp;&nbsp;
-						<div></div>
-						<% } 
-				else { %>
+						<%--한상혁 <div></div>	한상혁--%>
+						<% } else { %>
 
 						<a href="<%=request.getContextPath()%>/member/login.jsp">로그인</a>
 						&nbsp;&nbsp;&nbsp;
@@ -303,14 +313,16 @@ ul.bar a {
 						&nbsp;&nbsp;&nbsp;
 						<a href="<%=request.getContextPath()%>/buy/list.jsp">주문/배송조회</a>
 						&nbsp;&nbsp;&nbsp;
-						<br>
+					<%--한상혁 <br>--%>	
 
 
 					</ul>
 				</ul>
 			</div>
 		</div>
+	</div><%--한상혁 --%>	
 
+	<%--한상혁 
 		<a href="<%=request.getContextPath()%>/index.jsp">
 			<div class="content" style="height: 100px; justify-content: center;">
 				<img src="<%=request.getContextPath()%>/image/logo.png"
@@ -318,7 +330,6 @@ ul.bar a {
 		</a> &nbsp;&nbsp;&nbsp;
 
 	</div>
-	
 	
 	<div class="content">
 		<ul class="bar"
@@ -365,7 +376,9 @@ ul.bar a {
 		</ul>
 	</div>
 
+	한상혁--%>	
 
+<!-- 한상혁
 	<%-- 관리자라면 관리 메뉴를 출력 --%>
 	<%if(auth){ %>
 	<a href="<%=request.getContextPath()%>/admin/member_list.jsp">회원관리</a>&nbsp;&nbsp;&nbsp;
@@ -377,14 +390,17 @@ ul.bar a {
 	<%} %>
 	</td>
 	</tr>
-
+ 한상혁 -->
+<%--한상혁
 	<!-- 섹션(section) or 컨테이너(container) -->
 	<tr height="450">
 		<td align="center" valign="top"><br>
 		<br>
 				<a href="<%=request.getContextPath()%>/member/login.jsp">로그인</a> &nbsp;&nbsp;&nbsp;
 				<a href="<%=request.getContextPath()%>/member/join.jsp">회원가입</a> &nbsp;&nbsp;&nbsp;
-				<% } %>
+한상혁 --%>	
+				<%--한상혁 <% } %>   --%>
+				<%--한상혁 
 				<a href="<%=request.getContextPath()%>/member/mypage.jsp">마이페이지</a> &nbsp;&nbsp;&nbsp;
             <a href="<%=request.getContextPath()%>/buy/list.jsp">주문/배송조회</a> &nbsp;&nbsp;&nbsp;<br>
          	
@@ -399,6 +415,7 @@ ul.bar a {
             <img src="<%=request.getContextPath()%>/image/logo.png" style="width:250px;height:100px;">
         </a> &nbsp;&nbsp;&nbsp;
         
+				한상혁--%>	
         
 
 
