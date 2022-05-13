@@ -3,8 +3,8 @@
 <%@page import="semi2.beans.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<jsp:include page="/template/header.jsp"></jsp:include>
 
-<%-- 준비 --%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String type = request.getParameter("type");
@@ -61,10 +61,9 @@ boolean isSearch = type != null && !type.equals("") && keyword != null && !keywo
 %>
 
 <%-- 출력 --%>
-<jsp:include page="/template/header.jsp"></jsp:include>
 	
-	<div class="container w1000 m30">
-		<div class="row center">
+	<div class="container w500 m30 ">
+		<div class="row">
 			<h1>
 				<a href="member_list.jsp">회원 목록</a>
 			</h1>

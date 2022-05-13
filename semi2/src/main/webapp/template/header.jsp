@@ -164,7 +164,7 @@
 				<a href="<%=request.getContextPath()%>/member/mypage.jsp">마이페이지</a> &nbsp;&nbsp;&nbsp;
             <a href="<%=request.getContextPath()%>/buy/list.jsp">주문/배송조회</a> &nbsp;&nbsp;&nbsp;<br>
          	
-
+         	
                     </ul>
                 </ul>
             </div>
