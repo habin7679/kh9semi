@@ -1,3 +1,5 @@
+<%@page import="semi2.beans.DeliveryDto"%>
+<%@page import="semi2.beans.DeliveryDao"%>
 <%@page import="semi2.beans.ProductDto"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="semi2.beans.OrderDto"%>
@@ -33,6 +35,8 @@ ProductDao productDao = new ProductDao();
 List<Integer> falseList = new ArrayList<>();
 ProductDto productDto = new ProductDto();
 int deliveryFee = 0;
+DeliveryDao dDao = new DeliveryDao();
+List<DeliveryDto> listD = dDao.select(memberId);
 %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -40,7 +44,46 @@ int deliveryFee = 0;
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script type="text/javascript">
 	$(function() {
+		
+		$(".listD tr").click(function(){
+			var str = "";
+			var tdarr = new Array();
+			
+			var tr = $(this);
+			var td = tr.children();
+			
+			td.each(function(i){
+				tdarr.push(td.eq(i).text());
+			});
+			
+			console.log(tr.text());
+			
+			var name = td.eq(0).text();
+			var phone = td.eq(1).text();
+			var post = td.eq(2).text();
+			var basic = td.eq(3).text();
+			var detail = td.eq(4).text();
+			
+			$("input[name=payingName]").val(name);
+			$("input[name=payingPhone]").val(phone);
+			$("input[name=payingPost]").val(post);
+			$("input[name=payingBasicAddress]").val(basic);
+			$("input[name=payingDetailAddress]").val(detail);
+		});
 
+		$(".regist").on("input", function(){
+			var register = document.querySelector(".registed");
+			
+			if($(this).prop("checked")){
+				register.hidden = false;
+			}else{
+				register.hidden = true;
+			}
+			
+			
+		});
+		
+		
 		var b = parseInt($(".pPrice").val());
 		$(".total").val(b);
 		$(".deliveryFee").val(3000);
@@ -80,7 +123,9 @@ int deliveryFee = 0;
 					$(".total").val(b);
 			}
 		});
+
 	});
+	
 </script>
 
 <%
@@ -99,6 +144,37 @@ if (falseList.size() == 0) {
 	<div class="container w450">
 		<div class="row center">
 			<input type="hidden" name="orderNo" value="<%=orderNo%>">
+		</div>			
+		<div class="row">
+				<input type="checkbox" class="regist">
+				<label>등록된 배송정보 사용</label>
+		</div>
+		<div class="row registed" hidden>
+				<table class="table table-border layer-2 listD">
+					<thead>
+					<tr>
+						<th>수령인</th>
+						<th>연락처</th>
+						<th>우편번호</th>
+						<th>기본주소</th>
+						<th>상세주소</th>
+					</tr>
+					</thead>
+					<tbody>
+					<%for(int i =0; i<listD.size(); i++) {
+							DeliveryDto dDto =	listD.get(i);
+					%>
+					
+					<tr>
+						<td><%=dDto.getDeliveryName()%></td>
+						<td><%=dDto.getDeliveryPhone()%></td>
+						<td><%=dDto.getDeliveryPost()%></td>
+						<td><%=dDto.getDeliveryBasicAddress()%></td>
+						<td><%=dDto.getDeliveryDetailAddress()%></td>
+					</tr>
+					<%} %>
+					</tbody>
+				</table>
 		</div>
 			<div class="row">
 				<label>수령인 </label>
@@ -128,6 +204,7 @@ if (falseList.size() == 0) {
 			<div class="row">
 				<input type="date" name="payingDeliveryDate" class="form-input fill form-round"> 원하는 시간대 <select
 					name="payingDeliveryTime">
+					<option>0</option>
 					<option>1</option>
 					<option>2</option>
 					<option>3</option>
@@ -151,7 +228,6 @@ if (falseList.size() == 0) {
 					<option>21</option>
 					<option>22</option>
 					<option>23</option>
-					<option>24</option>
 				</select>
 			</div>
 			<div class="row">
