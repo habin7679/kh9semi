@@ -27,13 +27,14 @@ public class ProductInsertServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 			try {
-				String path = System.getProperty("user.home") + "/upload";//운영체제에서 사용자에게 제공되는 home 폴더
+				//String path = System.getProperty("user.home") + "/upload";//운영체제에서 사용자에게 제공되는 home 폴더	public static final 
+				String path = System.getProperty("user.home") + "/git/kh9semi/semi2/src/main/webapp/image";
 				System.out.println("path = " + path);//확인을 위한 출력
 				
 				File dir = new File(path);
 				dir.mkdirs();//폴더 생성
 				
-				int max = 2 * 1024 * 1024;//최대 크기 제한(byte);
+				int max = 10 * 1024 * 1024;//최대 크기 제한(byte);
 				String encoding = "UTF-8";
 				
 				DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
