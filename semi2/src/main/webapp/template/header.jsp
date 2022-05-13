@@ -299,9 +299,8 @@ ul.bar a {
 					</ul>
 				</ul>
 			</div>
+		</div>	
 		</div>
-
-
 		<a href="<%=request.getContextPath()%>/index.jsp">
 			<div class="content" style="height: 100px; justify-content: center;">
 				<img src="<%=request.getContextPath()%>/image/logo.png"
