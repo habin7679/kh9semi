@@ -1,3 +1,5 @@
+<%@page import="semi2.beans.ProductAttachmentDto"%>
+<%@page import="semi2.beans.ProductAttachmentDao"%>
 <%@page import="semi2.beans.ProductDto"%>
 <%@page import="semi2.beans.ProductDao"%>
 <%@page import="java.util.List"%>
@@ -14,6 +16,7 @@
 	
 	List<CartDto> list = cDao.selectAll(memberId);
 
+	ProductAttachmentDao paDao = new ProductAttachmentDao();
 %>    
 <jsp:include page="/template/header.jsp"></jsp:include>
 
@@ -60,10 +63,11 @@
 		int price = pDto.getProductPrice();
 		int amount = cDto.getCartAmount();
 		int total = price*amount;
+		ProductAttachmentDto paDto = paDao.selectOne(pNo);
 %>
 	<div class="container w700">
 	<div class= "row center">
-	<img src="<%=request.getContextPath() %>/image/product<%=pNo %>.jpg" width="200" height="200">
+	<img src="/semi2/file/download.ez?attachmentNo=<%=paDto.getAttachmentNo()%>" width="200" height="200">
 	</div>
 	<div class= "row center">
 	<a href="detail.jsp?productNo=<%=pNo%>"><%=pDto.getProductName() %></a>

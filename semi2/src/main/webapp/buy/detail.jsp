@@ -1,3 +1,5 @@
+<%@page import="semi2.beans.ProductAttachmentDto"%>
+<%@page import="semi2.beans.ProductAttachmentDao"%>
 <%@page import="semi2.beans.BuyDto"%>
 <%@page import="semi2.beans.BuyDao"%>
 <%@page import="java.sql.Date"%>
@@ -19,6 +21,7 @@
 	PayingDao payingDao = new PayingDao();
 	PayingDto payingDto = payingDao.selectOne(bDto.getOrderNo());
 	ProductDao productDao = new ProductDao();
+	ProductAttachmentDao paDao = new ProductAttachmentDao();
 %>
 <jsp:include page="/template/header.jsp"></jsp:include>
 <table class="table table-border layer-3 container">
@@ -80,11 +83,12 @@
 		OrderDto oDto = list.get(i);
 		int pNo = oDto.getProductNo();
 		ProductDto productDto = productDao.selectOne(pNo);
+		ProductAttachmentDto paDto = paDao.selectOne(pNo);
 %>
 
 	<tr>
 		<td>
-			<img src="<%=request.getContextPath() %>/image/product<%=pNo %>.jpg"width="50" height="50">
+			<img src="/semi2/file/download.ez?attachmentNo=<%=paDto.getAttachmentNo()%>" width="50" height="50">
 		</td>
 		<td><%=productDto.getProductName() %></td>
 		<td><%=oDto.getOrderCount() %></td>
