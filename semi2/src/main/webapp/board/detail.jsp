@@ -41,46 +41,49 @@
 %>    
     
 <jsp:include page="/template/header.jsp"></jsp:include>
-<div class="container w800 m30">
-<div class="row left">
-<h1>[<%=boardDto.getBoardHead()%>]<%=boardDto.getBoardTitle()%></h1>
-</div>
-<img src="/semi2/file/download.ez?attachmentNo=<%=boardAttachmentDto.getAttachmentNo()%>">
-<table border="1" width="750">
-	<tr>
-		<td>
-			<h2>
-				<%=boardDto.getBoardContent()%>
-			</h2>
-		</td>
-	</tr>
+<div class="container w1000 m30">
+<div class="row right">
+<h1>[<%=boardDto.getBoardHead()%>게시판]<%=boardDto.getBoardTitle()%></h1>
 	<tr>
 		<td>
 			<%=boardDto.getBoardWriter()%>
 		 	(<%=memberDto.getMemberGrade()%>)
 		</td>
 	</tr>
-
+</div>
+<div class="row left">
 		<tr>
 		<td>
 			<%=boardDto.getBoardTime()%>
 			 조회수 <%=boardDto.getBoardReadcount()%>
 		</td>
 	</tr>
-	</div>
-	<!-- 버튼 영역 -->
+</div>
+<table border="1" width="750">
 	<tr>
-		<td align="right">
-			<a href="write.jsp">글쓰기</a>
+		<td>
+			<h2>
+			<div class="container w600 m30">
+			<img src="/semi2/file/download.ez?attachmentNo=<%=boardAttachmentDto.getAttachmentNo()%>">
+			<br><br>
+				<%=boardDto.getBoardContent()%>
+			</div>
+			</h2>
+		</td>
+		</tr>
+	<!-- 버튼 영역 -->
+	<tr>	
+			<div class="row right">
+			<a href="write.jsp" class="link link-btn">글쓰기</a>
 			<%if(isAdmin){ %>
-			<a href="write.jsp?superNo=<%=boardNo%>">답글</a>
+			<a href="write.jsp?superNo=<%=boardNo%>" class="link link-btn">답글</a>
 			<%} %>
 			<%if(isOwner || isAdmin){ %>
-			<a href="edit.jsp?boardNo=<%=boardNo%>">수정</a>
-			<a href="delete.ez?boardNo=<%=boardNo%>">삭제</a>
+			<a href="edit.jsp?boardNo=<%=boardNo%>" class="link link-btn">수정</a>
+			<a href="delete.ez?boardNo=<%=boardNo%>" class="link link-btn">삭제</a>
 			<%} %>
-			<a href="list.jsp">목록</a>
-		</td>
+			<a href="list.jsp" class="link link-btn">목록</a>
+			</div>
 	</tr>
 	
 	<!-- 댓글 작성 영역 -->
@@ -89,12 +92,16 @@
 			<%if(isLogin){ %>
 			<form action="reply_insert.ez" method="post">
 				<input type="hidden" name="replyTarget" value="<%=boardDto.getBoardNo()%>">
-				<textarea name="replyContent" rows="4" cols="100"></textarea>
-				<input type="submit" value="댓글 작성">
+				<textarea name="replyContent" rows="2" cols="160"></textarea>
+				<div class="row right">
+				<input type="submit" class="link link-btn" value="댓글 작성">
+				</div>
 			</form>
 			<%} else { %>
-				<textarea rows="4" cols="100" disabled placeholder="로그인 후 댓글 작성이 가능합니다"></textarea>
-				<input type="submit" value="댓글 작성" disabled>
+				<textarea rows="2" cols="160" disabled placeholder="로그인 후 댓글 작성이 가능합니다"></textarea>
+				<div class="row right">
+				<input type="submit" class="link link-btn" value="댓글 작성">
+				</div>
 			<%} %>
 		</td>
 	</tr>

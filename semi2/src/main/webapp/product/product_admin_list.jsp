@@ -124,12 +124,12 @@ if (endBlock > lastPage) {
 			<thead>
 				<tr>
 					<th>상품번호</th>
-					<th>제품명</th>
+					<th class="w300">제품명</th>
 					<th>분류</th>
 					<th>제품 가격</th>
 					<th>재고</th>
-					<th>제조사</th>
-					<th>행사 여부</th>
+					<th>제조일</th>
+					<th class="w50">행사 여부</th>
 					<th>기타</th>
 				</tr>
 			</thead>

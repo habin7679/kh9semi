@@ -57,7 +57,11 @@
         </div>
         <div class="row ">
             <label>행사여부</label>
-            <input type="text" name="productEvent" value="<%=productDto.getProductEvent()%>" class="form-input fill input-round">
+             <select name="productEvent"class="form-input fill input-round">
+              <option <%if(productDto.getProductEvent().equals("0")){%>selected<%} %>>0</option>
+               <option <%if(productDto.getProductEvent().equals("1")){%>selected<%} %>>1</option>
+               </select>
+        </div>
         </div>
         <div class="row" >
             <label>칼로리</label>

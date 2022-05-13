@@ -27,7 +27,6 @@ public class ProductEditServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			String path = System.getProperty("user.home") + "/upload";//운영체제에서 사용자에게 제공되는 home 폴더
-			System.out.println("path = " + path);//확인을 위한 출력
 			
 			File dir = new File(path);
 			dir.mkdirs();//폴더 생성
@@ -63,23 +62,8 @@ public class ProductEditServlet extends HttpServlet {
 			// productDto.setProductInfo(mRequest.getParameter("productInfo"));
 			// productDto.setProductImg(req.getParameter("productImg"));
 	
-			attachmentDto.setAttachmentNo(attachmentDao.getSequence());
-			attachmentDto.setAttachmentUploadname(mRequest.getOriginalFileName("productImg"));
-			attachmentDto.setAttachmentSavename(mRequest.getFilesystemName("productImg"));
-			attachmentDto.setAttachmentType(mRequest.getContentType("productImg"));
-			File target = mRequest.getFile("productImg");
-			attachmentDto.setAttachmentSize(target.length());
-			
-			attachmentDto.setAttachmentNo(attachmentDao.getSequence());
-			attachmentDto.setAttachmentUploadname(mRequest.getOriginalFileName("productInfo"));
-			attachmentDto.setAttachmentSavename(mRequest.getFilesystemName("productInfo"));
-			attachmentDto.setAttachmentType(mRequest.getContentType("productInfo"));
-			File target1 = mRequest.getFile("productInfo");
-			attachmentDto.setAttachmentSize(target1.length());
-			
 			//변경
 			boolean success = productDao.edit(productDto);
-			boolean success1 = attachmentDao.edit(attachmentDto);
 			
 			if(success) {
 				resp.sendRedirect("product_edit_success.jsp");

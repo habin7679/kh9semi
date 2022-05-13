@@ -7,6 +7,8 @@
 	   double protein=Double.parseDouble(request.getParameter("protein"));
 	   double carbo=Double.parseDouble(request.getParameter("carbo"));
 	   double fat=Double.parseDouble(request.getParameter("fat"));
+	   
+	   
 %>
 
 <link rel="stylesheet" type="text/css"
