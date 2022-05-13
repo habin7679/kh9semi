@@ -86,7 +86,7 @@ String memberId=(String)session.getAttribute("member");
 	<div class="row">
 	        <label>주소</label><br>
                 <input type="text" name="deliveryPost" placeholder="우편번호" autocomplete="off" class="form-input fill">
-                 <input type="button" class="address-find-btn" value="우편번호 찾기"><br>
+                 <input type="button" class="address-find-btn btn btn-primary" value="우편번호 찾기"><br>
             </div>
            
             <div class="row">

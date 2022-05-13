@@ -8,7 +8,7 @@
 
 
 	<form action="login.ez" method="post">
-	<div class="container w500 m30">
+	<div class="container w500 m40">
 		<div class="row">
 			<h1>LOGIN</h1>
 		</div>
