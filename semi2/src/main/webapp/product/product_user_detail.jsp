@@ -358,4 +358,5 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 	</div>
 	
 
+<button class="btn "><a href="qna_list.jsp">상품 문의하러 가기</</a></button><br><br>
 <jsp:include page="/template/footer.jsp"></jsp:include>
