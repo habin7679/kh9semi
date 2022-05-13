@@ -183,6 +183,13 @@
         });
     </script>
     
+    <script type="text/javascript">
+    $(function() {
+    	$("input[name=submit]").click(function(){
+            return false;
+	})
+    </script>
+    
 	<form action="join.ez" method="post">
 	<div class="container w500 m30">
 		<div class="row">
@@ -235,8 +242,8 @@
 	    
 	    <div class="row">
 	        <label>주소</label><br>
-                <input type="text" name="memberPost" placeholder="우편번호" autocomplete="off" class="form-input fill">
-                 <input type="button" class="address-find-btn" value="우편번호 찾기"><br>
+                <input type="text" name="memberPost" placeholder="우편번호" autocomplete="off" class="form-input " width="65%">
+                 <input type="button" class="address-find-btn btn" value="우편번호 찾기" width="35%"><br>
             </div>
             <div class="row">
                 <input type="text" name="memberBasicAddress" placeholder="기본주소" autocomplete="off" class="form-input fill">
@@ -246,7 +253,7 @@
 	    </div>
 	    
 		<div class="row">
-	        <button type="submit" class="btn fill btn-primary">회원가입</button>
+	        <button type="submit" name="submit" class="btn fill btn-primary">회원가입</button>
 	    </div>
 	</div>
 	</form>
