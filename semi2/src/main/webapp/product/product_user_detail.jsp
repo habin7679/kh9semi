@@ -73,15 +73,24 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
                 });
             }
         });
-       
-        var recentProdArr = JSON.parse(localStorage.getItem("recentProdArr"));
+        var recentProdArr = JSON.parse(localStorage.getItem("recentProdArr")); // 로컬스토리지에서 최근 본 상품 목록 가져오기
         if (recentProdArr == null) {
-        	recentProdArr = [];
+        	recentProdArr = [];     // 초기에 최근 본 상품 없을 경우 변수 초기화
         }
-<<<<<<< HEAD
-=======
 
->>>>>>> refs/remotes/origin/main
+        
+		console.log(recentProdArr); // 기존 최근 본 상품 목록 로그  출력
+
+        recentProdArr.unshift(<%=productNo%>); // 현재 상품 최근 본 상품 목록 배열 앞에 넣기(push 에서 unshift로 변경)
+
+        const set = new Set(recentProdArr);
+        recentProdArr = [...set]; // 중복 제거
+
+        localStorage.setItem("recentProdArr", JSON.stringify(recentProdArr.slice(0, 2))); // 로컬스토리지 업데이트 (slice로 배열 3개만 유지)
+        console.log(recentProdArr); // 업데이트 된 최근 본 상품 목록 로그 출력
+
+
+
 		console.log(recentProdArr);
         recentProdArr.push(<%=productNo%>);
         localStorage.setItem("recentProdArr", JSON.stringify(recentProdArr));
