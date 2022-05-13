@@ -8,8 +8,8 @@
 		<%=memberId %>입니다
 	</div><br>
 	
-	<div class="row center">
-		<a href="login.jsp" class="btn fill">로그인 하기</a>
-		<a href="changePw" class="btn fill">비밀번호 변경하기</a>
+	<div class="row center m30">
+		<a href="login.jsp" class="btn fill btn-primary">로그인 하기</a>
+		<a href="changePw" class="btn fill btn-primary">비밀번호 변경하기</a>
 	</div>
 <jsp:include page="/template/footer.jsp"></jsp:include>

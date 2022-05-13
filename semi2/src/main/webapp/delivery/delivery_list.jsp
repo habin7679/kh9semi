@@ -13,11 +13,11 @@ List<DeliveryDto> list=delivaeryDao.select(memberId);
 <form action="delivery_insert.jsp">
 <div>
 	<h1>배송지 관리</h1>
-	<div>
+	<div class="row center">
 		<button type="submit" class="btn">+ 신규배송지 추가</button>
 	</div>
 	
-	<div class="container w800">
+	<div class="container w1000">
 		<table class="table">
 			<thead>
 				<tr>
@@ -33,11 +33,11 @@ List<DeliveryDto> list=delivaeryDao.select(memberId);
 				
 				<%if(deliveryDto.getDeliveryMenu().equals("대표배송지")){ %>
 				<tr>
-					<td><%=deliveryDto.getDeliveryName() %></td>
+					<td><%=deliveryDto.getDeliveryName() %></td><hr>
 					<td>[대표배송지]<%=deliveryDto.getDeliveryPost() %><%=deliveryDto.getDeliveryBasicAddress() %><%=deliveryDto.getDeliveryDetailAddress() %></td>
 					<td><%=deliveryDto.getDeliveryPhone() %></td>
 					<td>
-					<a href="<%=request.getContextPath()%>/delivery/delete.ez?deliveryPost=<%=deliveryDto.getDeliveryPost() %>">삭제</a>
+					<a href="<%=request.getContextPath()%>/delivery/delete.ez?deliveryPost=<%=deliveryDto.getDeliveryPost() %>" class="link link-btn">삭제</a>
 					</td>
 				</tr>
 				<%} else{%>
@@ -46,8 +46,8 @@ List<DeliveryDto> list=delivaeryDao.select(memberId);
 					<td><%=deliveryDto.getDeliveryPost() %><%=deliveryDto.getDeliveryBasicAddress() %><%=deliveryDto.getDeliveryDetailAddress() %></td>
 					<td><%=deliveryDto.getDeliveryPhone() %></td>
 					<td>
-					<a href="<%=request.getContextPath()%>/delivery/delete.ez?deliveryPost=<%=deliveryDto.getDeliveryPost() %>">삭제</a><br>
-					<a href="<%=request.getContextPath()%>/delivery/update.ez?deliveryPost=<%=deliveryDto.getDeliveryPost()%>">대표배송지로 설정</a>
+					<a href="<%=request.getContextPath()%>/delivery/delete.ez?deliveryPost=<%=deliveryDto.getDeliveryPost() %>" class="link link-btn">삭제</a><br>
+					<a href="<%=request.getContextPath()%>/delivery/update.ez?deliveryPost=<%=deliveryDto.getDeliveryPost()%>" class="link link-btn">대표배송지로 설정</a>
 					</td>
 				</tr>
 				<%} %>

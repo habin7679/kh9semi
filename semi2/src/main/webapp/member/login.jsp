@@ -1,3 +1,4 @@
+<%@page import="java.io.Console"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -5,23 +6,22 @@
 	String referer=request.getHeader("Referer");
 %>
 
+
 	<form action="login.ez" method="post">
-	<div class="container w500">
+	<div class="container w500 m40">
 		<div class="row">
-			<h1>로그인</h1>
+			<h1>LOGIN</h1>
 		</div>
 		<%if(referer !=null){%>
-			<input type="hidden" name="referer" value="<%=referer %>" class="form-input fill">
+			<input type="hidden" name="referer" value="<%=referer %>">
 		<%}%>
 		
 		<div class="row">
-			<label>아이디</label>
-			<input type="text" name="memberId" autocomplete="off" placeholder="아이디" class="form-input fill">
+			<input type="text" name="memberId" autocomplete="off" placeholder="아이디" class="form-input fill input-underline">
 		</div>
 		
 		<div class="row">
-			<label>비밀번호</label>
-			<input type="password" name="memberPw" placeholder="비밀번호" class="form-input fill">
+			<input type="password" name="memberPw" placeholder="비밀번호" class="form-input fill input-underline">
 		</div>
 		
 		<div class="row">
@@ -33,15 +33,16 @@
 		</div>
 		<%} %>
 		
-		<div>
-			<a href="find_id.jsp">아이디 찾기</a>
+		<div class="row">
+			<a href="find_id.jsp" class=" link link-btn fill" style="width:49.5%">아이디 찾기</a>
+			<a href="Change_pw.jsp" class=" link link-btn fill" style="width:49.5%">비밀번호 찾기</a>
 		</div>
+
 		
-		<div>
-			<a href="Change_pw.jsp">비밀번호 변경하기</a>
+		 <div>
+			<a href="join.jsp" class=" link link-btn fill">회원가입</a>
 		</div>
 	</div>
-	
 	</form>
 	
 <jsp:include page="/template/footer.jsp"></jsp:include>

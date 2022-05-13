@@ -36,7 +36,8 @@
                     success:function(resp) {
                         //resp는 "NNNNN" 또는 "NNNNY"일 것이다
                         if(resp == "N"){
-                            $(that).next("span").text("이미 사용중인 아이디입니다");
+                        	$(that).next().css("color", "red");
+                        	$(that).next("span").text("이미 사용중인 아이디입니다");
                             status.id = false;
                         }
                         else if(resp == "Y"){
@@ -183,7 +184,7 @@
     </script>
     
 	<form action="join.ez" method="post">
-	<div>
+	<div class="container w500 m30">
 		<div class="row">
 			<h1>회원가입</h1>
 		</div>
@@ -196,13 +197,13 @@
 		
 		<div class="row">
 			<label>비밀번호</label>
-	        <input type="text" name="memberPw" placeholder="첫자 영어 대문자,영어, 숫자, 특수문자 8~16자로 작성" class="form-input fill">
+	        <input type="password" name="memberPw" placeholder="첫자 영어 대문자,영어, 숫자, 특수문자 8~16자로 작성" class="form-input fill">
 	        <span></span>
 	    </div>
 	    
 	    <div class="row">
 			<label>비밀번호 확인</label>
-	        <input type="text" name="memberPw2" placeholder="첫자 영어 대문자,영어, 숫자, 특수문자 8~16자로 작성" class="form-input fill">
+	        <input type="password" name="memberPw2" placeholder="첫자 영어 대문자,영어, 숫자, 특수문자 8~16자로 작성" class="form-input fill">
 	        <span></span>
 	    </div>
 	    

@@ -22,10 +22,10 @@ public class DictCalServlet extends HttpServlet{
 			double basal1=0;
 			double basal2=0;
 			if(isMale) {
-				 basal1=66+ (13.7* weight) + (5 *height) - (6.8*age);
+				 basal1=88.4+ (13.4* weight) + (4.8 *height) - (5.68*age);
 			}
 			else {
-				basal1=655+ (9.6*weight) + (1.7 *height) - (4.7*age);
+				basal1=447.6+ (9.25*weight) + (3.1 *height) - (4.33*age);
 			}
 			
 			double count= Double.parseDouble(req.getParameter("count"));
@@ -39,13 +39,26 @@ public class DictCalServlet extends HttpServlet{
 				basal2 = basal1*1.55d;
 			}
 			
-			double kcal= basal2-basal2*0.2;
+			double kcal= basal2-500;
+			
+			double oneEat=kcal/3;
+			
+			double protein=kcal/10*4/4;
+			
+			double carbo=kcal/10*4/4;
+			
+			double fat=kcal/10*2/9;
 			
 			basal1=Math.round(basal1);
 			basal2=Math.round(basal2);
 			kcal=Math.round(kcal);
+			oneEat=Math.round(oneEat);
+			protein=Math.round(protein);
+			carbo=Math.round(carbo);
+			fat=Math.round(fat);
 			
-			resp.sendRedirect(req.getContextPath()+"/dict/detail.jsp?basal1="+basal1+"&basal2="+basal2+"&kcal="+kcal);
+			resp.sendRedirect(req.getContextPath()+"/dict/detail.jsp?basal1="+basal1+"&basal2="+basal2+"&kcal="+kcal
+					+"&oneEat="+oneEat+"&protein="+protein+"&carbo="+carbo+"&fat="+fat);
 			
 			
 		} catch (Exception e) {
