@@ -29,7 +29,12 @@
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/reset.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/layout.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/commons.css">
+<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/login1.css">
+=======
+      <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/login.css">
+    
+>>>>>>> refs/remotes/origin/main
     
     <%-- 
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/commons.css">

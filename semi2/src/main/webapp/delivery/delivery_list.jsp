@@ -10,6 +10,12 @@ String memberId=(String)session.getAttribute("member");
 DeliveryDao delivaeryDao= new DeliveryDao();
 List<DeliveryDto> list=delivaeryDao.select(memberId);
 %> 
+<style>
+.table{
+	border=1px;
+	
+}
+</style>
 <form action="delivery_insert.jsp">
 <div>
 	<h1>배송지 관리</h1>

@@ -75,7 +75,7 @@ else
 					<input type="hidden" name="productNo" value="<%=productDto.getProductNo()%>">
 					<%-- <td><%=productDto.getProductSort() %></td>--%>
 					<td><a href="product_user_detail.jsp?product_no=<%=productDto.getProductNo()%>" class="link">
-					<img src="/semi2/file/download.ez?attachmentNo=5<%--<%=productattachmentDto.getAttachmentNo()%>--%>"  width="200" height="200">
+					<img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="200" height="200">
 					</a></td>
 					<td><%=productDto.getProductName()%></td>
 					<td><%=productDto.getProductPrice()%></td>
@@ -119,7 +119,7 @@ if (list.isEmpty()) {
 				<tr>
 					<%-- <td><%=productDto.getProductSort() %></td>--%>
 					<td><a href="product_user_detail.jsp?product_no=<%=productDto.getProductNo()%>" class="link">
-					<img src="/semi2/file/download.ez?attachmentNo=5<%--<%=productattachmentDto.getAttachmentNo()%>--%>"  width="200" height="200"></a></td>
+					<img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="200" height="200"></a></td>
 					<td><%=productDto.getProductName()%></td>
 					<td><%=productDto.getProductPrice()%></td>
 					</tr>

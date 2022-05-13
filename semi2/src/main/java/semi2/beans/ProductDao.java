@@ -20,7 +20,7 @@ public class ProductDao {
 				+ "product_event,product_kcal,product_protein,product_carbohydrate,"
 				+ "product_fat"
 				+ ") values("
-				+"?,?,?,?,?,?,to_date(?,'YYYY-MM-DD'), to_date(?,'YYYY-MM-DD'),"
+				+"?,?,?,?,?,?,?, ?,"
 				+"?,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, productDto.getProductNo());

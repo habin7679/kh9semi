@@ -96,7 +96,7 @@ public class PayingDao {
 		Connection con = JdbcUtils.getConnection();
 		
 		String sql = "update paying set paying_total=?, paying_date=sysdate, paying_name=?, paying_phone=?, "
-				+ "paying_post=?, paying_basic_address=?, paying_detail_address=?, paying_delivery_date=to_date(?, 'yyyy-mm-dd'), "
+				+ "paying_post=?, paying_basic_address=?, paying_detail_address=?, paying_delivery_date=?, "
 				+ "paying_delivery_time=?, paying_delivery_fee=? where order_no=?";
 		
 		PreparedStatement ps = con.prepareStatement(sql);
