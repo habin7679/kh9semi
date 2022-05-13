@@ -13,6 +13,7 @@
             <%if(referer !=null){%>
                 <input type="hidden" name="referer" value="<%=referer %>">
             <%}%>
+
             <div class="input-area">
                 <input type="text" name="memberId" autocomplete="off"  id="id" required>
                 <label for="id">ID</label>
@@ -46,3 +47,4 @@
         </div>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
+
