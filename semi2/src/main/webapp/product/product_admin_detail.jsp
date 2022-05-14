@@ -30,7 +30,9 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
 <h1>해당 상품은 존재하지 않습니다</h1>
 <%} else { %>
 <div class="container w800 m30">
-<h1>상품 상세정보 보기</h1><br>
+<div class="row">
+<h1>상품 상세정보</h1><br><br>
+</div>
 
 
     <table class="table table-border table-hover">
@@ -97,9 +99,11 @@ ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(produ
     </table>
 
 <%} %>
-<br>
-<button class="btn "><a href="product_admin_list.jsp">목록으로 돌아가기</a></button><br><br>
-<button class="btn "><a href="product_edit.jsp?product_no=<%=productDto.getProductNo()%>">상품 수정</a></button><br><br>
-<button class="btn "><a href="delete.ez?product_no=<%=productDto.getProductNo()%>" >상품 삭제</a></button><br>
+<br><br><br>
+	<div class="container w300">
+		<a href="product_admin_list.jsp" class ="link link-btn fill">목록</a><br><br>
+		<a href="product_edit.jsp?product_no=<%=productDto.getProductNo()%>" class ="link link-btn-green fill">상품 수정</a><br><br>
+		<a href="delete.ez?product_no=<%=productDto.getProductNo()%>" class ="link link-btn-green fill">상품 삭제</a><br>
+	</div>
 </div>		
 <jsp:include page="/template/footer.jsp"></jsp:include>

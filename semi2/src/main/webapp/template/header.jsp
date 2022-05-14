@@ -85,7 +85,7 @@ ul.bar {
 	font-size: 16px;
 }
 ul.bar, ul.bar ul {
-	background-color: #1c683c;
+	background-color: #009432;
 }
 ul.bar li {
 	padding: 0.35em;
@@ -97,7 +97,7 @@ ul.bar a {
 }
 /*커서 올리면 바뀌는 색*/
 ul.bar li:hover {
-	background-color: #2f985c;
+	background-color: #007D2A;
 }
 ul.bar a {
 	display: block;
@@ -255,11 +255,7 @@ ul.bar a {
             <% } %>
 				</div>
  한상혁 --%>
-				<%-- 관리자라면 관리 메뉴를 출력 --%>
-				<%if(auth){ %>
-				<a href="<%=request.getContextPath()%>/admin/admin.jsp">관리자페이지</a>&nbsp;&nbsp;&nbsp;
-				
-				<%} %>
+
 <%--한상혁
         <% if(login){ %>
 				<a href="<%=request.getContextPath()%>/member/logout.ez">로그아웃</a> &nbsp;&nbsp;&nbsp;
@@ -272,13 +268,18 @@ ul.bar a {
  한상혁--%>
 						<div>
 							<% if(login){ %>
-							<%=memberDto.getMemberNick()%>님 환영합니다 &nbsp;&nbsp;&nbsp;
-				<%--한상혁 --%>		</div>
+							<%=memberDto.getMemberNick()%>님 환영합니다! &nbsp;&nbsp;
+			     	</div>
 				<%--한상혁
 				 <% } %>
 						</div>
 						<% if(login){ %>
 				 한상혁--%>			
+					<%-- 관리자라면 관리 메뉴를 출력 --%>
+					<%if(auth){ %>
+					<a href="<%=request.getContextPath()%>/admin/admin.jsp">관리자페이지</a>&nbsp;&nbsp;&nbsp;
+					
+					<%} %>
 						<a href="<%=request.getContextPath()%>/member/logout.ez">로그아웃</a>
 						&nbsp;&nbsp;&nbsp;
 						<%--한상혁 <div></div>	한상혁--%>

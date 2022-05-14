@@ -201,7 +201,7 @@
 		</div>
 		<div class="row">
 			<label>비밀번호</label>
-	        <input type="password" name="memberPw" value="<%=memberDto.getMemberPw()%>" class="form-input fill" required>
+	        <input type="text" name="memberPw" value="<%=memberDto.getMemberPw()%>" class="form-input fill" required>
 	    </div>
 	    <div class="row">
 	        <label>닉네임</label>
@@ -225,8 +225,8 @@
 	    </div>
 	    <div class="row">
 	        <label>주소</label><br>
-                <input type="text" name="memberPost" value="<%=memberDto.getMemberPost()%>" class="form-input fill" required>
-       			 <input type="button" class="address-find-btn" value="우편번호 찾기"><br>
+                <input type="text" name="memberPost" value="<%=memberDto.getMemberPost()%>" width="65%" class="form-input" required>
+       			 <input type="button" class="address-find-btn btn" value="우편번호 찾기" width="35%"><br>
        </div>
        <div class="row">
        		<input type="text" name="memberBasicAddress" value="<%=memberDto.getMemberBasicAddress()%>" class="form-input fill" required>
@@ -273,8 +273,13 @@
 	    </div>
 	    
 		<div class="row">
-			  <a href="member_detail.jsp?memberId=<%=memberDto.getMemberId()%>">취소</a>
+			  <a href="member_detail.jsp?memberId=<%=memberDto.getMemberId()%>"class ="link fill link-btn">취소</a>
+	    </div>
+	    <div class="row">
 	        <button type="submit" class ="btn fill btn-primary">수정</button>
+	    </div>
+	    <div class="row">
+	        <a href="member_delete.ez?memberId=<%=memberDto.getMemberId()%>"class ="link fill link-btn-green">회원탈퇴</a>
 	    </div>
 	</div>
 	</form>
