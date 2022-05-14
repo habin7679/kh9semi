@@ -58,12 +58,12 @@ public class BuyDao {
 		return count>0;
 	}
 	//관리자 - 주문취소
-	public boolean cancelInvoice (int orderNo) throws Exception{
+	public boolean cancelInvoice (BuyDto buyDto) throws Exception{
 		Connection con = JdbcUtils.getConnection();
 		String sql = "update buy set buy_status = '취소완료' where order_no=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
-		ps.setInt(1, orderNo);
+		ps.setInt(1, buyDto.getOrderNo());
 		
 		int count = ps.executeUpdate();
 		con.close();

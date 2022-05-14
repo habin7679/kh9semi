@@ -4,10 +4,11 @@
  
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>파일 업로드 폼</title>
+<title>이지어트</title>
 </head>
+ <jsp:include page="/template/header.jsp"></jsp:include>
  
-<h3>파일 업로드 폼</h3>
+<h3>배너 업로드</h3>
 <center>
 	<form action="add.ez" method="post"  enctype="multipart/form-data">
 		<table>
@@ -26,3 +27,5 @@
 		</table>
 	</form>
 </center>
+<jsp:include page="/template/footer.jsp"></jsp:include>
+
