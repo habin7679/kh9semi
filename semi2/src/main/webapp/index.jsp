@@ -97,7 +97,7 @@ ProductAttachmentDao paDao = new ProductAttachmentDao();
 		</div>
 		<div style="display: flex;">
 			<%
-			for (int i = 0; i < 2; i++) {
+			for (int i = 0; i < 4; i++) {
 				ProductDto pDto = list2.get(i);
 
 				ProductAttachmentDto paDto = paDao.selectOne(pDto.getProductNo());
@@ -169,7 +169,7 @@ ProductAttachmentDao paDao = new ProductAttachmentDao();
 		</div>
 		<div style="display: flex;">
 			<%
-			for (int i = 0; i < 1; i++) {
+			for (int i = 0; i < 4; i++) {
 				ProductDto pDto = list4.get(i);
 				ProductAttachmentDto paDto = paDao.selectOne(pDto.getProductNo());
 			%>
