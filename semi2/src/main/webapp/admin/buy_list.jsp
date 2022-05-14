@@ -5,6 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+	<jsp:include page="/template/header.jsp"></jsp:include>
 	<%-- 준비 --%>
 	<%
 		request.setCharacterEncoding("UTF-8");
@@ -60,9 +61,9 @@
 		}
 	%>
 	<%-- 출력 --%>
-	<jsp:include page="/template/header.jsp"></jsp:include>
 	
-	<div class="container w1000 m30">
+	<div class="container w950 m30">
+	<div>
 		<div class="row center">
 			<h1>
 				<a href="buy_list.jsp">주문 목록</a>
@@ -203,5 +204,6 @@
 		<%} %>
 		
 	</div>
-
+</div>
+<br>
 <jsp:include page="/template/footer.jsp"></jsp:include>

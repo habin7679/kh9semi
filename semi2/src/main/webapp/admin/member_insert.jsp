@@ -251,6 +251,9 @@
 	    		<input type="date" name="memberJoindate"  class="form-input fill" >
 	    </div>
 	    
+	    <div class="row">
+	        <a href="member_list.jsp" class="link link-btn fill">목록</a><br>
+	    </div>
 		<div class="row">
 	        <button type="submit" class="btn btn-primary fill">회원추가</button>
 	    </div>

@@ -4,7 +4,7 @@
 
  <div class="container w400 m50">
 	<div class="row center">
-	<h1>상품 정보 입력</h1>
+	<h1>상품 정보 입력</h1><br>
 	</div>
 	<div class="row center">
 	<form action="add.ez" method="post"  enctype="multipart/form-data">
@@ -77,7 +77,10 @@
 			<input type="file" name="productImg" class=" fill ">
 		</div>
 		<div class="row center" >
-			<button type="submit" class="btn">전송</button>
+			<a href="product_admin_list.jsp" class="link link-btn fill">목록</a><br>
+		</div>
+		<div class="row center" >
+			<button type="submit" class="btn btn-primary fill">추가</button>
 		</div>
 	</form>
 	</div>
