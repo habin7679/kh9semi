@@ -13,13 +13,13 @@ import semi2.beans.LikeDao;
 @WebServlet(urlPatterns="/like/delete.ez")
 public class LikeDeleteServlet extends HttpServlet{
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			String memberId = (String)req.getSession().getAttribute("member");
 			int productNo = Integer.parseInt(req.getParameter("productNo"));
 
 			LikeDao lDao = new LikeDao();
-			//아이디 바꾸기
+			
 			lDao.delete(memberId, productNo);
 
 			resp.sendRedirect(req.getContextPath()+"/like/list.jsp");

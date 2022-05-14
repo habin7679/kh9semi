@@ -23,7 +23,7 @@ public class MemberDeleteServlet extends HttpServlet{
 			req.getSession().removeAttribute("admin");
 			
 			if(success) {
-				resp.sendRedirect("member_list.jsp");
+				resp.sendRedirect("member_delete_success.jsp");
 			}
 			else {
 				resp.sendRedirect("member_delete_fail.jsp");

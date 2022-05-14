@@ -11,10 +11,49 @@
 <%
 	String memberId = (String)session.getAttribute("member");
 	BuyDao bDao = new BuyDao();
-	List<BuyDto> list = bDao.selectAll(memberId);
+	//List<BuyDto> list = bDao.selectAll(memberId);
 	PayingDao payingDao = new PayingDao();
 %>
+<%
+		int p;
+		try {
+			p = Integer.parseInt(request.getParameter("p"));
+			if(p <= 0)	throw new Exception();
+		}
+		catch(Exception e){
+			p = 1;
+		}
+	
+	int s;
+		try {
+			s = Integer.parseInt(request.getParameter("s"));
+			if(s <= 0) throw new Exception();
+		}
+		catch(Exception e){
+			s = 10;
+		}
+	%>
+	<%
+		BuyDao buyDao = new BuyDao();
+		List<BuyDto> list2;
 
+			list2 = buyDao.listAllByPaging(p, s);
+	%>
+	<%
+		int count;
+		count = buyDao.countByPaging();
+		
+		int lastPage = (count + s - 1) / s;
+		
+		int blockSize = 10;
+		
+		int endBlock = (p + blockSize - 1) / blockSize * blockSize;
+		int startBlock = endBlock - (blockSize - 1);
+		
+		if(endBlock > lastPage){
+			endBlock = lastPage;
+		}
+	%>
 
 
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -28,14 +67,14 @@
 	</tr>
 
 <%
-	for(int i =0; i<list.size(); i++){
-		BuyDto bDto = list.get(i);
+	for(int i =0; i<list2.size(); i++){
+		BuyDto bDto = list2.get(i);
 		int oNo = bDto.getOrderNo();
 		PayingDto payingDto = payingDao.selectOneDate(oNo);
 %>
 <tr>
 	<td>
-		<a href="detail.jsp?buyNo=<%=bDto.getBuyNo()%>"><%=payingDto.getPayingDate() %>주문</a>	
+		<a href="detail.jsp?buyNo=<%=bDto.getBuyNo()%>"><%=payingDto.getPayingDate() %></a>	
 	</td>
 	<td>
 		<%=bDto.getBuyStatus() %>
@@ -45,7 +84,7 @@
 	</td>
 	<td>
 		<%if(bDto.getBuyStatus().equals("입금전")||bDto.getBuyStatus().equals("결제완료")) {%>
-			<a href="cancel.ez?buyNo=<%=bDto.getBuyNo() %>">취소하기</a>
+			<a href="cancel.ez?buyNo=<%=bDto.getBuyNo()%>" class="btn">취소하기</a>
 		<%} else{%>
 			취소 불가
 		<%} %>
@@ -54,5 +93,31 @@
 
 <%} %>
 	</table>
+	<div class="row center pagination">
+		<%if(p > 1){ %>
+			<a href="list.jsp?p=1&s=<%=s%>">&laquo;</a>
+		<%} %>
+		
+		<%if(startBlock > 1){ %>
+			<a href="list.jsp?p=<%=startBlock-1%>&s=<%=s%>">&lt;</a>
+		<%} %>
+		
+		<%for(int i=startBlock; i <= endBlock; i++){ %>
+				<%if(i == p){ %>
+				<a class="active" href="list.jsp?p=<%=i%>&s=<%=s%>"><%=i%></a>	
+				<%} else { %>
+				<a href="list.jsp?p=<%=i%>&s=<%=s%>"><%=i%></a>
+				<%} %>
+		<%} %>
+		
+		<%if(endBlock < lastPage){ %>
+			<a href="list.jsp?p=<%=endBlock+1%>&s=<%=s%>">&gt;</a>
+		<%} %>
+		
+		<%if(p < lastPage){ %>
+			<a href="list.jsp?p=<%=lastPage%>&s=<%=s%>">&raquo;</a>
+		<%} %>
+		
+	</div>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

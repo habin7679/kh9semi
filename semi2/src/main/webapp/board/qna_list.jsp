@@ -52,10 +52,10 @@
 <%
 	int count;
 	if(search){//검색 결과 수 카운트
-		count = boardDao.countByPaging(type, keyword);
+		count = boardDao.countByPaging_qna(type, keyword);
 	}
 	else{//목록 결과 수 카운트
-		count = boardDao.countByPaging();
+		count = boardDao.countByPaging_qna();
 	}
 	
 	//마지막 페이지 번호 계산
@@ -120,7 +120,7 @@
 
 						
 						<!-- 게시글 제목 링크 -->
-						<a href="detail.jsp?boardNo=<%=boardDto.getBoardNo()%>">
+						<a href="detail_qna.jsp?boardNo=<%=boardDto.getBoardNo()%>">
 							<%=boardDto.getBoardTitle()%>
 						</a>
 						
@@ -215,6 +215,7 @@
 			<select name="type" class="form-input input-round">
 				<option value="board_title">제목</option>
 				<option value="board_content">내용</option>
+				<option value="board_writer">작성자</option>
 			</select>
 			
 			<input type="search" name="keyword" placeholder="검색어 입력" required class="form-input input-round">

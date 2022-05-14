@@ -36,8 +36,8 @@
 		  
 		  <div><a href="<%=request.getContextPath() %>/delivery/delivery_list.jsp">배송지 관리</a></div>
 		  <div><a href="#">정기배송 신청하기</a></div>
-		  <div><a href="<%=request.getContextPath()%>/review_list.jsp">내 후기내역</a></div>
-		  <div><a href="<%=request.getContextPath()%>/qna_list.jsp">내 문의내역</a></div>
+		  <div><a href="<%=request.getContextPath()%>/board/review_list.jsp?type=board_writer&keyword=<%=memberDto.getMemberId()%>">내 후기내역</a></div>
+		  <div><a href="<%=request.getContextPath()%>/board/qna_list.jsp?type=board_writer&keyword=<%=memberDto.getMemberId()%>">내 문의내역</a></div>
 		  
 		  <div><a href="exit.jsp">회원 탈퇴하기</a></div>
 	  
@@ -77,6 +77,10 @@
     	})
     }
 	</script>
+
+
+
 	</div>
+
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

@@ -192,10 +192,10 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 <%
 	int count;
 	if(search){//검색 결과 수 카운트
-		count = boardDao.countByPaging(type, keyword);
+		count = boardDao.countByPaging_review(type, keyword);
 	}
 	else{//목록 결과 수 카운트
-		count = boardDao.countByPaging();
+		count = boardDao.countByPaging_review();
 	}
 	
 	//마지막 페이지 번호 계산
@@ -254,6 +254,7 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 							<%} %>
 							<img src="<%=request.getContextPath()%>/image/reply.png" width="20" height="20">
 						<%} %>
+
 						
 						<!-- 게시글 제목 링크 -->
 						<a href="/semi2/board/detail.jsp?boardNo=<%=boardDto.getBoardNo()%>">

@@ -21,11 +21,13 @@
 
 <%-- 출력 --%>
 <jsp:include page="/template/header.jsp"></jsp:include>
-
+<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <form action="edit.ez" method="post" encType = "multipart/form-data">
 <input type="hidden" name="boardNo" value="<%=boardDto.getBoardNo()%>">
 
-	<div class="container w800 m30">
+
+	<div class="container w1000 m30">
 	    <div class="row center">
 	        <h1>게시글 수정</h1>
 	    </div>
@@ -49,12 +51,30 @@
 	    </div>
 	    <div class="row">
 	        <label>제목</label>
-	        <input type="text" name="boardTitle" autocomplete="off" required class="form-input fill input-round" value="<%=boardDto.getBoardContent()%>">
+	        <input type="text" name="boardTitle" autocomplete="off" required class="form-input fill input-round" value="<%=boardDto.getBoardTitle()%>">
 	    </div>
 	    <div class="row">
 	        <label>내용</label>
-	        <textarea name="boardContent" required class="form-input fill input-round" rows="12"><%=boardDto.getBoardContent()%></textarea>
-	    </div>
+	        <div id="editor"></div> 
+	        <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+			<script> 
+			
+				const Editor = toastui.Editor; 
+				const editor = new Editor({ 
+					el: document.querySelector('#editor'),
+					height: '500px',
+					initialEditType: 'markdown',
+					previewStyle: 'markdown'
+				});
+				
+				editor.on("change", function(){
+					var content = editor.getMarkdown();
+					$("input[name=boardContent]").val(content);
+					console.log($("input[name=boardContent]").val());
+				});
+				
+			</script>
+				<input type="hidden" name="boardContent">
 	    <div class="row">
 	        <label>첨부파일</label>
 	        <input type="file" name="attach" class="form-input input-round" rows="12">
