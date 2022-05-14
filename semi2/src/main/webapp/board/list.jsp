@@ -153,7 +153,7 @@
 			p < lastPage : 마지막 페이지가 아닌 경우
 			endBlock < lastPage : 마지막 블록 구간이 아닌 경우
 		 --%>
-		
+		<br>
 		<%if(p > 1){ %>
 			<%if(search){ %>
 			<a href="list.jsp?p=1&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&laquo;</a>
@@ -208,6 +208,7 @@
 	
 	<div class="row center">
 		<!-- 검색창 -->
+		<br>
 		<form action="list.jsp" method="get">
 			<select name="type" class="form-input input-round">
 				<option value="board_title">제목</option>
