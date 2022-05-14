@@ -72,4 +72,22 @@ public class LikeDao {
 		con.close();
 		return list;
 	}
+	public int selectSize(String memberId) throws Exception{
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select product_no from likep where member_id=?";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setString(1, memberId);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		int a = 0;
+		while(rs.next()) {
+			a++;
+		}
+		con.close();
+		return a;
+	}
 }

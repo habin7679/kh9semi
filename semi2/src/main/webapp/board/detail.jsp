@@ -31,7 +31,7 @@
 	boolean isOwner = isLogin && memberId.equals(boardDto.getBoardWriter());
 	
 	//관리자인지 판정
-	String memberGrade = (String)session.getAttribute("auth");
+	String memberGrade = (String)session.getAttribute("admin");
 	boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
 	
 	//현재 글에 대한 댓글 목록을 조회
@@ -140,7 +140,7 @@
 							<%-- 댓글 삭제 아이콘 : 본인 글이거나 관리자이거나 둘 중 하나에 해당하면 등장해야함 --%>
 							<%if(isReplyOwner || isAdmin) { %>
 							<a href="reply_delete.ez?replyNo=<%=replyDto.getReplyNo()%>&replyTarger=<%=replyDto.getReplyTarget()%>">
-							<img src="<%=request.getContextPath()%>/image/trash.jpg" width="20">
+							<img src="<%=request.getContextPath()%>/image/trash.png" width="20">
 							</a>
 							<%} %>
 						</td>
