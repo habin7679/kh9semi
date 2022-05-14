@@ -3,6 +3,7 @@
 <%@page import="semi2.beans.BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<jsp:include page="/template/header.jsp"></jsp:include>
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" type="text/css" href="./css/commons.css">
@@ -49,10 +50,9 @@
 		<aside class="float-left layer-5">
 		<label><a href="<%=request.getContextPath()%>/admin/admin.jsp">Member</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/product/product_admin_list.jsp">Product</a></label><br><br><br><br>
-		<label><a href="<%=request.getContextPath()%>/admin/buy_list.jsp">Order</a></label><br><br><br><br>
-		<label><a href="<%=request.getContextPath()%>/admin/order_list.jsp">Delivery</a></label><br><br><br><br>
+		<label><a href="<%=request.getContextPath()%>/admin/order_list.jsp">Order</a></label><br><br><br><br>
+		<label><a href="<%=request.getContextPath()%>/admin/buy_list.jsp">Delivery</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/board_list.jsp">Board List</a></label><br><br><br><br>
-		<label><a href="<%=request.getContextPath()%>/admin/board_write.jsp">Write</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/banner.jsp">Banner</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/statistics.jsp">Statistics</a></label><br><br><br><br>	
 		</aside>
@@ -128,7 +128,7 @@
 %>
 
     
-<jsp:include page="/template/header.jsp"></jsp:include>
+
 
 <div class="container w950 m30">
 
@@ -137,7 +137,7 @@
 	</div>
 	
 	<div class="row right">
-		<a href="write.jsp" class="link link-btn">글쓰기</a>
+		<a href="/admin/board_write.jsp" class="link link-btn">글쓰기</a>
 	</div>		
 	
 	<div class="row">
@@ -171,7 +171,7 @@
 
 						
 						<!-- 게시글 제목 링크 -->
-						<a href="detail.jsp?boardNo=<%=boardDto.getBoardNo()%>">
+						<a href="/board/detail.jsp?boardNo=<%=boardDto.getBoardNo()%>">
 							<%=boardDto.getBoardTitle()%>
 						</a>
 						
@@ -210,17 +210,17 @@
 		<br>
 		<%if(p > 1){ %>
 			<%if(search){ %>
-			<a href="list.jsp?p=1&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&laquo;</a>
+			<a href="board_list.jsp?p=1&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&laquo;</a>
 			<%} else { %>
-			<a href="list.jsp?p=1&s=<%=s%>">&laquo;</a>
+			<a href="board_list.jsp?p=1&s=<%=s%>">&laquo;</a>
 			<%} %>
 		<%} %>
 		
 		<%if(startBlock > 1){ %>
 			<%if(search){ %>
-			<a href="list.jsp?p=<%=startBlock-1%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&lt;</a>
+			<a href="board_list.jsp?p=<%=startBlock-1%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&lt;</a>
 			<%} else { %>
-			<a href="list.jsp?p=<%=startBlock-1%>&s=<%=s%>">&lt;</a>
+			<a href="board_list.jsp?p=<%=startBlock-1%>&s=<%=s%>">&lt;</a>
 			<%} %>
 		<%} %>
 		
@@ -228,15 +228,15 @@
 		<%for(int i=startBlock; i <= endBlock; i++){ %>
 			<%if(search){ %>
 				<%if(i == p){ %>
-				<a class="active" href="list.jsp?p=<%=i%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>"><%=i%></a>	
+				<a class="active" href="board_list.jsp?p=<%=i%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>"><%=i%></a>	
 				<%} else { %>
-				<a href="list.jsp?p=<%=i%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>"><%=i%></a>
+				<a href="board_list.jsp?p=<%=i%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>"><%=i%></a>
 				<%} %>
 			<%} else { %>
 				<%if(i == p){ %>
-				<a class="active" href="list.jsp?p=<%=i%>&s=<%=s%>"><%=i%></a>	
+				<a class="active" href="board_list.jsp?p=<%=i%>&s=<%=s%>"><%=i%></a>	
 				<%} else { %>
-				<a href="list.jsp?p=<%=i%>&s=<%=s%>"><%=i%></a>
+				<a href="board_list.jsp?p=<%=i%>&s=<%=s%>"><%=i%></a>
 				<%} %>
 			<%} %>
 		<%} %>
@@ -244,17 +244,17 @@
 		<!-- 다음 버튼 영역 -->
 		<%if(endBlock < lastPage){ %>
 			<%if(search){ %>
-			<a href="list.jsp?p=<%=endBlock+1%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&gt;</a>
+			<a href="board_list.jsp?p=<%=endBlock+1%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&gt;</a>
 			<%} else { %>
-			<a href="list.jsp?p=<%=endBlock+1%>&s=<%=s%>">&gt;</a>
+			<a href="board_list.jsp?p=<%=endBlock+1%>&s=<%=s%>">&gt;</a>
 			<%} %>
 		<%} %>
 		
 		<%if(p < lastPage){ %>
 			<%if(search){ %>
-			<a href="list.jsp?p=<%=lastPage%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&raquo;</a>
+			<a href="board_list.jsp?p=<%=lastPage%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&raquo;</a>
 			<%} else { %>
-			<a href="list.jsp?p=<%=lastPage%>&s=<%=s%>">&raquo;</a>
+			<a href="board_list.jsp?p=<%=lastPage%>&s=<%=s%>">&raquo;</a>
 			<%} %>
 		<%} %>
 		
@@ -263,7 +263,7 @@
 	<div class="row center">
 		<!-- 검색창 -->
 		<br>
-		<form action="list.jsp" method="get">
+		<form action="/board/list.jsp" method="get">
 			<select name="type" class="form-input input-round">
 				<option value="board_title">제목</option>
 				<option value="board_content">내용</option>

@@ -45,10 +45,11 @@
     } 
     aside {
     }
+    p { width: 100px; /* 정렬하려는 요소의 넓이를 반드시 지정 */ margin: 0 auto; }
     </style>
 </head>
 <body>
-	<section>
+	<section class="p">
 		<aside class="float-left layer-5">
 		<label><a href="<%=request.getContextPath()%>/admin/admin.jsp">Member</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/product/product_admin_list.jsp">Product</a></label><br><br><br><br>
@@ -266,6 +267,7 @@ boolean isSearch = type != null && !type.equals("") && keyword != null && !keywo
 </article>
 </section>
 </body>
+
 <footer>
 	<jsp:include page="/template/footer.jsp"></jsp:include>
 </footer>
