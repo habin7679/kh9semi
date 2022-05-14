@@ -888,6 +888,152 @@ public class BoardDao {
 //	페이지 네비게이터의 마지막 번호 계산을 위한 카운트 기능을 검색, 목록 각각 구현
 //	countByPaging() - 목록에서 사용할 게시글 숫자 카운트 기능
 //	countByPaging(type, keyword) - 검색에서 사용할 게시글 숫자 카운트 기능
+	public int countByPaging_notice() throws Exception {
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select count(*) from board_notice";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		int count = rs.getInt(1);//rs.getInt("count(*)");
+		
+		con.close();
+		
+		return count;
+	}
+	
+	public int countByPaging_notice(String type, String keyword) throws Exception {
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select count(*) from board_notice where instr(#1, ?) > 0";
+		sql = sql.replace("#1", type);
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, keyword);		
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		int count = rs.getInt(1);//rs.getInt("count(*)");
+		
+		con.close();
+		
+		return count;
+	}
+	
+	public int countByPaging_free() throws Exception {
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select count(*) from board_free";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		int count = rs.getInt(1);//rs.getInt("count(*)");
+		
+		con.close();
+		
+		return count;
+	}
+	
+	public int countByPaging_free(String type, String keyword) throws Exception {
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select count(*) from board_free where instr(#1, ?) > 0";
+		sql = sql.replace("#1", type);
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, keyword);		
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		int count = rs.getInt(1);//rs.getInt("count(*)");
+		
+		con.close();
+		
+		return count;
+	}
+	public int countByPaging_review() throws Exception {
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select count(*) from board_review";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		int count = rs.getInt(1);//rs.getInt("count(*)");
+		
+		con.close();
+		
+		return count;
+	}
+	
+	public int countByPaging_review(String type, String keyword) throws Exception {
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select count(*) from board_review where instr(#1, ?) > 0";
+		sql = sql.replace("#1", type);
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, keyword);		
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		int count = rs.getInt(1);//rs.getInt("count(*)");
+		
+		con.close();
+		
+		return count;
+	}
+	public int countByPaging_tip() throws Exception {
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select count(*) from board_tip";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		int count = rs.getInt(1);//rs.getInt("count(*)");
+		
+		con.close();
+		
+		return count;
+	}
+	
+	public int countByPaging_tip(String type, String keyword) throws Exception {
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select count(*) from board_tip where instr(#1, ?) > 0";
+		sql = sql.replace("#1", type);
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, keyword);		
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		int count = rs.getInt(1);//rs.getInt("count(*)");
+		
+		con.close();
+		
+		return count;
+	}
+	public int countByPaging_qna() throws Exception {
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select count(*) from board_qna";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		int count = rs.getInt(1);//rs.getInt("count(*)");
+		
+		con.close();
+		
+		return count;
+	}
+	
+	public int countByPaging_qna(String type, String keyword) throws Exception {
+		Connection con = JdbcUtils.getConnection();
+		
+		String sql = "select count(*) from board_qna where instr(#1, ?) > 0";
+		sql = sql.replace("#1", type);
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, keyword);		
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		int count = rs.getInt(1);//rs.getInt("count(*)");
+		
+		con.close();
+		
+		return count;
+	}
 	public int countByPaging() throws Exception {
 		Connection con = JdbcUtils.getConnection();
 		
@@ -917,6 +1063,5 @@ public class BoardDao {
 		
 		return count;
 	}
-	
 	
 }

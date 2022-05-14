@@ -59,6 +59,8 @@
 		</td>
 	</tr>
 </div>
+    
+    <%if(isOwner || isAdmin){ %> 		
 <table border="1" width="750">
 	<tr>
 		<td>
@@ -71,6 +73,9 @@
 			</h2>
 		</td>
 		</tr>
+		<%} else{%>
+		<h1>작성자 본인이 아닙니다</h1>
+		<%} %>
 	<!-- 버튼 영역 -->
 	<tr>	
 			<div class="row right">
@@ -120,6 +125,7 @@
 				<%-- 수정이 가능(본인이 작성한 댓글)한 경우라면 보여주기 위한 줄과 수정하기 위한 줄을 각각 출력 --%>
 				
 					<%-- 보여주기 위한 줄 --%>
+					<%if(isOwner || isAdmin){ %> 
 					<tr class="show-row">
 						<th width="25%">
 							<%=replyDto.getReplyWriter()%>
@@ -130,6 +136,8 @@
 							<pre><%=replyDto.getReplyContent()%></pre>
 						</td>
 						<td>
+						<%} else{%>
+						<%} %>
 							<%-- 댓글 수정 아이콘 : 본인 글에만 등장해야함 --%>
 							<%if(isReplyOwner){ %>
 							<a href="#" class="edit-btn">

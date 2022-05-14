@@ -49,10 +49,10 @@
 <%
 	int count;
 	if(search){//검색 결과 수 카운트
-		count = boardDao.countByPaging(type, keyword);
+		count = boardDao.countByPaging_notice(type, keyword);
 	}
 	else{//목록 결과 수 카운트
-		count = boardDao.countByPaging();
+		count = boardDao.countByPaging_notice();
 	}
 	
 	//마지막 페이지 번호 계산
