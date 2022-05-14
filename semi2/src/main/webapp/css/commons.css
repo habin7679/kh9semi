@@ -136,6 +136,17 @@
     color: #383838;
 }
 
+.link.link-btn-green {
+    border: 1px solid #009432;
+    border-radius: 0.25em;
+	 color : white;
+	 background-color : #009432;
+    padding: 0.5em;
+    font-size : 0.9em;
+    display:inline-block;
+    text-align: center;
+}
+
 
 .pagination {
     text-align: center;
@@ -235,8 +246,8 @@ textarea.form-input {
     border-color: #009432;
     background-color: #009432;
     color:white;
-    padding: 0.67em;
     font-size : 0.9em;
+    padding: 0.5em;
 }
 .btn.btn-primary:hover {
     border-color: #009432;
