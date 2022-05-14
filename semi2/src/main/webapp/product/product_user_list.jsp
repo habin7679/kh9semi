@@ -142,9 +142,9 @@ List<ProductDto>  list2 = productDao.categorie(productSort);
         <div class="float-left layer-3">
         <%if(i % 3 == 0){%>
             <div><a href="product_user_detail.jsp?product_no=<%=productDto.getProductNo()%>" class="link">
-                <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="200" height="200"><br>
+                <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="300" height="300"><br>
                 <input type="hidden" name="productNo" value="<%=productDto.getProductNo()%>">
-                <input type="hidden" name="productSort" value="<%=productDto.getProductSort() %>"><br>
+                <input type="hidden" name="productSort" value="<%=productDto.getProductSort() %>">
                 <%=productDto.getProductName()%><br>
                 <%=productDto.getProductPrice()%><br>
             </a>
@@ -154,9 +154,9 @@ List<ProductDto>  list2 = productDao.categorie(productSort);
         <div class="float-left layer-3">
         <%if(i % 3 == 1){%>
             <div><a href="product_user_detail.jsp?product_no=<%=productDto.getProductNo()%>" class="link">
-                <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="200" height="200"><br>
+                <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="300" height="300"><br>
                 <input type="hidden" name="productNo" value="<%=productDto.getProductNo()%>">
-                <input type="hidden" name="productSort" value="<%=productDto.getProductSort() %>"><br>
+                <input type="hidden" name="productSort" value="<%=productDto.getProductSort() %>">
                 <%=productDto.getProductName()%><br>
                 <%=productDto.getProductPrice()%><br>
             </a>
@@ -166,9 +166,9 @@ List<ProductDto>  list2 = productDao.categorie(productSort);
         <div class="float-left layer-3">
         <%if(i % 3 == 2){%>
             <div><a href="product_user_detail.jsp?product_no=<%=productDto.getProductNo()%>" class="link">
-                <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="200" height="200"><br>
+                <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="300" height="300"><br>
                 <input type="hidden" name="productNo" value="<%=productDto.getProductNo()%>">
-                <input type="hidden" name="productSort" value="<%=productDto.getProductSort() %>"><br>
+                <input type="hidden" name="productSort" value="<%=productDto.getProductSort() %>">
                 <%=productDto.getProductName()%><br>
                 <%=productDto.getProductPrice()%><br>
             </a>
@@ -199,9 +199,9 @@ if (list.isEmpty()) {
         <div class="float-left layer-3">
         <%if(i % 3 == 0){%>
             <div><a href="product_user_detail.jsp?product_no=<%=productDto.getProductNo()%>" class="link">
-                <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="200" height="200"><br>
+                <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="300" height="300"><br>
                 <input type="hidden" name="productNo" value="<%=productDto.getProductNo()%>">
-                <input type="hidden" name="productSort" value="<%=productDto.getProductSort() %>"><br>
+                <input type="hidden" name="productSort" value="<%=productDto.getProductSort() %>">
                 
                	<%=productDto.getProductName()%><br>
                 <%=productDto.getProductPrice()%><br>
@@ -212,9 +212,9 @@ if (list.isEmpty()) {
         <div class="float-left layer-3">
         <%if(i % 3 == 1){%>
             <div><a href="product_user_detail.jsp?product_no=<%=productDto.getProductNo()%>" class="link">
-                <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="200" height="200"><br>
+                <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="300" height="300"><br>
                 <input type="hidden" name="productNo" value="<%=productDto.getProductNo()%>">
-                <input type="hidden" name="productSort" value="<%=productDto.getProductSort() %>"><br>
+                <input type="hidden" name="productSort" value="<%=productDto.getProductSort() %>">
                 
                	<%=productDto.getProductName()%><br>
                 <%=productDto.getProductPrice()%><br>
@@ -225,7 +225,7 @@ if (list.isEmpty()) {
         <div class="float-left layer-3">
         <%if(i % 3 == 2){%>
             <<div><a href="product_user_detail.jsp?product_no=<%=productDto.getProductNo()%>" class="link">
-                <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="200" height="200"><br>
+                <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="300" height="300"><br>
                 <input type="hidden" name="productNo" value="<%=productDto.getProductNo()%>">
                 <input type="hidden" name="productSort" value="<%=productDto.getProductSort() %>">
                 
