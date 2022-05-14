@@ -61,12 +61,10 @@ boolean isSearch = type != null && !type.equals("") && keyword != null && !keywo
 %>
 
 <%-- 출력 --%>
-	
-	<div class="container w500 m30 ">
-		<div class="row">
-			<h1>
-				<a href="member_list.jsp">회원 목록</a>
-			</h1>
+<div class="container w950 m30 ">
+	<div>
+		<div class="row center">
+			<h1>회원 목록</h1>
 		</div>
 		<form action="member_list.jsp" method="get">
 	
@@ -111,8 +109,8 @@ boolean isSearch = type != null && !type.equals("") && keyword != null && !keywo
 	<%
 	if (list.isEmpty()) {
 	%>
-	<div class="row center">
-		<h2>결과가 존재하지 않습니다</h2>
+	<div class="row center"><br>
+		<h2>검색결과가 존재하지 않습니다</h2>
 	</div>
 	<%
 	} else {
@@ -130,6 +128,7 @@ boolean isSearch = type != null && !type.equals("") && keyword != null && !keywo
 					<th>전화번호</th>
 					<th>보유포인트</th>
 					<th>등급</th>
+					<th>상세</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -157,6 +156,7 @@ boolean isSearch = type != null && !type.equals("") && keyword != null && !keywo
 	}
 	%>
 	</div>
+	<br>
 	<div class="row center pagination">
 		<%if(p > 1){ %>
 			<%if(isSearch){ %>
@@ -207,6 +207,6 @@ boolean isSearch = type != null && !type.equals("") && keyword != null && !keywo
 		<%} %>
 		
 	</div>
-	
+</div>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

@@ -85,7 +85,7 @@ ul.bar {
 	font-size: 16px;
 }
 ul.bar, ul.bar ul {
-	background-color: #1c683c;
+	background-color: #009432;
 }
 ul.bar li {
 	padding: 0.35em;
@@ -97,7 +97,7 @@ ul.bar a {
 }
 /*커서 올리면 바뀌는 색*/
 ul.bar li:hover {
-	background-color: #2f985c;
+	background-color: #007D2A;
 }
 ul.bar a {
 	display: block;

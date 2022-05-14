@@ -118,7 +118,7 @@ if (endBlock > lastPage) {
 	%>
 	<div class="container center w900 m30">
 	<div class="row right">
-		<a href="product_insert.jsp" class="link link-btn">생성</a>
+		<a href="product_insert.jsp" class="link link-btn">상품추가</a>
 	</div>
 		<table class="table table-border table-hover">
 			<thead>

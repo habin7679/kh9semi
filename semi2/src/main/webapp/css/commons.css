@@ -113,7 +113,8 @@
 .link {
     text-decoration: none;
     color:gray;
-}
+    font-size : 0.9em;
+    }
 .link:hover {
     color: black;
 }
@@ -122,16 +123,17 @@
 
 /* .link-btn : 버튼 모양의 링크 */
 .link.link-btn {
-    border: 1px solid gray;
+    border: 1px solid #E6E6E6;
     border-radius: 0.25em;
-
+	 color : 707070;
+	 background-color : #E6E6E6;
     padding: 0.5em;
+    font-size : 0.9em;
     display:inline-block;
     text-align: center;
 }
 .link.link-btn:hover {
-    border: 1px solid black;
-    color: black;
+    color: #383838;
 }
 
 
@@ -156,8 +158,8 @@
 }
 .pagination > a:hover,
 .pagination > a.active {
-    color: #2ecc71;
-    border-color:#2ecc71;
+    color: #009432;
+    border-color:#009432;
 }
 
 /*
@@ -165,9 +167,11 @@
 */
 .form-input {
     outline: none;
-    padding: 0.5em;
+    padding: 0.6em;
+    margin : 0.3em;
     border: 1px solid #b2bec3;
     font:inherit;
+    font-size : 0.8em;
 }
 
 .form-input:focus {
@@ -210,12 +214,12 @@ textarea.form-input {
 */
 
 .btn {
-    border:1px solid gray;
-    border-radius: 0.25em;
-    padding:0.5em;
+    border:1px solid #707070;
+    border-radius: 0.3em;
+    padding:0.4em;
 
-    color:gray;
-    background-color: white;
+    color:white;
+    background-color: #707070;
 
     cursor: pointer;
 
@@ -228,13 +232,15 @@ textarea.form-input {
 }
 
 .btn.btn-primary {
-    border-color: #2ecc71;
-    background-color: white;
+    border-color: #009432;
+    background-color: #009432;
     color:white;
+    padding: 0.67em;
+    font-size : 0.9em;
 }
 .btn.btn-primary:hover {
-    border-color: #2ecc71;
-    background-color:#2ecc71;
+    border-color: #009432;
+    background-color:#009432;
 }
 
 .btn.btn-secondary {
@@ -248,14 +254,14 @@ textarea.form-input {
 }
 
 .btn.btn-success{
-    border-color:#00b894;
-    background-color:#00b894;
+    border-color:#1c683c;
+    background-color:#1c683c;
     color:white;
 
 }
 .btn.btn-success:hover{
-    border-color:#009376;
-    background-color:#009376;
+    border-color:#1c683c;
+    background-color:#1c683c;
 }
 
 .btn.btn-warning{
@@ -294,10 +300,11 @@ textarea.form-input {
 {
     text-align: center;
     padding:0.5em;
+    border : none;
 }
 
 .table.table-border {
-    border: 1px solid black;
+    border: 1px #A6A6A6;
 }
 .table.table-border > thead > tr > th,
 .table.table-border > thead > tr > td,
@@ -306,14 +313,14 @@ textarea.form-input {
 .table.table-border > tfoot > tr > th,
 .table.table-border > tfoot > tr > td 
 {
-    border:1px solid black;
+    border: none;
 }
 
 .table.table-stripe {}
 /* 제목은 배경색상을 칠해준다 */
 .table.table-stripe > thead > tr,
 .table.table-stripe > tfoot > tr {
-    background-color: #E4FBFF;
+    background-color: #E6E6E6;
 }
 /* 
     2줄에 한 번씩 배경색상을 칠해준다 
@@ -321,16 +328,16 @@ textarea.form-input {
     자동으로 n=1, 2, 3, 4, 5가 들어가서 계산된 순서 태그가 선택
 */
 .table.table-stripe > tbody > tr:nth-child(2n) {
-    background-color: #E4FBFF;
+    background-color: #E6E6E6;
 }
 
 .table.table-hover {}
 .table.table-hover > thead > tr,
 .table.table-hover > tfoot > tr {
-    background-color: #E4FBFF;
+    background-color: #E6E6E6;
 }
 .table.table-hover > tbody > tr:hover {
-    background-color: #E4FBFF;
+    background-color: #E6E6E6;
 }
 
 /*
