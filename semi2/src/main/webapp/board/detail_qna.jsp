@@ -34,7 +34,7 @@
 	String memberGrade = (String)session.getAttribute("admin");
 	boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
 	
-	//현재 글에 대한 댓글 목록을 조회
+	//현재 글에 대한 댓글 목록을 
 	ReplyDao replyDao = new ReplyDao();
 	List<ReplyDto> replyList = replyDao.selectList(boardDto.getBoardNo()); 
 	
