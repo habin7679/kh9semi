@@ -19,7 +19,7 @@
 		  <div>
 		  	<div class="content" style="margin: 0px; width:100%;">
 				<div style="display: flex; width: 100%; flex-direction: column;">
-					<div><a>최근 본 상품</a></div>
+					<div><a href="<%=request.getContextPath() %>/product/recent_product.jsp">최근 본 상품</a></div>
 				
 					<div id="recentProd" style="display: flex; width:100%; justify-content: space-around; ">
 					
@@ -45,7 +45,7 @@
 		  <table class="table">
 		  	<tr><a href="edit.jsp">내 정보 변경하기</a></td>
 		  	<tr><a href="<%=request.getContextPath() %>/buy/list.jsp">구매내역</a></tr>
-		  	<tr><a href="#">최근 본 상품</a></tr>
+		  	<tr><a href="<%=request.getContextPath() %>/product/recent_product.jsp">최근 본 상품</a></tr>
 		  	<tr><a href="<%=request.getContextPath() %>/delivery/delivery_list.jsp">배송지 관리</a></tr>
 		  	<tr><a href="<%=request.getContextPath()%>/board/review_list.jsp?type=board_writer&keyword=<%=memberDto.getMemberId()%>">내 후기내역</a></tr>
 		  	<tr><a href="<%=request.getContextPath()%>/board/qna_list.jsp?type=board_writer&keyword=<%=memberDto.getMemberId()%>">내 문의내역</a>	</tr>  
