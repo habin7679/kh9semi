@@ -117,7 +117,11 @@
 
 						
 						<!-- 게시글 제목 링크 -->
+						<%if(boardDto.getBoardHead().equals("문의")){ %>
+						<a href="detail_qna.jsp?boardNo=<%=boardDto.getBoardNo()%>">
+						<%} else{ %>
 						<a href="detail.jsp?boardNo=<%=boardDto.getBoardNo()%>">
+						<%} %>
 							<%=boardDto.getBoardTitle()%>
 						</a>
 						
