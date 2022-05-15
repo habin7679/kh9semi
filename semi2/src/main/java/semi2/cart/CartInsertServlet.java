@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import semi2.beans.CartDao;
 import semi2.beans.CartDto;
+import semi2.beans.LikeDao;
+import semi2.beans.LikeDto;
 
 @WebServlet(urlPatterns="/cart/insert.ez")
 public class CartInsertServlet extends HttpServlet{
@@ -20,12 +22,17 @@ public class CartInsertServlet extends HttpServlet{
 			CartDao cDao = new CartDao();
 			CartDto cDto = new CartDto();
 			
-			cDto.setProductNo(Integer.parseInt(req.getParameter("productNo")));
-			cDto.setMemberId((String)req.getSession().getAttribute("member"));
+			String memberId = (String)req.getSession().getAttribute("member");
+			int productNo = Integer.parseInt(req.getParameter("productNo"));
 			
-			int size = cDao.selectSize((String)req.getSession().getAttribute("member"));
+			cDto.setProductNo(productNo);
+			cDto.setMemberId(memberId);
 			
-			if(size>10) {
+			int size = cDao.selectSize(memberId);
+			
+			 if(cDao.savedProduct(productNo, memberId)) {
+				resp.sendRedirect(req.getContextPath()+"/cart/error2.jsp");
+			 } else if(size>10) {
 				resp.sendRedirect(req.getContextPath()+"/cart/error.jsp");
 			} else {
 				cDao.insert(cDto);				
