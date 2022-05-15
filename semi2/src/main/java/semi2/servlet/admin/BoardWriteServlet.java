@@ -109,7 +109,7 @@ public class BoardWriteServlet extends HttpServlet{
 			}
 			
 			//출력
-			resp.sendRedirect("../board/detail.jsp?boardNo="+boardDto.getBoardNo());
+			resp.sendRedirect("board_list.jsp");
 		}
 		catch(Exception e) {
 			e.printStackTrace();
