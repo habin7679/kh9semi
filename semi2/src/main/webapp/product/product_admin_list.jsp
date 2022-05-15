@@ -183,7 +183,6 @@ if (endBlock > lastPage) {
 					<th>제품 가격</th>
 					<th>재고</th>
 					<th>제조일</th>
-					<th class="w50">행사 여부</th>
 					<th>기타</th>
 				</tr>
 			</thead>
@@ -198,7 +197,6 @@ if (endBlock > lastPage) {
 					<td><%=productDto.getProductPrice()%></td>
 					<td><%=productDto.getProductStock()%></td>
 					<td><%=productDto.getProductMade()%></td>
-					<td><%=productDto.getProductEvent()%></td>
 					<td><a
 						href="product_admin_detail.jsp?product_no=<%=productDto.getProductNo()%>"
 						class="link">상세보기</a></td>

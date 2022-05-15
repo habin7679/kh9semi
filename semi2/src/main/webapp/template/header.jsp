@@ -164,7 +164,7 @@ ul.bar a {
 						&nbsp;&nbsp;&nbsp;
 						<a href="<%=request.getContextPath()%>/buy/list.jsp">주문/배송조회</a>
 						&nbsp;&nbsp;&nbsp;
-					<br>
+					<br><br>
 
 
 					</ul>
@@ -174,11 +174,11 @@ ul.bar a {
 		</div>
 		<a href="<%=request.getContextPath()%>/index.jsp">
 			<div class="content" style="height: 100px; justify-content: center;">
-				<img src="<%=request.getContextPath()%>/image/logo.png"
+				<br><img src="<%=request.getContextPath()%>/image/logo.png"
 					style="width: 250px; height: 100px;">
 		</a> &nbsp;&nbsp;&nbsp;
       </div>
-	
+		<br><br>
         </div>
           <div class="content">
             <ul class="bar" style="width:100%;display:flex;justify-content:space-between;">
@@ -229,4 +229,4 @@ ul.bar a {
 		<!-- 섹션(section) or 컨테이너(container) -->
 		<tr height="450">
 			<td align="center" valign="top">
-				<br><br>
+				<br><br><br><br>
