@@ -252,10 +252,17 @@
                 <input type="text" name="memberDetailAddress" placeholder="상세주소" autocomplete="off" class="form-input fill">
 	    </div>
 	    
+	     <% if(request.getParameter("error") !=null){ %>
+            <div class="row">
+                <span style="color:red;">회원가입 형식에 맞게 작성해주세요</span>
+            </div>
+            <%} %>
+	
+	    
 		<div class="row">
 	        <button type="submit" name="submit" class="btn fill btn-primary">회원가입</button>
 	    </div>
-	</div>
+	     </div>
 	</form>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
