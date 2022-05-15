@@ -216,6 +216,7 @@ ul.bar a {
                     <ul style="z-index: 100;">
         				<li><a href="<%=request.getContextPath()%>#">자주찾는질문</a></li>
         				<li><a href="<%=request.getContextPath()%>/board/qna_list.jsp">1:1 고객문의</a></li>
+        				<li><a href="<%=request.getContextPath()%>/board/productqna_list.jsp">상품문의</a></li>
                     </ul>
                 </li>
             </ul>
