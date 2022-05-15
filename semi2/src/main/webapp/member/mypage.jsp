@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="/template/header.jsp"></jsp:include>
+<jsp:include page="/template/menu.jsp"></jsp:include>
 	<%String memerId=(String) session.getAttribute("member"); 
 		
 		MemberDao memberDao=new MemberDao();
@@ -10,7 +11,7 @@
 		
 	
 	%>
-	 <div class="container w500">
+	 <div class="container w500" style="height: 400px;">
 		  <div class="row center">
 		  	<h1><%=memberDto.getMemberNick()%><h3>님 반갑습니다</h3></h1>
 		  	<%=memberDto.getMemberPoint() %>point

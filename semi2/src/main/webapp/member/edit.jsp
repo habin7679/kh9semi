@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="/template/header.jsp"></jsp:include>
+
 <%
 	String memberId=(String) session.getAttribute("member");
   	
@@ -11,6 +12,16 @@
 %>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+<style>
+.menu{
+	float: left;
+	width:"30%";
+	
+}
+
+</style>
+
 <script type="text/javascript">
 	$(function () {
 		 $("input[name=memberPw]").blur(function (){
@@ -112,9 +123,13 @@
             $(".address-find-btn").click(findAddress);
         });
     </script>
+    
+
+ <jsp:include page="/template/menu.jsp"></jsp:include>
+
 
 <form action="edit.ez" method="post">
-	<div class="container w500">
+<div class="container w500 m30">
 	    <div class="row center">
 	        <h1>개인정보 변경</h1>
 	    </div>
@@ -162,6 +177,9 @@
 			<h3 style="color:red;">비밀번호가 일치하지 않습니다</h3>		
 		</div>	    
 		<%} %>
-	</div>
+</div>
 </form>
+
+
+
 <jsp:include page="/template/footer.jsp"></jsp:include>

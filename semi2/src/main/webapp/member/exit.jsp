@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="/template/header.jsp"></jsp:include>
-
+<jsp:include page="/template/menu.jsp"></jsp:include>
 	
-	<form action="exit.ez" method="post">
+	<form action="exit.ez" method="post" style="height: 400px;">
 		<div class="container w500 m30">
 			<h1>회원탈퇴</h1>
 			<div class="row">

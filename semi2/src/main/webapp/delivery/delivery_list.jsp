@@ -4,18 +4,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="/template/header.jsp"></jsp:include>
+
 <%
 String memberId=(String)session.getAttribute("member"); 
 
 DeliveryDao delivaeryDao= new DeliveryDao();
 List<DeliveryDto> list=delivaeryDao.select(memberId);
 %> 
-<style>
-.table{
-	border=1px;
-	
-}
-</style>
+<jsp:include page="/template/menu.jsp"></jsp:include>
 <form action="delivery_insert.jsp">
 <div>
 	<h1>배송지 관리</h1>
@@ -23,7 +19,7 @@ List<DeliveryDto> list=delivaeryDao.select(memberId);
 		<button type="submit" class="btn">+ 신규배송지 추가</button>
 	</div>
 	
-	<div class="container w1000">
+	<div class="container w800" style="height: 500px;">
 		<table class="table">
 			<thead>
 				<tr>
@@ -40,7 +36,7 @@ List<DeliveryDto> list=delivaeryDao.select(memberId);
 				<%if(deliveryDto.getDeliveryMenu().equals("대표배송지")){ %>
 				<tr>
 					<td><%=deliveryDto.getDeliveryName() %></td><hr>
-					<td>[대표배송지]<%=deliveryDto.getDeliveryPost() %><%=deliveryDto.getDeliveryBasicAddress() %><%=deliveryDto.getDeliveryDetailAddress() %></td>
+					<td>[대표배송지]<%=deliveryDto.getDeliveryPost() %>/<%=deliveryDto.getDeliveryBasicAddress() %><%=deliveryDto.getDeliveryDetailAddress() %></td>
 					<td><%=deliveryDto.getDeliveryPhone() %></td>
 					<td>
 					<a href="<%=request.getContextPath()%>/delivery/delete.ez?deliveryPost=<%=deliveryDto.getDeliveryPost() %>" class="link link-btn">삭제</a>
@@ -49,7 +45,7 @@ List<DeliveryDto> list=delivaeryDao.select(memberId);
 				<%} else{%>
 				<tr>
 					<td><%=deliveryDto.getDeliveryName() %></td>
-					<td><%=deliveryDto.getDeliveryPost() %><%=deliveryDto.getDeliveryBasicAddress() %><%=deliveryDto.getDeliveryDetailAddress() %></td>
+					<td><%=deliveryDto.getDeliveryPost() %>/<%=deliveryDto.getDeliveryBasicAddress() %><%=deliveryDto.getDeliveryDetailAddress() %></td>
 					<td><%=deliveryDto.getDeliveryPhone() %></td>
 					<td>
 					<a href="<%=request.getContextPath()%>/delivery/delete.ez?deliveryPost=<%=deliveryDto.getDeliveryPost() %>" class="link link-btn">삭제</a><br>
