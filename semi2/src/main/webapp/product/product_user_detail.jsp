@@ -6,6 +6,8 @@
 <%@page import="semi2.beans.AttachmentDao"%>
 <%@page import="semi2.beans.InfoAttachmentDto"%>
 <%@page import="semi2.beans.InfoAttachmentDao"%>
+<%@page import="semi2.beans.MemberDto"%>
+<%@page import="semi2.beans.MemberDao"%>
 <%@page import="semi2.beans.BoardDto"%>
 <%@page import="java.util.List"%>
 <%@page import="semi2.beans.BoardDao"%>
@@ -266,7 +268,12 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 						[<%=boardDto.getBoardReplycount()%>]
 						<%} %>
 					</td>
-					<td><%=boardDto.getBoardWriter()%></td>
+<%
+MemberDao memberDao = new MemberDao();
+MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자 모든 정보 조회
+%>
+					<td><%=memberDto.getMemberNick()%></td>
+<%-- 				<td><%=boardDto.getBoardWriter()%></td>--%>
 					<td><%=boardDto.getBoardTime()%></td>
 					<td><%=boardDto.getBoardReadcount()%></td>
 <%-- 					<td><%=boardDto.getGroupNo()%></td> --%>

@@ -128,6 +128,7 @@
 						<td width="50%">
 							<!-- 댓글 내용 -->
 							<pre><%=replyDto.getReplyContent()%></pre>
+							<br>
 						</td>
 						<td>
 							<%-- 댓글 수정 아이콘 : 본인 글에만 등장해야함 --%>

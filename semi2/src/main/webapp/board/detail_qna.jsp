@@ -91,6 +91,7 @@
 			</div>
 	</tr>
 	
+	    <%if(isOwner || isAdmin){ %> 
 	<!-- 댓글 작성 영역 -->
 	<tr>
 		<td align="right">
@@ -110,6 +111,8 @@
 			<%} %>
 		</td>
 	</tr>
+								<%} else{%>
+						<%} %>
 	
 	<!-- 댓글 목록 영역 -->
 	<tr>
@@ -138,6 +141,7 @@
 						<td>
 						<%} else{%>
 						<%} %>
+						<%if(isOwner || isAdmin){ %> 
 							<%-- 댓글 수정 아이콘 : 본인 글에만 등장해야함 --%>
 							<%if(isReplyOwner){ %>
 							<a href="#" class="edit-btn">
@@ -153,6 +157,8 @@
 							<%} %>
 						</td>
 					</tr>
+													<%} else{%>
+						<%} %>
 				
 					<%-- 본인 글인 경우 수정을 할 수 있도록 준비된 줄 (본인글 : replyWriter == 세션의 회원아이디) --%>
 					
