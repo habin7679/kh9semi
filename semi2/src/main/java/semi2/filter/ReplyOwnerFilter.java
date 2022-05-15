@@ -27,7 +27,7 @@ public class ReplyOwnerFilter implements Filter{
 		try {
 			//준비 : 파라미터의 게시글번호(boardNo)와 세션의 권한(auth) 아이디(login)
 			//[1] 관리자인지 확인해서 관리자라면 통과!
-			String memberGrade = (String) req.getSession().getAttribute("auth");
+			String memberGrade = (String) req.getSession().getAttribute("admin");
 			if(memberGrade.equals("관리자")) {
 				chain.doFilter(request, response);
 				return;
