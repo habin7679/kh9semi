@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-05-15T11:32:31.471Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36 Edg/101.0.1210.39" etag="u8HSbBgA5gQWNMlcOBHJ" version="17.4.6" type="github">
+<mxfile host="app.diagrams.net" modified="2022-05-15T11:32:55.197Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36 Edg/101.0.1210.39" etag="Q8gxMHdx3Eoah_QpCPgj" version="17.4.6" type="github">
   <diagram id="po_bsAwMXMUbILKIjwSt" name="Page-1">
     <mxGraphModel dx="2741" dy="4122" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -1014,7 +1014,7 @@
         <mxCell id="uut_nFxTRFVd7JwxGQTN-79" value="대표배송지 변경&lt;br&gt;delivery_update.ez" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="2481" y="-730" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="uut_nFxTRFVd7JwxGQTN-80" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0.723;entryY=0.55;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="uut_nFxTRFVd7JwxGQTN-68" target="pPLAOlyI_o9XZUJ4gf85-77" edge="1">
+        <mxCell id="uut_nFxTRFVd7JwxGQTN-80" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="uut_nFxTRFVd7JwxGQTN-68" target="uut_nFxTRFVd7JwxGQTN-79" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="2130" y="-740" as="sourcePoint" />
             <mxPoint x="2180" y="-790" as="targetPoint" />
