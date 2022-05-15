@@ -14,6 +14,8 @@
 	//List<BuyDto> list = bDao.selectAll(memberId);
 	PayingDao payingDao = new PayingDao();
 %>
+<jsp:include page="/template/header.jsp"></jsp:include>
+ 
 <%
 		int p;
 		try {
@@ -56,8 +58,6 @@
 	%>
 
 
-<jsp:include page="/template/header.jsp"></jsp:include>
- <jsp:include page="/template/menu.jsp"></jsp:include>
 
 <table class="table table-border layer-3 container">
 	<tr>

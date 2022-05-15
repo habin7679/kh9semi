@@ -54,7 +54,7 @@
 </tr>
 
 </table>
-	<a href="" class="link link-btn">쇼핑하러가기</a>
-</div>
-</div>
+	<div class="row center">
+	<a href="<%=request.getContextPath() %>/product_user_list.jsp" class="link btn btn-primary">쇼핑하러가기</a>
+	</div>
 <jsp:include page="/template/footer.jsp"></jsp:include>

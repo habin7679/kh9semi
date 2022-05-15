@@ -39,11 +39,11 @@
 	List<BoardDto> list;
 	if(search){
 // 		list = boardDao.selectList(type, keyword);
-		list = boardDao.selectFreeListByPaging(p, s, type, keyword); 
+		list = boardDao.selectProductqnaListByPaging(p, s, type, keyword); 
 	}
 	else {
 // 		list = boardDao.selectList();
-		list = boardDao.selectFreeListByPaging(p, s);
+		list = boardDao.selectProductqnaListByPaging(p, s);
 	}
 %>    
 
@@ -51,10 +51,10 @@
 <%
 	int count;
 	if(search){//검색 결과 수 카운트
-		count = boardDao.countByPaging_free(type, keyword);
+		count = boardDao.countByPaging_productqna(type, keyword);
 	}
 	else{//목록 결과 수 카운트
-		count = boardDao.countByPaging_free();
+		count = boardDao.countByPaging_productqna();
 	}
 	
 	//마지막 페이지 번호 계산
@@ -81,12 +81,12 @@
 <div class="container w950 m30">
 
 	<div class="row center">
-		<h1>자유 게시판</h1>
+		<h1>상품 문의 게시판</h1>
 	</div>
 	
-	<div class="row right">
+	<!--<div class="row right">
 		<a href="write.jsp" class="link link-btn">글쓰기</a>
-	</div>		
+	</div>	-->	
 	
 	<div class="row">
 		<table class="table table-border">
@@ -163,17 +163,17 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자
 		
 		<%if(p > 1){ %>
 			<%if(search){ %>
-			<a href="free_list.jsp?p=1&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&laquo;</a>
+			<a href="Productqna_list.jsp?p=1&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&laquo;</a>
 			<%} else { %>
-			<a href="free_list.jsp?p=1&s=<%=s%>">&laquo;</a>
+			<a href="Productqna_list.jsp?p=1&s=<%=s%>">&laquo;</a>
 			<%} %>
 		<%} %>
 		
 		<%if(startBlock > 1){ %>
 			<%if(search){ %>
-			<a href="free_list.jsp?p=<%=startBlock-1%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&lt;</a>
+			<a href="Productqna_list.jsp?p=<%=startBlock-1%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&lt;</a>
 			<%} else { %>
-			<a href="free_list.jsp?p=<%=startBlock-1%>&s=<%=s%>">&lt;</a>
+			<a href="Productqna_list.jsp?p=<%=startBlock-1%>&s=<%=s%>">&lt;</a>
 			<%} %>
 		<%} %>
 		
@@ -181,15 +181,15 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자
 		<%for(int i=startBlock; i <= endBlock; i++){ %>
 			<%if(search){ %>
 				<%if(i == p){ %>
-				<a class="active" href="free_list.jsp?p=<%=i%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>"><%=i%></a>	
+				<a class="active" href="Productqna_list.jsp?p=<%=i%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>"><%=i%></a>	
 				<%} else { %>
-				<a href="free_list.jsp?p=<%=i%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>"><%=i%></a>
+				<a href="Productqna_list.jsp?p=<%=i%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>"><%=i%></a>
 				<%} %>
 			<%} else { %>
 				<%if(i == p){ %>
-				<a class="active" href="free_list.jsp?p=<%=i%>&s=<%=s%>"><%=i%></a>	
+				<a class="active" href="Productqna_list.jsp?p=<%=i%>&s=<%=s%>"><%=i%></a>	
 				<%} else { %>
-				<a href="free_list.jsp?p=<%=i%>&s=<%=s%>"><%=i%></a>
+				<a href="Productqna_list.jsp?p=<%=i%>&s=<%=s%>"><%=i%></a>
 				<%} %>
 			<%} %>
 		<%} %>
@@ -197,17 +197,17 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자
 		<!-- 다음 버튼 영역 -->
 		<%if(endBlock < lastPage){ %>
 			<%if(search){ %>
-			<a href="free_list.jsp?p=<%=endBlock+1%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&gt;</a>
+			<a href="Productqna_list.jsp?p=<%=endBlock+1%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&gt;</a>
 			<%} else { %>
-			<a href="free_list.jsp?p=<%=endBlock+1%>&s=<%=s%>">&gt;</a>
+			<a href="Productqna_list.jsp?p=<%=endBlock+1%>&s=<%=s%>">&gt;</a>
 			<%} %>
 		<%} %>
 		
 		<%if(p < lastPage){ %>
 			<%if(search){ %>
-			<a href="free_list.jsp?p=<%=lastPage%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&raquo;</a>
+			<a href="Productqna_list.jsp?p=<%=lastPage%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&raquo;</a>
 			<%} else { %>
-			<a href="free_list.jsp?p=<%=lastPage%>&s=<%=s%>">&raquo;</a>
+			<a href="Productqna_list.jsp?p=<%=lastPage%>&s=<%=s%>">&raquo;</a>
 			<%} %>
 		<%} %>
 		
@@ -215,7 +215,7 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자
 	
 	<div class="row center">
 		<!-- 검색창 -->
-		<form action="free_list.jsp" method="get">
+		<form action="Productqna_list.jsp" method="get">
 			<select name="type" class="form-input input-round">
 				<option value="board_title">제목</option>
 				<option value="board_content">내용</option>

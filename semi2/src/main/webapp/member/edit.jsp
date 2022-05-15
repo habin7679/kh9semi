@@ -151,14 +151,14 @@
 	    </div>
 	    <div class="row">
 	        <label>주소</label><br>
-	        <input type="text" name="memberPost" autocomplete="off" placeholder="우편번호" value="<%=memberDto.getMemberPost()%>" class="form-input fill">
-	        <a href="#" class="link link-btn">우편번호 검색</a>
-	    </div>
-	    <div class="row">
-	        <input type="text" name="memberBasicAddress" autocomplete="off" placeholder="기본주소" value="<%=memberDto.getMemberBasicAddress()%>" class="form-input fill">
-	    </div>
-	    <div class="row">
-	        <input type="text" name="memberDetailAddress" autocomplete="off" placeholder="상세주소" value="<%=memberDto.getMemberDetailAddress()%>" class="form-input fill">
+                <input type="text" name="memberPost" placeholder="우편번호" autocomplete="off" class="form-input " width="65%" value="<%=memberDto.getMemberPost()%>" >
+                 <input type="button" class="address-find-btn btn" value="우편번호 찾기" width="35%"><br>
+            </div>
+            <div class="row">
+                <input type="text" name="memberBasicAddress" placeholder="기본주소" autocomplete="off" class="form-input fill" value="<%=memberDto.getMemberBasicAddress()%>" >
+            </div>
+            <div class="row">
+                <input type="text" name="memberDetailAddress" placeholder="상세주소" autocomplete="off" class="form-input fill" value="<%=memberDto.getMemberDetailAddress()%>" >
 	    </div>
 	     <div class="row">
 	        <label>비밀번호</label>

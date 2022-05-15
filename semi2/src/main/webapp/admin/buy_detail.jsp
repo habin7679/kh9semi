@@ -13,12 +13,16 @@
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 <title>이지어트</title>
+	<div class="row center"><br><br>
 	<%if(buyDto == null){ %>
 		 <h1>존재하지 않는 주문내역입니다!</h1>
+		 </div>
 	<%} else { %>
-		<h1>주문 내역 상세</h1>
-	
-		<table border="1">
+	<div class="container center w500 m30">
+		<div class="row right">
+			<h1>주문 내역 상세</h1><br><br>
+		</div>
+		<table class="table table-border table-hover">
 		<tr>
 			<th>구매번호</th>
 			<td><%=buyDto.getBuyNo()%></td>
@@ -41,11 +45,13 @@
 		</tr>	
 	</table>
 	<%} %>
-	
-	<h2><a href="buy_list.jsp">주문목록</a></h2>	
-	<h2><a href="buy_update.jsp?buyNo=<%=buyDto.getBuyNo()%>">송장번호입력</a></h2>
-	<h2><a href="buy_edit.jsp?buyNo=<%=buyDto.getBuyNo()%>">배송상태변경</a></h2>
-	<h2><a href="buy_cancel.ez?buyNo=<%=buyDto.getBuyNo()%>">주문취소</a></h2>
-	<h2><a href="buy_delete.ez?buyNo=<%=buyDto.getBuyNo()%>">주문삭제</a></h2>
-			
+<br><br><br>
+	<div class="container w300">
+	<a href="buy_list.jsp" class ="link link-btn fill" >목록</a><br><br>
+	<a href="buy_delete.ez?buyNo=<%=buyDto.getBuyNo()%>" class ="link link-btn fill">주문삭제</a><br><br>
+	<a href="buy_cancel.ez?buyNo=<%=buyDto.getBuyNo()%>" class ="link link-btn-green fill">주문취소</a><br><br>
+	<a href="buy_update.jsp?buyNo=<%=buyDto.getBuyNo()%>" class ="link link-btn-green fill">송장번호입력</a><br><br>
+	<a href="buy_edit.jsp?buyNo=<%=buyDto.getBuyNo()%>" class ="link link-btn-green fill">배송상태변경</a><br><br>
+	</div>
+	</div>
 	<jsp:include page="/template/footer.jsp"></jsp:include>

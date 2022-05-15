@@ -166,9 +166,12 @@
 	<%
 	if (list.isEmpty()) {
 	%>
-	<div class="row center">
-		<h2>결과가 존재하지 않습니다</h2>
-	</div>	
+	<div class="row center"><br><br>
+		<h2>검색결과가 존재하지 않습니다!</h2><br><br>
+	</div>
+	<div class="link link-btn">
+	 <a href="buy_list.jsp">목록으로 돌아가기</a>
+	 </div>
 	<%
 	} else {
 	%>
