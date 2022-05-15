@@ -85,7 +85,7 @@
 			});
 
             $("input[name=memberNick]").blur(function(){
-                var regex = /[가-힣0-9]{2,10}/;
+                var regex = /[가-힣0-9]{3,10}/;
                 var memberNick = $(this).val();
                 var span = $(this).next("span");
 
