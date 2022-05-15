@@ -112,4 +112,34 @@ public class OrderDao {
 		con.close();
 		return list;
 	}
+	public boolean writeReview(int orderNo, int productNo) throws Exception{
+		Connection con = JdbcUtils.getConnection();
+		String sql = "update orderp set order_review='o' where order_no=? and product_no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setInt(1, orderNo);
+		ps.setInt(2, productNo);
+		
+		int count = ps.executeUpdate();
+		
+		con.close();
+		return count>0;
+	}
+	public int ReviewOrderNo(int productNo) throws Exception{
+		Connection con = JdbcUtils.getConnection();
+		String sql = "select order_no from orderp where order_review = 'x' and product_no=?";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setInt(1, productNo);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		int count = 0;
+		if(rs.next()) {
+			count = rs.getInt("order_no");
+		}
+		con.close();
+		return count;
+	}
 }
