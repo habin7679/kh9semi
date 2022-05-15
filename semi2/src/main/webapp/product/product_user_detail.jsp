@@ -358,6 +358,6 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자
 	</div>
 	
 
-<button class="btn "><a href="qna_list.jsp">상품 문의하러 가기</</a></button><br><br>
+<button class="btn "><a href="/semi2/board/write_qna.jsp?productNo=<%=productNo%>">상품 문의하러 가기</</a></button><br><br>
 <button class="btn "><a href="product_user_list.jsp">상품 목록 가기</</a></button><br><br>
 <jsp:include page="/template/footer.jsp"></jsp:include>

@@ -9,6 +9,7 @@
 String memberId = (String)session.getAttribute("member");
 MemberDao memberDao = new MemberDao();
 MemberDto memberDto = memberDao.selectOne(memberId);
+int productNo = Integer.parseInt(request.getParameter("productNo"));
 %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -16,7 +17,7 @@ MemberDto memberDto = memberDao.selectOne(memberId);
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
 <form method="post" encType = "multipart/form-data" action="write.ez">
-
+<input type="hidden" name="productNo" value="<%=productNo%>">
 
 <%if(request.getParameter("superNo") != null){ %>   
 <input type="hidden" name="superNo" value="<%=request.getParameter("superNo")%>">
