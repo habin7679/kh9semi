@@ -37,7 +37,7 @@
 		BuyDao buyDao = new BuyDao();
 		List<BuyDto> list2;
 
-			list2 = buyDao.listAllByPaging(p, s);
+			list2 = buyDao.listAllByPagingId(p, s, memberId);
 	%>
 	<%
 		int count;
