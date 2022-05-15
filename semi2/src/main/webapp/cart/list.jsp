@@ -27,7 +27,7 @@
     <script type="text/javascript">
     $(function(){
         refreshTotal();
-        $(".qty").on("input", refreshTotal);
+        $(".qty").on("input", refreshTotal());
         $(".select-item").on("input", refreshTotal);
     	
         $(".all").on("input", function(){
@@ -65,7 +65,7 @@
 		int total = price*amount;
 		ProductAttachmentDto paDto = paDao.selectOne(pNo);
 %>
-	<div class="container w700">
+	<div class="container wz">
 	<div class= "row center">
 	<img src="/semi2/file/download.ez?attachmentNo=<%=paDto.getAttachmentNo()%>" width="200" height="200">
 	</div>
