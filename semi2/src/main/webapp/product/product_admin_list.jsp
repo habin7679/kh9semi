@@ -50,8 +50,8 @@
 		<aside class="float-left layer-5">
 		<label><a href="<%=request.getContextPath()%>/admin/admin.jsp">Member</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/product/product_admin_list.jsp">Product</a></label><br><br><br><br>
-		<label><a href="<%=request.getContextPath()%>/admin/order_list.jsp">Order</a></label><br><br><br><br>
-		<label><a href="<%=request.getContextPath()%>/admin/buy_list.jsp">Delivery</a></label><br><br><br><br>
+		<label><a href="<%=request.getContextPath()%>/admin/buy_list.jsp">Order</a></label><br><br><br><br>
+		<label><a href="<%=request.getContextPath()%>/admin/order_list.jsp">Delivery</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/board_list.jsp">Board List</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/board_write.jsp">Write</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/banner.jsp">Banner</a></label><br><br><br><br>
@@ -161,9 +161,12 @@ if (endBlock > lastPage) {
 	<%
 	if (list.isEmpty()) {
 	%>
-	<div class="row center">
-		<h2>결과가 존재하지 않습니다</h2>
+	<div class="row center"><br><br>
+		<h2>검색결과가 존재하지 않습니다!</h2><br><br>
 	</div>
+	<div class="link link-btn">
+	 <a href="product_admin_list.jsp">목록으로 돌아가기</a>
+	 </div>
 	<%
 	} else {
 	%>
@@ -180,7 +183,6 @@ if (endBlock > lastPage) {
 					<th>제품 가격</th>
 					<th>재고</th>
 					<th>제조일</th>
-					<th class="w50">행사 여부</th>
 					<th>기타</th>
 				</tr>
 			</thead>
@@ -195,7 +197,6 @@ if (endBlock > lastPage) {
 					<td><%=productDto.getProductPrice()%></td>
 					<td><%=productDto.getProductStock()%></td>
 					<td><%=productDto.getProductMade()%></td>
-					<td><%=productDto.getProductEvent()%></td>
 					<td><a
 						href="product_admin_detail.jsp?product_no=<%=productDto.getProductNo()%>"
 						class="link">상세보기</a></td>

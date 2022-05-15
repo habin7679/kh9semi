@@ -12,16 +12,18 @@ DeliveryDao delivaeryDao= new DeliveryDao();
 List<DeliveryDto> list=delivaeryDao.select(memberId);
 %> 
 <jsp:include page="/template/menu.jsp"></jsp:include>
-<form action="delivery_insert.jsp">
-<div>
-	<h1>배송지 관리</h1>
+
+	<div class="container w800" style="height: 500px;">
+		<form action="delivery_insert.jsp">
+		<div>
+		<h1>배송지 관리</h1>
 	<div class="row center">
 		<button type="submit" class="btn">+ 신규배송지 추가</button>
 	</div>
-	
-	<div class="container w800" style="height: 500px;">
+	</div>
+	</form>
 		<table class="table">
-			<thead>
+			<thead style="border: 1px">
 				<tr>
 					<th>받는분</th>
 					<th>배송주소</th>
@@ -48,7 +50,7 @@ List<DeliveryDto> list=delivaeryDao.select(memberId);
 					<td><%=deliveryDto.getDeliveryPost() %>/<%=deliveryDto.getDeliveryBasicAddress() %><%=deliveryDto.getDeliveryDetailAddress() %></td>
 					<td><%=deliveryDto.getDeliveryPhone() %></td>
 					<td>
-					<a href="<%=request.getContextPath()%>/delivery/delete.ez?deliveryPost=<%=deliveryDto.getDeliveryPost() %>" class="link link-btn">삭제</a><br>
+					<a href="<%=request.getContextPath()%>/delivery/delete.ez?deliveryPost=<%=deliveryDto.getDeliveryPost() %>" class="link link-btn">삭제</a>
 					<a href="<%=request.getContextPath()%>/delivery/update.ez?deliveryPost=<%=deliveryDto.getDeliveryPost()%>" class="link link-btn">대표배송지로 설정</a>
 					</td>
 				</tr>
@@ -57,6 +59,6 @@ List<DeliveryDto> list=delivaeryDao.select(memberId);
 			</tbody>
 		</table>
 	</div>
-</div>
+
 </form>
 <jsp:include page="/template/footer.jsp"></jsp:include>

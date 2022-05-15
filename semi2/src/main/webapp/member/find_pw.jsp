@@ -22,6 +22,11 @@
 			<label>전화번호</label>
 			<input type="tel" name="memberPhone" autocomplete="off" placeholder="숫자만 입력하세요" class="form-input fill">
 		</div>
+		<% if(request.getParameter("error") !=null){ %>
+            <div class="row">
+                <span style="color:red;">입력하신 정보가 올바르지 않습니다</span>
+            </div>
+            <%} %>
 		
 		<div class="row">
 			<input type="submit" value="확인" class="btn fill btn-primary">

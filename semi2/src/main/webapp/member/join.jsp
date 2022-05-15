@@ -85,7 +85,7 @@
 			});
 
             $("input[name=memberNick]").blur(function(){
-                var regex = /[가-힣0-9]{2,10}/;
+                var regex = /[가-힣0-9]{3,10}/;
                 var memberNick = $(this).val();
                 var span = $(this).next("span");
 
@@ -252,10 +252,17 @@
                 <input type="text" name="memberDetailAddress" placeholder="상세주소" autocomplete="off" class="form-input fill">
 	    </div>
 	    
+	     <% if(request.getParameter("error") !=null){ %>
+            <div class="row">
+                <span style="color:red;">회원가입 형식에 맞게 작성해주세요</span>
+            </div>
+            <%} %>
+	
+	    
 		<div class="row">
 	        <button type="submit" name="submit" class="btn fill btn-primary">회원가입</button>
 	    </div>
-	</div>
+	     </div>
 	</form>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
