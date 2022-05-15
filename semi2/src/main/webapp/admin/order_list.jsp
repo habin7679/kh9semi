@@ -34,6 +34,7 @@
         width:25%;
     }
     .layer-5 {
+
         width:20%;
         margin-top:5%;
     }
@@ -117,11 +118,9 @@
 
 <%-- 출력 --%>
 	
-	<div class="container w1000 m30">
+	<div class="container w950 m30">
 		<div class="row center">
-			<h1>
-				<a href="order_list.jsp">주문 목록</a>
-			</h1>
+			<h1>배송 목록</h1><br>
 		</div>
 		<form action="order_list.ez" method="get">
 	
@@ -159,7 +158,7 @@
 	
 			<input type="submit" value="검색" class="btn btn-primary">
 		</form>
-	</div>
+	
 
 
 <!-- 검색결과 -->
@@ -206,7 +205,7 @@
 	<%
 	}
 	%>
-	</div>
+	</div><br>
 	<div class="row center pagination">
 		<%if(p > 1){ %>
 			<%if(isSearch){ %>
@@ -256,9 +255,9 @@
 			<%} %>
 		<%} %>
 		
+		</div>
 	</div>
 </article>
 </section>
 </body>
-
 <jsp:include page="/template/footer.jsp"></jsp:include>
