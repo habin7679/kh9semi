@@ -49,7 +49,6 @@
 	<div class="container w300">
 	<a href="buy_list.jsp" class ="link link-btn fill" >목록</a><br><br>
 	<a href="buy_delete.ez?buyNo=<%=buyDto.getBuyNo()%>" class ="link link-btn fill">주문삭제</a><br><br>
-	<a href="buy_cancel.ez?buyNo=<%=buyDto.getBuyNo()%>" class ="link link-btn-green fill">주문취소</a><br><br>
 	<a href="buy_update.jsp?buyNo=<%=buyDto.getBuyNo()%>" class ="link link-btn-green fill">송장번호입력</a><br><br>
 	<a href="buy_edit.jsp?buyNo=<%=buyDto.getBuyNo()%>" class ="link link-btn-green fill">배송상태변경</a><br><br>
 	</div>

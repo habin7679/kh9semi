@@ -143,7 +143,7 @@ ul.bar a {
 				<%-- 관리자라면 관리 메뉴를 출력 --%>
 						<div>
 							<% if(login){ %>
-							<%=memberDto.getMemberNick()%>님 환영합니다 &nbsp;&nbsp;&nbsp;
+							<%=memberDto.getMemberNick()%>님 환영합니다! &nbsp;&nbsp;&nbsp;
 				</div>
 				
 				<%if(auth){ %>
