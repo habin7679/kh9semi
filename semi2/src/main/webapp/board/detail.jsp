@@ -64,7 +64,7 @@
 		<td>
 			<h2>
 			<div class="container w600 m30">
-			<img src="/semi2/file/download.ez?attachmentNo=<%=boardAttachmentDto.getAttachmentNo()%>">
+			<img src="/semi2/file/download.ez?attachmentNo=<%=boardAttachmentDto.getAttachmentNo()%>" width="400">
 			<br><br>
 				<%=boardDto.getBoardContent()%>
 			</div>
