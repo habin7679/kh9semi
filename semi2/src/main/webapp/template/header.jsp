@@ -114,10 +114,9 @@ ul.bar a {
 	text-overflow: ellipsis;
 }
 </style>
-
 </head>
 <body>
-
+		<!-- 정보 확인용 공간 -->
 		<table>
 		<tr>
 			<td>
@@ -126,7 +125,8 @@ ul.bar a {
 			</td>
 		</tr>
 		</table>
-		
+
+		<!-- 헤더(header) -->
 		  <div class="wrap">
         <div class="intro_bg">
             <div class="header">
@@ -139,20 +139,20 @@ ul.bar a {
                 <ul>
 
                 <ul class="nav">
- 
 
+				<%-- 관리자라면 관리 메뉴를 출력 --%>
 				<%if(auth){ %>
 				<a href="<%=request.getContextPath()%>/admin/admin.jsp">관리자페이지</a>&nbsp;&nbsp;&nbsp;
 				
 				<%} %>
-
 						<div>
 							<% if(login){ %>
 							<%=memberDto.getMemberNick()%>님 환영합니다 &nbsp;&nbsp;&nbsp;
-	
+				</div>
+				
 						<a href="<%=request.getContextPath()%>/member/logout.ez">로그아웃</a>
 						&nbsp;&nbsp;&nbsp;
-
+				
 						<% } else { %>
 
 						<a href="<%=request.getContextPath()%>/member/login.jsp">로그인</a>
@@ -164,7 +164,7 @@ ul.bar a {
 						&nbsp;&nbsp;&nbsp;
 						<a href="<%=request.getContextPath()%>/buy/list.jsp">주문/배송조회</a>
 						&nbsp;&nbsp;&nbsp;
-					  <br>
+					<br>
 
 
 					</ul>
@@ -177,19 +177,8 @@ ul.bar a {
 				<img src="<%=request.getContextPath()%>/image/logo.png"
 					style="width: 250px; height: 100px;">
 		</a> &nbsp;&nbsp;&nbsp;
-	</div>
-	<br>
-	<%-- 관리자라면 관리 메뉴를 출력 --%>
-	<%if(auth){ %>
-	<a href="<%=request.getContextPath()%>/admin/member_list.jsp">회원관리</a>&nbsp;&nbsp;&nbsp;
-	<a href="<%=request.getContextPath()%>/product/product_admin_list.jsp">상품관리</a>&nbsp;&nbsp;&nbsp;
-	<a href="<%=request.getContextPath()%>/admin/buy_list.jsp">주문배송관리</a>&nbsp;&nbsp;&nbsp;
-	<a href="<%=request.getContextPath()%>/admin/banner.jsp">배너관리</a>&nbsp;&nbsp;&nbsp;
-	<a href="<%=request.getContextPath()%>/admin/statistics.jsp">통계</a>&nbsp;&nbsp;&nbsp;
-	<%} %>
-	</td>
-	</tr>
-
+      </div>
+	
         </div>
           <div class="content">
             <ul class="bar" style="width:100%;display:flex;justify-content:space-between;">

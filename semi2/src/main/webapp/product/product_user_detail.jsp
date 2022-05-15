@@ -254,14 +254,7 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 							<%} %>
 							<img src="<%=request.getContextPath()%>/image/reply.png" width="20" height="20">
 						<%} %>
-					
 
-
-    </div>
-
-<!--<h2><a href="product_user_list.jsp">목록으로 돌아가기</a></h2>
-
-<h2><a href="#">상품 문의</a></h2>-->
 						
 						<!-- 게시글 제목 링크 -->
 						<a href="/semi2/board/detail.jsp?boardNo=<%=boardDto.getBoardNo()%>">
@@ -359,4 +352,5 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 	
 
 <button class="btn "><a href="qna_list.jsp">상품 문의하러 가기</</a></button><br><br>
+<button class="btn "><a href="product_user_list.jsp">상품 목록 가기</</a></button><br><br>
 <jsp:include page="/template/footer.jsp"></jsp:include>
