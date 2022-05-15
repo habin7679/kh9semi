@@ -2,45 +2,36 @@
     pageEncoding="UTF-8"%>
 <%@page import="semi2.beans.MemberDto"%>
 <%@page import="semi2.beans.MemberDao"%>
-<%@ page import="java.io.File" %>
-<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
-<%@ page import="com.oreilly.servlet.MultipartRequest" %>
 
 
-<!-- 카테고리 선택하기 위한 회원등급 값 불러오기 -->
+<!-- 상품 선택하기 아이디 값 불러오기 -->
 <%	
 String memberId = (String)session.getAttribute("member");
 MemberDao memberDao = new MemberDao();
 MemberDto memberDto = memberDao.selectOne(memberId);
+int productNo = Integer.parseInt(request.getParameter("productNo"));
 %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
-<form method="post" encType = "multipart/form-data" action="write.ez">
+<form method="post" encType = "multipart/form-data" action="write_productqna.ez">
+<input type="hidden" name="productNo" value="<%=productNo%>">
+
 
 <%if(request.getParameter("superNo") != null){ %>   
 <input type="hidden" name="superNo" value="<%=request.getParameter("superNo")%>">
 <%} %>
+
 	<div class="container w1000 m30">
 	    <div class="row center">
 	        <h1>게시글 작성</h1>
 	    </div>
 	    <div class="row">
-	       <label>카테고리</label>
+	        <label>카테고리</label>
 	        <select name="boardHead" class="form-input fill input-round">
-	            <option value="자유">선택</option>
-	           	<%if(memberDto.getMemberGrade().equals("관리자")){%>
-	            <option>공지</option>
-	            <option>자유</option>
-	            <option>팁</option>
-	            <option>후기</option>
-	            <option>문의</option>
-	       	<%}else { %>
-	       	 	<option>자유</option>
-	            <option>팁</option>
-	            <%} %>
+	            <option>상품</option>
 	        </select>
 	    </div>
 	    <div class="row">
@@ -49,29 +40,25 @@ MemberDto memberDto = memberDao.selectOne(memberId);
 	    </div>
 	    <div class="row">
 	        <label>내용</label>
-	        <div id="editor" style="text-align:left;">
+	        <div id="editor"></div> 
 	        <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 			<script> 
 			
 				const Editor = toastui.Editor; 
 				const editor = new Editor({ 
 					el: document.querySelector('#editor'),
-					height: '500px',
+					height: '600px',
 					initialEditType: 'markdown',
 					previewStyle: 'markdown'
-				});	
-
+				});
+				
 				editor.on("change", function(){
 					var content = editor.getMarkdown();
 					$("input[name=boardContent]").val(content);
 					console.log($("input[name=boardContent]").val());
 				});
 				
-				function editorLeft() {
-					document.getElementById("editor").style.textAlign="left";
-				}
 			</script>
-			</div> 
 				<input type="hidden" name="boardContent">
 
 	    	    <div class="row">
@@ -86,6 +73,5 @@ MemberDto memberDto = memberDao.selectOne(memberId);
 	    </div>
 	</div>
 </form>
-
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

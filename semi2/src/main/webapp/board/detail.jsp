@@ -46,7 +46,7 @@
 <h1>[<%=boardDto.getBoardHead()%>게시판]<%=boardDto.getBoardTitle()%></h1>
 	<tr>
 		<td>
-			<%=boardDto.getBoardWriter()%>
+			<%=memberDto.getMemberNick()%>
 		 	(<%=memberDto.getMemberGrade()%>)
 		</td>
 	</tr>
