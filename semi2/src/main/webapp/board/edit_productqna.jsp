@@ -36,7 +36,7 @@
 	    	<div class="row">
 	        <label>카테고리</label>
 	        <select name="boardHead" class="form-input fill input-round">
-	            <option>상품</option>
+	            <option>문의</option>
 	        </select>
 	    </div>
 	    <div class="row">
