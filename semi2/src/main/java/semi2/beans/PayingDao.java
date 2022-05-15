@@ -176,7 +176,7 @@ public class PayingDao {
 	public List<PayingDto> listAll() throws Exception {
 		Connection con= JdbcUtils.getConnection();
 			
-		String sql = "select * from member order by order_no desc";
+		String sql = "select * from paying order by order_no desc";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 			
@@ -192,7 +192,7 @@ public class PayingDao {
 			payingDto.setPayingPhone(rs.getString("paying_phone"));
 			payingDto.setPayingPost(rs.getInt("paying_post"));
 			payingDto.setPayingBasicAddress(rs.getString("paying_basic_address"));
-			payingDto.setPayingDetailAddress(rs.getString("paying_detail.address"));
+			payingDto.setPayingDetailAddress(rs.getString("paying_detail_address"));
 			payingDto.setPayingDeliveryFee(rs.getInt("paying_delivery_fee"));
 			payingDto.setPayingDeliveryDate(rs.getDate("paying_delivery_date"));
 			payingDto.setPayingPayway(rs.getString("paying_payway"));
@@ -227,7 +227,7 @@ public class PayingDao {
 			payingDto.setPayingPhone(rs.getString("paying_phone"));
 			payingDto.setPayingPost(rs.getInt("paying_post"));
 			payingDto.setPayingBasicAddress(rs.getString("paying_basic_address"));
-			payingDto.setPayingDetailAddress(rs.getString("paying_detail.address"));
+			payingDto.setPayingDetailAddress(rs.getString("paying_detail_address"));
 			payingDto.setPayingDeliveryFee(rs.getInt("paying_delivery_fee"));
 			payingDto.setPayingDeliveryDate(rs.getDate("paying_delivery_date"));
 			payingDto.setPayingPayway(rs.getString("paying_payway"));
@@ -268,7 +268,7 @@ public class PayingDao {
 				payingDto.setPayingPhone(rs.getString("paying_phone"));
 				payingDto.setPayingPost(rs.getInt("paying_post"));
 				payingDto.setPayingBasicAddress(rs.getString("paying_basic_address"));
-				payingDto.setPayingDetailAddress(rs.getString("paying_detail.address"));
+				payingDto.setPayingDetailAddress(rs.getString("paying_detail_address"));
 				payingDto.setPayingDeliveryFee(rs.getInt("paying_delivery_fee"));
 				payingDto.setPayingDeliveryDate(rs.getDate("paying_delivery_date"));
 				payingDto.setPayingPayway(rs.getString("paying_payway"));
@@ -313,7 +313,7 @@ public class PayingDao {
 				payingDto.setPayingPhone(rs.getString("paying_phone"));
 				payingDto.setPayingPost(rs.getInt("paying_post"));
 				payingDto.setPayingBasicAddress(rs.getString("paying_basic_address"));
-				payingDto.setPayingDetailAddress(rs.getString("paying_detail.address"));
+				payingDto.setPayingDetailAddress(rs.getString("paying_detail_address"));
 				payingDto.setPayingDeliveryFee(rs.getInt("paying_delivery_fee"));
 				payingDto.setPayingDeliveryDate(rs.getDate("paying_delivery_date"));
 				payingDto.setPayingPayway(rs.getString("paying_payway"));
