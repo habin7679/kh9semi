@@ -20,9 +20,6 @@ public class CorsFilter implements Filter{
 		HttpServletResponse resp = (HttpServletResponse)response;
 
 		try {
-			//비동기 통신으로 요청이 발생할 경우(XmlHttpRequest)
-			//교차 출처 자원 공유 금지 정책(CORS)에 의해서 자동으로 차단(blocking)된다.
-			//이를 특정 대상에게 허용하려면 response header에 다음 설정을 추가해야 한다.
 			resp.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
 			resp.setHeader("Access-Control-Allow-Headers", "Content-Type");
 			

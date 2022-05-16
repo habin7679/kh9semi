@@ -61,6 +61,7 @@ public class OrderDao {
 		
 		while(rs.next()) {
 			OrderDto orderDto = new OrderDto();
+			orderDto.setOrderNo(orderNo);
 			orderDto.setProductNo(rs.getInt("product_no"));
 			orderDto.setProductPrice(rs.getInt("product_price"));
 			orderDto.setOrderCount(rs.getInt("order_count"));
@@ -126,21 +127,22 @@ public class OrderDao {
 		con.close();
 		return count>0;
 	}
-	public int ReviewOrderNo(int productNo) throws Exception{
+	public int reviewGetOrderNo(String memberId, int productNo) throws Exception{
 		Connection con = JdbcUtils.getConnection();
-		String sql = "select order_no from orderp where order_review = 'x' and product_no=?";
-		
+		String sql = " select o.order_no from orderp o inner join buy b on b.order_no = o.order_no "
+				+ "where member_id = ? and buy_status='배송완료' and order_review = 'x' and product_no=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
-		ps.setInt(1, productNo);
+		ps.setString(1, memberId);
+		ps.setInt(2, productNo);
 		
 		ResultSet rs = ps.executeQuery();
 		
-		int count = 0;
+		int orderNo = 0;
 		if(rs.next()) {
-			count = rs.getInt("order_no");
+			orderNo = rs.getInt("order_no");
 		}
 		con.close();
-		return count;
+		return orderNo;
 	}
 }

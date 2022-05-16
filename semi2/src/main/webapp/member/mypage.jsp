@@ -25,10 +25,10 @@
 <jsp:include page="/template/menu.jsp"></jsp:include>
 </div>
 <div class="float-left layer-2 ha">
-	<h1><%=memberDto.getMemberNick() %>님 반갑습니다</h1>
-	<h2>등급:<%=memberDto.getMemberGrade() %></h2>
+	<h1><%=memberDto.getMemberNick() %>님 반갑습니다</h1><br>
+	<h2>등급:<%=memberDto.getMemberGrade() %></h2><br>
 	<h2>포인트:<%=memberDto.getMemberPoint() %>p</h2>
-	<a href="<%=request.getContextPath() %>/member/edit.jsp" class="link link-btn">정보 수정하기</a>
+	<%-- <a href="<%=request.getContextPath() %>/member/edit.jsp" class="link link-btn">정보 수정하기</a> --%>
 	</div>
 
 	</div>

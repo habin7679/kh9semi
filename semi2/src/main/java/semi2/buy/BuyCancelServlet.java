@@ -54,6 +54,7 @@ public class BuyCancelServlet extends HttpServlet{
 				
 				String memberId=(String)req.getSession().getAttribute("member");
 				mDao.pointMinus(totalPrice, memberId);
+				
 				MemberDto memberDto= mDao.selectOne(memberId);
 				
 				if(memberDto.getMemberPoint()>70000) {
@@ -65,8 +66,9 @@ public class BuyCancelServlet extends HttpServlet{
 				else {
 					mDao.updateGrade(memberId, "일반회원");
 				}
-				
-				mDao.pointMinus(totalPrice, (String)req.getSession().getAttribute("member"));
+				if(memberDto.getMemberPoint()> totalPrice/10) {
+					mDao.pointMinus(totalPrice, (String)req.getSession().getAttribute("member"));					
+				}
 				
 				resp.sendRedirect(req.getContextPath()+"/buy/list.jsp");				
 				

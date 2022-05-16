@@ -139,8 +139,8 @@
 MemberDao memberDao = new MemberDao();
 MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자 모든 정보 조회
 %>
-					<td><%=memberDto.getMemberNick()%></td>
-<%-- 				<td><%=boardDto.getBoardWriter()%></td>--%>
+
+				<td><%=boardDto.getBoardWriter()%></td>
 					<td><%=boardDto.getBoardTime()%></td>
 					<td><%=boardDto.getBoardReadcount()%></td>
 <%-- 					<td><%=boardDto.getGroupNo()%></td> --%>
@@ -151,7 +151,7 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자
 			</tbody>
 		</table>
 	</div>
-	 
+	
 	<div class="row center pagination">
 		<%--
 			목록과 검색은 링크가 다르다. 이유는 유지시켜야 하는 파라미터의 개수가 다르기 때문이다.

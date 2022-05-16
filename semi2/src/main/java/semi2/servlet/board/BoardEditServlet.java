@@ -24,7 +24,7 @@ public class BoardEditServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			String path = AttachmentDao.path;
+			String path = System.getProperty("user.home") + "/git/kh9semi/semi2/src/main/webapp/image";
 			System.out.println("path = " + path);//확인을 위한 출력
 			
 			File dir = new File(path);
