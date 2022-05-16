@@ -21,19 +21,22 @@
 		 <table class="table table-border table-hover">
         <tr class="w300 m30">
 	    		<th>구매번호</th>
-	    		<td><%=buyDto.getBuyNo()%></td>
+	    		<td>
+	    		<input type="text" name="buyNo" value="<%=buyDto.getBuyNo()%>" class="form-input fill input-round" required></td>
 		 </tr>
 		 <tr>
 	    		<th>회원아이디</th>
-	    		<td><%=buyDto.getMemberId()%></td>
+	    		<td>
+	    		<input type="text" name="memberId" value="<%=buyDto.getMemberId()%>" class="form-input fill input-round" required></td>
 	    </tr>
 	    <tr>
 	    		<th>주문번호</th>
-	    		<td><%=buyDto.getOrderNo()%></td>
+	    		<td>
+	    		<input type="text" name="orderNo" value="<%=buyDto.getOrderNo()%>" class="form-input fill input-round" required></td>
 	    </tr>
 	    <tr>
 	    		<th>송장번호</th>
-	    		<td><%=buyDto.getBuyInvoice()%></td>
+	    		<td><input type="text" name="buyInvoice" value="<%=buyDto.getBuyInvoice()%>" class="form-input fill input-round" required></td>
 	    </tr>	    
 		 <tr>
 	    		<th>배송상태</th>
@@ -66,7 +69,7 @@
 	    			</td>
 	    </tr>
 	    </table>
-	    		<br><br></b><input type="submit" value="확인" class="btn btn-primary"><br><br><br><br>
+	    		<br><br><input type="submit" value="확인" class="btn btn-primary"><br><br><br><br>
   
 </form>
 </div>

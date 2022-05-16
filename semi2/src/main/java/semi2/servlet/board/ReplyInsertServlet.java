@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import semi2.beans.BoardDao;
+import semi2.beans.MemberDao;
+import semi2.beans.MemberDto;
 import semi2.beans.ReplyDao;
 import semi2.beans.ReplyDto;
 
@@ -17,11 +19,18 @@ public class ReplyInsertServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+			String memberId =(String)req.getSession().getAttribute("member");
 			//준비 : ReplyDto ( replyTarget + replyContent ) + 작성자(HttpSession)
 			ReplyDto replyDto = new ReplyDto();
 			replyDto.setReplyContent(req.getParameter("replyContent"));
 			replyDto.setReplyTarget(Integer.parseInt(req.getParameter("replyTarget")));
-			replyDto.setReplyWriter((String)req.getSession().getAttribute("member"));
+			replyDto.setReplyWriter1(memberId);
+			
+			MemberDao memberDao = new MemberDao();
+			MemberDto memberDto = memberDao.selectOne(memberId);
+			String nick = memberDto.getMemberNick();
+			
+			replyDto.setReplyWriter(nick);
 			
 			//처리
 			ReplyDao replyDao = new ReplyDao();

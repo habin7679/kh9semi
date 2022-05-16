@@ -197,46 +197,46 @@
 	<div class="container w500 m30">
 		<div class="row">
 			<label>아이디</label>
-			<input type="text" name="memberId" value="<%=memberDto.getMemberId()%>" autocomplete="off" class="form-input fill" required readonly>
+			<input type="text" name="memberId" value="<%=memberDto.getMemberId()%>" autocomplete="off" class="form-input fill input-round" required readonly>
 		</div>
 		<div class="row">
 			<label>비밀번호</label>
-	        <input type="text" name="memberPw" value="<%=memberDto.getMemberPw()%>" class="form-input fill" required>
+	        <input type="text" name="memberPw" value="<%=memberDto.getMemberPw()%>" class="form-input fill input-round" required>
 	    </div>
 	    <div class="row">
 	        <label>닉네임</label>
-	            <input type="text" name="memberNick" value="<%=memberDto.getMemberNick()%>" class="form-input fill" required>
+	            <input type="text" name="memberNick" value="<%=memberDto.getMemberNick()%>" class="form-input fill input-round" required>
 	    </div>
 	    <div class="row">
 	    	<label>이름</label>
-	    		<input type="text" name="memberName" value="<%=memberDto.getMemberName()%>" class="form-input fill" required>
+	    		<input type="text" name="memberName" value="<%=memberDto.getMemberName()%>" class="form-input fill input-round" required>
 	    </div>
 	    <div class="row">
 	        <label>생년월일</label>
-	        <input type="date" name="memberBirth" value="<%=memberDto.getMemberBirth()%>" class="form-input fill" required>
+	        <input type="date" name="memberBirth" value="<%=memberDto.getMemberBirth()%>" class="form-input fill input-round" required>
 	    </div>
 	    <div class="row">
 	        <label>전화번호</label>
-	        <input type="tel" name="memberPhone" value="<%=memberDto.getMemberPhone()%>" class="form-input fill"  required>
+	        <input type="tel" name="memberPhone" value="<%=memberDto.getMemberPhone()%>" class="form-input fill input-round"  required>
 	    </div>
 	    <div class="row">
 	        <label>이메일</label>
-	        <input type="email" name="memberEmail"  value="<%=memberDto.getMemberEmail()%>" class="form-input fill" required>
+	        <input type="email" name="memberEmail"  value="<%=memberDto.getMemberEmail()%>" class="form-input fill input-round" required>
 	    </div>
 	    <div class="row">
 	        <label>주소</label><br>
-                <input type="text" name="memberPost" value="<%=memberDto.getMemberPost()%>" width="65%" class="form-input" required>
+                <input type="text" name="memberPost" value="<%=memberDto.getMemberPost()%>" width="65%" class="form-input input-round" required>
        			 <input type="button" class="address-find-btn btn" value="우편번호 찾기" width="35%"><br>
        </div>
        <div class="row">
-       		<input type="text" name="memberBasicAddress" value="<%=memberDto.getMemberBasicAddress()%>" class="form-input fill" required>
+       		<input type="text" name="memberBasicAddress" value="<%=memberDto.getMemberBasicAddress()%>" class="form-input fill input-round" required>
        </div>
        <div class="row">
-            <input type="text" name="memberDetailAddress" value="<%=memberDto.getMemberDetailAddress()%>" class="form-input fill" required>
+            <input type="text" name="memberDetailAddress" value="<%=memberDto.getMemberDetailAddress()%>" class="form-input fill input-round" required>
 	    </div>
 	    <div class="row">
 	    		<label>회원포인트</label>
-	    		<input type="number" name="memberPoint"  value="<%=memberDto.getMemberPoint()%>" class="form-input fill" required min="0" step="100">
+	    		<input type="number" name="memberPoint"  value="<%=memberDto.getMemberPoint()%>" class="form-input fill input-round" required min="0" step="100">
 	    </div>
 	    <div class="row">
 	    		<label>회원등급</label>
@@ -269,7 +269,7 @@
 	    </div>
 	    <div class="row">
 	    		<label>회원가입일</label>
-	    		<input type="date" name="memberJoindate" value="<%=memberDto.getMemberJoindate()%>"  class="form-input fill" >
+	    		<input type="date" name="memberJoindate" value="<%=memberDto.getMemberJoindate()%>"  class="form-input fill input-round" >
 	    </div>
 	    
 		<div class="row">

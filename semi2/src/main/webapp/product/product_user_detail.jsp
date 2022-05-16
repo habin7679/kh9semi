@@ -32,7 +32,7 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 	ProductDto productDto = productDao.selectOne(productNo);
 	
 	OrderDao oDao = new OrderDao();
-	//>int orderNo = oDao.ReviewOrderNo(productNo);
+	int orderNo = oDao.ReviewOrderNo(productNo);
 	
 %>
 
@@ -247,11 +247,13 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 	</div>
 	
 	<div class="row right">
-	<%-- 
 	<%if(orderNo>0){ %>
-		<a href="/semi2/board/write_review.jsp?productNo=<%=productNo%>" class="link link-btn">글쓰기</a>
+		<form action="<%=request.getContextPath()%>/board/write_review.jsp" method="post">
+					<input type="hidden" name="productNo" value="<%=productNo %>">
+					<input type="hidden" name="orderNo" value="<%=orderNo %>">
+					<input type="submit" value="리뷰 작성하기" class="btn">
+				</form>
 		<%} %>
-	 --%>
 	</div>	
 	
 	<div class="row">
@@ -586,10 +588,8 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자
 	</div>
 	
 
-<<<<<<< HEAD
-<button class="btn btn-primary"><a href="productqna_list.jsp">상품 문의하러 가기</</a></button><br><br>
+
 <button class="btn btn-primary "><a href="product_user_list.jsp">상품 목록 가기</</a></button><br><br>
-=======
-<button class="btn "><a href="product_user_list.jsp">상품 목록 가기</</a></button><br><br>
->>>>>>> refs/remotes/origin/main
+
+
 <jsp:include page="/template/footer.jsp"></jsp:include>
