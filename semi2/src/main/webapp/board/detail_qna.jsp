@@ -70,8 +70,10 @@
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 <div class="container w1000 m30">
-<div class="row right">
+<div class="row center">
 <h1>[<%=boardDto.getBoardHead()%>게시판]<%=boardDto.getBoardTitle()%></h1>
+</div>
+<div class="row right">
 	<tr>
 		<td>
 			<%=memberDto.getMemberNick()%>
@@ -94,8 +96,8 @@
 	<tr>
 		<td>
 			<h2>
-			<div class="container w600 m30">
-			<img src="/semi2/file/download.ez?attachmentNo=<%=boardAttachmentDto.getAttachmentNo()%>">
+			<div class="container w600 m30" style="text-align:center;">
+			<img src="/semi2/file/download.ez?attachmentNo=<%=boardAttachmentDto.getAttachmentNo()%>" width="400">
 			<br><br>
 				<%=boardDto.getBoardContent()%>
 			</div>
@@ -232,5 +234,5 @@
 		$(".edit-row").hide();
 	});
 </script>
-
+</div>
 <jsp:include page="/template/footer.jsp"></jsp:include>
