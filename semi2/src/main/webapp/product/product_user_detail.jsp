@@ -451,7 +451,7 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자
 	</div>
 	
 	<div class="row right">
-		<a href="/semi2/board/write_review.jsp?productNo=<%=productNo%>" class="link link-btn">글쓰기</a>
+		<a href="/semi2/board/write_productqna.jsp?productNo=<%=productNo%>" class="link link-btn">글쓰기</a>
 	</div>	
 	
 	<div class="row">
