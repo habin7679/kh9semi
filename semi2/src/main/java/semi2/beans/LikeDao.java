@@ -28,12 +28,13 @@ public class LikeDao {
 		ps.setInt(2, likeDto.getProductNo());
 		
 		ResultSet rs = ps.executeQuery();
-		LikeDto lDto=null;
+		LikeDto lDto= new LikeDto();
 		if(rs.next()) {
 			lDto.setMemberId(rs.getString("member_id"));
 			lDto.setProductNo(rs.getInt("product_no"));
 			return lDto;
 		}
+		con.close();
 		return lDto;
 	}
 	public boolean delete(String memberId, int productNo) throws Exception{

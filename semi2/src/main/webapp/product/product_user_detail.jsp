@@ -153,16 +153,20 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
                 <label class="label2">탄수화물 : <%=productDto.getProductCarbohydrate()%></label><br><br>
                 <label class="label2"> 지방 : <%=productDto.getProductFat()%></label><br><br>
 				<label class="label2">수량</label>
-				<form action = "quickOrder.ez" method="post">
+				
+				<form method="post">
 				<select class="form-input" name = "orderAmount">
 				<%int stock = productDto.getProductStock();
 				for(int i = 1; i<=stock; i++){
 				%>
-                    <option><%=i %></option>
+             <option><%=i %></option>
 				<%} %>
-                </select><br><br>
+        </select><br><br>
                 <input type="hidden" name="productNo" value="<%=productNo %>">
-                <input type="submit" value="구매하기" class="btn btn-primary"><br><br>
+                
+                <input type="submit" formaction="<%=request.getContextPath() %>/order/quickOrder.ez" value="구매하기" class="btn btn-primary"><br><br>
+                <input type="submit" formaction="<%=request.getContextPath() %>/cart/insert.ez" value="장바구니에 추가하기" class="btn btn-primary"><br><br>
+                <input type="submit" formaction="<%=request.getContextPath() %>/like/insert.ez" value="찜하기" class="btn btn-primary">
 				</form>
             </div>
             <div class="row center">
