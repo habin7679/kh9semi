@@ -38,10 +38,10 @@ public class LoginFilter implements Filter{
 			if(memberId == null) {
 				//로그인 페이지로 강제 이동 처리
 				resp.sendRedirect(req.getContextPath()+"/member/login.jsp");
-				//resp.sendError(401); //401(Unauthorize - 미인증)
+			
 			}
 			else {
-				//chain.doFilter(req, resp);
+				
 				chain.doFilter(request, response);
 			}
 		}

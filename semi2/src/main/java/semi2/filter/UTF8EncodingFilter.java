@@ -33,9 +33,9 @@ public class UTF8EncodingFilter implements Filter{
 		HttpServletResponse resp = (HttpServletResponse) response;
 		
 		try {
-//			System.out.println("인코딩필터 실행!");
+
 			req.setCharacterEncoding("UTF-8");
-			chain.doFilter(request, response);//통과
+			chain.doFilter(request, response);
 		}
 		catch(Exception e) {
 			e.printStackTrace();
