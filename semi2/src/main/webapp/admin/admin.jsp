@@ -26,7 +26,7 @@
         width:100%;
     }
     .layer-2 {
-        width:50%;
+        width:80%;
     }
     .layer-3 {
         width:33.3333%;
@@ -37,6 +37,8 @@
     .layer-5 {
         width:20%;
         margin-top:5%;
+        padding-right:130px;
+
     }
     label {
     	font-size :25px;
@@ -45,17 +47,18 @@
     } 
     aside {
     }
-    p { width: 100px; /* 정렬하려는 요소의 넓이를 반드시 지정 */ margin: 0 auto; }
+    .p { width: 100%; /* 정렬하려는 요소의 넓이를 반드시 지정 */ margin: 0 auto; }
     </style>
 </head>
 <body>
+<div class="container w1000 m30">
 	<section class="p">
 		<aside class="float-left layer-5">
 		<label><a href="<%=request.getContextPath()%>/admin/admin.jsp">Member</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/product/product_admin_list.jsp">Product</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/buy_list.jsp">Order</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/order_list.jsp">Delivery</a></label><br><br><br><br>
-		<label><a href="<%=request.getContextPath()%>/admin/board_list.jsp">Board List</a></label><br><br><br><br>
+		<label><a href="<%=request.getContextPath()%>/admin/board_list.jsp">Board</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/board_write.jsp">Write</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/banner.jsp">Banner</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/statistics.jsp">Statistics</a></label><br><br><br><br>	
@@ -118,7 +121,7 @@ boolean isSearch = type != null && !type.equals("") && keyword != null && !keywo
 %>
 
 <%-- 출력 --%>
-<div class="container w950 m30">
+
 	<div>
 		<div class="row center">
 			<h1>회원 목록</h1><br>

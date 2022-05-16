@@ -24,7 +24,7 @@
 	
 	
 	
-	<%--  <div class="container w500" style="height: 400px;">
+	 <%--  <div class="container w500" style="height: 400px;">
 		  <div class="row center">
 		  	<h1><%=memberDto.getMemberNick()%><h3>님 반갑습니다</h3></h1>
 		  	<%=memberDto.getMemberPoint() %>point
@@ -64,6 +64,6 @@
    
 
 	</div>
-
+ --%>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
