@@ -38,6 +38,7 @@ int deliveryFee = 0;
 DeliveryDao dDao = new DeliveryDao();
 List<DeliveryDto> listD = dDao.select(memberId);
 DeliveryDto dDtoOri = dDao.represent(memberId);
+
 %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -301,8 +302,16 @@ if (falseList.size() == 0) {
 			</div>
 
 			<div class="row">
-				<label>상품 총 가격</label> 
+				<label>상품 총 가격</label><br><br>
+				<%if(mDto.getMemberGrade().equals("일반회원")) {%>
 				<input type="number" name="payingTotal" value="<%=payingDao.totalPrice(orderNo)%>" class="pPrice form-input fill form-round" readonly>
+				<%} else if(mDto.getMemberGrade().equals("우수회원")) {%>
+				<label>우수회원 할인 적용</label>
+				<input type="number" name="payingTotal" value="<%=payingDao.totalPrice(orderNo)*0.9%>" class="pPrice form-input fill form-round" readonly>
+				<%} else { %>
+				<label>VIP 할인 적용</label><br><br>
+				<input type="number" name="payingTotal" value="<%=payingDao.totalPrice(orderNo)*0.8%>" class="pPrice form-input fill form-round" readonly>
+				<%} %>			
 			</div>
 			<div class="row">
 				<label>총 결제 금액</label> 
