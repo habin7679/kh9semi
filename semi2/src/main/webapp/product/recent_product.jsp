@@ -49,4 +49,42 @@
 </div>
     
 	</script>
+
+	
+		<style>
+		.ha{
+	min-height : 100px;
+	}
+.table{
+	border=1px;
+	
+}
+</style>
+<div class="ha">
+<div class="recentById">
+<div>
+	<h1>최근 본 상품</h1>
+	<div id='recentById'>
+</div>
+
+	<div class="row center">
+	  <div class="container w1000">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+				</tr>
+			</thead>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
 <jsp:include page="/template/footer.jsp"></jsp:include>

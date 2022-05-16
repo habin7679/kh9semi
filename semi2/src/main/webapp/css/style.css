@@ -53,9 +53,9 @@
 
 .nav {
     font-size: 12px;
-    display: flex;
+    display: elf;
     justify-content: flex-end;
-    width: 800px;
+    width: 400px;
     color: aliceblue;
 }
 
