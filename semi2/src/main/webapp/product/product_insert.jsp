@@ -16,7 +16,6 @@
 			<label>상품 분류</label>
 			<select name="productSort" required  class="form-input fill input-round">
 				<option value="">선택하세요</option>
-				<option>정기배송</option>
 				<option>닭가슴살</option>
 				<option>샐러드</option>
 				<option>소고기</option>	

@@ -203,7 +203,9 @@ boolean isSearch = type != null && !type.equals("") && keyword != null && !keywo
 					<td><%=memberDto.getMemberPoint()%></td>
 					<td><%=memberDto.getMemberGrade()%></td>
 					
-					<td><a href="member_detail.jsp?memberId=<%=memberDto.getMemberId()%>" class="link">상세</a></td>
+					<td><a href="member_detail.jsp?memberId=<%=memberDto.getMemberId()%>" class="link">
+					<img src="<%=request.getContextPath()%>/image/detail.png" width="20" height="20">
+					</a></td>
 				</tr>
 				<%
 				}

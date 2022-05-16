@@ -21,7 +21,11 @@
 %>
 <jsp:include page="/template/header.jsp"></jsp:include>
 
-<div class="container w1000 m30">
+<div class="row float-container">
+<div class="float-left layer-3">
+<jsp:include page="/template/menu.jsp"></jsp:include>
+</div>
+<div  class="float-left layer-2">
     <div class="row float-container">
 <%for(int i =0; i<list.size(); i++) {
 		int productNo = list.get(i).getProductNo();
@@ -39,6 +43,7 @@
 			<a href="<%=request.getContextPath()%>/cart/insert.ez?productNo=<%=productNo %>" class="btn">장바구니에 추가하기</a><br><br><br>
 		</div>
 <%} %>
+</div>
 </div>
 </div>
 <jsp:include page="/template/footer.jsp"></jsp:include>

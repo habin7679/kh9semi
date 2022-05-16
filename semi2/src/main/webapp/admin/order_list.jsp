@@ -197,7 +197,8 @@
 					<td><%=payingDto.getPayingDate()%></td>
 					<td><%=payingDto.getPayingDeliveryDate()%></td>
 					<td><%=payingDto.getPayingDeliveryTime()%></td>
-					<td><a href="order_detail.jsp?orderNo=<%=payingDto.getOrderNo()%>" class="link">상세보기</a></td>
+					<td><a href="order_detail.jsp?orderNo=<%=payingDto.getOrderNo()%>" class="link">
+					<img src="<%=request.getContextPath()%>/image/detail.png" width="20" height="20"></a></td>
 				</tr>
 				<%
 				}
