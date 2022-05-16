@@ -30,7 +30,7 @@
     <script type="text/javascript">
     $(function(){
         refreshTotal();
-        $(".qty").on("input", refreshTotal());
+        $(".qty").on("input", refreshTotal);
         $(".select-item").on("input", refreshTotal);
     	
         $(".all").on("input", function(){
