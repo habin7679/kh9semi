@@ -120,7 +120,7 @@ else
 <!-- 검색창 -->
             <form action="product_user_list.jsp" >
             <%if(productName == null){ %>
-            <input type="text" name="product_name" required class="form-input input-round">
+            <input type="text" name="product_name" required class="form-input input-round" >
             <%} else { %>
             <input type="text" name="product_name" required placeholder="검색어 작성" value="<%=productName%>" class="form-input input-round">
             <%} %>
@@ -146,7 +146,7 @@ List<ProductDto>  list2 = productDao.categorie(productSort);
                 <input type="hidden" name="productNo" value="<%=productDto.getProductNo()%>">
                 <input type="hidden" name="productSort" value="<%=productDto.getProductSort() %>">
                 <%=productDto.getProductName()%><br>
-                <%=productDto.getProductPrice()%><br>
+                <%=productDto.getProductPrice()%><br><br><br>
             </a>
             </div>
         <%}%>
@@ -158,7 +158,7 @@ List<ProductDto>  list2 = productDao.categorie(productSort);
                 <input type="hidden" name="productNo" value="<%=productDto.getProductNo()%>">
                 <input type="hidden" name="productSort" value="<%=productDto.getProductSort() %>">
                 <%=productDto.getProductName()%><br>
-                <%=productDto.getProductPrice()%><br>
+                <%=productDto.getProductPrice()%><br><br><br>
             </a>
             </div>
         <%}%>
@@ -170,7 +170,7 @@ List<ProductDto>  list2 = productDao.categorie(productSort);
                 <input type="hidden" name="productNo" value="<%=productDto.getProductNo()%>">
                 <input type="hidden" name="productSort" value="<%=productDto.getProductSort() %>">
                 <%=productDto.getProductName()%><br>
-                <%=productDto.getProductPrice()%><br>
+                <%=productDto.getProductPrice()%><br><br><br>
             </a>
             </div>
         <%}%>
@@ -204,7 +204,7 @@ if (list.isEmpty()) {
                 <input type="hidden" name="productSort" value="<%=productDto.getProductSort() %>">
                 
                	<%=productDto.getProductName()%><br>
-                <%=productDto.getProductPrice()%><br>
+                <%=productDto.getProductPrice()%><br><br><br>
             </a>
             </div>
         <%}%>
@@ -217,7 +217,7 @@ if (list.isEmpty()) {
                 <input type="hidden" name="productSort" value="<%=productDto.getProductSort() %>">
                 
                	<%=productDto.getProductName()%><br>
-                <%=productDto.getProductPrice()%><br>
+                <%=productDto.getProductPrice()%><br><br><br>
             </a>
             </div>
         <%}%>
@@ -230,7 +230,7 @@ if (list.isEmpty()) {
                 <input type="hidden" name="productSort" value="<%=productDto.getProductSort() %>">
                 
                	<%=productDto.getProductName()%><br>
-                <%=productDto.getProductPrice()%><br>
+                <%=productDto.getProductPrice()%><br><br><br>
             </a>
             </div>
         <%}%>
