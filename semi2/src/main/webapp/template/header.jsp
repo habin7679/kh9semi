@@ -30,7 +30,7 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/reset.css">
+	href="<%=request.getContextPath()%>/css/reset1.css">
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/layout.css">
 <link rel="stylesheet" type="text/css"
