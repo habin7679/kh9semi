@@ -14,16 +14,16 @@
 %>
 <head>
 <style>
-	th {
-	font-weight : 600;
-	}	
+	.table-back{
+		
+	}
 </style>
 </head>
 	<jsp:include page="/template/header.jsp"></jsp:include>
 <div class="container w500 m30">
 <h1>송장번호 입력</h1><br><br>
 <form action = "buy_update.ez" method="post">
-    <table class="table table-border table-hover">
+    <table class="table table-border table-back">
 	    <tr>
 	    		<th>구매번호</th>
 	    		<td><input type="text" name="buyNo" value="<%=buyDto.getBuyNo()%>" class="form-input fill input-round" required></td>
