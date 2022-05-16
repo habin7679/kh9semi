@@ -197,8 +197,6 @@ ul.bar a {
                 <li>
                     <a href="<%=request.getContextPath()%>#">칼로리사전</a>
                     <ul style="z-index: 100;">
-        				<li><a href="<%=request.getContextPath()%>#">음식칼로리</a></li>
-        				<li><a href="<%=request.getContextPath()%>#">운동칼로리</a></li>
         				<li><a href="<%=request.getContextPath()%>/dict/main.jsp">칼로리처방</a></li>
                     </ul>
                 </li>
@@ -214,7 +212,6 @@ ul.bar a {
                 <li>
                     <a href="<%=request.getContextPath()%>#">고객센터</a>
                     <ul style="z-index: 100;">
-        				<li><a href="<%=request.getContextPath()%>#">자주찾는질문</a></li>
         				<li><a href="<%=request.getContextPath()%>/board/qna_list.jsp">1:1 고객문의</a></li>
         				<li><a href="<%=request.getContextPath()%>/board/productqna_list.jsp">상품문의</a></li>
                     </ul>
