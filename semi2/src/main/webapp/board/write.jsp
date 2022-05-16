@@ -87,5 +87,5 @@ MemberDto memberDto = memberDao.selectOne(memberId);
 	</div>
 </form>
 
-</div>
+
 <jsp:include page="/template/footer.jsp"></jsp:include>

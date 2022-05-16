@@ -76,7 +76,7 @@
 <div class="row right">
 	<tr>
 		<td>
-			<%=memberDto.getMemberNick()%>
+			<%=memberDto.getMemberId()%>
 		 	(<%=memberDto.getMemberGrade()%>)
 		</td>
 	</tr>
@@ -105,9 +105,7 @@
 		</td>
 		</tr>
 		<%} else{%>
-		<div class="row center">
 		<h1>작성자 본인이 아닙니다</h1>
-		</div>
 		<%} %>
 	<!-- 버튼 영역 -->
 	<tr>	
@@ -155,7 +153,7 @@
 				<%for(ReplyDto replyDto : replyList){ %>
 				<%
 					//본인이 작성한 댓글인지 여부를 미리 검사하여 반복문 내에서 필요에 따라 조건부 처리를 수행할 수 있게 한다.
-					boolean isReplyOwner = memberId != null && memberId.equals(replyDto.getReplyWriter1());
+					boolean isReplyOwner = memberId != null && memberId.equals(replyDto.getReplyWriter());
 				%>
 				
 				<%-- 수정이 가능(본인이 작성한 댓글)한 경우라면 보여주기 위한 줄과 수정하기 위한 줄을 각각 출력 --%>
