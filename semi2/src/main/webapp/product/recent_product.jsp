@@ -13,6 +13,13 @@
 		MemberDto memberDto= memberDao.selectOne(memerId);
 		
 	%>
+	
+	<div class="row float-container">
+<div class="float-left layer-3">
+<jsp:include page="/template/menu.jsp"></jsp:include>
+</div>
+
+<div class="float-left layer-2">
 <div id="recentProd"></div>
 <div style="position:relative;height:201px;width:200px;">
 
@@ -45,4 +52,6 @@
     }
     
 	</script>
+	</div>
+	</div>
 <jsp:include page="/template/footer.jsp"></jsp:include>
