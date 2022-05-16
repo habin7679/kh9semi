@@ -9,7 +9,7 @@
 <br><br>
 <div class="row container center">
 	<a href="<%=request.getContextPath()%>/index.jsp" class="btn">홈 화면으로 가기</a>
-	<a href="<%=request.getContextPath() %>/like.list.jsp" class="btn">찜 목록보기</a>
+	<a href="<%=request.getContextPath() %>/like/list.jsp" class="btn">찜 목록보기</a>
 </div>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

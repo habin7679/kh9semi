@@ -9,6 +9,7 @@
 String memberId = (String)session.getAttribute("member");
 MemberDao memberDao = new MemberDao();
 MemberDto memberDto = memberDao.selectOne(memberId);
+
 %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -21,6 +22,7 @@ MemberDto memberDto = memberDao.selectOne(memberId);
 <%if(request.getParameter("superNo") != null){ %>   
 <input type="hidden" name="superNo" value="<%=request.getParameter("superNo")%>">
 <%} %>
+
 
 	<div class="container w1000 m30">
 	    <div class="row center">

@@ -321,4 +321,36 @@ public class BuyDao {
 		con.close();
 		return extraction;
 	}
+	public List<BuyDto> listAllByPagingId(int p, int s, String memberId) throws Exception{
+		int end = p * s;
+		int begin = end - (s-1);
+
+		Connection con = JdbcUtils.getConnection();
+
+		String sql = "select * from ("
+				+ "select rownum rn, TMP.* from ("
+			       + "select * from buy order by buy_no desc"
+			        + ") TMP"
+			+ ")where member_id=? and rn between ? and ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, memberId);;
+		ps.setInt(2, begin);
+		ps.setInt(3, end);
+		ResultSet rs = ps.executeQuery();
+
+		List<BuyDto> list = new ArrayList<>();
+
+		while(rs.next()) {
+			BuyDto bDto = new BuyDto();
+			bDto.setBuyNo(rs.getInt("buy_no"));
+			bDto.setMemberId(rs.getString("member_id"));
+			bDto.setOrderNo(rs.getInt("order_no"));
+			bDto.setBuyInvoice(rs.getLong("buy_invoice"));
+			bDto.setBuyStatus(rs.getString("buy_status"));
+
+			list.add(bDto);
+		}
+		con.close();
+		return list;
+	}
 }

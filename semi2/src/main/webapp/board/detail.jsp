@@ -31,7 +31,8 @@
 	boolean isOwner = isLogin && memberId.equals(boardDto.getBoardWriter());
 	
 	//관리자인지 판정
-	String memberGrade = (String)session.getAttribute("admin");
+	MemberDto memberDto1 = memberDao.selectOne(memberId);
+	String memberGrade = memberDto1.getMemberGrade();
 	boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
 	
 	//현재 글에 대한 댓글 목록을 조회
@@ -46,7 +47,7 @@
 <h1>[<%=boardDto.getBoardHead()%>게시판]<%=boardDto.getBoardTitle()%></h1>
 	<tr>
 		<td>
-			<%=boardDto.getBoardWriter()%>
+			<%=memberDto.getMemberNick()%>
 		 	(<%=memberDto.getMemberGrade()%>)
 		</td>
 	</tr>
@@ -64,7 +65,7 @@
 		<td>
 			<h2>
 			<div class="container w600 m30">
-			<img src="/semi2/file/download.ez?attachmentNo=<%=boardAttachmentDto.getAttachmentNo()%>">
+			<img src="/semi2/file/download.ez?attachmentNo=<%=boardAttachmentDto.getAttachmentNo()%>" width="400">
 			<br><br>
 				<%=boardDto.getBoardContent()%>
 			</div>
@@ -128,6 +129,7 @@
 						<td width="50%">
 							<!-- 댓글 내용 -->
 							<pre><%=replyDto.getReplyContent()%></pre>
+							<br>
 						</td>
 						<td>
 							<%-- 댓글 수정 아이콘 : 본인 글에만 등장해야함 --%>

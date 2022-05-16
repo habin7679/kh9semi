@@ -85,7 +85,7 @@ ul.bar {
 	font-size: 16px;
 }
 ul.bar, ul.bar ul {
-	background-color: #1c683c;
+	background-color: #009432;
 }
 ul.bar li {
 	padding: 0.35em;
@@ -97,7 +97,7 @@ ul.bar a {
 }
 /*커서 올리면 바뀌는 색*/
 ul.bar li:hover {
-	background-color: #2f985c;
+	background-color: #007D2A;
 }
 ul.bar a {
 	display: block;
@@ -141,15 +141,15 @@ ul.bar a {
                 <ul class="nav">
 
 				<%-- 관리자라면 관리 메뉴를 출력 --%>
+						<div>
+							<% if(login){ %>
+							<%=memberDto.getMemberNick()%>님 환영합니다! &nbsp;&nbsp;&nbsp;
+				</div>
+				
 				<%if(auth){ %>
 				<a href="<%=request.getContextPath()%>/admin/admin.jsp">관리자페이지</a>&nbsp;&nbsp;&nbsp;
 				
 				<%} %>
-						<div>
-							<% if(login){ %>
-							<%=memberDto.getMemberNick()%>님 환영합니다 &nbsp;&nbsp;&nbsp;
-				</div>
-				
 						<a href="<%=request.getContextPath()%>/member/logout.ez">로그아웃</a>
 						&nbsp;&nbsp;&nbsp;
 				
@@ -164,7 +164,7 @@ ul.bar a {
 						&nbsp;&nbsp;&nbsp;
 						<a href="<%=request.getContextPath()%>/buy/list.jsp">주문/배송조회</a>
 						&nbsp;&nbsp;&nbsp;
-					<br>
+					<br><br>
 
 
 					</ul>
@@ -174,11 +174,11 @@ ul.bar a {
 		</div>
 		<a href="<%=request.getContextPath()%>/index.jsp">
 			<div class="content" style="height: 100px; justify-content: center;">
-				<img src="<%=request.getContextPath()%>/image/logo.png"
+				<br><img src="<%=request.getContextPath()%>/image/logo.png"
 					style="width: 250px; height: 100px;">
 		</a> &nbsp;&nbsp;&nbsp;
       </div>
-	
+		<br><br>
         </div>
           <div class="content">
             <ul class="bar" style="width:100%;display:flex;justify-content:space-between;">
@@ -216,6 +216,7 @@ ul.bar a {
                     <ul style="z-index: 100;">
         				<li><a href="<%=request.getContextPath()%>#">자주찾는질문</a></li>
         				<li><a href="<%=request.getContextPath()%>/board/qna_list.jsp">1:1 고객문의</a></li>
+        				<li><a href="<%=request.getContextPath()%>/board/productqna_list.jsp">상품문의</a></li>
                     </ul>
                 </li>
             </ul>
@@ -229,4 +230,4 @@ ul.bar a {
 		<!-- 섹션(section) or 컨테이너(container) -->
 		<tr height="450">
 			<td align="center" valign="top">
-				<br><br>
+				<br><br><br><br>

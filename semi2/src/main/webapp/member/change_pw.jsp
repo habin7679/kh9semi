@@ -56,13 +56,13 @@
 		
 		<div>
 			<label>새 비밀번호</label>
-			<input type="text" name="memberPw" placeholder="첫자 영어 대문자,영어, 숫자, 특수문자 8~16자로 작성" class="form-input fill">
+			<input type="password" name="memberPw" placeholder="첫자 영어 대문자,영어, 숫자, 특수문자 8~16자로 작성" class="form-input fill">
 			<span></span>
 		</div>
 		
 		<div>
 			<label>새 비밀번호 확인</label>
-			<input type="text" name="memberPw2" placeholder="첫자 영어 대문자,영어, 숫자, 특수문자 8~16자로 작성" class="form-input fill">
+			<input type="password" name="memberPw2" placeholder="첫자 영어 대문자,영어, 숫자, 특수문자 8~16자로 작성" class="form-input fill">
 			<span></span>
 		</div>
 		

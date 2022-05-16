@@ -15,7 +15,7 @@
 <jsp:include page="/template/header.jsp"></jsp:include>
       <div class="container w400 m50">
         <div class="row center">
-        <h1>상품 정보 수정</h1>
+        <h1>상품 정보 수정</h1><br><br>
         </div>
         <div class="row center">
         <form action="edit.ez" method="post" enctype="multipart/form-data">
@@ -80,7 +80,8 @@
             <input type="text" name="productFat" value="<%=productDto.getProductFat()%>" class="form-input fill input-round">
         </div>
         <div class="row center" colspan="2" >
-			<button type="submit" class="btn">수정하기</button>
+      	 <a href="product_admin_detail.jsp?product_no=<%=productDto.getProductNo()%>"class ="link fill link-btn">취소</a><br><br>
+			<button type="submit" class="btn btn-primary fill">수정하기</button>
 		</div>
 	</form>
 	</div>

@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="/template/header.jsp"></jsp:include>
+
 <%
 	String memberId=(String) session.getAttribute("member");
   	
@@ -11,6 +12,16 @@
 %>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+<style>
+.menu{
+	float: left;
+	width:"30%";
+	
+}
+
+</style>
+
 <script type="text/javascript">
 	$(function () {
 		 $("input[name=memberPw]").blur(function (){
@@ -112,9 +123,13 @@
             $(".address-find-btn").click(findAddress);
         });
     </script>
+    
+
+ <jsp:include page="/template/menu.jsp"></jsp:include>
+
 
 <form action="edit.ez" method="post">
-	<div class="container w500">
+<div class="container w500 m30">
 	    <div class="row center">
 	        <h1>개인정보 변경</h1>
 	    </div>
@@ -136,14 +151,14 @@
 	    </div>
 	    <div class="row">
 	        <label>주소</label><br>
-	        <input type="text" name="memberPost" autocomplete="off" placeholder="우편번호" value="<%=memberDto.getMemberPost()%>" class="form-input fill">
-	        <a href="#" class="link link-btn">우편번호 검색</a>
-	    </div>
-	    <div class="row">
-	        <input type="text" name="memberBasicAddress" autocomplete="off" placeholder="기본주소" value="<%=memberDto.getMemberBasicAddress()%>" class="form-input fill">
-	    </div>
-	    <div class="row">
-	        <input type="text" name="memberDetailAddress" autocomplete="off" placeholder="상세주소" value="<%=memberDto.getMemberDetailAddress()%>" class="form-input fill">
+                <input type="text" name="memberPost" placeholder="우편번호" autocomplete="off" class="form-input " width="65%" value="<%=memberDto.getMemberPost()%>" >
+                 <input type="button" class="address-find-btn btn" value="우편번호 찾기" width="35%"><br>
+            </div>
+            <div class="row">
+                <input type="text" name="memberBasicAddress" placeholder="기본주소" autocomplete="off" class="form-input fill" value="<%=memberDto.getMemberBasicAddress()%>" >
+            </div>
+            <div class="row">
+                <input type="text" name="memberDetailAddress" placeholder="상세주소" autocomplete="off" class="form-input fill" value="<%=memberDto.getMemberDetailAddress()%>" >
 	    </div>
 	     <div class="row">
 	        <label>비밀번호</label>
@@ -162,6 +177,9 @@
 			<h3 style="color:red;">비밀번호가 일치하지 않습니다</h3>		
 		</div>	    
 		<%} %>
-	</div>
+</div>
 </form>
+
+
+
 <jsp:include page="/template/footer.jsp"></jsp:include>
