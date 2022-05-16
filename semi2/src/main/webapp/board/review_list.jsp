@@ -132,8 +132,8 @@
 MemberDao memberDao = new MemberDao();
 MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자 모든 정보 조회
 %>
-					<td><%=memberDto.getMemberNick()%></td>
-<%-- 				<td><%=boardDto.getBoardWriter()%></td>--%>
+
+				<td><%=boardDto.getBoardWriter()%></td>
 					<td><%=boardDto.getBoardTime()%></td>
 					<td><%=boardDto.getBoardReadcount()%></td>
 <%-- 					<td><%=boardDto.getGroupNo()%></td> --%>
