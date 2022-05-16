@@ -14,7 +14,7 @@
 		
 	%>
 <div id="recentProd"></div>
-<div style="position:relative;height:200px;width:200px;">
+<div style="position:relative;height:201px;width:200px;">
 
 <img style="position:absolute;" src="test.jsp" onload="fitImage(this)">
 
@@ -29,16 +29,13 @@
     		let new_div = document.createElement('div');
     		let new_a = document.createElement('a');
     		let new_img = document.createElement('img');
-    		
-    		<div class="recent">
-    		<img class="recentp"
-				width="200" height="200"
-				style="vertical-align: top; margin-top: 35px;">
 				
     		new_a.setAttribute('href', '../product/product_user_detail.jsp?product_no='+current.id);  
     		new_a.setAttribute('class', 'link');
     		
     		new_img.setAttribute('src', '/semi2/file/download.ez?attachmentNo='+current.img); 
+    		
+    		new_div.setAttribute('class', 'recentp');
     		
     		new_a.appendChild(new_img);
     		new_div.appendChild(new_a);
@@ -46,45 +43,6 @@
     		target.appendChild(new_div);
     	})
     }
-</div>
     
 	</script>
-
-	
-		<style>
-		.ha{
-	min-height : 100px;
-	}
-.table{
-	border=1px;
-	
-}
-</style>
-<div class="ha">
-<div class="recentById">
-<div>
-	<h1>최근 본 상품</h1>
-	<div id='recentById'>
-</div>
-
-	<div class="row center">
-	  <div class="container w1000">
-		<table class="table">
-			<thead>
-				<tr>
-					<th>1</th>
-					<th>2</th>
-					<th>3</th>
-				</tr>
-			</thead>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-
-
-
 <jsp:include page="/template/footer.jsp"></jsp:include>
