@@ -94,7 +94,7 @@ boolean isOwner = isLogin && memberId.equals(boardDto.getBoardWriter());
 			<a href="list.jsp" class="link link-btn">목록</a>
 			</div>
 	</tr>
-	
+	 
 	<!-- 댓글 작성 영역 -->
 	<tr>
 		<td align="right">
