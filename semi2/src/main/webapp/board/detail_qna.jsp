@@ -34,9 +34,13 @@
 	boolean isOwner = isLogin && memberId.equals(boardDto.getBoardWriter());
 	
 	//관리자인지 판정
+	
+	boolean isAdmin = false;
+	if(isLogin){
 	MemberDto memberDto1 = memberDao.selectOne(memberId);
 	String memberGrade = memberDto1.getMemberGrade();
-	boolean isAdmin = memberGrade.equals("관리자");
+	isAdmin = memberGrade.equals("관리자");
+	}
 	
 	//현재 글에 대한 댓글 목록을 
 	ReplyDao replyDao = new ReplyDao();
