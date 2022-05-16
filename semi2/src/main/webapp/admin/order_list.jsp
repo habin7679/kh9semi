@@ -54,8 +54,8 @@
 		<label><a href="<%=request.getContextPath()%>/product/product_admin_list.jsp">Product</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/buy_list.jsp">Order</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/order_list.jsp">Delivery</a></label><br><br><br><br>
-		<label><a href="<%=request.getContextPath()%>/board/list.jsp">Board List</a></label><br><br><br><br>
-		<label><a href="<%=request.getContextPath()%>/board/write.jsp">Write</a></label><br><br><br><br>
+		<label><a href="<%=request.getContextPath()%>/admin/board_list.jsp">Board List</a></label><br><br><br><br>
+		<label><a href="<%=request.getContextPath()%>/admin/board_write.jsp">Write</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/banner.jsp">Banner</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/statistics.jsp">Statistics</a></label><br><br><br><br>	
 		</aside>
@@ -122,7 +122,7 @@
 		<div class="row center">
 			<h1>배송 목록</h1><br>
 		</div>
-		<form action="order_list.ez" method="get">
+		<form action="order_list.jsp" method="get">
 	
 			<%
 			if (type == null || type.equals("member_id")) {
@@ -165,14 +165,17 @@
 	<%
 	if (list.isEmpty()) {
 	%>
-	<div class="row center">
-		<h2>결과가 존재하지 않습니다</h2>
+	<div class="row center"><br><br>
+		<h2>검색결과가 존재하지 않습니다!</h2><br><br>
 	</div>
+	<div class="link link-btn">
+	 <a href="order_list.jsp">목록으로 돌아가기</a>
+	 </div>
 	<%
 	} else {
 	%>
 	<div class="row">
-		<table class="table table-border table-hover">
+		<br><br><table class="table table-border table-hover">
 			<thead>
 				<tr>
 					<th>주문번호</th>

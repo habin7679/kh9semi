@@ -24,6 +24,7 @@
 	MemberDao memberDao = new MemberDao();
 	MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자 모든 정보 조회
 	
+
 	
 	//내 글인지 판정
 	//= 현재 로그인한 사용자가 게시글 작성자인지 확인
@@ -33,8 +34,9 @@
 	boolean isOwner = isLogin && memberId.equals(boardDto.getBoardWriter());
 	
 	//관리자인지 판정
-	String memberGrade = (String)session.getAttribute("admin");
-	boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
+	MemberDto memberDto1 = memberDao.selectOne(memberId);
+	String memberGrade = memberDto1.getMemberGrade();
+	boolean isAdmin = memberGrade.equals("관리자");
 	
 	//현재 글에 대한 댓글 목록을 
 	ReplyDao replyDao = new ReplyDao();
@@ -61,7 +63,7 @@
 
 
 %>    
-    
+
 <jsp:include page="/template/header.jsp"></jsp:include>
 <div class="container w1000 m30">
 <div class="row right">
@@ -102,12 +104,12 @@
 	<!-- 버튼 영역 -->
 	<tr>	
 			<div class="row right">
-			<a href="write.jsp" class="link link-btn">글쓰기</a>
+			<a href="write_qna.jsp" class="link link-btn">글쓰기</a>
 			<%if(isAdmin){ %>
-			<a href="write.jsp?superNo=<%=boardNo%>" class="link link-btn">답글</a>
+			<a href="write_qna.jsp?superNo=<%=boardNo%>" class="link link-btn">답글</a>
 			<%} %>
 			<%if(isOwner || isAdmin){ %>
-			<a href="edit.jsp?boardNo=<%=boardNo%>" class="link link-btn">수정</a>
+			<a href="edit_qna.jsp?boardNo=<%=boardNo%>" class="link link-btn">수정</a>
 			<a href="delete.ez?boardNo=<%=boardNo%>" class="link link-btn">삭제</a>
 			<%} %>
 			<a href="list.jsp" class="link link-btn">목록</a>

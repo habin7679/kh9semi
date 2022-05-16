@@ -29,7 +29,7 @@
                 <h2>활동관리</h2>
                 <div class="row center"><a href="#">최근 본 상품</a></div>
                 <div class="row center"><a href="<%=request.getContextPath()%>/board/review_list.jsp?type=board_writer&keyword=<%=memberDto.getMemberId()%>">내 후기내역</a></div>
-                <div class="row center"><a href="<%=request.getContextPath()%>/board/qna_list.jsp?type=board_writer&keyword=<%=memberDto.getMemberId()%>">내 문의내역</a></div>
+                <div class="row center"><a href="<%=request.getContextPath()%>/board/productqna_list.jsp?type=board_writer&keyword=<%=memberDto.getMemberId()%>">내 상품문의내역</a></div>
             
               
                <h2>내 정보관리</h2>

@@ -353,5 +353,38 @@ public class PayingDao {
 			con.close();
 			return count;
 		}
+		
+		//관리자 - 배송 상세
+		public PayingDto selectOneForAdmin(int orderNo) throws Exception {
+			Connection con = JdbcUtils.getConnection();
+			
+			String sql = "select * from paying where order_no = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, orderNo);
+			ResultSet rs = ps.executeQuery();
+			
+			PayingDto payingDto;
+			if(rs.next()) {
+				payingDto = new PayingDto();
+				payingDto.setOrderNo(rs.getInt("order_no"));
+				payingDto.setMemberId(rs.getString("member_id"));
+				payingDto.setPayingTotal(rs.getInt("paying_total"));
+				payingDto.setPayingDate(rs.getString("paying_date"));
+				payingDto.setPayingName(rs.getString("paying_name"));
+				payingDto.setPayingPhone(rs.getString("paying_phone"));
+				payingDto.setPayingPost(rs.getInt("paying_post"));
+				payingDto.setPayingBasicAddress(rs.getString("paying_basic_address"));
+				payingDto.setPayingDetailAddress(rs.getString("paying_detail_address"));
+				payingDto.setPayingDeliveryFee(rs.getInt("paying_delivery_fee"));
+				payingDto.setPayingDeliveryDate(rs.getDate("paying_delivery_date"));
+				payingDto.setPayingPayway(rs.getString("paying_payway"));
+				payingDto.setPayingDeliveryTime(rs.getInt("paying_delivery_time"));
+			}
+			else {
+				payingDto = null;
+			}
+			con.close();
+			return payingDto;
+		}
 }
 

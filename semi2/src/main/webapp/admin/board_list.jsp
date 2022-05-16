@@ -53,6 +53,7 @@
 		<label><a href="<%=request.getContextPath()%>/admin/buy_list.jsp">Order</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/order_list.jsp">Delivery</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/board_list.jsp">Board List</a></label><br><br><br><br>
+		<label><a href="<%=request.getContextPath()%>/admin/board_write.jsp">Write</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/banner.jsp">Banner</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/statistics.jsp">Statistics</a></label><br><br><br><br>	
 		</aside>
@@ -81,7 +82,7 @@
 		if(s <= 0) throw new Exception();
 	}
 	catch(Exception e){
-		s = 10;
+		s = 15;
 	}
 %>
 
@@ -133,12 +134,8 @@
 <div class="container w950 m30">
 
 	<div class="row center">
-		<h1>전체 게시판</h1>
+		<h1>전체 게시판</h1><br><br>
 	</div>
-	
-	<div class="row right">
-		<a href="/admin/board_write.jsp" class="link link-btn">글쓰기</a>
-	</div>		
 	
 	<div class="row">
 		<table class="table table-border table-hover">
@@ -171,7 +168,7 @@
 
 						
 						<!-- 게시글 제목 링크 -->
-						<a href="/board/detail.jsp?boardNo=<%=boardDto.getBoardNo()%>">
+						<a href="../board/detail.jsp?boardNo=<%=boardDto.getBoardNo()%>">
 							<%=boardDto.getBoardTitle()%>
 						</a>
 						
@@ -259,22 +256,7 @@
 		<%} %>
 		
 	</div>
-	
-	<div class="row center">
-		<!-- 검색창 -->
-		<br>
-		<form action="/board/list.jsp" method="get">
-			<select name="type" class="form-input input-round">
-				<option value="board_title">제목</option>
-				<option value="board_content">내용</option>
-				<option value="board_writer">작성자</option>
-			</select>
-			
-			<input type="search" name="keyword" placeholder="검색어 입력" required class="form-input input-round">
-			
-			<input type="submit" value="검색" class="btn btn-primary">
-		</form>
-	</div>
+
 	
 </div>
 </article>
