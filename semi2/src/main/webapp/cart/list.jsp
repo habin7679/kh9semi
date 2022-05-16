@@ -77,7 +77,7 @@
 	<img src="/semi2/file/download.ez?attachmentNo=<%=paDto.getAttachmentNo()%>" width="200" height="200">
 	</div>
 	<div class= "row center">
-	<a href="detail.jsp?productNo=<%=pNo%>"><%=pDto.getProductName() %></a>
+	<a href="http://localhost:8080/semi2/product/product_user_detail.jsp?product_no=<%=pNo%>"><%=pDto.getProductName() %></a>
 	</div>
 	
 	<input type="hidden" name="productNo" value="<%=pNo %>">

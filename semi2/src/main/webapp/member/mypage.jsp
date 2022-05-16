@@ -9,13 +9,16 @@
 		MemberDto memberDto= memberDao.selectOne(memerId);
 		
    %>
+
+	
+	
+	
 	<style>
 	.ha{
 	padding-right : 130px;
 	padding-top : 130px;
 	}
 
-    
 </style>
 <div class="row float-container">
 <div class="float-left layer-3">
@@ -27,14 +30,9 @@
 	<h2>포인트:<%=memberDto.getMemberPoint() %>p</h2>
 	<a href="<%=request.getContextPath() %>/member/edit.jsp" class="link link-btn">정보 수정하기</a>
 	</div>
+
 	</div>
 
-	
-	
-	
-	
-	
-	
 	
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

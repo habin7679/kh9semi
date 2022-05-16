@@ -86,6 +86,7 @@ public class OrderDao {
 			OrderDto orderDto = new OrderDto();
 			orderDto.setProductNo(rs.getInt("product_no"));
 			orderDto.setOrderCount(rs.getInt("order_count"));
+			orderDto.setOrderPrice(rs.getInt("order_price"));
 			list.add(orderDto);
 		}
 		con.close();

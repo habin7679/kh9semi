@@ -28,7 +28,7 @@ public class LikeInsertServlet extends HttpServlet{
 			if(lDao.selectOne(lDto).getProductNo()==pNo) {
 				//중복 추가 금지
 				resp.sendRedirect(req.getContextPath()+"/like/error1.jsp");
-			}else if(lDao.selectSize((String)req.getSession().getAttribute("member"))>10){
+			}else if(lDao.selectSize((String)req.getSession().getAttribute("member"))>=10){
 				resp.sendRedirect(req.getContextPath()+"/like/error.jsp");
 			}else {
 				lDao.insert(lDto);

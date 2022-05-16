@@ -236,31 +236,31 @@ if (falseList.size() == 0) {
 			<div class="row">
 				<label>수령인 </label>
 				<input type="text" name="payingName"
-					value="<%=dDtoOri.getDeliveryName()%>" class="form-input fill form-round">
+					value="<%=dDtoOri.getDeliveryName()%>" class="form-input fill form-round" required>
 			</div>
 			<div class="row">
 				<label>연락처</label> 
 				<input type="tel" name="payingPhone"
-					value="<%=dDtoOri.getDeliveryPhone()%>" class="form-input fill form-round">
+					value="<%=dDtoOri.getDeliveryPhone()%>" class="form-input fill form-round" required>
 			</div>
 			<div class="row">
 				<label>우편번호</label> 
 				<input type="text" name="payingPost"
-					value="<%=dDtoOri.getDeliveryPost()%>" class="form-input fill form-round">
+					value="<%=dDtoOri.getDeliveryPost()%>" class="form-input fill form-round" required>
 				<input type="button" class="address-find-btn" value="우편번호 찾기"><br>
 			</div>
 			<div class="row">
 				<label>기본주소</label> 
 				<input type="text" name="payingBasicAddress"
-					value="<%=dDtoOri.getDeliveryBasicAddress()%>" class="form-input fill form-round">
+					value="<%=dDtoOri.getDeliveryBasicAddress()%>" class="form-input fill form-round" required>
 			</div>
 			<div class="row">
 				<label>상세주소</label> 
 				<input type="text" name="payingDetailAddress"
-					value="<%=dDtoOri.getDeliveryDetailAddress()%>" class="form-input fill form-round">
+					value="<%=dDtoOri.getDeliveryDetailAddress()%>" class="form-input fill form-round" required>
 			</div>
 			<div class="row">
-				<input type="date" name="payingDeliveryDate" class="form-input fill form-round"> 원하는 시간대 <select
+				<input type="date" name="payingDeliveryDate" class="form-input fill form-round" required> 원하는 시간대 <select
 					name="payingDeliveryTime">
 					<option>0</option>
 					<option>1</option>
@@ -307,10 +307,10 @@ if (falseList.size() == 0) {
 				<input type="number" name="payingTotal" value="<%=payingDao.totalPrice(orderNo)%>" class="pPrice form-input fill form-round" readonly>
 				<%} else if(mDto.getMemberGrade().equals("우수회원")) {%>
 				<label>우수회원 할인 적용</label>
-				<input type="number" name="payingTotal" value="<%=payingDao.totalPrice(orderNo)*0.9%>" class="pPrice form-input fill form-round" readonly>
+				<input type="number" name="payingTotal" value="<%=(int)(payingDao.totalPrice(orderNo)*0.9)*10/10 %>" class="pPrice form-input fill form-round" readonly>
 				<%} else { %>
 				<label>VIP 할인 적용</label><br><br>
-				<input type="number" name="payingTotal" value="<%=payingDao.totalPrice(orderNo)*0.8%>" class="pPrice form-input fill form-round" readonly>
+				<input type="number" name="payingTotal" value="<%=(int)(payingDao.totalPrice(orderNo)*0.8)*10/10%>" class="pPrice form-input fill form-round" readonly>
 				<%} %>			
 			</div>
 			<div class="row">
