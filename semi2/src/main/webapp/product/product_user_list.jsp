@@ -74,8 +74,9 @@ else
     .layer-2 {
         width:50%;
     }
-    .layer-3 {
+    .layer-6{
         width:33.3333%;
+      
     }
     .layer-4 {
         width:25%;
@@ -116,7 +117,7 @@ List<ProductDto>  list2 = productDao.categorie(productSort);
         ProductAttachmentDao productattachmentDao = new ProductAttachmentDao();
         ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(productNo);
     %>
-        <div class="float-left layer-3">
+        <div class="float-left layer-6">
         <%if(i % 3 == 0){%>
             <div><a href="product_user_detail.jsp?product_no=<%=productDto.getProductNo()%>" class="link">
                 <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="300" height="300"><br>
@@ -128,7 +129,7 @@ List<ProductDto>  list2 = productDao.categorie(productSort);
             </div>
         <%}%>
         </div>
-        <div class="float-left layer-3">
+        <div class="float-left layer-6">
         <%if(i % 3 == 1){%>
             <div><a href="product_user_detail.jsp?product_no=<%=productDto.getProductNo()%>" class="link">
                 <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="300" height="300"><br>
@@ -140,7 +141,7 @@ List<ProductDto>  list2 = productDao.categorie(productSort);
             </div>
         <%}%>
         </div>
-        <div class="float-left layer-3">
+        <div class="float-left layer-6">
         <%if(i % 3 == 2){%>
             <div><a href="product_user_detail.jsp?product_no=<%=productDto.getProductNo()%>" class="link">
                 <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="300" height="300"><br>
@@ -173,7 +174,7 @@ if (list.isEmpty()) {
         ProductAttachmentDao productattachmentDao = new ProductAttachmentDao();
         ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(productNo);
     %>
-        <div class="float-left layer-3">
+        <div class="float-left layer-6">
         <%if(i % 3 == 0){%>
             <div><a href="product_user_detail.jsp?product_no=<%=productDto.getProductNo()%>" class="link">
                 <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="300" height="300"><br>
@@ -186,7 +187,7 @@ if (list.isEmpty()) {
             </div>
         <%}%>
         </div>
-        <div class="float-left layer-3">
+        <div class="float-left layer-6">
         <%if(i % 3 == 1){%>
             <div><a href="product_user_detail.jsp?product_no=<%=productDto.getProductNo()%>" class="link">
                 <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="300" height="300"><br>
@@ -199,7 +200,7 @@ if (list.isEmpty()) {
             </div>
         <%}%>
         </div>
-        <div class="float-left layer-3">
+        <div class="float-left layer-6">
         <%if(i % 3 == 2){%>
             <<div><a href="product_user_detail.jsp?product_no=<%=productDto.getProductNo()%>" class="link">
                 <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="300" height="300"><br>

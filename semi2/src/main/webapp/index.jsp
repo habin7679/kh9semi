@@ -76,9 +76,8 @@ ProductAttachmentDao paDao = new ProductAttachmentDao();
 					src="/semi2/file/download.ez?attachmentNo=<%=paDto.getAttachmentNo()%>"
 					width="200" height="200"
 					style="vertical-align: top; margin-top: 35px;"><br>
-				</a> <br> <br> <label> <%=pDto.getProductName()%>
-				</label> <br> <br> <label> <%=pDto.getProductPrice()%>
-				</label>
+				</a> <label> <%=pDto.getProductName()%>
+				</label>  
 			</div>
 			<%
 			}
@@ -110,9 +109,8 @@ ProductAttachmentDao paDao = new ProductAttachmentDao();
 					src="/semi2/file/download.ez?attachmentNo=<%=paDto.getAttachmentNo()%>"
 					width="200" height="200"
 					style="vertical-align: top; margin-top: 35px;"><br>
-				</a> <br> <br> <label> <%=pDto.getProductName()%>
-				</label> <br> <br> <label> <%=pDto.getProductPrice()%>
-				</label>
+				</a>  <label> <%=pDto.getProductName()%>
+				</label> 
 			</div>
 			<%
 			}
@@ -144,9 +142,8 @@ ProductAttachmentDao paDao = new ProductAttachmentDao();
 					src="/semi2/file/download.ez?attachmentNo=<%=paDto.getAttachmentNo()%>"
 					width="200" height="200"
 					style="vertical-align: top; margin-top: 35px;"><br>
-				</a> <br> <br> <label> <%=pDto.getProductName()%>
-				</label> <br> <br> <label> <%=pDto.getProductPrice()%>
-				</label>
+				</a> <label> <%=pDto.getProductName()%>
+				</label> 
 			</div>
 			<%
 			}
@@ -177,9 +174,9 @@ ProductAttachmentDao paDao = new ProductAttachmentDao();
 					src="/semi2/file/download.ez?attachmentNo=<%=paDto.getAttachmentNo()%>"
 					width="200" height="200"
 					style="vertical-align: top; margin-top: 35px;"><br>
-				</a> <br> <br> <label> <%=pDto.getProductName()%>
-				</label> <br> <br> <label> <%=pDto.getProductPrice()%>
+				</a> <label> <%=pDto.getProductName()%>
 				</label>
+				
 			</div>
 			<%
 			}

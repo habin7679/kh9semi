@@ -588,7 +588,7 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자
 	
 
 
-<button class="btn btn-primary "><a href="product_user_list.jsp">상품 목록 가기</</a></button><br><br>
+<button class="btn btn-primary "><a href="product_user_list.jsp?product_sort=<%=productDto.getProductSort() %>">상품 목록 가기</</a></button><br><br>
 
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
