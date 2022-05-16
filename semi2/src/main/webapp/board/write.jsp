@@ -49,7 +49,7 @@ MemberDto memberDto = memberDao.selectOne(memberId);
 	    </div>
 	    <div class="row">
 	        <label>내용</label>
-	        <div id="editor"></div> 
+	        <div id="editor" style="text-align:left;">
 	        <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 			<script> 
 			
@@ -59,15 +59,19 @@ MemberDto memberDto = memberDao.selectOne(memberId);
 					height: '500px',
 					initialEditType: 'markdown',
 					previewStyle: 'markdown'
-				});
-				
+				});	
+
 				editor.on("change", function(){
 					var content = editor.getMarkdown();
 					$("input[name=boardContent]").val(content);
 					console.log($("input[name=boardContent]").val());
 				});
 				
+				function editorLeft() {
+					document.getElementById("editor").style.textAlign="left";
+				}
 			</script>
+			</div> 
 				<input type="hidden" name="boardContent">
 
 	    	    <div class="row">

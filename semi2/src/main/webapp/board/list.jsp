@@ -1,10 +1,13 @@
 <%@page import="semi2.beans.BoardDto"%>
 <%@page import="java.util.List"%>
 <%@page import="semi2.beans.BoardDao"%>
+<%@page import="semi2.beans.MemberDto"%>
+<%@page import="semi2.beans.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <%
+
 	//목록과 검색을 한페이지에서 한다
 	//=> 구분이 되어야 한다.
 	//=> 주소에 type, keyword가 있으면 "검색"으로 간주
@@ -43,6 +46,8 @@
 // 		list = boardDao.selectList();
 		list = boardDao.selectListByPaging(p, s);
 	}
+	
+	
 %>    
 
 <!-- 숫자(페이지네이션) 링크 -->
@@ -129,8 +134,13 @@
 						<%if(boardDto.getBoardReplycount() > 0){ %>
 						[<%=boardDto.getBoardReplycount()%>]
 						<%} %>
-					</td>
-					<td><%=boardDto.getBoardWriter()%></td>
+						</td>
+<%
+MemberDao memberDao = new MemberDao();
+MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자 모든 정보 조회
+%>
+					<td><%=memberDto.getMemberNick()%></td>
+<%-- 				<td><%=boardDto.getBoardWriter()%></td>--%>
 					<td><%=boardDto.getBoardTime()%></td>
 					<td><%=boardDto.getBoardReadcount()%></td>
 <%-- 					<td><%=boardDto.getGroupNo()%></td> --%>

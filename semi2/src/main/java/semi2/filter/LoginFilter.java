@@ -15,11 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 		
 		"/member/mypage.jsp",
 		"/member/password.jsp", "/member/password.ez",
-		"/member/edit.jsp", "/member/information.ez",
+		"/member/edit.jsp", "/member/edit.ez",
 		"/member/exit.jsp", "/member/exit.ez",
+		"/member/mypage.jsp", "/buy/list.jsp",
 		"/board/write.jsp", "/board/write.ez",
 		"/board/edit.jsp", "/board/edit.ez",
-		"/board/delete.ez", "/board/write_review.ez"
+		"/board/delete.ez", "/board/write_review.ez",
+		"/cart/*", "/paying/*", "/like/*","/buy/*"
 		
 })
 public class LoginFilter implements Filter{

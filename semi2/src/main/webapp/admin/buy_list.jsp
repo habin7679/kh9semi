@@ -54,8 +54,8 @@
 		<label><a href="<%=request.getContextPath()%>/product/product_admin_list.jsp">Product</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/buy_list.jsp">Order</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/order_list.jsp">Delivery</a></label><br><br><br><br>
-		<label><a href="<%=request.getContextPath()%>/board/list.jsp">Board List</a></label><br><br><br><br>
-		<label><a href="<%=request.getContextPath()%>/board/write.jsp">Write</a></label><br><br><br><br>
+		<label><a href="<%=request.getContextPath()%>/admin/board_list.jsp">Board List</a></label><br><br><br><br>
+		<label><a href="<%=request.getContextPath()%>/admin/board_write.jsp">Write</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/banner.jsp">Banner</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/statistics.jsp">Statistics</a></label><br><br><br><br>	
 		</aside>
@@ -166,9 +166,12 @@
 	<%
 	if (list.isEmpty()) {
 	%>
-	<div class="row center">
-		<h2>결과가 존재하지 않습니다</h2>
-	</div>	
+	<div class="row center"><br><br>
+		<h2>검색결과가 존재하지 않습니다!</h2><br><br>
+	</div>
+	<div class="link link-btn">
+	 <a href="buy_list.jsp">목록으로 돌아가기</a>
+	 </div>
 	<%
 	} else {
 	%>

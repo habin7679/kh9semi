@@ -1,6 +1,8 @@
 <%@page import="semi2.beans.BoardDto"%>
 <%@page import="java.util.List"%>
 <%@page import="semi2.beans.BoardDao"%>
+<%@page import="semi2.beans.MemberDto"%>
+<%@page import="semi2.beans.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -37,11 +39,11 @@
 	List<BoardDto> list;
 	if(search){
 // 		list = boardDao.selectList(type, keyword);
-		list = boardDao.selectReviewListByPaging(p, s, type, keyword); 
+		list = boardDao.selectProductqnaListByPaging(p, s, type, keyword); 
 	}
 	else {
 // 		list = boardDao.selectList();
-		list = boardDao.selectReviewListByPaging(p, s);
+		list = boardDao.selectProductqnaListByPaging(p, s);
 	}
 %>    
 
@@ -49,10 +51,10 @@
 <%
 	int count;
 	if(search){//검색 결과 수 카운트
-		count = boardDao.countByPaging(type, keyword);
+		count = boardDao.countByPaging_productqna(type, keyword);
 	}
 	else{//목록 결과 수 카운트
-		count = boardDao.countByPaging();
+		count = boardDao.countByPaging_productqna();
 	}
 	
 	//마지막 페이지 번호 계산
@@ -79,7 +81,7 @@
 <div class="container w950 m30">
 
 	<div class="row center">
-		<h1>내 후기 내역</h1>
+		<h1>상품 문의 게시판</h1>
 	</div>
 	
 	<!--<div class="row right">
@@ -126,7 +128,12 @@
 						[<%=boardDto.getBoardReplycount()%>]
 						<%} %>
 					</td>
-					<td><%=boardDto.getBoardWriter()%></td>
+<%
+MemberDao memberDao = new MemberDao();
+MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자 모든 정보 조회
+%>
+					<td><%=memberDto.getMemberNick()%></td>
+<%-- 				<td><%=boardDto.getBoardWriter()%></td>--%>
 					<td><%=boardDto.getBoardTime()%></td>
 					<td><%=boardDto.getBoardReadcount()%></td>
 <%-- 					<td><%=boardDto.getGroupNo()%></td> --%>
@@ -156,17 +163,17 @@
 		
 		<%if(p > 1){ %>
 			<%if(search){ %>
-			<a href="my_review_list.jsp?p=1&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&laquo;</a>
+			<a href="Productqna_list.jsp?p=1&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&laquo;</a>
 			<%} else { %>
-			<a href="my_review_list.jsp.jsp?p=1&s=<%=s%>">&laquo;</a>
+			<a href="Productqna_list.jsp?p=1&s=<%=s%>">&laquo;</a>
 			<%} %>
 		<%} %>
 		
 		<%if(startBlock > 1){ %>
 			<%if(search){ %>
-			<a href="my_review_list.jsp.jsp?p=<%=startBlock-1%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&lt;</a>
+			<a href="Productqna_list.jsp?p=<%=startBlock-1%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&lt;</a>
 			<%} else { %>
-			<a href="my_review_list.jsp.jsp?p=<%=startBlock-1%>&s=<%=s%>">&lt;</a>
+			<a href="Productqna_list.jsp?p=<%=startBlock-1%>&s=<%=s%>">&lt;</a>
 			<%} %>
 		<%} %>
 		
@@ -174,15 +181,15 @@
 		<%for(int i=startBlock; i <= endBlock; i++){ %>
 			<%if(search){ %>
 				<%if(i == p){ %>
-				<a class="active" href="my_review_list.jsp?p=<%=i%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>"><%=i%></a>	
+				<a class="active" href="Productqna_list.jsp?p=<%=i%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>"><%=i%></a>	
 				<%} else { %>
-				<a href="my_review_list.jsp?p=<%=i%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>"><%=i%></a>
+				<a href="Productqna_list.jsp?p=<%=i%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>"><%=i%></a>
 				<%} %>
 			<%} else { %>
 				<%if(i == p){ %>
-				<a class="active" href="my_review_list.jsp?p=<%=i%>&s=<%=s%>"><%=i%></a>	
+				<a class="active" href="Productqna_list.jsp?p=<%=i%>&s=<%=s%>"><%=i%></a>	
 				<%} else { %>
-				<a href="my_review_list.jsp?p=<%=i%>&s=<%=s%>"><%=i%></a>
+				<a href="Productqna_list.jsp?p=<%=i%>&s=<%=s%>"><%=i%></a>
 				<%} %>
 			<%} %>
 		<%} %>
@@ -190,17 +197,17 @@
 		<!-- 다음 버튼 영역 -->
 		<%if(endBlock < lastPage){ %>
 			<%if(search){ %>
-			<a href="my_review_list.jsp?p=<%=endBlock+1%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&gt;</a>
+			<a href="Productqna_list.jsp?p=<%=endBlock+1%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&gt;</a>
 			<%} else { %>
-			<a href="my_review_list.jsp?p=<%=endBlock+1%>&s=<%=s%>">&gt;</a>
+			<a href="Productqna_list.jsp?p=<%=endBlock+1%>&s=<%=s%>">&gt;</a>
 			<%} %>
 		<%} %>
 		
 		<%if(p < lastPage){ %>
 			<%if(search){ %>
-			<a href="my_review_list.jsp?p=<%=lastPage%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&raquo;</a>
+			<a href="Productqna_list.jsp?p=<%=lastPage%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&raquo;</a>
 			<%} else { %>
-			<a href="my_review_list.jsp?p=<%=lastPage%>&s=<%=s%>">&raquo;</a>
+			<a href="Productqna_list.jsp?p=<%=lastPage%>&s=<%=s%>">&raquo;</a>
 			<%} %>
 		<%} %>
 		
@@ -208,10 +215,11 @@
 	
 	<div class="row center">
 		<!-- 검색창 -->
-		<form action="my_review_list.jsp" method="get">
+		<form action="Productqna_list.jsp" method="get">
 			<select name="type" class="form-input input-round">
 				<option value="board_title">제목</option>
 				<option value="board_content">내용</option>
+				<option value="board_writer">작성자</option>
 			</select>
 			
 			<input type="search" name="keyword" placeholder="검색어 입력" required class="form-input input-round">

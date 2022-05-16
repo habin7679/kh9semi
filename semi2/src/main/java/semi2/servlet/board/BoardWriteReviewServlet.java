@@ -18,6 +18,7 @@ import semi2.beans.BoardAttachmentDao;
 import semi2.beans.BoardAttachmentDto;
 import semi2.beans.BoardDao;
 import semi2.beans.BoardDto;
+import semi2.beans.OrderDao;
 
 
 @WebServlet(urlPatterns = "/board/write_review.ez")
@@ -38,6 +39,8 @@ public class BoardWriteReviewServlet extends HttpServlet{
 			DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
 			
 			MultipartRequest mRequest = new MultipartRequest(req, path, max, encoding, policy);
+			
+			int productNo = Integer.parseInt(mRequest.getParameter("productNo"));
 			
 			BoardDto boardDto = new BoardDto();
 			
@@ -62,19 +65,23 @@ public class BoardWriteReviewServlet extends HttpServlet{
 //			- group_no - 원본글의 group_no
 //			- super_no - 원본글의 board_no
 //			- depth - 원본글의 depth + 1
-			if(req.getParameter("superNo") == null) {//새글이라면(superNo 파라미터가 없다면)
+			if(mRequest.getParameter("superNo") == null) {//새글이라면(superNo 파라미터가 없다면)
 				boardDto.setGroupNo(boardDto.getBoardNo());
 				boardDto.setSuperNo(0);
 				boardDto.setDepth(0);
 			}
 			else {//답글이라면
-				int superNo = Integer.parseInt(req.getParameter("superNo"));
+				int superNo = Integer.parseInt(mRequest.getParameter("superNo"));
 				BoardDto originDto = boardDao.selectOne(superNo);
 				boardDto.setGroupNo(originDto.getGroupNo());
 				boardDto.setSuperNo(originDto.getBoardNo());//==superNo
 				boardDto.setDepth(originDto.getDepth() + 1);
 			}
 			
+			
+			
+			OrderDao orderDao = new OrderDao();
+			orderDao.writeReview(Integer.parseInt(mRequest.getParameter("orderNo")), productNo);
 			
 			int no = boardDao.getSequence();
 			boardDto.setBoardNo(no);

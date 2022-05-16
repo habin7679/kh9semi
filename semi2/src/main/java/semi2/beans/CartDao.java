@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import oracle.jdbc.proxy.annotation.Pre;
+
 public class CartDao {
 	public void insert(CartDto cartDto) throws Exception{
 		Connection con = JdbcUtils.getConnection();
@@ -120,6 +122,21 @@ public class CartDao {
 		}
 		con.close();
 		return a;
+	}
+	public boolean savedProduct(int productNo, String memberId) throws Exception{
+		Connection con = JdbcUtils.getConnection();
+		String sql = "select * from cart where member_id=? and product_no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
 		
+		ps.setString(1, memberId);
+		ps.setInt(2, productNo);
+		
+		ResultSet rs = ps.executeQuery();
+		int count = 0;
+		if(rs.next()) {
+			count++;
+		}
+		con.close();
+		return  count>0;
 	}
 }

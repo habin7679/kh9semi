@@ -14,6 +14,8 @@
 	//List<BuyDto> list = bDao.selectAll(memberId);
 	PayingDao payingDao = new PayingDao();
 %>
+<jsp:include page="/template/header.jsp"></jsp:include>
+ 
 <%
 		int p;
 		try {
@@ -37,7 +39,7 @@
 		BuyDao buyDao = new BuyDao();
 		List<BuyDto> list2;
 
-			list2 = buyDao.listAllByPaging(p, s);
+			list2 = buyDao.listAllByPagingId(p, s, memberId);
 	%>
 	<%
 		int count;
@@ -56,7 +58,6 @@
 	%>
 
 
-<jsp:include page="/template/header.jsp"></jsp:include>
 
 <table class="table table-border layer-3 container">
 	<tr>
