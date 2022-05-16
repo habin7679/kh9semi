@@ -38,7 +38,6 @@
 	<%
 		BuyDao buyDao = new BuyDao();
 		List<BuyDto> list2;
-
 			list2 = buyDao.listAllByPagingId(p, s, memberId);
 	%>
 	<%
@@ -56,10 +55,13 @@
 			endBlock = lastPage;
 		}
 	%>
+<div class="row float-container">
+<div class="float-left layer-3">
+<jsp:include page="/template/menu.jsp"></jsp:include>
+</div>
 
 
-
-<table class="table table-border layer-3 container">
+<table class="table table-border layer-2">
 	<tr>
 		<th>주문 일시</th>
 		<th>주문 현황</th>
@@ -120,5 +122,5 @@
 		<%} %>
 		
 	</div>
-
+</div>
 <jsp:include page="/template/footer.jsp"></jsp:include>

@@ -21,7 +21,11 @@
 %>
 <jsp:include page="/template/header.jsp"></jsp:include>
 
-<div class="container w1000 m30">
+<div class="row float-container">
+<div class="float-left layer-3">
+<jsp:include page="/template/menu.jsp"></jsp:include>
+</div>
+<div  class="float-left layer-2">
     <div class="row float-container">
 <%for(int i =0; i<list.size(); i++) {
 		int productNo = list.get(i).getProductNo();
@@ -31,14 +35,17 @@
 %>
 
     <div class="float-left layer-3">
+			<form action="<%=request.getContextPath()%>/cart/insert.ez" method="post">
 			<img src="/semi2/file/download.ez?attachmentNo=<%=paDto.getAttachmentNo()%>" width="200" height="200"><br>
 			<a href="<%=request.getContextPath()%>/product/product_user_detail.jsp?product_no=<%=productNo%>"><%=pDto.getProductName() %></a><br>
 			<input type="hidden" name="productNo" value="<%=productNo%>"><br>
 			<h4><%=pDto.getProductPrice() %></h4><br>
 			<a href="<%=request.getContextPath() %>/like/delete.ez?productNo=<%=productNo %>" class="btn">삭제하기</a><br><br><br>
-			<a href="<%=request.getContextPath()%>/cart/insert.ez?productNo=<%=productNo %>" class="btn">장바구니에 추가하기</a><br><br><br>
+			<input type="submit" value="장바구니에 추가하기" class="btn">
+			</form>
 		</div>
 <%} %>
+</div>
 </div>
 </div>
 <jsp:include page="/template/footer.jsp"></jsp:include>

@@ -111,4 +111,8 @@
 	</tr>
 <%}%>
 	</table>
+	<br><BR>
+	<a href="<%=request.getContextPath() %>/index.jsp" class="btn">홈 화면으로 이동</a>
+	<a href="<%=request.getContextPath() %>/buy/list.jsp" class="btn">구매 리스트로 이동</a>
+	<br><BR>
 <jsp:include page="/template/footer.jsp"/>

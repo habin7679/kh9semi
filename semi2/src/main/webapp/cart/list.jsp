@@ -30,7 +30,7 @@
     <script type="text/javascript">
     $(function(){
         refreshTotal();
-        $(".qty").on("input", refreshTotal());
+        $(".qty").on("input", refreshTotal);
         $(".select-item").on("input", refreshTotal);
     	
         $(".all").on("input", function(){
@@ -55,7 +55,11 @@
 
     </script>
 
-
+<div class="row float-container">
+<div class="float-left layer-3">
+<jsp:include page="/template/menu.jsp"></jsp:include>
+</div>
+<div class="float-left layer-2">
 <form action="http://localhost:8080/semi2/order/order.ez" method="post">
 모두 구매하기<input type="checkbox" class="all">
 <%
@@ -73,7 +77,7 @@
 	<img src="/semi2/file/download.ez?attachmentNo=<%=paDto.getAttachmentNo()%>" width="200" height="200">
 	</div>
 	<div class= "row center">
-	<a href="detail.jsp?productNo=<%=pNo%>"><%=pDto.getProductName() %></a>
+	<a href="http://localhost:8080/semi2/product/product_user_detail.jsp?product_no=<%=pNo%>"><%=pDto.getProductName() %></a>
 	</div>
 	
 	<input type="hidden" name="productNo" value="<%=pNo %>">
@@ -92,7 +96,7 @@
 	<input type="submit" value="구매하기" class="btn btn-primary">
 	<%} %>
 </form>
-	
-
+</div>
+</div>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

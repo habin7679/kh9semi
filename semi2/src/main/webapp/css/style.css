@@ -47,21 +47,21 @@
     height: 30px;
     background: rgba(0, 0, 0, 0);
     color: rgb(10, 11, 10);
-    padding-left: 10px;
-}
+    padding-left: 11px;
 
+}
 
 .nav {
     font-size: 12px;
-    display: flex;
+    display: elf;
     justify-content: flex-end;
-    line-height: 50px;
-    width: 800px;
+    width: 400px;
     color: aliceblue;
 }
 
 .nav>li {
     margin-left: 84px;
+    
 }
 
 /* 네비 글자 색 바꿀 때
