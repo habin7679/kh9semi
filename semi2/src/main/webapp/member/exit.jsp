@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="/template/header.jsp"></jsp:include>
+
+
+<div class="row float-container">
+<div class="float-left layer-3">
 <jsp:include page="/template/menu.jsp"></jsp:include>
-	
-	<form action="exit.ez" method="post" style="height: 400px;">
-		<div class="container w500 m30">
+</div>
+<div class="float-left layer-2 ">
+	<form action="exit.ez" method="post">
+		<div class="row center">
 			<h1>회원탈퇴</h1>
 			<div class="row">
 			<label>비밀번호</label>
@@ -22,4 +27,6 @@
 			</div>
 		</div>
     </form>
+    </div>
+    </div>
 <jsp:include page="/template/footer.jsp"></jsp:include>
