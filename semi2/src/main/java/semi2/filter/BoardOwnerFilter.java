@@ -26,7 +26,7 @@ public class BoardOwnerFilter implements Filter{
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
 		try {
-
+			//준비
 			String memberId = (String)req.getSession().getAttribute("member");
 			MemberDao memberDao = new MemberDao();
 			MemberDto memberDto = memberDao.selectOne(memberId);
@@ -37,12 +37,12 @@ public class BoardOwnerFilter implements Filter{
 				return;
 			}
 			
-
+			//작성자 본인인지 확인
 			int boardNo = Integer.parseInt(req.getParameter("boardNo"));
 			
 			BoardDao boardDao = new BoardDao();
 			BoardDto boardDto = boardDao.selectOne(boardNo);
-			if(memberId.equals(boardDto.getBoardWriter())) {
+			if(memberId.equals(boardDto.getBoardWriter())) {//본인이라면
 				chain.doFilter(request, response);
 			}
 			else {
@@ -55,8 +55,3 @@ public class BoardOwnerFilter implements Filter{
 		}
 	}
 }
-
-
-
-
-

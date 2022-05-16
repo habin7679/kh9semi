@@ -32,12 +32,12 @@ public class adminFilter implements Filter{
 		HttpServletResponse resp = (HttpServletResponse) response;
 		
 		try {
-
+			//준비
 			String memberId = (String)req.getSession().getAttribute("member");
 			MemberDao memberDao = new MemberDao();
 			MemberDto memberDto = memberDao.selectOne(memberId);
 					
-					
+			//처리		
 			if(memberDto.getMemberGrade().equals("관리자")) {
 				chain.doFilter(request, response);
 				

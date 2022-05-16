@@ -25,14 +25,15 @@ public class ReplyOwnerFilter implements Filter{
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
 		try {
-
+			//준비 
+			//관리자인지 확인해서 관리자라면 통과
 			String memberGrade = (String) req.getSession().getAttribute("admin");
 			if(memberGrade.equals("관리자")) {
 				chain.doFilter(request, response);
 				return;
 			}
 			
-
+			//작성자 본인인지 확인
 			String memberId = (String)req.getSession().getAttribute("member");
 			int replyNo = Integer.parseInt(req.getParameter("replyNo"));
 			
@@ -51,7 +52,3 @@ public class ReplyOwnerFilter implements Filter{
 		}
 	}
 }
-
-
-
-
