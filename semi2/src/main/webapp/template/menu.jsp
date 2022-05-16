@@ -27,7 +27,7 @@
                 	  <div class="row center"><a href="<%=request.getContextPath()%>/dict/main.jsp">칼로리 처방받기</a></div>
 
                 <h2>활동관리</h2>
-                <div class="row center"><a href="#">최근 본 상품</a></div>
+                <div class="row center"><a href="<%=request.getContextPath()%>/product/recent_product.jsp">최근 본 상품</a></div>
                 <div class="row center"><a href="<%=request.getContextPath()%>/board/review_list.jsp?type=board_writer&keyword=<%=memberDto.getMemberId()%>">내 후기내역</a></div>
                 <div class="row center"><a href="<%=request.getContextPath()%>/board/qna_list.jsp?type=board_writer&keyword=<%=memberDto.getMemberId()%>">내 문의내역</a></div>
             
