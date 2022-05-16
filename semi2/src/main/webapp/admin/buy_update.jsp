@@ -19,15 +19,15 @@
 <form action = "buy_update.ez" method="post">
     <table class="table table-border table-hover">
 	    <tr>
-	    		<th>구매번호</th>
-	    		<td><%=buyDto.getBuyNo()%></td>
+	    		<th><label>구매번호</label></th>
+	    		<td><input type="text" name="buyNo" value="<%=buyDto.getBuyNo()%>" class="form-input fill input-round" required></td>
 	     <tr>
 	    		<th>회원아이디</th>
-	    		<td><%=buyDto.getMemberId()%></td>
+	    		<td><input type="text" name="memberId" value="<%=buyDto.getMemberId()%>" class="form-input fill input-round" required></td>
 	    </tr>
 	    <tr>
 	    		<th>주문번호</th>
-	    		<td><%=buyDto.getOrderNo()%></td>
+	    		<td><input type="text" name="orderNo" value="<%=buyDto.getOrderNo()%>" class="form-input fill input-round" required></td>
 	    </tr>
 	    <tr>
 	    		<th>송장번호</th>
@@ -37,7 +37,7 @@
 	    </tr>	    
 		 <tr>
 	    		<th>배송상태</th>
-	    		<td><%=buyDto.getBuyStatus() %></td>
+	    		<td><input type="text" name="buyStatus" value="<%=buyDto.getBuyStatus()%>" class="form-input fill input-round" required></td>
 	    </tr>
 	</table>
 	    <div class="container w300">

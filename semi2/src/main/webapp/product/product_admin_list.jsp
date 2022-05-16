@@ -173,7 +173,6 @@ if (endBlock > lastPage) {
 	<%
 	} else {
 	%>
-	<div class="container center w950 m30">
 	<div class="row right">
 		<a href="product_insert.jsp" class="link link-btn">상품추가</a>
 	</div>
@@ -186,7 +185,7 @@ if (endBlock > lastPage) {
 					<th>제품 가격</th>
 					<th>재고</th>
 					<th>제조일</th>
-					<th>기타</th>
+					<th>상세</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -202,7 +201,9 @@ if (endBlock > lastPage) {
 					<td><%=productDto.getProductMade()%></td>
 					<td><a
 						href="product_admin_detail.jsp?product_no=<%=productDto.getProductNo()%>"
-						class="link">상세</a></td>
+						class="link">
+						<img src="<%=request.getContextPath()%>/image/detail.png" width="20" height="20">
+						</a></td>
 				</tr>
 				<%
 				}
@@ -332,9 +333,6 @@ if (endBlock > lastPage) {
 		}
 		%>
 		</div>
-	</div>
-</article>
-</section>
 </body>
 
 <footer>
