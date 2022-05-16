@@ -164,6 +164,9 @@ if (endBlock > lastPage) {
 	<%
 	if (list.isEmpty()) {
 	%>
+	<div class="row right">
+		<a href="product_insert.jsp" class="link link-btn">상품추가</a>
+	</div>
 	<div class="row center"><br><br>
 		<h2>검색결과가 존재하지 않습니다!</h2><br><br>
 	</div>

@@ -12,14 +12,20 @@
 	BuyDao buyDao = new BuyDao();
 	BuyDto buyDto = buyDao.selectOne(buyNo);
 %>
-
+<head>
+<style>
+	th {
+	font-weight : 600;
+	}	
+</style>
+</head>
 	<jsp:include page="/template/header.jsp"></jsp:include>
 <div class="container w500 m30">
 <h1>송장번호 입력</h1><br><br>
 <form action = "buy_update.ez" method="post">
     <table class="table table-border table-hover">
 	    <tr>
-	    		<th><label>구매번호</label></th>
+	    		<th>구매번호</th>
 	    		<td><input type="text" name="buyNo" value="<%=buyDto.getBuyNo()%>" class="form-input fill input-round" required></td>
 	     <tr>
 	    		<th>회원아이디</th>
@@ -32,7 +38,7 @@
 	    <tr>
 	    		<th>송장번호</th>
 	    		<td>
-	    		<input type="text" name="buyInvoice" value="<%=buyDto.getBuyInvoice()%>">
+	    		<input type="text" name="buyInvoice" class="form-input fill input-round" value="<%=buyDto.getBuyInvoice()%>">
 	    		</td>
 	    </tr>	    
 		 <tr>
