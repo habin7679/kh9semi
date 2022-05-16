@@ -173,7 +173,7 @@ if (endBlock > lastPage) {
 	<%
 	} else {
 	%>
-	<div class="container center w900 m30">
+	<div class="container center w950 m30">
 	<div class="row right">
 		<a href="product_insert.jsp" class="link link-btn">상품추가</a>
 	</div>
@@ -337,7 +337,8 @@ if (endBlock > lastPage) {
 </section>
 </body>
 
-
+<footer>
+</footer>
 <jsp:include page="/template/footer.jsp"></jsp:include>
 
 

@@ -53,6 +53,49 @@
     }
     p { width: 100px; /* 정렬하려는 요소의 넓이를 반드시 지정 */ margin: 0 auto; }
     </style>
+     <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        $(function () {
+            //label : X축에 표시될 항목들
+            var labels = [
+                'January',
+                'February',
+                'March',
+                'April',
+                'May',
+                'June',
+            ];
+
+            //data : 차트에 표시될 데이터
+            var data = {
+                labels: labels,
+                datasets: [{
+                    label: 'My First dataset',//범례
+                    backgroundColor: 'rgb(255, 99, 132)',//배경색
+                    borderColor: 'rgb(255, 99, 132)',//테두리색
+                    data: [0, 10, 5, 2, 20, 30, 45],//데이터
+                }]
+            };
+
+            //차트의 형태 등을 설정(옵션, 환경설정)
+            var config = {
+                type: 'bar',//차트의 모양
+                data: data,//차트 데이터
+                options: {}
+            };
+
+            //차트 생성 구문
+            var myChart = new Chart(
+                document.querySelector('#myChart'),//차트 적용 대상
+                config//차트 옵션
+            );
+        });
+    </script>
 </head>
 <body>
 <div class="container w1000 m30">
@@ -69,6 +112,14 @@
 		</aside>
 		
 <article class= "float-left layer-2">
+   <div class="container w500 m30">
+        <div class="row center m30">
+            <h1>상반기 판매 현황</h1>
+        </div>
+        <div class="row">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
 <h1>관리자 대시보드</h1>
 
 	<h2>연도별 현황</h2>

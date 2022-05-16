@@ -24,7 +24,7 @@
         width:100%;
     }
     .layer-2 {
-        width:50%;
+        width:80%;
     }
     .layer-3 {
         width:33.3333%;
@@ -35,6 +35,7 @@
     .layer-5 {
         width:20%;
         margin-top:5%;
+        padding-right:130px;        
     }
     label {
     	font-size :25px;
@@ -46,6 +47,7 @@
     </style>
 </head>
 <body>
+<div class="container w1000 m30 ">
 	<section>
 		<aside class="float-left layer-5">
 		<label><a href="<%=request.getContextPath()%>/admin/admin.jsp">Member</a></label><br><br><br><br>
@@ -115,7 +117,6 @@ boolean isSearch = type != null && !type.equals("") && keyword != null && !keywo
 %>
 
 <%-- 출력 --%>
-<div class="container w950 m30 ">
 	<div>
 		<div class="row center">
 			<h1>회원 목록</h1>
