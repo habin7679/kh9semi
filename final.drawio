@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-05-16T05:47:09.429Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36" etag="KLKsXD0ToB-z32QGZb0m" version="17.4.5" type="github">
+<mxfile host="app.diagrams.net" modified="2022-05-16T05:50:40.074Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36" etag="xYBfYg8-Mn72VRrILOLK" version="17.4.5" type="github">
   <diagram id="po_bsAwMXMUbILKIjwSt" name="Page-1">
     <mxGraphModel dx="2784" dy="4325" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -68,7 +68,7 @@
           <mxGeometry x="190" y="-1040" width="410" height="230" as="geometry" />
         </mxCell>
         <mxCell id="wMbTXYFd00fgI91BMli0-23" value="&lt;font style=&quot;font-size: 20px&quot;&gt;product&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=17;" parent="1" vertex="1">
-          <mxGeometry x="1140" y="-1160" width="175" height="80" as="geometry" />
+          <mxGeometry x="1130" y="-1280" width="175" height="80" as="geometry" />
         </mxCell>
         <mxCell id="wMbTXYFd00fgI91BMli0-24" value="칼로리사전&lt;br&gt;dict/main.jsp" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="184" y="-2680" width="120" height="60" as="geometry" />
@@ -100,9 +100,6 @@
         </mxCell>
         <mxCell id="wMbTXYFd00fgI91BMli0-57" value="회원가입&lt;br&gt;join.jsp" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1550" y="-410" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="wMbTXYFd00fgI91BMli0-63" value="&lt;font style=&quot;font-size: 20px&quot;&gt;상세페이지&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1162.5" y="-1690" width="152.5" height="70" as="geometry" />
         </mxCell>
         <mxCell id="o1LY4lYA1ahA4SfnEf8r-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=20;endArrow=none;endFill=0;startArrow=none;" parent="1" source="o1LY4lYA1ahA4SfnEf8r-7" target="uuZ5_4V9N_6O_D1vq4jB-11" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -919,34 +916,43 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="AO6-CMWt6nxgQ3T5M3Mr-1" value="&lt;span style=&quot;font-size: 20px&quot;&gt;목록/검색&lt;/span&gt;&lt;br&gt;&lt;font style=&quot;font-size: 16px&quot;&gt;product_admin_list.jsp&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=17;" vertex="1" parent="1">
-          <mxGeometry x="1140" y="-1270" width="175" height="80" as="geometry" />
+          <mxGeometry x="1130" y="-1500" width="175" height="80" as="geometry" />
         </mxCell>
         <mxCell id="AO6-CMWt6nxgQ3T5M3Mr-2" value="&lt;font&gt;&lt;span style=&quot;font-size: 20px&quot;&gt;상세보기&lt;/span&gt;&lt;br&gt;&lt;font style=&quot;font-size: 15px&quot;&gt;product_admin_detail.jsp&lt;/font&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=17;" vertex="1" parent="1">
-          <mxGeometry x="1140" y="-1380" width="175" height="80" as="geometry" />
+          <mxGeometry x="1153" y="-1680" width="175" height="80" as="geometry" />
         </mxCell>
         <mxCell id="AO6-CMWt6nxgQ3T5M3Mr-3" value="&lt;span style=&quot;font-size: 20px&quot;&gt;수정(입력)&lt;br&gt;product_edit.jsp&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=17;" vertex="1" parent="1">
-          <mxGeometry x="1350" y="-1380" width="175" height="80" as="geometry" />
+          <mxGeometry x="1342.5" y="-1500" width="175" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="AO6-CMWt6nxgQ3T5M3Mr-4" value="&lt;span style=&quot;font-size: 20px&quot;&gt;수정(성공)&lt;/span&gt;&lt;br&gt;&lt;font style=&quot;font-size: 14px&quot;&gt;product_edit_success.jsp&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=17;" vertex="1" parent="1">
-          <mxGeometry x="1550" y="-1280" width="175" height="80" as="geometry" />
+        <mxCell id="AO6-CMWt6nxgQ3T5M3Mr-4" value="&lt;span style=&quot;font-size: 20px&quot;&gt;수정성공&lt;/span&gt;&lt;br&gt;&lt;font style=&quot;font-size: 14px&quot;&gt;product_edit_success.jsp&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="1540" y="-1390" width="175" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="AO6-CMWt6nxgQ3T5M3Mr-5" value="&lt;span style=&quot;font-size: 20px&quot;&gt;수정(실패)&lt;/span&gt;&lt;br&gt;&lt;font style=&quot;font-size: 14px&quot;&gt;product_edit_fail.jsp&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=17;" vertex="1" parent="1">
-          <mxGeometry x="1550" y="-1480" width="175" height="80" as="geometry" />
+        <mxCell id="AO6-CMWt6nxgQ3T5M3Mr-5" value="&lt;span style=&quot;font-size: 20px&quot;&gt;수정실패&lt;/span&gt;&lt;br&gt;&lt;font style=&quot;font-size: 14px&quot;&gt;product_edit_fail.jsp&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="1540" y="-1600" width="175" height="80" as="geometry" />
         </mxCell>
         <mxCell id="o1LY4lYA1ahA4SfnEf8r-3" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;insertAmount.ez&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="910" y="-1685" width="160" height="60" as="geometry" />
         </mxCell>
         <mxCell id="AO6-CMWt6nxgQ3T5M3Mr-7" value="&lt;span style=&quot;font-size: 20px&quot;&gt;삭제(처리)&lt;br&gt;delete.ez&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=17;" vertex="1" parent="1">
-          <mxGeometry x="931.5" y="-1380" width="175" height="80" as="geometry" />
+          <mxGeometry x="885" y="-1500" width="175" height="80" as="geometry" />
         </mxCell>
         <mxCell id="AO6-CMWt6nxgQ3T5M3Mr-8" value="&lt;span style=&quot;font-size: 20px&quot;&gt;수정(처리)&lt;br&gt;edit.ez&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=17;" vertex="1" parent="1">
-          <mxGeometry x="1550" y="-1380" width="175" height="80" as="geometry" />
+          <mxGeometry x="1540" y="-1500" width="175" height="80" as="geometry" />
         </mxCell>
         <mxCell id="AO6-CMWt6nxgQ3T5M3Mr-9" value="&lt;span style=&quot;font-size: 20px&quot;&gt;삭제실패&lt;/span&gt;&lt;br&gt;&lt;font style=&quot;font-size: 16px&quot;&gt;product_delete_fail.jsp&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=17;" vertex="1" parent="1">
-          <mxGeometry x="931.5" y="-1270" width="175" height="80" as="geometry" />
+          <mxGeometry x="885" y="-1390" width="175" height="80" as="geometry" />
         </mxCell>
         <mxCell id="AO6-CMWt6nxgQ3T5M3Mr-10" value="&lt;span style=&quot;font-size: 20px&quot;&gt;삭제성공&lt;/span&gt;&lt;br&gt;&lt;font style=&quot;font-size: 13px&quot;&gt;&lt;font style=&quot;font-size: 13px&quot;&gt;prdocut_delete_success.js&lt;/font&gt;p&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=17;" vertex="1" parent="1">
-          <mxGeometry x="931.5" y="-1490" width="175" height="80" as="geometry" />
+          <mxGeometry x="885" y="-1600" width="175" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="AO6-CMWt6nxgQ3T5M3Mr-11" value="&lt;span style=&quot;font-size: 20px&quot;&gt;등록(입력)&lt;br&gt;product_insert.jsp&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="1342.5" y="-1390" width="175" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="AO6-CMWt6nxgQ3T5M3Mr-12" value="&lt;span style=&quot;font-size: 20px&quot;&gt;등록(처리)&lt;br&gt;add.ez&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="-1280" width="175" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="AO6-CMWt6nxgQ3T5M3Mr-13" value="&lt;span style=&quot;font-size: 20px&quot;&gt;등록완료&lt;br&gt;&lt;/span&gt;&lt;font style=&quot;font-size: 13px&quot;&gt;product_insert_success.jsp&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="-1170" width="175" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
