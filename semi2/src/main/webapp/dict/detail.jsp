@@ -55,6 +55,6 @@
 
 </table>
 	<div class="row center">
-	<a href="<%=request.getContextPath() %>/product_user_list.jsp" class="link btn btn-primary">쇼핑하러가기</a>
+	<a href="<%=request.getContextPath() %>/product/product_user_list.jsp?product_sort=닭가슴살" class="link btn btn-primary">쇼핑하러가기</a>
 	</div>
 <jsp:include page="/template/footer.jsp"></jsp:include>

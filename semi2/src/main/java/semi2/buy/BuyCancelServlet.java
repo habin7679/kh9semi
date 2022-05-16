@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import semi2.beans.BuyDao;
 import semi2.beans.BuyDto;
 import semi2.beans.MemberDao;
+import semi2.beans.MemberDto;
 import semi2.beans.OrderDao;
 import semi2.beans.OrderDto;
 import semi2.beans.ProductDao;
@@ -49,6 +50,17 @@ public class BuyCancelServlet extends HttpServlet{
 					totalPrice+=list.get(i).getOrderPrice();
 				}
 				MemberDao mDao = new MemberDao();
+				String memberId=(String)req.getSession().getAttribute("member");
+				MemberDto memberDto= mDao.selectOne(memberId);
+				if(memberDto.getMemberPoint()>3000) {
+					mDao.updateGrade("우수회원", memberId);
+				}
+				else if(memberDto.getMemberPoint()>7000) {
+					mDao.updateGrade("vip", memberId);
+				}
+				else {
+					mDao.updateGrade("일반회원", memberId);
+				}
 				
 				mDao.pointMinus(totalPrice, (String)req.getSession().getAttribute("member"));
 				
