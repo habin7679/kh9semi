@@ -39,6 +39,7 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 <%-- 출력 --%>
 <jsp:include page="/template/header.jsp"></jsp:include>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+ 	<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
     <script type="text/javascript">
         $(function(){
             //[1] 1페이지를 불러와서 화면에 띄운다
@@ -83,22 +84,20 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
                 });
             }
         });
-        var recentProdArr = JSON.parse(localStorage.getItem("recentProdArr")); // 로컬스토리지에서 최근 본 상품 목록 가져오기
-        if (recentProdArr == null) {
-        	recentProdArr = [];     // 초기에 최근 본 상품 없을 경우 변수 초기화
+        var recentProdObj = JSON.parse(localStorage.getItem("recentProdObj"));// 로컬스토리지에서 최근 본 상품 목록 가져오기
+        if (recentProdObj == null) {
+        	recentProdObj = [];     // 초기에 최근 본 상품 없을 경우 변수 초기화
         }
         
-		console.log(recentProdArr); // 기존 최근 본 상품 목록 로그  출력
-        recentProdArr.unshift(<%=productNo%>); // 현재 상품 최근 본 상품 목록 배열 앞에 넣기(push 에서 unshift로 변경)
-        const set = new Set(recentProdArr);
-        recentProdArr = [...set]; // 중복 제거
-        localStorage.setItem("recentProdArr", JSON.stringify(recentProdArr.slice(0, 2))); // 로컬스토리지 업데이트 (slice로 배열 3개만 유지)
-        console.log(recentProdArr); // 업데이트 된 최근 본 상품 목록 로그 출력
-		console.log(recentProdArr);
-        recentProdArr.push(<%=productNo%>);
-        localStorage.setItem("recentProdArr", JSON.stringify(recentProdArr));
-        console.log(recentProdArr);
+        newProdObj = {};
+        newProdObj.id = <%=productNo%>;
+        newProdObj.img = <%=productattachmentDto.getAttachmentNo()%>;
+
+        recentProdObj.unshift(newProdObj);
+        _.uniqBy(recentProdObj, "id");
         
+        localStorage.setItem("recentProdObj", JSON.stringify(recentProdObj.slice(0, 3)));
+        console.log(JSON.parse(localStorage.getItem("recentProdObj")));
     </script>
 		<style>
      .float-container {
