@@ -588,10 +588,8 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자
 	</div>
 	
 
-<<<<<<< HEAD
-<button class="btn btn-primary"><a href="productqna_list.jsp">상품 문의하러 가기</</a></button><br><br>
+
 <button class="btn btn-primary "><a href="product_user_list.jsp">상품 목록 가기</</a></button><br><br>
-=======
-<button class="btn "><a href="product_user_list.jsp">상품 목록 가기</</a></button><br><br>
->>>>>>> refs/remotes/origin/main
+
+
 <jsp:include page="/template/footer.jsp"></jsp:include>

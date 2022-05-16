@@ -165,9 +165,10 @@ ul.bar a {
 						<a href="<%=request.getContextPath()%>/buy/list.jsp">주문/배송조회</a>
 						&nbsp;&nbsp;&nbsp;
 					<br><br>
-
-
 					</ul>
+					<ul class="nav">
+					<a href="<%=request.getContextPath()%>/buy/list.jsp">찜목록</a>	&nbsp;&nbsp;&nbsp;
+					<a href="<%=request.getContextPath()%>/buy/list.jsp">장바구니</a>
 				</ul>
 			</div>
 		</div>	
@@ -185,8 +186,7 @@ ul.bar a {
                 <li>
                     <a href="<%=request.getContextPath()%>#">PRODUCT</a>
                     <ul style="z-index: 100;">
-
-        				<li><a href="<%=request.getContextPath()%>/product/product_user_list.jsp?product_sort=정기배송">정기배송</a></li>
+						
         				<li><a href="<%=request.getContextPath()%>/product/product_user_list.jsp?product_sort=닭가슴살">닭가슴살</a></li>
         				<li><a href="<%=request.getContextPath()%>/product/product_user_list.jsp?product_sort=샐러드">샐러드</a></li>
         				<li><a href="<%=request.getContextPath()%>/product/product_user_list.jsp?product_sort=소고기">소고기</a></li>
@@ -197,8 +197,6 @@ ul.bar a {
                 <li>
                     <a href="<%=request.getContextPath()%>#">칼로리사전</a>
                     <ul style="z-index: 100;">
-        				<li><a href="<%=request.getContextPath()%>#">음식칼로리</a></li>
-        				<li><a href="<%=request.getContextPath()%>#">운동칼로리</a></li>
         				<li><a href="<%=request.getContextPath()%>/dict/main.jsp">칼로리처방</a></li>
                     </ul>
                 </li>

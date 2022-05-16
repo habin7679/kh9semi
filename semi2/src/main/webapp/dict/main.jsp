@@ -25,7 +25,7 @@
 		</div>
 		
 		<div class="row">
-			주당 운동횟수<select name="count" class="form-input fill">
+			주당 운동횟수<select name="count" class="form-input">
 				<option>0</option>
 				<option>1</option>
 				<option>2</option>
