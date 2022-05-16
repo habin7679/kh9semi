@@ -1,3 +1,5 @@
+<%@page import="semi2.beans.MemberDto"%>
+<%@page import="semi2.beans.MemberDao"%>
 <%@page import="semi2.beans.ProductAttachmentDto"%>
 <%@page import="semi2.beans.ProductAttachmentDao"%>
 <%@page import="semi2.beans.ProductDto"%>
@@ -17,6 +19,7 @@
 	List<CartDto> list = cDao.selectAll(memberId);
 
 	ProductAttachmentDao paDao = new ProductAttachmentDao();
+	
 %>    
 <jsp:include page="/template/header.jsp"></jsp:include>
 
