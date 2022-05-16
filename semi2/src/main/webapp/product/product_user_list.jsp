@@ -18,6 +18,7 @@ String productSort = request.getParameter("product_sort");
 <%
 boolean isSearch = productName != null && !productName.trim().equals("");
 ProductDao productDao = new ProductDao();
+ProductDto productDto = new ProductDto();
 
 
 
@@ -82,45 +83,21 @@ else
     .layer-5 {
         width:20%;
     }
-
-    /* 
-        inline이 들어간 속성들은 기본 간격이 존재한다
-    */
-    #a {
-        display: inline-block;
-        width:49.6%;
-    }
-    #b {
-        display: inline-block;
-        width:49.6%;
-    }
-
-    /* 
-        float : left는 띄워서 왼쪽으로 붙이라는 뜻 
-
-        float로 설정한 항목들은 기존의 배치와 조화를 이루지 못함
-        이를 해결하기 위해서는 반드시 clear 속성을 가진 영역이 필요하다.
-    */
-    #c {
-        float:right;
-        width:50%;
-    }
-
-    #d {
-        float:right;
-        width:50%;
-    }   
+	.hoho{
+		width:260px;
+	}
+	
 </style>
 <jsp:include page="/template/header.jsp"></jsp:include>
 <div class="container w1000 m30">
     <div class="row center">
-        <h1><a href="product_user_list.jsp">상품 목록</a></h1>
-    </div>
-    <div class="row center">
+        <h1><%=productSort%></h1><br>
+        </div>
+  <div class="row center ">
 <!-- 검색창 -->
             <form action="product_user_list.jsp" >
             <%if(productName == null){ %>
-            <input type="text" name="product_name" required class="form-input input-round" >
+            <input type="text" name="product_name" required class="form-input input-round hoho"  >
             <%} else { %>
             <input type="text" name="product_name" required placeholder="검색어 작성" value="<%=productName%>" class="form-input input-round">
             <%} %>
@@ -134,7 +111,7 @@ List<ProductDto>  list2 = productDao.categorie(productSort);
 %>
     <div class="row float-container">
     <%for (int i = 0; i < list2.size(); i ++) {
-        ProductDto productDto = list2.get(i);
+        productDto = list2.get(i);
         int productNo = productDto.getProductNo();
         ProductAttachmentDao productattachmentDao = new ProductAttachmentDao();
         ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(productNo);
@@ -191,7 +168,7 @@ if (list.isEmpty()) {
 %>
 <div class="row float-container">
     <%for (int i = 0; i < list.size(); i ++) {
-        ProductDto productDto = list.get(i);
+        productDto = list.get(i);
         int productNo = productDto.getProductNo();
         ProductAttachmentDao productattachmentDao = new ProductAttachmentDao();
         ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(productNo);
@@ -240,7 +217,6 @@ if (list.isEmpty()) {
 <%
 }}
 %>
-</div>
 </div>
 </body>
 <jsp:include page="/template/footer.jsp"></jsp:include>

@@ -27,7 +27,7 @@
         <div class="row">
             <label>분류</label>
             <select name="productSort" class="form-input fill input-round">
-                <option <%if(productDto.getProductSort().equals("정기배송")){%>selected<%} %>>정기배송</option>
+               <option <%if(productDto.getProductSort().equals("정기배송")){%>selected<%} %>>정기배송</option>
                 <option <%if(productDto.getProductSort().equals("닭가슴살")){%>selected<%} %>>닭가슴살</option>
                 <option <%if(productDto.getProductSort().equals("샐러드")){%>selected<%} %>>샐러드</option>
                 <option <%if(productDto.getProductSort().equals("소고기")){%>selected<%} %>>소고기</option>
