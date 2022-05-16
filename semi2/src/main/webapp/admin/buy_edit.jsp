@@ -66,7 +66,7 @@
 	    			</td>
 	    </tr>
 	    </table>
-	    		<br><br></b><input type="submit" value="확인" class="btn btn-primary"><br><br><br><br>
+	    		<br><br><input type="submit" value="확인" class="btn btn-primary"><br><br><br><br>
   
 </form>
 </div>

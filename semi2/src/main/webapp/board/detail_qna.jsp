@@ -105,7 +105,9 @@
 		</td>
 		</tr>
 		<%} else{%>
+		<div class="row center">
 		<h1>작성자 본인이 아닙니다</h1>
+		</div>
 		<%} %>
 	<!-- 버튼 영역 -->
 	<tr>	
@@ -162,7 +164,7 @@
 					<%if(isOwner || isAdmin){ %> 
 					<tr class="show-row">
 						<th width="25%">
-							<%=replyDto.getReplyWriter()%>
+							<%=memberDto.getMemberNick()%>
 						</th>
 						<td width="15%"><%=replyDto.getReplyTime()%></td>
 						<td width="50%">

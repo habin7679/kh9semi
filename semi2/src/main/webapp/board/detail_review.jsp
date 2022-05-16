@@ -128,7 +128,7 @@
 					<%-- 보여주기 위한 줄 --%>
 					<tr class="show-row">
 						<th width="25%">
-							<%=replyDto.getReplyWriter()%>
+							<%=memberDto.getMemberNick()%>
 						</th>
 						<td width="15%"><%=replyDto.getReplyTime()%></td>
 						<td width="50%">

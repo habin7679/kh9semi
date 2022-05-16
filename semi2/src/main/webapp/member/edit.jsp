@@ -14,12 +14,9 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
 <style>
-.menu{
-	float: left;
-	width:"30%";
-	
+.layer2{
+	width: 50%;
 }
-
 </style>
 
 <script type="text/javascript">
@@ -125,11 +122,12 @@
     </script>
     
 
- <jsp:include page="/template/menu.jsp"></jsp:include>
-
-
+<div class="row float-container">
+<div class="float-left layer-3">
+<jsp:include page="/template/menu.jsp"></jsp:include>
+</div>
+<div class="float-left layer-2 ">
 <form action="edit.ez" method="post">
-<div class="container w500 m30">
 	    <div class="row center">
 	        <h1>개인정보 변경</h1>
 	    </div>
@@ -177,8 +175,10 @@
 			<h3 style="color:red;">비밀번호가 일치하지 않습니다</h3>		
 		</div>	    
 		<%} %>
-</div>
 </form>
+</div>
+</div>
+
 
 
 
