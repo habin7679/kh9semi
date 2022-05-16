@@ -16,7 +16,7 @@ import semi2.beans.MemberDao;
 import semi2.beans.MemberDto;
 
 @WebFilter(filterName="f3", urlPatterns = {
-		"/board/edit.jsp", "/board/edit.ez",
+//		"/board/edit.jsp", "/board/edit.ez",
 		"/board/delete.ez"
 })
 public class BoardOwnerFilter implements Filter{
@@ -26,8 +26,7 @@ public class BoardOwnerFilter implements Filter{
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
 		try {
-			//준비 : 파라미터의 게시글번호(boardNo)와 세션의 권한(auth) 아이디(login)
-			//[1] 관리자인지 확인해서 관리자라면 통과!
+
 			String memberId = (String)req.getSession().getAttribute("member");
 			MemberDao memberDao = new MemberDao();
 			MemberDto memberDto = memberDao.selectOne(memberId);
@@ -38,15 +37,15 @@ public class BoardOwnerFilter implements Filter{
 				return;
 			}
 			
-			//[2] 작성자 본인인지 확인
+
 			int boardNo = Integer.parseInt(req.getParameter("boardNo"));
 			
 			BoardDao boardDao = new BoardDao();
 			BoardDto boardDto = boardDao.selectOne(boardNo);
-			if(memberId.equals(boardDto.getBoardWriter())) {//본인이라면
+			if(memberId.equals(boardDto.getBoardWriter())) {
 				chain.doFilter(request, response);
 			}
-			else {//본인이 아니라면 : 권한 없음 에러 발생(403, forbidden)
+			else {
 				resp.sendError(403);
 			}
 		}
