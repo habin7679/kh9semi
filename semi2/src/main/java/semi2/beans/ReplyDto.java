@@ -5,6 +5,7 @@ import java.sql.Date;
 public class ReplyDto {
 	private int replyNo;
 	private String replyWriter;
+	private String replyWriter1;
 	private int replyTarget;
 	private String replyContent;
 	private Date replyTime;
@@ -41,4 +42,13 @@ public class ReplyDto {
 	public ReplyDto() {
 		super();
 	}
+	public String getReplyWriter1() {
+		return replyWriter1;
+	}
+	public void setReplyWriter1(String replyWriter1) {
+		this.replyWriter1 = replyWriter1;
+	}
+	
+	
+	
 }
