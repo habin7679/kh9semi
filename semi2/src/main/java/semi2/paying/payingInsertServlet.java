@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import semi2.beans.BuyDao;
 import semi2.beans.BuyDto;
 import semi2.beans.MemberDao;
+import semi2.beans.MemberDto;
 import semi2.beans.OrderDao;
 import semi2.beans.OrderDto;
 import semi2.beans.PayingDao;
@@ -55,9 +56,21 @@ public class payingInsertServlet extends HttpServlet {
 				totalPrice+=list.get(i).getOrderPrice();
 				productDao.stockMinus(productNo, orderAmount);
 			}
-			
+			MemberDto memberDto= new MemberDto();
 			MemberDao mDao = new MemberDao();
 			mDao.pointAdd(totalPrice, memberId);
+			memberDto=mDao.selectOne(memberId);
+			
+			if(memberDto.getMemberPoint()>3000) {
+				mDao.updateGrade("우수회원", memberId);
+			}
+			else if(memberDto.getMemberPoint()>7000) {
+				mDao.updateGrade("vip", memberId);
+			}
+			else {
+				mDao.updateGrade("일반회원", memberId);
+			}
+			
 			
 			boolean is = payingDao.insertRest2(payingDto);
 			if(is) {

@@ -21,7 +21,7 @@
         width:100%;
     }
     .layer-2 {
-        width:50%;
+        width:80%;
     }
     .layer-3 {
         width:33.3333%;
@@ -33,6 +33,7 @@
 
         width:20%;
         margin-top:5%;
+        padding-right:130px;
     }
     label {
     	font-size :25px;
@@ -44,20 +45,20 @@
     </style>
 </head>
 <body>
+	<div class="container w1000 m30">
 	<section>
 		<aside class="float-left layer-5">
 		<label><a href="<%=request.getContextPath()%>/admin/admin.jsp">Member</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/product/product_admin_list.jsp">Product</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/buy_list.jsp">Order</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/order_list.jsp">Delivery</a></label><br><br><br><br>
-		<label><a href="<%=request.getContextPath()%>/admin/board_list.jsp">Board List</a></label><br><br><br><br>
+		<label><a href="<%=request.getContextPath()%>/admin/board_list.jsp">Board</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/board_write.jsp">Write</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/banner.jsp">Banner</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/statistics.jsp">Statistics</a></label><br><br><br><br>	
 		</aside>
 		
 <article class= "float-left layer-2">
-	<div class="container w950 m30">
 		<br><br><h1>탈퇴 완료</h1><br><br>
 		<h3>회원 탈퇴 처리가 완료되었습니다!</h3><br><br>
 		<a href="member_list.jsp" class ="link link-btn-green" width="20%" >목록으로 돌아가기</a><br><br>

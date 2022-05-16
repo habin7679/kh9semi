@@ -17,7 +17,7 @@ import semi2.beans.LikeDto;
 @WebServlet(urlPatterns="/cart/insert.ez")
 public class CartInsertServlet extends HttpServlet{
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			CartDao cDao = new CartDao();
 			CartDto cDto = new CartDto();

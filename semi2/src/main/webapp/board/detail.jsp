@@ -11,29 +11,35 @@
     pageEncoding="UTF-8"%>
 
 <%
-	int boardNo = Integer.parseInt(request.getParameter("boardNo"));
-	BoardDao boardDao = new BoardDao();
-	boardDao.plusReadcount(boardNo);//조회수 증가 
-	BoardDto boardDto = boardDao.selectOne(boardNo);//게시글을 불러온다 
-	
-	BoardAttachmentDao boardAttachmentDao = new BoardAttachmentDao();
-	BoardAttachmentDto boardAttachmentDto = boardAttachmentDao.selectOne(boardNo);
-	
-	MemberDao memberDao = new MemberDao();
-	MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자 모든 정보 조회
-	
-	
-	//내 글인지 판정
-	//= 현재 로그인한 사용자가 게시글 작성자인지 확인
-	//= 세션에 있는 사용자의 아이디와 게시글의 작성자를 비교
-	String memberId = (String)session.getAttribute("member");
-	boolean isLogin = memberId != null;
-	boolean isOwner = isLogin && memberId.equals(boardDto.getBoardWriter());
-	
-	//관리자인지 판정
+int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+BoardDao boardDao = new BoardDao();
+boardDao.plusReadcount(boardNo);//조회수 증가 
+BoardDto boardDto = boardDao.selectOne(boardNo);//게시글을 불러온다 
+
+BoardAttachmentDao boardAttachmentDao = new BoardAttachmentDao();
+BoardAttachmentDto boardAttachmentDto = boardAttachmentDao.selectOne(boardNo);
+
+MemberDao memberDao = new MemberDao();
+MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자 모든 정보 조회
+
+
+
+//내 글인지 판정
+//= 현재 로그인한 사용자가 게시글 작성자인지 확인
+//= 세션에 있는 사용자의 아이디와 게시글의 작성자를 비교
+String memberId = (String)session.getAttribute("member");
+boolean isLogin = memberId != null;
+boolean isOwner = isLogin && memberId.equals(boardDto.getBoardWriter());
+
+//관리자인지 판정
+
+	boolean isAdmin = false;
+	if(isLogin){
 	MemberDto memberDto1 = memberDao.selectOne(memberId);
 	String memberGrade = memberDto1.getMemberGrade();
-	boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
+	isAdmin = memberGrade.equals("관리자");
+	}
+
 	
 	//현재 글에 대한 댓글 목록을 조회
 	ReplyDao replyDao = new ReplyDao();
@@ -43,8 +49,10 @@
     
 <jsp:include page="/template/header.jsp"></jsp:include>
 <div class="container w1000 m30">
-<div class="row right">
+<div class="row center">
 <h1>[<%=boardDto.getBoardHead()%>게시판]<%=boardDto.getBoardTitle()%></h1>
+</div>
+<div class="row right">
 	<tr>
 		<td>
 			<%=memberDto.getMemberNick()%>
@@ -64,7 +72,7 @@
 	<tr>
 		<td>
 			<h2>
-			<div class="container w600 m30">
+			<div class="container w600 m30" style="text-align:center;">
 			<img src="/semi2/file/download.ez?attachmentNo=<%=boardAttachmentDto.getAttachmentNo()%>" width="400">
 			<br><br>
 				<%=boardDto.getBoardContent()%>
@@ -115,7 +123,7 @@
 				<%for(ReplyDto replyDto : replyList){ %>
 				<%
 					//본인이 작성한 댓글인지 여부를 미리 검사하여 반복문 내에서 필요에 따라 조건부 처리를 수행할 수 있게 한다.
-					boolean isReplyOwner = memberId != null && memberId.equals(replyDto.getReplyWriter());
+					boolean isReplyOwner = memberId != null && memberId.equals(replyDto.getReplyWriter1());
 				%>
 				
 				<%-- 수정이 가능(본인이 작성한 댓글)한 경우라면 보여주기 위한 줄과 수정하기 위한 줄을 각각 출력 --%>
@@ -159,6 +167,9 @@
 									<textarea name="replyContent" rows="4" cols="100"><%=replyDto.getReplyContent()%></textarea>
 									<input type="button" value="변경 취소" class="cancel-btn">
 									<input type="submit" value="댓글 수정">
+									
+									
+									
 								</form>
 							</td>
 						</tr>
@@ -191,5 +202,5 @@
 		$(".edit-row").hide();
 	});
 </script>
-
+</div>
 <jsp:include page="/template/footer.jsp"></jsp:include>

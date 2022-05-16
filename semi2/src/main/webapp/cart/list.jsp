@@ -1,3 +1,5 @@
+<%@page import="semi2.beans.MemberDto"%>
+<%@page import="semi2.beans.MemberDao"%>
 <%@page import="semi2.beans.ProductAttachmentDto"%>
 <%@page import="semi2.beans.ProductAttachmentDao"%>
 <%@page import="semi2.beans.ProductDto"%>
@@ -17,6 +19,7 @@
 	List<CartDto> list = cDao.selectAll(memberId);
 
 	ProductAttachmentDao paDao = new ProductAttachmentDao();
+	
 %>    
 <jsp:include page="/template/header.jsp"></jsp:include>
 
@@ -52,7 +55,11 @@
 
     </script>
 
-
+<div class="row float-container">
+<div class="float-left layer-3">
+<jsp:include page="/template/menu.jsp"></jsp:include>
+</div>
+<div class="float-left layer-2">
 <form action="http://localhost:8080/semi2/order/order.ez" method="post">
 모두 구매하기<input type="checkbox" class="all">
 <%
@@ -89,7 +96,7 @@
 	<input type="submit" value="구매하기" class="btn btn-primary">
 	<%} %>
 </form>
-	
-
+</div>
+</div>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

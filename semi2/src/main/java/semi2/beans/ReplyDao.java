@@ -11,12 +11,13 @@ public class ReplyDao {
 	public void insert(ReplyDto replyDto) throws Exception {
 		Connection con = JdbcUtils.getConnection();
 		
-		String sql = "insert into reply(reply_no, reply_writer, reply_target, reply_content) "
-							+ "values(reply_seq.nextval, ?, ?, ?)";
+		String sql = "insert into reply(reply_no, reply_writer, reply_writer1, reply_target, reply_content) "
+							+ "values(reply_seq.nextval, ?, ?, ?, ?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, replyDto.getReplyWriter());
-		ps.setInt(2, replyDto.getReplyTarget());
-		ps.setString(3, replyDto.getReplyContent());
+		ps.setString(2, replyDto.getReplyWriter1());
+		ps.setInt(3, replyDto.getReplyTarget());
+		ps.setString(4, replyDto.getReplyContent());
 		ps.execute();
 		
 		con.close();
@@ -41,6 +42,7 @@ public class ReplyDao {
 			
 			replyDto.setReplyNo(rs.getInt("reply_no"));
 			replyDto.setReplyWriter(rs.getString("reply_writer"));
+			replyDto.setReplyWriter1(rs.getString("reply_writer1"));
 			replyDto.setReplyContent(rs.getString("reply_content"));
 			replyDto.setReplyTime(rs.getDate("reply_time"));
 			replyDto.setReplyTarget(rs.getInt("reply_target"));
@@ -69,6 +71,7 @@ public class ReplyDao {
 			
 			replyDto.setReplyNo(rs.getInt("reply_no"));
 			replyDto.setReplyWriter(rs.getString("reply_writer"));
+			replyDto.setReplyWriter1(rs.getString("reply_writer1"));
 			replyDto.setReplyContent(rs.getString("reply_content"));
 			replyDto.setReplyTime(rs.getDate("reply_time"));
 			replyDto.setReplyTarget(rs.getInt("reply_target"));
@@ -124,6 +127,7 @@ public class ReplyDao {
 
 			replyDto.setReplyNo(rs.getInt("reply_no"));
 			replyDto.setReplyWriter(rs.getString("reply_writer"));
+			replyDto.setReplyWriter1(rs.getString("reply_writer1"));
 			replyDto.setReplyContent(rs.getString("reply_content"));
 			replyDto.setReplyTime(rs.getDate("reply_time"));
 			replyDto.setReplyTarget(rs.getInt("reply_target"));

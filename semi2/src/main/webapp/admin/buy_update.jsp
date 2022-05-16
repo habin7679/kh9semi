@@ -12,7 +12,13 @@
 	BuyDao buyDao = new BuyDao();
 	BuyDto buyDto = buyDao.selectOne(buyNo);
 %>
-
+<head>
+<style>
+	th {
+	font-weight : 600;
+	}	
+</style>
+</head>
 	<jsp:include page="/template/header.jsp"></jsp:include>
 <div class="container w500 m30">
 <h1>송장번호 입력</h1><br><br>
@@ -20,24 +26,24 @@
     <table class="table table-border table-hover">
 	    <tr>
 	    		<th>구매번호</th>
-	    		<td><%=buyDto.getBuyNo()%></td>
+	    		<td><input type="text" name="buyNo" value="<%=buyDto.getBuyNo()%>" class="form-input fill input-round" required></td>
 	     <tr>
 	    		<th>회원아이디</th>
-	    		<td><%=buyDto.getMemberId()%></td>
+	    		<td><input type="text" name="memberId" value="<%=buyDto.getMemberId()%>" class="form-input fill input-round" required></td>
 	    </tr>
 	    <tr>
 	    		<th>주문번호</th>
-	    		<td><%=buyDto.getOrderNo()%></td>
+	    		<td><input type="text" name="orderNo" value="<%=buyDto.getOrderNo()%>" class="form-input fill input-round" required></td>
 	    </tr>
 	    <tr>
 	    		<th>송장번호</th>
 	    		<td>
-	    		<input type="text" name="buyInvoice" value="<%=buyDto.getBuyInvoice()%>">
+	    		<input type="text" name="buyInvoice" class="form-input fill input-round" value="<%=buyDto.getBuyInvoice()%>">
 	    		</td>
 	    </tr>	    
 		 <tr>
 	    		<th>배송상태</th>
-	    		<td><%=buyDto.getBuyStatus() %></td>
+	    		<td><input type="text" name="buyStatus" value="<%=buyDto.getBuyStatus()%>" class="form-input fill input-round" required></td>
 	    </tr>
 	</table>
 	    <div class="container w300">

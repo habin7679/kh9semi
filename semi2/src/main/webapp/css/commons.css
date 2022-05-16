@@ -5,6 +5,7 @@
 .container {
     margin:auto;
 }
+.w50 { width :50px; }
 .w100 { width :100px; }
 .w150 { width :150px; }
 .w200 { width :200px; }
@@ -537,3 +538,45 @@ table.kal td{
 	vertical-align: top;
 	border-bottom: 1px solid #ccc;
 }
+
+    .float-container {}
+    .float-container > .float-left {
+        float:left;
+    }
+    .float-container > .float-right {
+        float:right;
+    }
+
+    /*
+        가상 선택자(pseudo selector) 
+        - 존재하지 않는 영역을 선택하는 선택자
+        - 대표적으로 시작지점(::before)과 종료지점(::after) 등을 사용할 수 있다
+        - 애초에 존재하지 않는 공간이므로 존재하도록 만드는 후처리가 필요하다
+        - content를 이용해서 글자를 입력해주고
+        - display를 이용해서 배치기준을 설정해준다.
+    */
+    .float-container::after {
+        content:"";
+        display: block;
+        clear:both;
+    }
+
+    /* 1단부터 5단까지 클래스를 이용해서 폭을 설정하도록 구현 */
+    .layer-1 {
+        width:100%;
+    }
+    .layer-2 {
+        width:50%;
+    }
+    .layer-3 {
+        width:30%;
+    }
+    .layer-4 {
+        width:25%;
+    }
+    .layer-5 {
+        width:20%;
+    }
+
+   
+

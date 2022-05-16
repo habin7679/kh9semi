@@ -34,9 +34,13 @@
 	boolean isOwner = isLogin && memberId.equals(boardDto.getBoardWriter());
 	
 	//관리자인지 판정
+	
+	boolean isAdmin = false;
+	if(isLogin){
 	MemberDto memberDto1 = memberDao.selectOne(memberId);
 	String memberGrade = memberDto1.getMemberGrade();
-	boolean isAdmin = memberGrade.equals("관리자");
+	isAdmin = memberGrade.equals("관리자");
+	}
 	
 	//현재 글에 대한 댓글 목록을 
 	ReplyDao replyDao = new ReplyDao();
@@ -66,8 +70,10 @@
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 <div class="container w1000 m30">
-<div class="row right">
+<div class="row center">
 <h1>[<%=boardDto.getBoardHead()%>게시판]<%=boardDto.getBoardTitle()%></h1>
+</div>
+<div class="row right">
 	<tr>
 		<td>
 			<%=memberDto.getMemberNick()%>
@@ -90,8 +96,8 @@
 	<tr>
 		<td>
 			<h2>
-			<div class="container w600 m30">
-			<img src="/semi2/file/download.ez?attachmentNo=<%=boardAttachmentDto.getAttachmentNo()%>">
+			<div class="container w600 m30" style="text-align:center;">
+			<img src="/semi2/file/download.ez?attachmentNo=<%=boardAttachmentDto.getAttachmentNo()%>" width="400">
 			<br><br>
 				<%=boardDto.getBoardContent()%>
 			</div>
@@ -99,7 +105,9 @@
 		</td>
 		</tr>
 		<%} else{%>
+		<div class="row center">
 		<h1>작성자 본인이 아닙니다</h1>
+		</div>
 		<%} %>
 	<!-- 버튼 영역 -->
 	<tr>	
@@ -147,7 +155,7 @@
 				<%for(ReplyDto replyDto : replyList){ %>
 				<%
 					//본인이 작성한 댓글인지 여부를 미리 검사하여 반복문 내에서 필요에 따라 조건부 처리를 수행할 수 있게 한다.
-					boolean isReplyOwner = memberId != null && memberId.equals(replyDto.getReplyWriter());
+					boolean isReplyOwner = memberId != null && memberId.equals(replyDto.getReplyWriter1());
 				%>
 				
 				<%-- 수정이 가능(본인이 작성한 댓글)한 경우라면 보여주기 위한 줄과 수정하기 위한 줄을 각각 출력 --%>
@@ -228,5 +236,5 @@
 		$(".edit-row").hide();
 	});
 </script>
-
+</div>
 <jsp:include page="/template/footer.jsp"></jsp:include>

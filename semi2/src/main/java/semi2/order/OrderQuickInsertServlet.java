@@ -23,20 +23,22 @@ public class OrderQuickInsertServlet extends HttpServlet{
 			String memberId = (String)req.getSession().getAttribute("member");
 			PayingDao payingDao = new PayingDao();
 			int no = payingDao.getSequence();
+			
 			payingDao.insertNo(memberId, no);
 
 			OrderDao orderDao = new OrderDao();
 			int productNo = Integer.parseInt(req.getParameter("productNo"));
 			int orderAmount = Integer.parseInt(req.getParameter("orderAmount"));
+			
 			ProductDao pDao = new ProductDao();
-	
 			ProductDto pDto = pDao.selectOne(productNo);
 			OrderDto orderDto = new OrderDto();
+			
 			orderDto.setOrderNo(no);
 			orderDto.setProductNo(productNo);
 			orderDto.setOrderCount(orderAmount);
-			//가격만 뽑는 productDao 만들기
 			orderDto.setProductPrice(pDto.getProductPrice());
+			
 			orderDto.setOrderPrice();
 			orderDao.insert(orderDto);
 			

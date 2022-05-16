@@ -24,7 +24,7 @@
         width:100%;
     }
     .layer-2 {
-        width:50%;
+        width:80%;
     }
     .layer-3 {
         width:33.3333%;
@@ -35,6 +35,7 @@
     .layer-5 {
         width:20%;
         margin-top:5%;
+        padding-right:130px;
     }
     label {
     	font-size :25px;
@@ -43,16 +44,18 @@
     } 
     aside {
     }
+       .p { width: 100%; /* 정렬하려는 요소의 넓이를 반드시 지정 */ margin: 0 auto; }
     </style>
 </head>
 <body>
-	<section>
+<div class="container w1000 m30">
+	<section class="p">
 		<aside class="float-left layer-5">
 		<label><a href="<%=request.getContextPath()%>/admin/admin.jsp">Member</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/product/product_admin_list.jsp">Product</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/buy_list.jsp">Order</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/order_list.jsp">Delivery</a></label><br><br><br><br>
-		<label><a href="<%=request.getContextPath()%>/admin/board_list.jsp">Board List</a></label><br><br><br><br>
+		<label><a href="<%=request.getContextPath()%>/admin/board_list.jsp">Board</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/board_write.jsp">Write</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/banner.jsp">Banner</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/statistics.jsp">Statistics</a></label><br><br><br><br>	
@@ -115,7 +118,7 @@ if (endBlock > lastPage) {
 
 <%-- 출력 --%>
 
-	<div class="container w950 m30">
+
 	<div class="row center">
 		<h1>상품 목록</h1><br>
 	</div>
@@ -161,6 +164,9 @@ if (endBlock > lastPage) {
 	<%
 	if (list.isEmpty()) {
 	%>
+	<div class="row right">
+		<a href="product_insert.jsp" class="link link-btn">상품추가</a>
+	</div>
 	<div class="row center"><br><br>
 		<h2>검색결과가 존재하지 않습니다!</h2><br><br>
 	</div>
@@ -170,7 +176,6 @@ if (endBlock > lastPage) {
 	<%
 	} else {
 	%>
-	<div class="container center w900 m30">
 	<div class="row right">
 		<a href="product_insert.jsp" class="link link-btn">상품추가</a>
 	</div>
@@ -179,11 +184,11 @@ if (endBlock > lastPage) {
 				<tr>
 					<th>상품번호</th>
 					<th class="w300">제품명</th>
-					<th>분류</th>
+					<th >분류</th>
 					<th>제품 가격</th>
 					<th>재고</th>
 					<th>제조일</th>
-					<th>기타</th>
+					<th>상세</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -199,7 +204,9 @@ if (endBlock > lastPage) {
 					<td><%=productDto.getProductMade()%></td>
 					<td><a
 						href="product_admin_detail.jsp?product_no=<%=productDto.getProductNo()%>"
-						class="link">상세보기</a></td>
+						class="link">
+						<img src="<%=request.getContextPath()%>/image/detail.png" width="20" height="20">
+						</a></td>
 				</tr>
 				<%
 				}
@@ -328,12 +335,11 @@ if (endBlock > lastPage) {
 		<%
 		}
 		%>
-
-	</div>
-</article>
-</section>
+		</div>
 </body>
-</div>
+
+<footer>
+</footer>
 <jsp:include page="/template/footer.jsp"></jsp:include>
 
 
