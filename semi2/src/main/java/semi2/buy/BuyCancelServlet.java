@@ -49,14 +49,18 @@ public class BuyCancelServlet extends HttpServlet{
 					
 					totalPrice+=list.get(i).getOrderPrice();
 				}
+				
 				MemberDao mDao = new MemberDao();
+				
 				String memberId=(String)req.getSession().getAttribute("member");
+				mDao.pointMinus(totalPrice, memberId);
 				MemberDto memberDto= mDao.selectOne(memberId);
-				if(memberDto.getMemberPoint()>30000) {
-					mDao.updateGrade(memberId, "우수회원");
-				}
-				else if(memberDto.getMemberPoint()>70000) {
+				
+				if(memberDto.getMemberPoint()>70000) {
 					mDao.updateGrade(memberId, "vip");
+				}
+				else if(memberDto.getMemberPoint()>30000) {
+					mDao.updateGrade(memberId, "우수회원");
 				}
 				else {
 					mDao.updateGrade(memberId, "일반회원");

@@ -61,11 +61,11 @@ public class payingInsertServlet extends HttpServlet {
 			mDao.pointAdd(totalPrice, memberId);
 			memberDto=mDao.selectOne(memberId);
 			
-			if(memberDto.getMemberPoint()>30000) {
-				mDao.updateGrade(memberId, "우수회원");
-			}
-			else if(memberDto.getMemberPoint()>70000) {
+			if(memberDto.getMemberPoint()>70000) {
 				mDao.updateGrade(memberId, "vip");
+			}
+			else if(memberDto.getMemberPoint()>30000) {
+				mDao.updateGrade(memberId, "우수회원");
 			}
 			else {
 				mDao.updateGrade(memberId, "일반회원");
