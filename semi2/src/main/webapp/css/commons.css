@@ -1,7 +1,5 @@
 @charset "UTF-8";
-/*
-    화면 가장 바깥쪽 영역
-*/
+
 .container {
     margin:auto;
 }
@@ -26,18 +24,11 @@
 .w950 { width :950px; }
 .w1000 { width :1000px; }
 
-/*
-    컨테이너 내부 줄(row) 디자인
-*/
-
 .row {
     margin: 10px 0px;
     text-align: left;
 }
 
-/*
-	우선순위를 최상위로 올림
-*/
 .left        { text-align: left !important; }
 .center   { text-align: center !important; }
 .right     { text-align: right !important; }
@@ -66,51 +57,25 @@
     margin-top: 50px;
     margin-bottom: 50px;
 }
-/*
-    모든 이미지 공용 스타일
-*/
+
 .img {
-    /* transparent 투명 의미 */
     border: 2px solid transparent;
 }
 
-/* class에 img가 있는 항목 중에서 .img-border라는 항목을 선택 
-.img.img-border {
-    border: 2px solid black;
-}
-.img.img-circle {
-    border-radius: 50%;
-}
-.img.img-round {
-    border-radius: 10px;
-}
-.img.img-blur {
-    /* opacity는 불투명도이며 0부터 1 사이로 설정한다. (0 - 투명 , 1 - 불투명) 
-    opacity: 0.4;
-}
-/* 마우스가 올라가면 이미지가 선명해지도록 구현 */
 .img.img-hover {
     opacity: 0.4;
 }
-/* 선택자 뒤에 :hover가 붙으면 마우스가 올라간 경우의 디자인을 구현 */
+
 .img.img-hover:hover {
     opacity: 1;
 }
-/* 
-    이미지에 그림자를 부여 
-    box-shadow : x축이동정도 y축이동정도 번짐정도 확산정도 색상
-*/
+
 .img.img-shadow {
     border:none;
     /* box-shadow: 3px 3px 3px 0 black; */
     box-shadow: 0 0 3px 1px black;
 }
-*/
-/*
-    a 태그 디자인
-*/
 
-/* 기본 스타일 : .link */
 .link {
     text-decoration: none;
     color:gray;
@@ -120,9 +85,6 @@
     color: black;
 }
 
-/* 확장 스타일 */
-
-/* .link-btn : 버튼 모양의 링크 */
 .link.link-btn {
     border: 1px solid #E6E6E6;
     border-radius: 0.25em;
@@ -151,9 +113,7 @@
 
 .pagination {
     text-align: center;
-    /* 내부 항목의 줄바꿈이 일어나지 않음 */
     white-space: nowrap;
-    /* 영역을 넘어가는 내용에 대해 표시하지 않도록 설정 */
     overflow: hidden;            
 }
 .pagination > a {
@@ -174,9 +134,7 @@
     border-color:#009432;
 }
 
-/*
-    입력창
-*/
+
 .form-input {
     outline: none;
     padding: 0.6em;
@@ -194,36 +152,28 @@
     width:100%;
 }
 
-/* 확장 스타일 : 밑줄만 있는 입력창 */
 .form-input.input-underline {
     border-top: none;
     border-left: none;
     border-right:none;
 }
 
-/* 확장 스타일 : 배경이미지가 좌측에 삽입되는 입력창 */
 .form-input.input-image {
     padding-left: 2.5em;
 
-    /* background-image: url("./image/lock.jpg"); */
     background-size: 1.5em;
     background-repeat: no-repeat;
     background-position: left 0.5em center;
 }
 
-/* 확장 스타일 : 모서리가 둥근 입력창 */
 .form-input.input-round {
     border-radius: 0.25em;
 }
 
-/* textarea 폭 조절 금지 */
 textarea.form-input {
     resize: vertical;
 }
 
-/*
-    버튼(Button)
-*/
 
 .btn {
     border:1px solid #707070;
@@ -235,7 +185,6 @@ textarea.form-input {
 
     cursor: pointer;
 
-    /* 어떤 속성을 inherit로 설정하면 기본값이 아니라 외부의 항목을 그대로 상속받아 쓰겠다는 의미 */
     font:inherit;
 }
 .btn:hover {
@@ -297,10 +246,8 @@ textarea.form-input {
     background-color:#ae2223;
 }
 
-/* 테이블 기본 스타일 */
 .table {
     width:100%;
-    /* 테두리 병합 설정 */
     border-collapse: collapse;
 }
 .table > thead > tr > th,
@@ -329,16 +276,11 @@ textarea.form-input {
 }
 
 .table.table-stripe {}
-/* 제목은 배경색상을 칠해준다 */
 .table.table-stripe > thead > tr,
 .table.table-stripe > tfoot > tr {
     background-color: #E6E6E6;
 }
-/* 
-    2줄에 한 번씩 배경색상을 칠해준다 
-    nth-child(2n) 이라고 작성하면 패턴이 지정된다
-    자동으로 n=1, 2, 3, 4, 5가 들어가서 계산된 순서 태그가 선택
-*/
+
 .table.table-stripe > tbody > tr:nth-child(2n) {
     background-color: #E6E6E6;
 }
@@ -352,10 +294,6 @@ textarea.form-input {
     background-color: #E6E6E6;
 }
 
-/*
-    다단 레이아웃(2단 이상의 가로 배치) 구현하기
-*/
-
 .float-container {}
 .float-container > .float-left {
     float:left;
@@ -364,16 +302,12 @@ textarea.form-input {
     float:right;
 }
 
-/*
-    가상 선택자(pseudo selector) 
-*/
 .float-container::after {
     content:"";
     display: block;
     clear:both;
 }
 
-/* 1단부터 5단까지 클래스를 이용해서 폭을 설정하도록 구현 */
 .layer-1 {
     width:100%;
 }
@@ -390,23 +324,17 @@ textarea.form-input {
     width:20%;
 }
 
-/*
-    로딩화면
-*/
 .fullscreen {
     position: fixed;
     top:0;
     left:0;
     right:0;
     bottom:0;
-    /* 배경색에 투명도(alpha)를 조절하여 투명하게 구현. alpha는 0부터 1사이로 설정 */
     background-color: rgba(0, 0, 0, 0.1);
 
-    /* 태그를 표시하지 않고 싶을 경우 display를 제거 */
     display: none;
 }
 
-/* active가 붙는다면 활성화 되었다는 의미로 표시하도록 구현 */
 .fullscreen.active {
     display: block;
 }
@@ -415,30 +343,16 @@ textarea.form-input {
     position: absolute;
     top:50%;
     left:50%;
-
-    /* 1번 방식 : 모든브라우저에서 되지만 폭을 알아야 함 */
-    /* 
-    margin-left: -100px;
-    margin-top: -100px; 
-    */
-
-    /* 
-        2번 방식 : 모든브라우저에서 되진 않지만 폭을 몰라도 적용되는 방식 
-        transform은 회전, 기울이기, 확대/축소, 이동 등을 제어할 수 있는 속성
-    */
     transform: translate(-50%, -50%);
 }
 
 ul.menu, 
 ul.menu ul {
-    list-style: none;/* (1) */
-
-    /* (2) */
+    list-style: none;
     padding:0;
     margin:0;
 }
 
-/* (3) ul의 마지막에는 clear를 해주고 li는 float로 배치 */
 ul.menu::after {
     content:"";
     display:block;
@@ -449,15 +363,13 @@ ul.menu > li {
     width:100px; /* (4) */
 }
 
-/* (5) 2차 이상의 메뉴를 숨긴다 */
 ul.menu ul {
     display: none;
 }
-/* (6) 메뉴 항목에 마우스가 올라가면 하위 메뉴를 표시한다 */
 ul.menu li:hover > ul {
     display: block;
 }
-/* (7) */        
+     
 ul.menu li {
     position:relative;
 }
@@ -466,11 +378,11 @@ ul.menu ul {
     top:100%;
     left:0%;
 }
-/* (8) */
+
 ul.menu ul {
     width:100%;
 }
-/* (9) */
+
 ul.menu {
     font-size: 16px;
 }
@@ -488,25 +400,23 @@ ul.menu a {
 ul.menu li:hover {
     background-color: #636e72;
 }
-/* (10) */
+
 ul.menu a {
     display: block;
     width:100%;
 }
-/* (11) */
+
 ul.menu > li.right-menu {
     float:right;
 }
-/* (12) 3차메뉴 이상을 선택(3차, 4차, 5차, ...) */
 ul.menu > li > ul ul {
     top:0%;
     left:100%;
 }
-/* (13) */
 ul.menu > li.right-menu > ul ul {
     left:-100%;
 }
-/* (14) */
+
 ul.menu a {
     overflow: hidden;
     white-space: nowrap;
@@ -547,21 +457,12 @@ table.kal td{
         float:right;
     }
 
-    /*
-        가상 선택자(pseudo selector) 
-        - 존재하지 않는 영역을 선택하는 선택자
-        - 대표적으로 시작지점(::before)과 종료지점(::after) 등을 사용할 수 있다
-        - 애초에 존재하지 않는 공간이므로 존재하도록 만드는 후처리가 필요하다
-        - content를 이용해서 글자를 입력해주고
-        - display를 이용해서 배치기준을 설정해준다.
-    */
     .float-container::after {
         content:"";
         display: block;
         clear:both;
     }
 
-    /* 1단부터 5단까지 클래스를 이용해서 폭을 설정하도록 구현 */
     .layer-1 {
         width:100%;
     }

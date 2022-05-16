@@ -46,13 +46,11 @@
 <title>이지어트 메인 페이지</title>
 
 <style>
-/* 중간 사이드 바!! */
 ul.bar, ul.bar ul {
 	list-style: none;
 	padding: 0;
 	margin: 0;
 }
-/* ul의 마지막 clear / li는 float로 배치 */
 ul.bar::after {
 	content: "";
 	display: block;
@@ -62,11 +60,9 @@ ul.bar>li {
 	float: left;
 	width: 300px;
 }
-/* 2차 이상의 메뉴 숨김 */
 ul.bar ul {
 	display: none;
 }
-/* 바 항목에 마우스가 올라가면 하위 메뉴를 표시 */
 ul.bar li:hover>ul {
 	display: block;
 }
@@ -103,7 +99,6 @@ ul.bar a {
 	display: block;
 	/*width: 150%;*/
 }
-/* 3차메뉴 이상 선택 */
 ul.bar>li>ul ul {
 	top: 0%;
 	left: 100%;
