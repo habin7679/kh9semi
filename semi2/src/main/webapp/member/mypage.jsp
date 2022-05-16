@@ -36,8 +36,12 @@
 	
 	
 	
+<<<<<<< beomsik_update
 
 <%-- 	<%--  <div class="container w500" style="height: 400px;">
+=======
+	 <%--  <div class="container w500" style="height: 400px;">
+>>>>>>> main
 =======
 	 <%--  <div class="container w500" style="height: 400px;">
 >>>>>>> main
@@ -84,6 +88,6 @@
 
 
 	</div>
-
+ --%>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
