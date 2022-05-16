@@ -30,7 +30,11 @@
     		let new_a = document.createElement('a');
     		let new_img = document.createElement('img');
     		
-    		
+    		<div class="recent">
+    		<img class="recentp"
+				width="200" height="200"
+				style="vertical-align: top; margin-top: 35px;">
+				
     		new_a.setAttribute('href', '../product/product_user_detail.jsp?product_no='+current.id);  
     		new_a.setAttribute('class', 'link');
     		
@@ -42,7 +46,7 @@
     		target.appendChild(new_div);
     	})
     }
-
+</div>
     
 	</script>
 <jsp:include page="/template/footer.jsp"></jsp:include>
