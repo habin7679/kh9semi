@@ -46,6 +46,11 @@
     } 
     aside {
     }
+    img{
+    text-align : center;
+    }
+  
+
     </style>
 </head>
 <body>
@@ -199,7 +204,8 @@
 					<td><%=buyDto.getOrderNo()%></td>
 					<td><%=buyDto.getBuyInvoice()%></td>
 					<td><%=buyDto.getBuyStatus()%></td>
-					<td><a href="buy_detail.jsp?buyNo=<%=buyDto.getBuyNo()%>" class="link">상세보기</a></td>
+					<td><a href="buy_detail.jsp?buyNo=<%=buyDto.getBuyNo()%>" class="link">
+					<img src="<%=request.getContextPath()%>/image/detail.png" width="20" height="20"></a></td>
 				</tr>
 				<%
 				}
