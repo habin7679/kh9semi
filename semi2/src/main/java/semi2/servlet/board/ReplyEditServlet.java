@@ -3,6 +3,7 @@ package semi2.servlet.board;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,8 @@ public class ReplyEditServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+
+			req.setCharacterEncoding("UTF-8");
 			//준비 : ReplyDto(replyNo + replyTarget + replyContent)
 			ReplyDto replyDto = new ReplyDto();
 			replyDto.setReplyNo(Integer.parseInt(req.getParameter("replyNo")));

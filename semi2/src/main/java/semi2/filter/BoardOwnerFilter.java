@@ -16,7 +16,7 @@ import semi2.beans.MemberDao;
 import semi2.beans.MemberDto;
 
 @WebFilter(filterName="f3", urlPatterns = {
-		"/board/edit.jsp", "/board/edit.ez",
+//		"/board/edit.jsp", "/board/edit.ez",
 		"/board/delete.ez"
 })
 public class BoardOwnerFilter implements Filter{
@@ -55,8 +55,3 @@ public class BoardOwnerFilter implements Filter{
 		}
 	}
 }
-
-
-
-
-
