@@ -118,7 +118,7 @@ if (endBlock > lastPage) {
 
 <%-- 출력 --%>
 
-
+	<div class="container w800 m30 ">
 	<div class="row center">
 		<h1>상품 목록</h1><br>
 	</div>
@@ -213,7 +213,7 @@ if (endBlock > lastPage) {
 				%>
 			</tbody>
 		</table>
-	</div>
+	
 	<div>
 		<%
 		}
@@ -335,6 +335,11 @@ if (endBlock > lastPage) {
 		<%
 		}
 		%>
+		</div>
+		</div>
+		
+		</article>
+		</section>
 		</div>
 </body>
 
