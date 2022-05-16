@@ -1,3 +1,4 @@
+<%@page import="semi2.beans.OrderDao"%>
 <%@page import="semi2.beans.ProductDto"%>
 <%@page import="semi2.beans.ProductDao"%>
 <%@page import="semi2.beans.ProductAttachmentDto"%>
@@ -30,6 +31,10 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 
 	ProductDao productDao = new ProductDao();
 	ProductDto productDto = productDao.selectOne(productNo);
+	
+	OrderDao oDao = new OrderDao();
+	//>int orderNo = oDao.ReviewOrderNo(productNo);
+	
 %>
 
 <%-- 출력 --%>
@@ -103,57 +108,79 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
         console.log(recentProdArr);
         
     </script>
-		
+		<style>
+     .float-container {
+     margin-top : 50px;
+     }
+        .float-container > .float-left {
+            float:left;
+        }
+        .float-container > .float-right {
+            float:right;
+        }
+        .float-container::after {
+            content:"";
+            display: block;
+            clear:both;
+        }
+
+        /* 1단부터 5단까지 클래스를 이용해서 폭을 설정하도록 구현 */
+        .layer-1 {
+            width:50%;
+        }
+        .layer-2 {
+        margin-top : 30px;
+            width:50%;
+        }
+       .label1{
+       	font-size: 25px;
+       }
+       .label2{
+       	font-size : 20px;
+       }
+       .info{
+       	margin-top: 100px;
+       }
+       
+</style>
 <%if(productDto == null){ %>
 <h1>해당 상품은 존재하지 않습니다</h1>
 <%} else { %>
 
-<h1>상품 상세정보 보기</h1>
+<h1><%=productDto.getProductName() %> 정보 보기</h1><br>
 <div class="container w950 m30">
-<table border="1">
-	<tr>
-		<th>이름</th>
-			<td><%=productDto.getProductName()%></td>
-	</tr>
-	<tr>
-		<th>가격</th>
-			<td><%=productDto.getProductPrice()%></td>
-	</tr>
-	<tr>
-		<th>칼로리</th>
-			<td><%=productDto.getProductKcal()%></td>
-	</tr>
-	<tr>
-		<th>단백질</th>
-			<td><%=productDto.getProductProtein()%></td>
-	</tr>
-	<tr>
-		<th>탄수화물</th>
-			<td><%=productDto.getProductCarbohydrate()%></td>
-	</tr>
-	<tr>
-		<th>지방</th>
-			<td><%=productDto.getProductFat()%></td>
-	</tr>
-	<tr>
-		<th>상품정보</th>
-			<td><img src="/semi2/file/download.ez?attachmentNo=<%=infoattachmentDto.getAttachmentNo()%>"  width="500" height="1500"></td>
-	</tr>
-	<tr>
-		<th>상품이미지</th>
-				<td><img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="200" height="200"></td>
-	</tr>
-	<tr>
-		<td><input type="button" value="구매하기"></td>
-	</tr>
-	
-	
-</table>
+        <div class="row float-container">
+            <div class="float-left layer-1">
+               <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="400" height="400">
+            </div>
+            <div class="float-left layer-2">
+                <label class="label1"><%=productDto.getProductName()%></label><br><br>
+                <label class="label2">가격 : <%=productDto.getProductPrice()%></label><br><br>
+                <label class="label2">칼로리 : <%=productDto.getProductKcal()%></label><br><br>
+                <label class="label2">단백질 : <%=productDto.getProductProtein()%></label><br><br>
+                <label class="label2">탄수화물 : <%=productDto.getProductCarbohydrate()%></label><br><br>
+                <label class="label2"> 지방 : <%=productDto.getProductFat()%></label><br><br>
+				<label class="label2">수량</label>
+				<form action = "quickOrder.ez" method="post">
+				<select class="form-input" name = "orderAmount">
+				<%int stock = productDto.getProductStock();
+				for(int i = 1; i<=stock; i++){
+				%>
+                    <option><%=i %></option>
+				<%} %>
+                </select><br><br>
+                <input type="hidden" name="productNo" value="<%=productNo %>">
+                <input type="submit" value="구매하기" class="btn btn-primary"><br><br>
+				</form>
+            </div>
+            <div class="row center">
+                <img src="/semi2/file/download.ez?attachmentNo=<%=infoattachmentDto.getAttachmentNo()%>"  width="500" height="1500" class="info">
+            </div>
+        </div>
 <%} %>
 
 
     <div class="container w800 m30">
-<body>
    <%
 	//목록과 검색을 한페이지에서 한다
 	//=> 구분이 되어야 한다.
@@ -224,7 +251,11 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 	</div>
 	
 	<div class="row right">
+	<%-- 
+	<%if(orderNo>0){ %>
 		<a href="/semi2/board/write_review.jsp?productNo=<%=productNo%>" class="link link-btn">글쓰기</a>
+		<%} %>
+	 --%>
 	</div>	
 	
 	<div class="row">
@@ -347,10 +378,9 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 	</div>
 
 	</div>
-	</body>
 	</div>
 	
 
-<button class="btn "><a href="qna_list.jsp">상품 문의하러 가기</</a></button><br><br>
-<button class="btn "><a href="product_user_list.jsp">상품 목록 가기</</a></button><br><br>
+<button class="btn btn-primary"><a href="productqna_list.jsp">상품 문의하러 가기</</a></button><br><br>
+<button class="btn btn-primary "><a href="product_user_list.jsp">상품 목록 가기</</a></button><br><br>
 <jsp:include page="/template/footer.jsp"></jsp:include>
