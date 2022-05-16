@@ -307,10 +307,10 @@ if (falseList.size() == 0) {
 				<input type="number" name="payingTotal" value="<%=payingDao.totalPrice(orderNo)%>" class="pPrice form-input fill form-round" readonly>
 				<%} else if(mDto.getMemberGrade().equals("우수회원")) {%>
 				<label>우수회원 할인 적용</label>
-				<input type="number" name="payingTotal" value="<%=payingDao.totalPrice(orderNo)*0.9%>" class="pPrice form-input fill form-round" readonly>
+				<input type="number" name="payingTotal" value="<%=(int)(payingDao.totalPrice(orderNo)*0.9)*10/10 %>" class="pPrice form-input fill form-round" readonly>
 				<%} else { %>
 				<label>VIP 할인 적용</label><br><br>
-				<input type="number" name="payingTotal" value="<%=payingDao.totalPrice(orderNo)*0.8%>" class="pPrice form-input fill form-round" readonly>
+				<input type="number" name="payingTotal" value="<%=(int)(payingDao.totalPrice(orderNo)*0.8)*10/10%>" class="pPrice form-input fill form-round" readonly>
 				<%} %>			
 			</div>
 			<div class="row">
