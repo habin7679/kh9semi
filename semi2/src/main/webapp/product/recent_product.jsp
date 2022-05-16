@@ -38,17 +38,20 @@
     }
     
 	</script>
+	
 		<style>
+		.ha{
+	min-height : 100px;
+	}
 .table{
 	border=1px;
 	
 }
 </style>
-
-		  <div class="recentById">
-		  <div>
+<div class="ha">
+<div class="recentById">
+<div>
 	<h1>최근 본 상품</h1>
-	
 	<div id='recentById'>
 </div>
 
@@ -62,11 +65,13 @@
 					<th>3</th>
 				</tr>
 			</thead>
+</table>
 </div>
 </div>
 </div>
 </div>
 </div>
+
 
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

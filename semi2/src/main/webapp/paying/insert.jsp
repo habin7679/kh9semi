@@ -206,11 +206,11 @@ if (falseList.size() == 0) {
 				<input type="checkbox" class="regist">
 				<label>등록된 배송정보 사용</label>
 		</div>
-		<div class="row registed" hidden>
-				<table class="table table-border layer-2 listD">
-					<thead>
+		<div class="row registed " hidden>
+				<table class="table table-border layer-2 listD container w400 m50">
+					<thead >
 					<tr>
-						<th>수령인</th>
+						<th >수령인</th>
 						<th>연락처</th>
 						<th>우편번호</th>
 						<th>기본주소</th>

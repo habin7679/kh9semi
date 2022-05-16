@@ -130,11 +130,8 @@ ul.bar a {
 		  <div class="wrap">
         <div class="intro_bg">
             <div class="header">
-                <div class="searchArea">
-                    <form>
-                        <input type="search" placeholder="Search">
-                        <button>검색</button>
-                    </form>
+                <div >
+                  
                 </div>
                 <ul>
 
