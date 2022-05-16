@@ -12,19 +12,13 @@
 
 	
 	
-	<div class="container w500 m30" style="height: 400px;">
-	<div class="row center"><h1><%=memberDto.getMemberNick() %></h1>님 반갑습니다</div>
-	<div class="row center"><h2>등급:<%=memberDto.getMemberGrade() %></h2></div>
-	<div class="row"><h2>포인트:<%=memberDto.getMemberPoint() %>p</h2></div>
-	<div class="row center"><a href="<%=request.getContextPath() %>/member/edit.jsp" class="link link-btn">정보 수정하기</a></div>
-
+	
 	<style>
 	.ha{
 	padding-right : 130px;
 	padding-top : 130px;
 	}
 
-    
 </style>
 <div class="row float-container">
 <div class="float-left layer-3">
