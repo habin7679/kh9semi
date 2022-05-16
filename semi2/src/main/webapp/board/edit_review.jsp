@@ -1,36 +1,39 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page import="semi2.beans.BoardDto"%>
+<%@page import="semi2.beans.BoardDao"%>
 <%@page import="semi2.beans.MemberDto"%>
 <%@page import="semi2.beans.MemberDao"%>
-
-
-<!-- 상품 선택하기 아이디 값 불러오기 -->
-<%	
-String memberId = (String)session.getAttribute("member");
-MemberDao memberDao = new MemberDao();
-MemberDto memberDto = memberDao.selectOne(memberId);
-int productNo = Integer.parseInt(request.getParameter("productNo"));
-int orderNo = Integer.parseInt(request.getParameter("orderNo"));
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%-- 준비 --%>
+<%
+	int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 %>
 
+<%-- 처리 --%>
+<%
+	BoardDao boardDao = new BoardDao();
+	BoardDto boardDto = boardDao.selectOne(boardNo);
+	
+	String memberId = (String)session.getAttribute("member");
+	MemberDao memberDao = new MemberDao();
+	MemberDto memberDto = memberDao.selectOne(memberId);
+%>
+
+<%-- 출력 --%>
 <jsp:include page="/template/header.jsp"></jsp:include>
 <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<form action="edit.ez" method="post" encType = "multipart/form-data">
+<input type="hidden" name="boardNo" value="<%=boardDto.getBoardNo()%>">
 
-<form method="post" encType = "multipart/form-data" action="write_review.ez">
-<input type="hidden" name="productNo" value="<%=productNo%>">
-<input type="hidden" name="orderNo" value="<%=orderNo%>">
-
-
-<%if(request.getParameter("superNo") != null){ %>   
-<input type="hidden" name="superNo" value="<%=request.getParameter("superNo")%>">
-<%} %>
 
 	<div class="container w1000 m30">
 	    <div class="row center">
-	        <h1>게시글 작성</h1>
+	        <h1>게시글 수정</h1>
 	    </div>
 	    <div class="row">
+	    </div>
+	    	<div class="row">
 	        <label>카테고리</label>
 	        <select name="boardHead" class="form-input fill input-round">
 	            <option>후기</option>
@@ -38,7 +41,7 @@ int orderNo = Integer.parseInt(request.getParameter("orderNo"));
 	    </div>
 	    <div class="row">
 	        <label>제목</label>
-	        <input type="text" name="boardTitle" autocomplete="off" required class="form-input fill input-round">
+	        <input type="text" name="boardTitle" autocomplete="off" required class="form-input fill input-round" value="<%=boardDto.getBoardTitle()%>">
 	    </div>
 	    <div class="row">
 	        <label>내용</label>
@@ -49,7 +52,7 @@ int orderNo = Integer.parseInt(request.getParameter("orderNo"));
 				const Editor = toastui.Editor; 
 				const editor = new Editor({ 
 					el: document.querySelector('#editor'),
-					height: '600px',
+					height: '500px',
 					initialEditType: 'markdown',
 					previewStyle: 'markdown'
 				});
@@ -62,18 +65,17 @@ int orderNo = Integer.parseInt(request.getParameter("orderNo"));
 				
 			</script>
 				<input type="hidden" name="boardContent">
-
-	    	    <div class="row">
-	    	<label>첨부파일</label><br>
-	    	<input type="file" name="attach" class="form-input input-round">
+	    <div class="row">
+	        <label>첨부파일</label>
+	        <input type="file" name="attach" class="form-input input-round" rows="12">
 	    </div>
 	    <div class="row">
-	        <button type="submit" class="btn btn-primary fill">등록</button>
+	        <button type="submit" class="btn btn-primary fill">수정</button>
 	    </div>
 	    <div class="row">
 	        <a href="list.jsp" class="link link-btn fill">목록</a>
 	    </div>
 	</div>
 </form>
-
+</div>
 <jsp:include page="/template/footer.jsp"></jsp:include>

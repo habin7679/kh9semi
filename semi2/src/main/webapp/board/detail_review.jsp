@@ -7,8 +7,6 @@
 <%@page import="semi2.beans.BoardDao"%>
 <%@page import="semi2.beans.BoardAttachmentDao"%>
 <%@page import="semi2.beans.BoardAttachmentDto"%>
-<%@page import="semi2.beans.ProductDto"%>
-<%@page import="semi2.beans.ProductDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -24,7 +22,6 @@
 	MemberDao memberDao = new MemberDao();
 	MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자 모든 정보 조회
 	
-
 	
 	//내 글인지 판정
 	//= 현재 로그인한 사용자가 게시글 작성자인지 확인
@@ -34,7 +31,6 @@
 	boolean isOwner = isLogin && memberId.equals(boardDto.getBoardWriter());
 	
 	//관리자인지 판정
-	
 	boolean isAdmin = false;
 	if(isLogin){
 	MemberDto memberDto1 = memberDao.selectOne(memberId);
@@ -42,32 +38,12 @@
 	isAdmin = memberGrade.equals("관리자");
 	}
 	
-	//현재 글에 대한 댓글 목록을 
+	//현재 글에 대한 댓글 목록을 조회
 	ReplyDao replyDao = new ReplyDao();
 	List<ReplyDto> replyList = replyDao.selectList(boardDto.getBoardNo()); 
 	
-
-	request.setCharacterEncoding("UTF-8");
-
-	String productName = request.getParameter("product_name");
-	String productSort = request.getParameter("product_sort");
-	%>
-
-	<%
-	boolean isSearch = productName != null && !productName.trim().equals("");
-	ProductDao productDao = new ProductDao();
-
-
-
-	List<ProductDto> list;
-	if(isSearch)
-		list = productDao.listUser(productName);
-	else
-		list = productDao.listAll();
-
-
 %>    
-
+    
 <jsp:include page="/template/header.jsp"></jsp:include>
 <div class="container w1000 m30">
 <div class="row center">
@@ -86,12 +62,9 @@
 		<td>
 			<%=boardDto.getBoardTime()%>
 			 조회수 <%=boardDto.getBoardReadcount()%>
-			 <%=boardDto.getBoardProductNo()%>
 		</td>
 	</tr>
 </div>
-    
-    <%if(isOwner || isAdmin){ %> 		
 <table border="1" width="750">
 	<tr>
 		<td>
@@ -104,27 +77,21 @@
 			</h2>
 		</td>
 		</tr>
-		<%} else{%>
-		<div class="row center">
-		<h1>작성자 본인이 아닙니다</h1>
-		</div>
-		<%} %>
 	<!-- 버튼 영역 -->
 	<tr>	
 			<div class="row right">
-			<a href="write_qna.jsp" class="link link-btn">글쓰기</a>
+			<a href="write.jsp" class="link link-btn">글쓰기</a>
 			<%if(isAdmin){ %>
-			<a href="write_qna.jsp?superNo=<%=boardNo%>" class="link link-btn">답글</a>
+			<a href="write_review.jsp?superNo=<%=boardNo%>" class="link link-btn">답글</a>
 			<%} %>
 			<%if(isOwner || isAdmin){ %>
-			<a href="edit_qna.jsp?boardNo=<%=boardNo%>" class="link link-btn">수정</a>
+			<a href="edit_review.jsp?boardNo=<%=boardNo%>" class="link link-btn">수정</a>
 			<a href="delete.ez?boardNo=<%=boardNo%>" class="link link-btn">삭제</a>
 			<%} %>
 			<a href="list.jsp" class="link link-btn">목록</a>
 			</div>
 	</tr>
 	
-	    <%if(isOwner || isAdmin){ %> 
 	<!-- 댓글 작성 영역 -->
 	<tr>
 		<td align="right">
@@ -144,8 +111,6 @@
 			<%} %>
 		</td>
 	</tr>
-								<%} else{%>
-						<%} %>
 	
 	<!-- 댓글 목록 영역 -->
 	<tr>
@@ -161,7 +126,6 @@
 				<%-- 수정이 가능(본인이 작성한 댓글)한 경우라면 보여주기 위한 줄과 수정하기 위한 줄을 각각 출력 --%>
 				
 					<%-- 보여주기 위한 줄 --%>
-					<%if(isOwner || isAdmin){ %> 
 					<tr class="show-row">
 						<th width="25%">
 							<%=memberDto.getMemberNick()%>
@@ -170,11 +134,9 @@
 						<td width="50%">
 							<!-- 댓글 내용 -->
 							<pre><%=replyDto.getReplyContent()%></pre>
+							<br>
 						</td>
 						<td>
-						<%} else{%>
-						<%} %>
-						<%if(isOwner || isAdmin){ %> 
 							<%-- 댓글 수정 아이콘 : 본인 글에만 등장해야함 --%>
 							<%if(isReplyOwner){ %>
 							<a href="#" class="edit-btn">
@@ -190,8 +152,6 @@
 							<%} %>
 						</td>
 					</tr>
-													<%} else{%>
-						<%} %>
 				
 					<%-- 본인 글인 경우 수정을 할 수 있도록 준비된 줄 (본인글 : replyWriter == 세션의 회원아이디) --%>
 					

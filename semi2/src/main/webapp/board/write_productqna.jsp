@@ -10,16 +10,14 @@ String memberId = (String)session.getAttribute("member");
 MemberDao memberDao = new MemberDao();
 MemberDto memberDto = memberDao.selectOne(memberId);
 int productNo = Integer.parseInt(request.getParameter("productNo"));
-int orderNo = Integer.parseInt(request.getParameter("orderNo"));
 %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
-<form method="post" encType = "multipart/form-data" action="write_review.ez">
+<form method="post" encType = "multipart/form-data" action="write_productqna.ez">
 <input type="hidden" name="productNo" value="<%=productNo%>">
-<input type="hidden" name="orderNo" value="<%=orderNo%>">
 
 
 <%if(request.getParameter("superNo") != null){ %>   
@@ -33,7 +31,7 @@ int orderNo = Integer.parseInt(request.getParameter("orderNo"));
 	    <div class="row">
 	        <label>카테고리</label>
 	        <select name="boardHead" class="form-input fill input-round">
-	            <option>후기</option>
+	            <option>상품</option>
 	        </select>
 	    </div>
 	    <div class="row">

@@ -11,28 +11,35 @@
     pageEncoding="UTF-8"%>
 
 <%
-	int boardNo = Integer.parseInt(request.getParameter("boardNo"));
-	BoardDao boardDao = new BoardDao();
-	boardDao.plusReadcount(boardNo);//조회수 증가 
-	BoardDto boardDto = boardDao.selectOne(boardNo);//게시글을 불러온다 
-	
-	BoardAttachmentDao boardAttachmentDao = new BoardAttachmentDao();
-	BoardAttachmentDto boardAttachmentDto = boardAttachmentDao.selectOne(boardNo);
-	
-	MemberDao memberDao = new MemberDao();
-	MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자 모든 정보 조회
-	
-	
-	//내 글인지 판정
-	//= 현재 로그인한 사용자가 게시글 작성자인지 확인
-	//= 세션에 있는 사용자의 아이디와 게시글의 작성자를 비교
-	String memberId = (String)session.getAttribute("member");
-	boolean isLogin = memberId != null;
-	boolean isOwner = isLogin && memberId.equals(boardDto.getBoardWriter());
-	
-	//관리자인지 판정
-	String memberGrade = (String)session.getAttribute("admin");
-	boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
+int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+BoardDao boardDao = new BoardDao();
+boardDao.plusReadcount(boardNo);//조회수 증가 
+BoardDto boardDto = boardDao.selectOne(boardNo);//게시글을 불러온다 
+
+BoardAttachmentDao boardAttachmentDao = new BoardAttachmentDao();
+BoardAttachmentDto boardAttachmentDto = boardAttachmentDao.selectOne(boardNo);
+
+MemberDao memberDao = new MemberDao();
+MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자 모든 정보 조회
+
+
+
+//내 글인지 판정
+//= 현재 로그인한 사용자가 게시글 작성자인지 확인
+//= 세션에 있는 사용자의 아이디와 게시글의 작성자를 비교
+String memberId = (String)session.getAttribute("member");
+boolean isLogin = memberId != null;
+boolean isOwner = isLogin && memberId.equals(boardDto.getBoardWriter());
+
+//관리자인지 판정
+
+	boolean isAdmin = false;
+	if(isLogin){
+	MemberDto memberDto1 = memberDao.selectOne(memberId);
+	String memberGrade = memberDto1.getMemberGrade();
+	isAdmin = memberGrade.equals("관리자");
+	}
+
 	
 	//현재 글에 대한 댓글 목록을 조회
 	ReplyDao replyDao = new ReplyDao();
@@ -42,11 +49,13 @@
     
 <jsp:include page="/template/header.jsp"></jsp:include>
 <div class="container w1000 m30">
-<div class="row right">
+<div class="row center">
 <h1>[<%=boardDto.getBoardHead()%>게시판]<%=boardDto.getBoardTitle()%></h1>
+</div>
+<div class="row right">
 	<tr>
 		<td>
-			<%=boardDto.getBoardWriter()%>
+			<%=memberDto.getMemberNick()%>
 		 	(<%=memberDto.getMemberGrade()%>)
 		</td>
 	</tr>
@@ -63,7 +72,7 @@
 	<tr>
 		<td>
 			<h2>
-			<div class="container w600 m30">
+			<div class="container w600 m30" style="text-align:center;">
 			<img src="/semi2/file/download.ez?attachmentNo=<%=boardAttachmentDto.getAttachmentNo()%>" width="400">
 			<br><br>
 				<%=boardDto.getBoardContent()%>
@@ -122,7 +131,7 @@
 					<%-- 보여주기 위한 줄 --%>
 					<tr class="show-row">
 						<th width="25%">
-							<%=replyDto.getReplyWriter()%>
+							<%=memberDto.getMemberNick()%>
 						</th>
 						<td width="15%"><%=replyDto.getReplyTime()%></td>
 						<td width="50%">
@@ -190,5 +199,5 @@
 		$(".edit-row").hide();
 	});
 </script>
-
+</div>
 <jsp:include page="/template/footer.jsp"></jsp:include>

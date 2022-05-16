@@ -72,5 +72,10 @@
 	  
 	 </div>
 	 </div>
- --%>
+   
+   
+
+	</div>
+
+
 <jsp:include page="/template/footer.jsp"></jsp:include>

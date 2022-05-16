@@ -14,33 +14,37 @@
 %>
 
 	<jsp:include page="/template/header.jsp"></jsp:include>
-
-<h1> 주문정보 업데이트 </h1>
+<div class="container w500 m30">
+<h1>송장번호 입력</h1><br><br>
 <form action = "buy_update.ez" method="post">
-	
-	    <div>
-	    		<label>구매번호</label>
-	    		<input type="text" name="buyNo"  value="<%=buyDto.getBuyNo()%>" required readonly>
+    <table class="table table-border table-hover">
+	    <tr>
+	    		<th>구매번호</th>
+	    		<td><%=buyDto.getBuyNo()%></td>
+	     <tr>
+	    		<th>회원아이디</th>
+	    		<td><%=buyDto.getMemberId()%></td>
+	    </tr>
+	    <tr>
+	    		<th>주문번호</th>
+	    		<td><%=buyDto.getOrderNo()%></td>
+	    </tr>
+	    <tr>
+	    		<th>송장번호</th>
+	    		<td>
+	    		<input type="text" name="buyInvoice" value="<%=buyDto.getBuyInvoice()%>">
+	    		</td>
+	    </tr>	    
+		 <tr>
+	    		<th>배송상태</th>
+	    		<td><%=buyDto.getBuyStatus() %></td>
+	    </tr>
+	</table>
+	    <div class="container w300">
+	    	<br><br><br><input type="submit" value="확인" class="btn btn-primary fill">
 	    </div>
-	     <div>
-	    		<label>회원아이디</label>
-	    		<input type="text" name="memberId"  value="<%=buyDto.getMemberId()%>" required readonly>
-	    </div>
-	    <div>
-	    		<label>주문번호</label>
-	    		<input type="text" name="orderNo"  value="<%=buyDto.getOrderNo()%>" required readonly>
-	    </div>
-	    <div>
-	    		<label>송장번호</label>
-	    		<input type="text" name="buyInvoice"  value="<%=buyDto.getBuyInvoice()%>" required>
-	    </div>	    
-		 <div>
-	    		<label>배송상태</label>
-	    		<input type="text" name="buyStatus"  value="<%=buyDto.getBuyStatus() %>" required readonly>
-	    </div>
-	    
-	    		<input type="submit" value="확인" class="btn btn-primary">
-  
-</form>
 
+</form>
+</div>
+<br><br><br>
 <jsp:include page="/template/footer.jsp"></jsp:include>

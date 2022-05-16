@@ -1,4 +1,4 @@
-package semi2.servlet.board;
+package semi2.servlet.admin;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,11 +18,10 @@ import semi2.beans.BoardAttachmentDao;
 import semi2.beans.BoardAttachmentDto;
 import semi2.beans.BoardDao;
 import semi2.beans.BoardDto;
-import semi2.beans.OrderDao;
 
 
-@WebServlet(urlPatterns = "/board/write_review.ez")
-public class BoardWriteReviewServlet extends HttpServlet{
+@WebServlet(urlPatterns = "/admin/write.ez")
+public class BoardWriteServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
@@ -40,14 +39,11 @@ public class BoardWriteReviewServlet extends HttpServlet{
 			
 			MultipartRequest mRequest = new MultipartRequest(req, path, max, encoding, policy);
 			
-			int productNo = Integer.parseInt(mRequest.getParameter("productNo"));
-			
 			BoardDto boardDto = new BoardDto();
 			
 			boardDto.setBoardHead(mRequest.getParameter("boardHead"));
 			boardDto.setBoardTitle(mRequest.getParameter("boardTitle"));
 			boardDto.setBoardContent(mRequest.getParameter("boardContent"));
-			boardDto.setBoardProductNo(Integer.parseInt(mRequest.getParameter("productNo")));
 			
 			String memberId = (String) req.getSession().getAttribute("member");
 			boardDto.setBoardWriter(memberId);
@@ -65,13 +61,13 @@ public class BoardWriteReviewServlet extends HttpServlet{
 //			- group_no - 원본글의 group_no
 //			- super_no - 원본글의 board_no
 //			- depth - 원본글의 depth + 1
-			if(mRequest.getParameter("superNo") == null) {//새글이라면(superNo 파라미터가 없다면)
+			if(req.getParameter("superNo") == null) {//새글이라면(superNo 파라미터가 없다면)
 				boardDto.setGroupNo(boardDto.getBoardNo());
 				boardDto.setSuperNo(0);
 				boardDto.setDepth(0);
 			}
 			else {//답글이라면
-				int superNo = Integer.parseInt(mRequest.getParameter("superNo"));
+				int superNo = Integer.parseInt(req.getParameter("superNo"));
 				BoardDto originDto = boardDao.selectOne(superNo);
 				boardDto.setGroupNo(originDto.getGroupNo());
 				boardDto.setSuperNo(originDto.getBoardNo());//==superNo
@@ -79,13 +75,9 @@ public class BoardWriteReviewServlet extends HttpServlet{
 			}
 			
 			
-			
-			OrderDao orderDao = new OrderDao();
-			orderDao.writeReview(Integer.parseInt(mRequest.getParameter("orderNo")), productNo);
-			
 			int no = boardDao.getSequence();
 			boardDto.setBoardNo(no);
-			boardDao.insertReview(boardDto);
+			boardDao.insert(boardDto);
 			
 			
 			if(mRequest.getFile("attach") != null) {
@@ -117,7 +109,7 @@ public class BoardWriteReviewServlet extends HttpServlet{
 			}
 			
 			//출력
-			resp.sendRedirect("detail.jsp?boardNo="+boardDto.getBoardNo());
+			resp.sendRedirect("board_list.jsp");
 		}
 		catch(Exception e) {
 			e.printStackTrace();

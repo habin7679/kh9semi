@@ -20,14 +20,14 @@ public class LikeInsertServlet extends HttpServlet{
 			LikeDto lDto = new LikeDto();
 
 			lDto.setMemberId((String)req.getSession().getAttribute("member"));
-			int a = Integer.parseInt(req.getParameter("productNo"));
+			int pNo = Integer.parseInt(req.getParameter("productNo"));
 			
-			lDto.setProductNo(a);
+			lDto.setProductNo(pNo);
 
 			LikeDao lDao = new LikeDao();
-			if(lDao.selectOne(lDto)!=null) {
+			if(lDao.selectOne(lDto).getProductNo()==pNo) {
 				//중복 추가 금지
-				resp.sendRedirect(req.getContextPath()+"/like/error2.jsp");
+				resp.sendRedirect(req.getContextPath()+"/like/error1.jsp");
 			}else if(lDao.selectSize((String)req.getSession().getAttribute("member"))>10){
 				resp.sendRedirect(req.getContextPath()+"/like/error.jsp");
 			}else {

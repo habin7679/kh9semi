@@ -82,6 +82,7 @@
 		
 		OrderDto oDto = list.get(i);
 		int pNo = oDto.getProductNo();
+		int oNo = oDto.getOrderNo();
 		ProductDto productDto = productDao.selectOne(pNo);
 		ProductAttachmentDto paDto = paDao.selectOne(pNo);
 %>
@@ -95,7 +96,7 @@
 	<%if(bDto.getBuyStatus().equals("배송완료")){
 			if(oDto.getOrderReview().equals("x")) {%>
 				<td>
-					<a href="<%=request.getContextPath() %>/board/write.jsp?productNo="<%=productDto.getProductNo() %>>리뷰 작성하기</a>
+					<a href="<%=request.getContextPath() %>/board/write.jsp?productNo=<%=pNo%>&orderNo=<%=oNo%>">리뷰 작성하기</a>
 				</td>
 			<%}else {%>
 				<td>리뷰 작성완료</td>

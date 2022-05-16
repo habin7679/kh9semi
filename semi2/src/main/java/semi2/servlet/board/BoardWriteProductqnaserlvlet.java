@@ -18,11 +18,10 @@ import semi2.beans.BoardAttachmentDao;
 import semi2.beans.BoardAttachmentDto;
 import semi2.beans.BoardDao;
 import semi2.beans.BoardDto;
-import semi2.beans.OrderDao;
 
 
-@WebServlet(urlPatterns = "/board/write_review.ez")
-public class BoardWriteReviewServlet extends HttpServlet{
+@WebServlet(urlPatterns = "/board/write_productqna.ez")
+public class BoardWriteProductqnaserlvlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
@@ -39,8 +38,6 @@ public class BoardWriteReviewServlet extends HttpServlet{
 			DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
 			
 			MultipartRequest mRequest = new MultipartRequest(req, path, max, encoding, policy);
-			
-			int productNo = Integer.parseInt(mRequest.getParameter("productNo"));
 			
 			BoardDto boardDto = new BoardDto();
 			
@@ -79,13 +76,9 @@ public class BoardWriteReviewServlet extends HttpServlet{
 			}
 			
 			
-			
-			OrderDao orderDao = new OrderDao();
-			orderDao.writeReview(Integer.parseInt(mRequest.getParameter("orderNo")), productNo);
-			
 			int no = boardDao.getSequence();
 			boardDto.setBoardNo(no);
-			boardDao.insertReview(boardDto);
+			boardDao.insertProductqna(boardDto);
 			
 			
 			if(mRequest.getFile("attach") != null) {
