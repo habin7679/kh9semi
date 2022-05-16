@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/layout.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/layout1.css">
 </head>
 <body>
 <div id='wrap'>
@@ -19,9 +19,9 @@ KH정보교육원 ｜ 사업자등록번호 : 851-87-00622 ｜ 서울 강남 제
 종로지원 : 서울특별시 중구 남대문로 120 대일빌딩 2F, 3F
 당산지원 : 서울특별시 영등포구 선유동2로 57 이레빌딩 (구관) 19F, 20F
 Copyright © 1998-2022 KH Information Educational Institute All Right Reserved
-      
+
         </footer>
         </div>
-        
+
 </body>
 </html>

@@ -14,7 +14,7 @@
 		
 	%>
 <div id="recentProd"></div>
-<div style="position:relative;height:200px;width:200px;">
+<div style="position:relative;height:201px;width:200px;">
 
 <img style="position:absolute;" src="test.jsp" onload="fitImage(this)">
 
