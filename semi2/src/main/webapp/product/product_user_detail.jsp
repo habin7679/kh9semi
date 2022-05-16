@@ -20,6 +20,7 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	int productNo = Integer.parseInt(request.getParameter("product_no"));
+	String memberId = (String)request.getSession().getAttribute("member");
 %>
 
 <%-- 처리 --%>    
@@ -32,7 +33,7 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 	ProductDto productDto = productDao.selectOne(productNo);
 	
 	OrderDao oDao = new OrderDao();
-	int orderNo = oDao.ReviewOrderNo(productNo);
+	int orderNo = oDao.reviewGetOrderNo(memberId, productNo);
 	
 %>
 
