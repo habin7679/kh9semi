@@ -38,7 +38,6 @@
 	<%
 		BuyDao buyDao = new BuyDao();
 		List<BuyDto> list2;
-
 			list2 = buyDao.listAllByPagingId(p, s, memberId);
 	%>
 	<%
