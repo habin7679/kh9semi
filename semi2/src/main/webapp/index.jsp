@@ -9,7 +9,7 @@ List<ProductDto> list = pDao.eventOutput();
 List<ProductDto> list2 = pDao.categorie("샐러드");
 List<ProductDto> list3 = pDao.categorie("간식");
 List<ProductDto> list4 = pDao.categorie("닭가슴살");
-ProductAttachmentDao paDao = new ProductAttachmentDao();
+ProductAttachmentDao paDao = new ProductAttachmentDao();    
 %>
 
 
@@ -58,7 +58,7 @@ ProductAttachmentDao paDao = new ProductAttachmentDao();
 		<div
 			style="display: block; position: relative; padding: 10px 0px; margin: 0px 0px; text-align: left; color: #222; font-size: 27px; font-weight: 500; letter-spacing: -0.09em;">
 			<tr>
-				<th>서둘러요! 지금은 할인중</th>
+				<th>서둘러요! 지금은 할인중!</th>
 			</tr>
 		</div>
 		<div style="display: flex;">
