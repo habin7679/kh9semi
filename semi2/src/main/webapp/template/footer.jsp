@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/layout1.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/layout.css">
 </head>
 <body>
 <div id='wrap'>
