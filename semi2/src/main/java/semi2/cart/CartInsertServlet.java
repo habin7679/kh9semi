@@ -32,7 +32,7 @@ public class CartInsertServlet extends HttpServlet{
 			
 			 if(cDao.savedProduct(productNo, memberId)) {
 				resp.sendRedirect(req.getContextPath()+"/cart/error2.jsp");
-			 } else if(size>10) {
+			 } else if(size>=10) {
 				resp.sendRedirect(req.getContextPath()+"/cart/error.jsp");
 			} else {
 				cDao.insert(cDto);				
