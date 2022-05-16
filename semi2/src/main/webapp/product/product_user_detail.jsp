@@ -32,7 +32,7 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 	ProductDto productDto = productDao.selectOne(productNo);
 	
 	OrderDao oDao = new OrderDao();
-	//>int orderNo = oDao.ReviewOrderNo(productNo);
+	int orderNo = oDao.ReviewOrderNo(productNo);
 	
 %>
 
@@ -247,11 +247,13 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 	</div>
 	
 	<div class="row right">
-	<%-- 
 	<%if(orderNo>0){ %>
-		<a href="/semi2/board/write_review.jsp?productNo=<%=productNo%>" class="link link-btn">글쓰기</a>
+		<form action="<%=request.getContextPath()%>/board/write_review.jsp" method="post">
+					<input type="hidden" name="productNo" value="<%=productNo %>">
+					<input type="hidden" name="orderNo" value="<%=orderNo %>">
+					<input type="submit" value="리뷰 작성하기" class="btn">
+				</form>
 		<%} %>
-	 --%>
 	</div>	
 	
 	<div class="row">
