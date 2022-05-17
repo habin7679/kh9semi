@@ -37,6 +37,6 @@
 	</form><br>
 	
 		<div class="row center">
-			<a href="find_id.jsp" class="btn w500">아이디 찾기</a>
+			<a href="<%=request.getContextPath() %>/member/find_id.jsp" class="btn w500">아이디 찾기</a>
 		</div>
 <jsp:include page="/template/footer.jsp"></jsp:include>
