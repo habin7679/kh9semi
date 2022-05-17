@@ -60,7 +60,7 @@
 <jsp:include page="/template/menu.jsp"></jsp:include>
 </div>
 <div class="float-left layer-2">
-<form action="http://localhost:8080/semi2/order/order.ez" method="post">
+<form action="<%=request.getContextPath() %>/order/order.ez" method="post">
 모두 구매하기<input type="checkbox" class="all">
 <%
 	for(int i =0; i<list.size(); i++) {
@@ -74,10 +74,10 @@
 %>
 	<div class="container wz">
 	<div class= "row center">
-	<img src="/semi2/file/download.ez?attachmentNo=<%=paDto.getAttachmentNo()%>" width="200" height="200">
+	<img src="<%=request.getContextPath() %>/file/download.ez?attachmentNo=<%=paDto.getAttachmentNo()%>" width="200" height="200">
 	</div>
 	<div class= "row center">
-	<a href="http://localhost:8080/semi2/product/product_user_detail.jsp?product_no=<%=pNo%>"><%=pDto.getProductName() %></a>
+	<a href="<%=request.getContextPath() %>/product/product_user_detail.jsp?product_no=<%=pNo%>"><%=pDto.getProductName() %></a>
 	</div>
 	
 	<input type="hidden" name="productNo" value="<%=pNo %>">
