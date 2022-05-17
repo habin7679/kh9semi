@@ -90,15 +90,15 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
         	recentProdObj = [];     // 초기에 최근 본 상품 없을 경우 변수 초기화
         }
         
-        newProdObj = {};
+        newProdObj = {}; //기존 최근 본 상품 목록 로그 출력
         newProdObj.id = <%=productNo%>;
         newProdObj.img = <%=productattachmentDto.getAttachmentNo()%>;
 
-        recentProdObj.unshift(newProdObj);
-        _.uniqBy(recentProdObj, "id");
+        recentProdObj.unshift(newProdObj);  // 현재 상품 최근 본 상품 목록 앞에 넣기(push 에서 unshift로 변경)
+        _.uniqBy(recentProdObj, "id"); 
         
-        localStorage.setItem("recentProdObj", JSON.stringify(recentProdObj.slice(0, 3)));
-        console.log(JSON.parse(localStorage.getItem("recentProdObj")));
+        localStorage.setItem("recentProdObj", JSON.stringify(recentProdObj.slice(0, 3))); // 로컬스토리지 업데이트 (slice로 배열 3개만 유지)
+        console.log(JSON.parse(localStorage.getItem("recentProdObj"))); // 업데이트 된 최근 본 상품 목록 로그 출력
     </script>
 		<style>
      .float-container {
@@ -116,7 +116,6 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
             clear:both;
         }
 
-        /* 1단부터 5단까지 클래스를 이용해서 폭을 설정하도록 구현 */
         .layer-1 {
             width:50%;
         }
@@ -178,19 +177,15 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 
     <div class="container w800 m30">
    <%
-	//목록과 검색을 한페이지에서 한다
-	//=> 구분이 되어야 한다.
-	//=> 주소에 type, keyword가 있으면 "검색"으로 간주
-	//=> 없으면 "목록"으로 간주
+
 	String type = request.getParameter("board_product_no");
 	String keyword = request.getParameter("keyword");
-	//페이징 관련 파라미터들을 수신
 	int p;
-	try {//정상적인 숫자가 들어온 경우 - 0이하인 경우 --> Plan A
+	try {
 		p = Integer.parseInt(request.getParameter("p"));
 		if(p <= 0)	throw new Exception();
 	}
-	catch(Exception e){//p가 없거나 숫자가 아닌 경우 + 0이하인 경우 --> Plan B
+	catch(Exception e){
 		p = 1;
 	}
 	
@@ -227,9 +222,6 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 	//블록 크기
 	int blockSize = 10;
 	
-	//시작블록 혹은 종료 블록 중 하나만 계산하면 반대편은 계산이 가능하다.
-	//종료블록에 영향을 미치는 데이터는 현재 페이지(p) 이다.
-	//하단 블록에는 반드시 현재페이지 번호가 포함되어야 하므로 이 번호를 기준으로 시작과 종료를 계산한다!
 	int endBlock = (p + blockSize - 1) / blockSize * blockSize;
 	int startBlock = endBlock - (blockSize - 1);
 	
@@ -388,19 +380,16 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자
     <div class="container w800 m30">
 <body>
    <%
-	//목록과 검색을 한페이지에서 한다
-	//=> 구분이 되어야 한다.
-	//=> 주소에 type, keyword가 있으면 "검색"으로 간주
-	//=> 없으면 "목록"으로 간주
+
 	String type1 = request.getParameter("board_product_no");
 	String keyword1 = request.getParameter("keyword");
 	//페이징 관련 파라미터들을 수신
 	int p1;
-	try {//정상적인 숫자가 들어온 경우 - 0이하인 경우 --> Plan A
+	try {
 		p1 = Integer.parseInt(request.getParameter("p1"));
 		if(p <= 0)	throw new Exception();
 	}
-	catch(Exception e){//p가 없거나 숫자가 아닌 경우 + 0이하인 경우 --> Plan B
+	catch(Exception e){
 		p1 = 1;
 	}
 	

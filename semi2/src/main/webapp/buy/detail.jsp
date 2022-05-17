@@ -89,7 +89,7 @@
 
 	<tr>
 		<td>
-			<img src="/semi2/file/download.ez?attachmentNo=<%=paDto.getAttachmentNo()%>" width="50" height="50">
+			<img src="<%=request.getContextPath() %>/file/download.ez?attachmentNo=<%=paDto.getAttachmentNo()%>" width="50" height="50">
 		</td>
 		<td><%=productDto.getProductName() %></td>
 		<td><%=oDto.getOrderCount() %></td>

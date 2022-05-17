@@ -36,7 +36,7 @@
 
     <div class="float-left layer-3">
 			<form action="<%=request.getContextPath()%>/cart/insert.ez" method="post">
-			<img src="/semi2/file/download.ez?attachmentNo=<%=paDto.getAttachmentNo()%>" width="200" height="200"><br>
+			<img src="<%=request.getContextPath() %>/file/download.ez?attachmentNo=<%=paDto.getAttachmentNo()%>" width="200" height="200"><br>
 			<a href="<%=request.getContextPath()%>/product/product_user_detail.jsp?product_no=<%=productNo%>"><%=pDto.getProductName() %></a><br>
 			<input type="hidden" name="productNo" value="<%=productNo%>"><br>
 			<h4><%=pDto.getProductPrice() %></h4><br>

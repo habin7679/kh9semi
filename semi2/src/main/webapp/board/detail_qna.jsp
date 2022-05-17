@@ -97,7 +97,7 @@
 		<td>
 			<h2>
 			<div class="container w600 m30" style="text-align:center;">
-			<img src="/semi2/file/download.ez?attachmentNo=<%=boardAttachmentDto.getAttachmentNo()%>" width="400">
+			<img src="<%=request.getContextPath()%>/file/download.ez?attachmentNo=<%=boardAttachmentDto.getAttachmentNo()%>" width="400">
 			<br><br>
 				<%=boardDto.getBoardContent()%>
 			</div>

@@ -32,13 +32,12 @@ public class adminFilter implements Filter{
 		HttpServletResponse resp = (HttpServletResponse) response;
 		
 		try {
-			//준비 : 파라미터의 게시글번호(boardNo)와 세션의 권한(auth) 아이디(login)
-			//[1] 관리자인지 확인해서 관리자라면 통과!
+			//준비
 			String memberId = (String)req.getSession().getAttribute("member");
 			MemberDao memberDao = new MemberDao();
 			MemberDto memberDto = memberDao.selectOne(memberId);
 					
-					
+			//처리		
 			if(memberDto.getMemberGrade().equals("관리자")) {
 				chain.doFilter(request, response);
 				

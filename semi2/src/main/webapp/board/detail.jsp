@@ -7,10 +7,12 @@
 <%@page import="semi2.beans.BoardDao"%>
 <%@page import="semi2.beans.BoardAttachmentDao"%>
 <%@page import="semi2.beans.BoardAttachmentDto"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
+
+
+
 int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 BoardDao boardDao = new BoardDao();
 boardDao.plusReadcount(boardNo);//조회수 증가 
@@ -73,7 +75,7 @@ boolean isOwner = isLogin && memberId.equals(boardDto.getBoardWriter());
 		<td>
 			<h2>
 			<div class="container w600 m30" style="text-align:center;">
-			<img src="/semi2/file/download.ez?attachmentNo=<%=boardAttachmentDto.getAttachmentNo()%>" width="400">
+			<img src="<%=request.getContextPath()%>/file/download.ez?attachmentNo=<%=boardAttachmentDto.getAttachmentNo()%>" width="400">
 			<br><br>
 				<%=boardDto.getBoardContent()%>
 			</div>

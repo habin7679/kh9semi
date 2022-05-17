@@ -20,7 +20,7 @@
 </div>
 
 <div class="float-left layer-2">
-<div id="recentProd"></div>
+<div id="recentProd"></div> <%-- 원래는 빈 div 였다가 자바스크립트가 동적으로 넣어줌--%>
 <div style="position:relative;height:201px;width:200px;">
 
 <img style="position:absolute;" src="test.jsp" onload="fitImage(this)">
@@ -29,9 +29,9 @@
 
 	<script>
 
-	var recentProdObj = JSON.parse(localStorage.getItem("recentProdObj")); 
-	var target = document.getElementById("recentProd");
-    if (recentProdObj != null) {
+	var recentProdObj = JSON.parse(localStorage.getItem("recentProdObj")); //로컬스토리지에서 아이템 가져오기 
+	var target = document.getElementById("recentProd"); //recentProd 라는 id를 html 에서 찾아서 target 에 넣어두고
+    if (recentProdObj != null) { //밑 if 문 = 이미지들 다 html 화 시켜서 target 이란 div 안에 넣는 동작
     	recentProdObj.forEach((current, index)=>{
     		let new_div = document.createElement('div');
     		let new_a = document.createElement('a');
