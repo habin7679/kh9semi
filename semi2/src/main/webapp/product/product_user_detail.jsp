@@ -55,7 +55,7 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
             
             function loadPage(page, size) {
                 $.ajax({
-                    url:"http://localhost:30000/semi2/ajax/board.ez?product_no=<%=productDto.getProductNo()%>",
+                    url:"<%=request.getContextPath()%>/ajax/board.ez?product_no=<%=productDto.getProductNo()%>",
                     type:"post",
                     data:{
                         p : page,
@@ -143,7 +143,7 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 <div class="container w950 m30">
         <div class="row float-container">
             <div class="float-left layer-1">
-               <img src="/semi2/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="400" height="400">
+               <img src="<%=request.getContextPath()%>/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  width="400" height="400">
             </div>
             <div class="float-left layer-2">
                 <label class="label1"><%=productDto.getProductName()%></label><br><br>
@@ -170,7 +170,7 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 				</form>
             </div>
             <div class="row center">
-                <img src="/semi2/file/download.ez?attachmentNo=<%=infoattachmentDto.getAttachmentNo()%>"  width="500" height="1500" class="info">
+                <img src="<%=request.getContextPath()%>/file/download.ez?attachmentNo=<%=infoattachmentDto.getAttachmentNo()%>"  width="500" height="1500" class="info">
             </div>
         </div>
 <%} %>
@@ -286,7 +286,7 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 
 						
 						<!-- 게시글 제목 링크 -->
-						<a href="/semi2/board/detail_review.jsp?boardNo=<%=boardDto.getBoardNo()%>">
+						<a href="<%=request.getContextPath()%>/board/detail_review.jsp?boardNo=<%=boardDto.getBoardNo()%>">
 							<%=boardDto.getBoardTitle()%>
 						</a>
 						
@@ -338,9 +338,9 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자
 		
 		<%if(startBlock > 1){ %>
 			<%if(search){ %>
-			<a href="/semi2/board/review_list.jsp?p=<%=startBlock-1%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&lt;</a>
+			<a href="<%=request.getContextPath()%>/board/review_list.jsp?p=<%=startBlock-1%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&lt;</a>
 			<%} else { %>
-			<a href="/semi2/board/review_list.jsp?p=<%=startBlock-1%>&s=<%=s%>">&lt;</a>
+			<a href="<%=request.getContextPath()%>/board/review_list.jsp?p=<%=startBlock-1%>&s=<%=s%>">&lt;</a>
 			<%} %>
 		<%} %>
 		
@@ -348,15 +348,15 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자
 		<%for(int i=startBlock; i <= endBlock; i++){ %>
 			<%if(search){ %>
 				<%if(i == p){ %>
-				<a class="active" href="/semi2/board/review_list.jsp?p=<%=i%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>"><%=i%></a>	
+				<a class="active" href="<%=request.getContextPath()%>/board/review_list.jsp?p=<%=i%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>"><%=i%></a>	
 				<%} else { %>
-				<a href="/semi2/board/review_list.jsp?p=<%=i%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>"><%=i%></a>
+				<a href="<%=request.getContextPath()%>/board/review_list.jsp?p=<%=i%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>"><%=i%></a>
 				<%} %>
 			<%} else { %>
 				<%if(i == p){ %>
-				<a class="active" href="/semi2/board/review_list.jsp?p=<%=i%>&s=<%=s%>"><%=i%></a>	
+				<a class="active" href="<%=request.getContextPath()%>/board/review_list.jsp?p=<%=i%>&s=<%=s%>"><%=i%></a>	
 				<%} else { %>
-				<a href="/semi2/board/review_list.jsp?p=<%=i%>&s=<%=s%>"><%=i%></a>
+				<a href="<%=request.getContextPath()%>/board/review_list.jsp?p=<%=i%>&s=<%=s%>"><%=i%></a>
 				<%} %>
 			<%} %>
 		<%} %>
@@ -364,17 +364,17 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자
 		<!-- 다음 버튼 영역 -->
 		<%if(endBlock < lastPage){ %>
 			<%if(search){ %>
-			<a href="/semi2/board/review_list.jsp?p=<%=endBlock+1%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&gt;</a>
+			<a href="<%=request.getContextPath()%>/board/review_list.jsp?p=<%=endBlock+1%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&gt;</a>
 			<%} else { %>
-			<a href="/semi2/board/review_list.jsp?p=<%=endBlock+1%>&s=<%=s%>">&gt;</a>
+			<a href="<%=request.getContextPath()%>/board/review_list.jsp?p=<%=endBlock+1%>&s=<%=s%>">&gt;</a>
 			<%} %>
 		<%} %>
 		
 		<%if(p < lastPage){ %>
 			<%if(search){ %>
-			<a href="/semi2/board/review_list.jsp?p=<%=lastPage%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&raquo;</a>
+			<a href="<%=request.getContextPath()%>/board/review_list.jsp?p=<%=lastPage%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&raquo;</a>
 			<%} else { %>
-			<a href="/semi2/board/review_list.jsp?p=<%=lastPage%>&s=<%=s%>">&raquo;</a>
+			<a href="<%=request.getContextPath()%>/board/review_list.jsp?p=<%=lastPage%>&s=<%=s%>">&raquo;</a>
 			<%} %>
 		<%} %>
 		
@@ -457,7 +457,7 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자
 	</div>
 	
 	<div class="row right">
-		<a href="/semi2/board/write_productqna.jsp?productNo=<%=productNo%>" class="link link-btn">글쓰기</a>
+		<a href="<%=request.getContextPath()%>/board/write_productqna.jsp?productNo=<%=productNo%>" class="link link-btn">글쓰기</a>
 	</div>	
 	
 	<div class="row">
@@ -490,7 +490,7 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자
 
 						
 						<!-- 게시글 제목 링크 -->
-						<a href="/semi2/board/detail_productqna.jsp?boardNo=<%=boardDto.getBoardNo()%>">
+						<a href="<%=request.getContextPath()%>/board/detail_productqna.jsp?boardNo=<%=boardDto.getBoardNo()%>">
 							<%=boardDto.getBoardTitle()%>
 						</a>
 						
@@ -542,9 +542,9 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자
 		
 		<%if(startBlock1 > 1){ %>
 			<%if(search){ %>
-			<a href="/semi2/board/productqna_list.jsp?p=<%=startBlock-1%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&lt;</a>
+			<a href="<%=request.getContextPath()%>/board/productqna_list.jsp?p=<%=startBlock-1%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&lt;</a>
 			<%} else { %>
-			<a href="/semi2/board/productqna_list.jsp?p=<%=startBlock-1%>&s=<%=s%>">&lt;</a>
+			<a href="<%=request.getContextPath()%>/board/productqna_list.jsp?p=<%=startBlock-1%>&s=<%=s%>">&lt;</a>
 			<%} %>
 		<%} %>
 		
@@ -552,15 +552,15 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자
 		<%for(int i=startBlock; i <= endBlock; i++){ %>
 			<%if(search){ %>
 				<%if(i == p){ %>
-				<a class="active" href="/semi2/board/productqna_list.jsp?p=<%=i%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>"><%=i%></a>	
+				<a class="active" href="<%=request.getContextPath()%>/board/productqna_list.jsp?p=<%=i%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>"><%=i%></a>	
 				<%} else { %>
-				<a href="/semi2/board/productqna_list.jsp?p=<%=i%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>"><%=i%></a>
+				<a href="<%=request.getContextPath()%>/board/productqna_list.jsp?p=<%=i%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>"><%=i%></a>
 				<%} %>
 			<%} else { %>
 				<%if(i == p){ %>
-				<a class="active" href="/semi2/board/productqna_list.jsp?p=<%=i%>&s=<%=s%>"><%=i%></a>	
+				<a class="active" href="<%=request.getContextPath()%>/board/productqna_list.jsp?p=<%=i%>&s=<%=s%>"><%=i%></a>	
 				<%} else { %>
-				<a href="/semi2/board/productqna_list.jsp?p=<%=i%>&s=<%=s%>"><%=i%></a>
+				<a href="<%=request.getContextPath()%>/board/productqna_list.jsp?p=<%=i%>&s=<%=s%>"><%=i%></a>
 				<%} %>
 			<%} %>
 		<%} %>
@@ -568,17 +568,17 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자
 		<!-- 다음 버튼 영역 -->
 		<%if(endBlock < lastPage){ %>
 			<%if(search){ %>
-			<a href="/semi2/board/productqna_list.jsp?p=<%=endBlock+1%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&gt;</a>
+			<a href="<%=request.getContextPath()%>/board/productqna_list.jsp?p=<%=endBlock+1%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&gt;</a>
 			<%} else { %>
-			<a href="/semi2/board/productqna_list.jsp?p=<%=endBlock+1%>&s=<%=s%>">&gt;</a>
+			<a href="<%=request.getContextPath()%>/board/productqna_list.jsp?p=<%=endBlock+1%>&s=<%=s%>">&gt;</a>
 			<%} %>
 		<%} %>
 		
 		<%if(p1 < lastPage){ %>
 			<%if(search){ %>
-			<a href="/semi2/board/productqna_list.jsp?p=<%=lastPage%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&raquo;</a>
+			<a href="<%=request.getContextPath()%>/board/productqna_list.jsp?p=<%=lastPage%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&raquo;</a>
 			<%} else { %>
-			<a href="/semi2/board/productqna_list.jsp?p=<%=lastPage%>&s=<%=s%>">&raquo;</a>
+			<a href="<%=request.getContextPath()%>/board/productqna_list.jsp?p=<%=lastPage%>&s=<%=s%>">&raquo;</a>
 			<%} %>
 		<%} %>
 		
