@@ -7,10 +7,12 @@
 <%@page import="semi2.beans.BoardDao"%>
 <%@page import="semi2.beans.BoardAttachmentDao"%>
 <%@page import="semi2.beans.BoardAttachmentDto"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
+
+
+
 int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 BoardDao boardDao = new BoardDao();
 boardDao.plusReadcount(boardNo);//조회수 증가 

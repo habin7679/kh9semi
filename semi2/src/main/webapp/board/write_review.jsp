@@ -75,5 +75,5 @@ int orderNo = Integer.parseInt(request.getParameter("orderNo"));
 	    </div>
 	</div>
 </form>
-
+</div>
 <jsp:include page="/template/footer.jsp"></jsp:include>

@@ -15,8 +15,8 @@ import semi2.beans.ReplyDao;
 import semi2.beans.ReplyDto;
 
 @WebFilter(filterName="f4", urlPatterns = {
-		"/board/reply_edit.ez",
-		"/board/reply_delete.ez"
+//		"/board/reply_edit.ez",
+//		"/board/reply_delete.ez"
 })
 public class ReplyOwnerFilter implements Filter{
 	@Override
@@ -25,24 +25,24 @@ public class ReplyOwnerFilter implements Filter{
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
 		try {
-			//준비 : 파라미터의 게시글번호(boardNo)와 세션의 권한(auth) 아이디(login)
-			//[1] 관리자인지 확인해서 관리자라면 통과!
+			//준비 
+			//관리자인지 확인해서 관리자라면 통과
 			String memberGrade = (String) req.getSession().getAttribute("admin");
 			if(memberGrade.equals("관리자")) {
 				chain.doFilter(request, response);
 				return;
 			}
 			
-			//[2] 작성자 본인인지 확인
+			//작성자 본인인지 확인
 			String memberId = (String)req.getSession().getAttribute("member");
 			int replyNo = Integer.parseInt(req.getParameter("replyNo"));
 			
 			ReplyDao replyDao = new ReplyDao();
 			ReplyDto replyDto = replyDao.selectOne(replyNo);
-			if(memberId.equals(replyDto.getReplyWriter())) {//본인이라면
+			if(memberId.equals(replyDto.getReplyWriter())) {
 				chain.doFilter(request, response);
 			}
-			else {//본인이 아니라면 : 권한 없음 에러 발생(403, forbidden)
+			else {
 				resp.sendError(403);
 			}
 		}
@@ -52,7 +52,3 @@ public class ReplyOwnerFilter implements Filter{
 		}
 	}
 }
-
-
-
-
