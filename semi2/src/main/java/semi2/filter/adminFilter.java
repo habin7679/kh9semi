@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import semi2.beans.MemberDao;
 import semi2.beans.MemberDto;
 
-@WebFilter(filterName="f5", urlPatterns = {
+@WebFilter(filterName="f6", urlPatterns = {
 		
 		"/admin/*", "/product_admin_detail.jsp",
 		"/product_admin_list.jsp", "/product_delete_faill.jsp",

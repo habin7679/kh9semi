@@ -22,7 +22,7 @@ public class MemberExitServelet extends HttpServlet{
 			MemberDto memberDto= memberDao.selectOne(memberId);
 			boolean isPw= memberPw !=null && memberPw.equals(memberDto.getMemberPw());
 			if(!isPw) {
-				resp.sendRedirect("exit.jsp?error");
+				resp.sendRedirect(req.getContextPath()+"/member/exit.jsp?error");
 				return;
 			}
 			
@@ -31,7 +31,7 @@ public class MemberExitServelet extends HttpServlet{
 			req.getSession().removeAttribute("member");
 			req.getSession().removeAttribute("admin");
 			
-			resp.sendRedirect("exit_success.jsp");
+			resp.sendRedirect(req.getContextPath()+"/member/exit_success.jsp");
 			
 		} catch (Exception e) {
 			e.printStackTrace();

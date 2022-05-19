@@ -42,6 +42,10 @@ table {
     border-spacing: 0;
 }
 
+/* 
+    heading 태그 크기 설정 
+  
+*/
 h1 {
     font-size: 2em;
     text-align: center;
@@ -62,6 +66,10 @@ h5 {
 h6 {
     font-size: 0.67em;
 }
+
+/*
+    폭설정방식과 폰트 설정
+*/
 * {
     box-sizing: border-box;
 }

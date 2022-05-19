@@ -24,9 +24,11 @@ public class CartInsertServlet extends HttpServlet{
 			
 			String memberId = (String)req.getSession().getAttribute("member");
 			int productNo = Integer.parseInt(req.getParameter("productNo"));
+			int cartAmount = Integer.parseInt(req.getParameter("orderAmount"));
 			
 			cDto.setProductNo(productNo);
 			cDto.setMemberId(memberId);
+			cDto.setCartAmount(cartAmount);
 			
 			int size = cDao.selectSize(memberId);
 			

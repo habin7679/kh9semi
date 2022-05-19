@@ -42,7 +42,7 @@ public class MemberLoginServlet extends HttpServlet {
 				}
 			}
 			else {
-				resp.sendRedirect("login.jsp?error");
+				resp.sendRedirect(req.getContextPath()+"/member/login.jsp?error");
 			}
 			
 		}catch(Exception e){

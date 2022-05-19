@@ -16,14 +16,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
+<%-- 준비 --%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	int productNo = Integer.parseInt(request.getParameter("product_no"));
 	String memberId = (String)request.getSession().getAttribute("member");
 %>
 
-
+<%-- 처리 --%>    
 <%
 ProductAttachmentDao productattachmentDao = new ProductAttachmentDao();
 ProductAttachmentDto productattachmentDto = productattachmentDao.selectOne(productNo);
@@ -37,16 +37,17 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 	
 %>
 
+<%-- 출력 --%>
 <jsp:include page="/template/header.jsp"></jsp:include>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
  	<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
     <script type="text/javascript">
         $(function(){
-
+            //[1] 1페이지를 불러와서 화면에 띄운다
             var page = 1;
             var size = 10;
             loadPage(page, size);
-
+            //[2] 더보기 버튼을 누르면 다음페이지를 화면에 띄운다
             $(".btn-more").click(function(){
                 page++;
                 loadPage(page, size);
@@ -61,7 +62,10 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
                         s : size
                     },
                     success:function(resp){
-
+                        //목표 : resp에 들어있는 데이터를 기반으로 화면 생성을 한다
+                        // -> 태그를 생성해서 데이터를 배치해야 한다.
+                        // -> $("<div>") 라고 작성하면 div를 생성하라는 의미//
+                        //페이지 크기보다 작은 개수가 불러와졌다면 더보기가 없는 것으로 간주
                         if(resp.length < size) {
                             $(".btn-more").remove();
                         }
@@ -72,30 +76,28 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
                             var td3 = $("<td>").text(resp[i].boardWriter);
                             var td4 = $("<td>").text(resp[i].boardTime);
                             var td5 = $("<td>").text(resp[i].boardReadcount);
-      
+                            //tr에 td1부터 td5까지 순차적으로 추가
                             tr.append(td1).append(td2).append(td3).append(td4).append(td5);
-
+                            //#table-body에 tr을 추가
                             $("#table-body").append(tr);
                         }
                     }
                 });
             }
         });
-
-        var recentProdObj = JSON.parse(localStorage.getItem("recentProdObj"));
+        var recentProdObj = JSON.parse(localStorage.getItem("recentProdObj"));// 로컬스토리지에서 최근 본 상품 목록 가져오기
         if (recentProdObj == null) {
-        	recentProdObj = [];     
+        	recentProdObj = [];     // 초기에 최근 본 상품 없을 경우 변수 초기화
         }
         
-        newProdObj = {};
+        newProdObj = {}; //기존 최근 본 상품 목록 로그 출력
         newProdObj.id = <%=productNo%>;
         newProdObj.img = <%=productattachmentDto.getAttachmentNo()%>;
-
-        recentProdObj.unshift(newProdObj);
-        _.uniqBy(recentProdObj, "id");
+        recentProdObj.unshift(newProdObj);  // 현재 상품 최근 본 상품 목록 앞에 넣기(push 에서 unshift로 변경)
+        _.uniqBy(recentProdObj, "id"); 
         
-        localStorage.setItem("recentProdObj", JSON.stringify(recentProdObj.slice(0, 3)));
-        console.log(JSON.parse(localStorage.getItem("recentProdObj")));
+        localStorage.setItem("recentProdObj", JSON.stringify(recentProdObj.slice(0, 3))); // 로컬스토리지 업데이트 (slice로 배열 3개만 유지)
+        console.log(JSON.parse(localStorage.getItem("recentProdObj"))); // 업데이트 된 최근 본 상품 목록 로그 출력
     </script>
 		<style>
      .float-container {
@@ -112,8 +114,6 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
             display: block;
             clear:both;
         }
-
-        /* 1단부터 5단까지 클래스를 이용해서 폭을 설정하도록 구현 */
         .layer-1 {
             width:50%;
         }
@@ -135,7 +135,8 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 <%if(productDto == null){ %>
 <h1>해당 상품은 존재하지 않습니다</h1>
 <%} else { %>
-<h1 class="center"><%=productDto.getProductName() %> 정보 보기</h1><br>
+
+<h1><%=productDto.getProductName() %> 정보 보기</h1><br>
 <div class="container w950 m30">
         <div class="row float-container">
             <div class="float-left layer-1">
@@ -174,13 +175,8 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 
     <div class="container w800 m30">
    <%
-	
-	
-	
-	
 	String type = request.getParameter("board_product_no");
 	String keyword = request.getParameter("keyword");
-	
 	int p;
 	try {
 		p = Integer.parseInt(request.getParameter("p"));
@@ -207,29 +203,26 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 		list = boardDao.productselectList(productNo);
 %>    
 
-
+<!-- 숫자(페이지네이션) 링크 -->
 <%
 	int count;
-	if(search){
+	if(search){//검색 결과 수 카운트
 		count = boardDao.countByPaging_review(type, keyword);
 	}
-	else{
+	else{//목록 결과 수 카운트
 		count = boardDao.countByPaging_review();
 	}
 	
-	
+	//마지막 페이지 번호 계산
 	int lastPage = (count + s - 1) / s;
 	
-	
+	//블록 크기
 	int blockSize = 10;
-	
-	
-	
 	
 	int endBlock = (p + blockSize - 1) / blockSize * blockSize;
 	int startBlock = endBlock - (blockSize - 1);
 	
-	
+	//범위를 초과하는 문제를 해결(endBlock > lastPage)
 	if(endBlock > lastPage){
 		endBlock = lastPage;
 	}
@@ -261,9 +254,9 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 					<th>작성자</th>
 					<th>작성일</th>
 					<th>조회수</th>
-
-
-
+<!-- 					<th>groupNo</th> -->
+<!-- 					<th>superNo</th> -->
+<!-- 					<th>depth</th> -->
 				</tr>
 			</thead>
 			<tbody align="center">
@@ -272,7 +265,7 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 					<td><%=boardDto.getBoardHead()%></td>
 					<td class="left">
 						
-						
+						<%-- depth(차수)만큼 띄어쓰기 처리 --%>
 						<%if(boardDto.getDepth() > 0){ %>
 							<%for(int i=0; i < boardDto.getDepth(); i++){ %>
 							&nbsp;&nbsp;&nbsp;&nbsp;
@@ -281,27 +274,27 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 						<%} %>
 
 						
-						
+						<!-- 게시글 제목 링크 -->
 						<a href="/semi2/board/detail_review.jsp?boardNo=<%=boardDto.getBoardNo()%>">
 							<%=boardDto.getBoardTitle()%>
 						</a>
 						
-						
+						<!-- 댓글 수 출력 -->
 						<%if(boardDto.getBoardReplycount() > 0){ %>
 						[<%=boardDto.getBoardReplycount()%>]
 						<%} %>
 					</td>
 <%
 MemberDao memberDao = new MemberDao();
-MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());
+MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자 모든 정보 조회
 %>
 					<td><%=memberDto.getMemberNick()%></td>
-
+<%-- 				<td><%=boardDto.getBoardWriter()%></td>--%>
 					<td><%=boardDto.getBoardTime()%></td>
 					<td><%=boardDto.getBoardReadcount()%></td>
-
-
-
+<%-- 					<td><%=boardDto.getGroupNo()%></td> --%>
+<%-- 					<td><%=boardDto.getSuperNo()%></td> --%>
+<%-- 					<td><%=boardDto.getDepth()%></td> --%>
 				</tr>
 				<%} %>
 			</tbody>
@@ -309,8 +302,20 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());
 	</div>
 	
 	<div class="row center pagination">
+		<%--
+			목록과 검색은 링크가 다르다. 이유는 유지시켜야 하는 파라미터의 개수가 다르기 때문이다.
+			- 목록 = p, s
+			- 검색 = p, s, type, keyword
+		 --%>
 		
-
+		<!-- 이전 버튼 영역 -->
+		
+		<%--
+			p > 1 : 첫 번째 페이지가 아닌 경우
+			startBlock > 1 : 첫 번째 블록 구간이 아닌 경우
+			p < lastPage : 마지막 페이지가 아닌 경우
+			endBlock < lastPage : 마지막 블록 구간이 아닌 경우
+		 --%>
 		
 		<%if(p > 1){ %>
 			<%if(search){ %>
@@ -328,7 +333,7 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());
 			<%} %>
 		<%} %>
 		
-		
+		<!-- 숫자 링크 영역 -->
 		<%for(int i=startBlock; i <= endBlock; i++){ %>
 			<%if(search){ %>
 				<%if(i == p){ %>
@@ -345,7 +350,7 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());
 			<%} %>
 		<%} %>
 		
-		
+		<!-- 다음 버튼 영역 -->
 		<%if(endBlock < lastPage){ %>
 			<%if(search){ %>
 			<a href="/semi2/board/review_list.jsp?p=<%=endBlock+1%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&gt;</a>
@@ -372,13 +377,9 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());
     <div class="container w800 m30">
 <body>
    <%
-	
-	
-	
-	
 	String type1 = request.getParameter("board_product_no");
 	String keyword1 = request.getParameter("keyword");
-	
+	//페이징 관련 파라미터들을 수신
 	int p1;
 	try {
 		p1 = Integer.parseInt(request.getParameter("p1"));
@@ -405,29 +406,29 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());
 		list1 = boardDao.productqnaselectList(productNo);
 %>    
 
-
+<!-- 숫자(페이지네이션) 링크 -->
 <%
 	int count1;
-	if(search){
+	if(search){//검색 결과 수 카운트
 		count1 = boardDao.countByPaging_review(type1, keyword1);
 	}
-	else{
+	else{//목록 결과 수 카운트
 		count1 = boardDao.countByPaging_review();
 	}
 	
-	
+	//마지막 페이지 번호 계산
 	int lastPage1 = (count + s1 - 1) / s;
 	
-	
+	//블록 크기
 	int blockSize1 = 10;
 	
-	
-	
-	
+	//시작블록 혹은 종료 블록 중 하나만 계산하면 반대편은 계산이 가능하다.
+	//종료블록에 영향을 미치는 데이터는 현재 페이지(p) 이다.
+	//하단 블록에는 반드시 현재페이지 번호가 포함되어야 하므로 이 번호를 기준으로 시작과 종료를 계산한다!
 	int endBlock1 = (p1 + blockSize1 - 1) / blockSize1 * blockSize1;
 	int startBlock1 = endBlock - (blockSize1 - 1);
 	
-
+	//범위를 초과하는 문제를 해결(endBlock > lastPage)
 	if(endBlock > lastPage){
 		endBlock = lastPage;
 	}
@@ -453,9 +454,9 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());
 					<th>작성자</th>
 					<th>작성일</th>
 					<th>조회수</th>
-
-
-
+<!-- 					<th>groupNo</th> -->
+<!-- 					<th>superNo</th> -->
+<!-- 					<th>depth</th> -->
 				</tr>
 			</thead>
 			<tbody align="center">
@@ -464,7 +465,7 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());
 					<td><%=boardDto.getBoardHead()%></td>
 					<td class="left">
 						
-						
+						<%-- depth(차수)만큼 띄어쓰기 처리 --%>
 						<%if(boardDto.getDepth() > 0){ %>
 							<%for(int i=0; i < boardDto.getDepth(); i++){ %>
 							&nbsp;&nbsp;&nbsp;&nbsp;
@@ -473,27 +474,27 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());
 						<%} %>
 
 						
-						
+						<!-- 게시글 제목 링크 -->
 						<a href="/semi2/board/detail_productqna.jsp?boardNo=<%=boardDto.getBoardNo()%>">
 							<%=boardDto.getBoardTitle()%>
 						</a>
 						
-						
+						<!-- 댓글 수 출력 -->
 						<%if(boardDto.getBoardReplycount() > 0){ %>
 						[<%=boardDto.getBoardReplycount()%>]
 						<%} %>
 					</td>
 <%
 MemberDao memberDao = new MemberDao();
-MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());
+MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자 모든 정보 조회
 %>
 					<td><%=memberDto.getMemberNick()%></td>
-
+<%-- 				<td><%=boardDto.getBoardWriter()%></td>--%>
 					<td><%=boardDto.getBoardTime()%></td>
 					<td><%=boardDto.getBoardReadcount()%></td>
-
-
-
+<%-- 					<td><%=boardDto.getGroupNo()%></td> --%>
+<%-- 					<td><%=boardDto.getSuperNo()%></td> --%>
+<%-- 					<td><%=boardDto.getDepth()%></td> --%>
 				</tr>
 				<%} %>
 			</tbody>
@@ -501,13 +502,20 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());
 	</div>
 	
 	<div class="row center pagination">
+		<%--
+			목록과 검색은 링크가 다르다. 이유는 유지시켜야 하는 파라미터의 개수가 다르기 때문이다.
+			- 목록 = p, s
+			- 검색 = p, s, type, keyword
+		 --%>
 		
-
+		<!-- 이전 버튼 영역 -->
 		
-		
-		
-		
-
+		<%--
+			p > 1 : 첫 번째 페이지가 아닌 경우
+			startBlock > 1 : 첫 번째 블록 구간이 아닌 경우
+			p < lastPage : 마지막 페이지가 아닌 경우
+			endBlock < lastPage : 마지막 블록 구간이 아닌 경우
+		 --%>
 		
 		<%if(p1 > 1){ %>
 			<%if(search){ %>
@@ -525,7 +533,7 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());
 			<%} %>
 		<%} %>
 		
-		
+		<!-- 숫자 링크 영역 -->
 		<%for(int i=startBlock; i <= endBlock; i++){ %>
 			<%if(search){ %>
 				<%if(i == p){ %>
@@ -542,7 +550,7 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());
 			<%} %>
 		<%} %>
 		
-		
+		<!-- 다음 버튼 영역 -->
 		<%if(endBlock < lastPage){ %>
 			<%if(search){ %>
 			<a href="/semi2/board/productqna_list.jsp?p=<%=endBlock+1%>&s=<%=s%>&type=<%=type%>&keyword=<%=keyword%>">&gt;</a>
