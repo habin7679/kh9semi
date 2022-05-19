@@ -26,10 +26,10 @@ public class MemberFindPwSevlet extends HttpServlet{
 			
 			//출력
 			if(memberDto2 !=null) {
-				resp.sendRedirect("change_pw.jsp?memberId="+memberDto2.getMemberId());
+				resp.sendRedirect(req.getContextPath()+"/member/change_pw.jsp?memberId="+memberDto2.getMemberId());
 			}
 			else {
-				resp.sendRedirect("find_pw.jsp?error");
+				resp.sendRedirect(req.getContextPath()+"/member/find_pw.jsp?error");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

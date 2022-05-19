@@ -4,6 +4,9 @@
 <jsp:include page="/template/header.jsp"></jsp:include>
   
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script>
+  var context=<%=request.getContextPath()%>
+  </script>
   <script type="text/javascript">
         $(function(){
 
@@ -32,10 +35,10 @@
                 var that = this;
 
                 $.ajax({
-                    url:"http://localhost:8080/semi2/ajax/id.ez?memberId="+memberId,
+                    url: context+"/ajax/id.ez?memberId="+memberId,
                     type:"get",
                     success:function(resp) {
-                        //resp는 "NNNNN" 또는 "NNNNY"일 것이다
+                        
                         if(resp == "N"){
                         	$(that).next().css("color", "red");
                         	$(that).next("span").text("이미 사용중인 아이디입니다");
@@ -99,7 +102,7 @@
                 } 
 
                 $.ajax({
-                    url:"http://localhost:8080/semi2/ajax/nick.ez?memberNick="+memberNick,
+                    url: context+"/ajax/nick.ez?memberNick="+memberNick,
                     type:"post",
                     data:{
                         memberNick : memberNick

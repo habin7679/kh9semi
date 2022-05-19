@@ -58,7 +58,6 @@
 		<label><a href="<%=request.getContextPath()%>/admin/board_list.jsp">Board</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/board_write.jsp">Write</a></label><br><br><br><br>
 		<label><a href="<%=request.getContextPath()%>/admin/banner.jsp">Banner</a></label><br><br><br><br>
-		<label><a href="<%=request.getContextPath()%>/admin/statistics.jsp">Statistics</a></label><br><br><br><br>	
 		</aside>
 		
 <article class= "float-left layer-2">
@@ -118,7 +117,7 @@ if (endBlock > lastPage) {
 
 <%-- 출력 --%>
 
-
+	<div class="container w800 m30 ">
 	<div class="row center">
 		<h1>상품 목록</h1><br>
 	</div>
@@ -213,7 +212,7 @@ if (endBlock > lastPage) {
 				%>
 			</tbody>
 		</table>
-	</div>
+	
 	<div>
 		<%
 		}
@@ -335,6 +334,11 @@ if (endBlock > lastPage) {
 		<%
 		}
 		%>
+		</div>
+		</div>
+		
+		</article>
+		</section>
 		</div>
 </body>
 

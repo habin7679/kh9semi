@@ -11,12 +11,13 @@ import oracle.jdbc.proxy.annotation.Pre;
 public class CartDao {
 	public void insert(CartDto cartDto) throws Exception{
 		Connection con = JdbcUtils.getConnection();
-		String sql = "insert into cart(member_id, product_no) values(?,?)";
+		String sql = "insert into cart(member_id, product_no, cart_amount) values(?,?,?)";
 		
 		PreparedStatement ps = con.prepareStatement(sql);
 		
 		ps.setString(1, cartDto.getMemberId());
 		ps.setInt(2, cartDto.getProductNo());
+		ps.setInt(3, cartDto.getCartAmount());
 		
 		ps.execute();
 		con.close();

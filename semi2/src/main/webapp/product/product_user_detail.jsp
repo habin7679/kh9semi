@@ -37,6 +37,7 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 	
 %>
 
+
 <jsp:include page="/template/header.jsp"></jsp:include>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
  	<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
@@ -72,30 +73,28 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
                             var td3 = $("<td>").text(resp[i].boardWriter);
                             var td4 = $("<td>").text(resp[i].boardTime);
                             var td5 = $("<td>").text(resp[i].boardReadcount);
-      
+                            //tr에 td1부터 td5까지 순차적으로 추가
                             tr.append(td1).append(td2).append(td3).append(td4).append(td5);
-
+                            //#table-body에 tr을 추가
                             $("#table-body").append(tr);
                         }
                     }
                 });
             }
         });
-
         var recentProdObj = JSON.parse(localStorage.getItem("recentProdObj"));
         if (recentProdObj == null) {
-        	recentProdObj = [];     
+        	recentProdObj = [];    
         }
         
-        newProdObj = {};
+        newProdObj = {}; 
         newProdObj.id = <%=productNo%>;
         newProdObj.img = <%=productattachmentDto.getAttachmentNo()%>;
-
-        recentProdObj.unshift(newProdObj);
-        _.uniqBy(recentProdObj, "id");
+        recentProdObj.unshift(newProdObj); 
+        _.uniqBy(recentProdObj, "id"); 
         
-        localStorage.setItem("recentProdObj", JSON.stringify(recentProdObj.slice(0, 3)));
-        console.log(JSON.parse(localStorage.getItem("recentProdObj")));
+        localStorage.setItem("recentProdObj", JSON.stringify(recentProdObj.slice(0, 3))); 
+        console.log(JSON.parse(localStorage.getItem("recentProdObj"))); 
     </script>
 		<style>
      .float-container {
@@ -112,8 +111,6 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
             display: block;
             clear:both;
         }
-
-        /* 1단부터 5단까지 클래스를 이용해서 폭을 설정하도록 구현 */
         .layer-1 {
             width:50%;
         }
@@ -135,7 +132,8 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 <%if(productDto == null){ %>
 <h1>해당 상품은 존재하지 않습니다</h1>
 <%} else { %>
-<h1 class="center"><%=productDto.getProductName() %> 정보 보기</h1><br>
+
+<h1><%=productDto.getProductName() %> 정보 보기</h1><br>
 <div class="container w950 m30">
         <div class="row float-container">
             <div class="float-left layer-1">
@@ -174,13 +172,8 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 
     <div class="container w800 m30">
    <%
-	
-	
-	
-	
 	String type = request.getParameter("board_product_no");
 	String keyword = request.getParameter("keyword");
-	
 	int p;
 	try {
 		p = Integer.parseInt(request.getParameter("p"));
@@ -222,9 +215,6 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 	
 	
 	int blockSize = 10;
-	
-	
-	
 	
 	int endBlock = (p + blockSize - 1) / blockSize * blockSize;
 	int startBlock = endBlock - (blockSize - 1);
@@ -310,7 +300,19 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());
 	
 	<div class="row center pagination">
 		
-
+			목록과 검색은 링크가 다르다. 이유는 유지시켜야 하는 파라미터의 개수가 다르기 때문이다.
+			- 목록 = p, s
+			- 검색 = p, s, type, keyword
+		 --%>
+		
+		
+		
+		
+			p > 1 : 첫 번째 페이지가 아닌 경우
+			startBlock > 1 : 첫 번째 블록 구간이 아닌 경우
+			p < lastPage : 마지막 페이지가 아닌 경우
+			endBlock < lastPage : 마지막 블록 구간이 아닌 경우
+		 --%>
 		
 		<%if(p > 1){ %>
 			<%if(search){ %>
@@ -372,10 +374,6 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());
     <div class="container w800 m30">
 <body>
    <%
-	
-	
-	
-	
 	String type1 = request.getParameter("board_product_no");
 	String keyword1 = request.getParameter("keyword");
 	
@@ -427,7 +425,7 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());
 	int endBlock1 = (p1 + blockSize1 - 1) / blockSize1 * blockSize1;
 	int startBlock1 = endBlock - (blockSize1 - 1);
 	
-
+	
 	if(endBlock > lastPage){
 		endBlock = lastPage;
 	}
@@ -502,12 +500,19 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());
 	
 	<div class="row center pagination">
 		
-
+			목록과 검색은 링크가 다르다. 이유는 유지시켜야 하는 파라미터의 개수가 다르기 때문이다.
+			- 목록 = p, s
+			- 검색 = p, s, type, keyword
+		 --%>
 		
 		
 		
 		
-
+			p > 1 : 첫 번째 페이지가 아닌 경우
+			startBlock > 1 : 첫 번째 블록 구간이 아닌 경우
+			p < lastPage : 마지막 페이지가 아닌 경우
+			endBlock < lastPage : 마지막 블록 구간이 아닌 경우
+		 --%>
 		
 		<%if(p1 > 1){ %>
 			<%if(search){ %>

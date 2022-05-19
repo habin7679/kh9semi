@@ -40,7 +40,7 @@ public class MemberEditServlet extends HttpServlet{
 			boolean isPasswordCorrect = memberDto.getMemberPw().equals(findDto.getMemberPw());
 			
 			if(!isPasswordCorrect) {
-				resp.sendRedirect("edit.jsp?error");
+				resp.sendRedirect(req.getContextPath()+"/member/edit.jsp?error");
 				return;
 			}
 			
@@ -48,7 +48,7 @@ public class MemberEditServlet extends HttpServlet{
 			memberDao.edit(memberDto);
 			
 			//출력
-			resp.sendRedirect("mypage.jsp");
+			resp.sendRedirect(req.getContextPath()+"/member/mypage.jsp");
 		}
 		catch(Exception e) {
 			e.printStackTrace();

@@ -60,10 +60,10 @@ public class MemberJoinServlet extends HttpServlet{
 			DeliveryDao deliveryDao= new DeliveryDao();
 			deliveryDao.insert(deliveryDto);
 			
-			resp.sendRedirect("join_success.jsp");
+			resp.sendRedirect(req.getContextPath()+"/member/join_success.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
-			resp.sendRedirect("join.jsp?error");
+			resp.sendRedirect(req.getContextPath()+"/member/join.jsp?error");
 		}
 	}
 	

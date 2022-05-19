@@ -34,13 +34,13 @@
             <%} %>
 
             <div class="row">
-                <a href="find_id.jsp" class=" link link-btn fill" style="width:49.5%">아이디 찾기</a>
-                <a href="find_pw.jsp" class=" link link-btn fill" style="width:49.5%">비밀번호 찾기</a>
+                <a href="<%=request.getContextPath() %>/member/find_id.jsp" class=" link link-btn fill" style="width:49.5%">아이디 찾기</a>
+                <a href="<%=request.getContextPath() %>/member/find_pw.jsp" class=" link link-btn fill" style="width:49.5%">비밀번호 찾기</a>
             </div>
 
 
              <div>
-                <a href="join.jsp" class=" link link-btn fill">회원가입</a>
+                <a href="<%=request.getContextPath() %>/member/join.jsp" class=" link link-btn fill">회원가입</a>
             </div>
         </div>
         </form>
