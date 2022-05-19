@@ -15,14 +15,14 @@ public class BoardDeleteServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			//준비
+			
 			int boardNo = Integer.parseInt(req.getParameter("boardNo"));
 			
-			//처리
+			
 			BoardDao boardDao = new BoardDao();
 			boolean success = boardDao.delete(boardNo);
 			
-			//출력
+			
 			if(success) {
 				resp.sendRedirect("list.jsp");
 			}

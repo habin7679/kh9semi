@@ -22,10 +22,10 @@ public class ReplyDao {
 		con.close();
 	}
 	
-//	(주의) 댓글은 전체목록을 만들 이유가 없다
-//	1. 해당 글에 대한 댓글 목록
-//	2. 특정 검색어에 대한 댓글 목록
-//	= 댓글 정렬은 작성순, 등록순으로 한다.
+
+
+
+
 	public List<ReplyDto> selectList(int replyTarget) throws Exception {
 		Connection con = JdbcUtils.getConnection();
 		
@@ -81,7 +81,7 @@ public class ReplyDao {
 		return list;
 	}
 	
-//	댓글 삭제
+
 	public boolean delete(int replyNo) throws Exception {
 		Connection con = JdbcUtils.getConnection();
 		
@@ -95,7 +95,7 @@ public class ReplyDao {
 		return count > 0;
 	}
 	
-//	댓글 수정
+
 	public boolean update(ReplyDto replyDto) throws Exception {
 		Connection con = JdbcUtils.getConnection();
 		

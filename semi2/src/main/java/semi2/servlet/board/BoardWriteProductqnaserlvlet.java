@@ -25,14 +25,14 @@ public class BoardWriteProductqnaserlvlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			//String path = System.getProperty("user.home") + "/upload";//운영체제에서 사용자에게 제공되는 home 폴더
+			
 			String path = System.getProperty("user.home") + "/git/kh9semi/semi2/src/main/webapp/image";
-			System.out.println("path = " + path);//확인을 위한 출력
+			System.out.println("path = " + path);
 			
 			File dir = new File(path);
-			dir.mkdirs();//폴더 생성
+			dir.mkdirs();
 			
-			int max = 2 * 1024 * 1024;//최대 크기 제한(byte);
+			int max = 2 * 1024 * 1024;
 			String encoding = "UTF-8";
 			
 			DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
@@ -49,29 +49,29 @@ public class BoardWriteProductqnaserlvlet extends HttpServlet{
 			String memberId = (String) req.getSession().getAttribute("member");
 			boardDto.setBoardWriter(memberId);
 			
-			//처리
+			
 			BoardDao boardDao = new BoardDao();
 			boardDto.setBoardNo(boardDao.getSequence());
 			
-//			새글일 경우와 답글일 경우를 구분하여서 groupNo, superNo, depth와 관련된 작업을 하고 등록해야한다.
-//			새글일 경우
-//			- group_no - board_no와 같게 설정한다.
-//			- super_no - 0으로 설정한다
-//			- depth - 0으로 설정한다
-//			답글일 경우(원본글의 정보가 필요하다)
-//			- group_no - 원본글의 group_no
-//			- super_no - 원본글의 board_no
-//			- depth - 원본글의 depth + 1
-			if(mRequest.getParameter("superNo") == null) {//새글이라면(superNo 파라미터가 없다면)
+
+
+
+
+
+
+
+
+
+			if(mRequest.getParameter("superNo") == null) {
 				boardDto.setGroupNo(boardDto.getBoardNo());
 				boardDto.setSuperNo(0);
 				boardDto.setDepth(0);
 			}
-			else {//답글이라면
+			else {
 				int superNo = Integer.parseInt(mRequest.getParameter("superNo"));
 				BoardDto originDto = boardDao.selectOne(superNo);
 				boardDto.setGroupNo(originDto.getGroupNo());
-				boardDto.setSuperNo(originDto.getBoardNo());//==superNo
+				boardDto.setSuperNo(originDto.getBoardNo());
 				boardDto.setDepth(originDto.getDepth() + 1);
 			}
 			
@@ -109,7 +109,7 @@ public class BoardWriteProductqnaserlvlet extends HttpServlet{
 				boardAttachmentDao.insert(boardAttachmentDto);
 			}
 			
-			//출력
+			
 			resp.sendRedirect("detail.jsp?boardNo="+boardDto.getBoardNo());
 		}
 		catch(Exception e) {

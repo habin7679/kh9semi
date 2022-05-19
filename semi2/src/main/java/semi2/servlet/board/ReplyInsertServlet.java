@@ -17,20 +17,20 @@ public class ReplyInsertServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			//준비 : ReplyDto ( replyTarget + replyContent ) + 작성자(HttpSession)
+			
 			ReplyDto replyDto = new ReplyDto();
 			replyDto.setReplyContent(req.getParameter("replyContent"));
 			replyDto.setReplyTarget(Integer.parseInt(req.getParameter("replyTarget")));
 			replyDto.setReplyWriter((String)req.getSession().getAttribute("member"));
 			
-			//처리
+			
 			ReplyDao replyDao = new ReplyDao();
 			replyDao.insert(replyDto);
 			
 			BoardDao boardDao = new BoardDao();
 			boardDao.updateReplycount(replyDto.getReplyTarget());
 			
-			//출력
+			
 			resp.sendRedirect("detail.jsp?boardNo="+replyDto.getReplyTarget());
 		}
 		catch(Exception e) {

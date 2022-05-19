@@ -4,7 +4,7 @@
 <%@page import="semi2.beans.MemberDao"%>
 
 
-<!-- 카테고리 선택하기 위한 회원등급 값 불러오기 -->
+
 <%	
 String memberId = (String)session.getAttribute("member");
 MemberDao memberDao = new MemberDao();

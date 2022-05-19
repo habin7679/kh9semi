@@ -93,7 +93,6 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
         newProdObj = {}; //기존 최근 본 상품 목록 로그 출력
         newProdObj.id = <%=productNo%>;
         newProdObj.img = <%=productattachmentDto.getAttachmentNo()%>;
-
         recentProdObj.unshift(newProdObj);  // 현재 상품 최근 본 상품 목록 앞에 넣기(push 에서 unshift로 변경)
         _.uniqBy(recentProdObj, "id"); 
         
@@ -115,7 +114,6 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
             display: block;
             clear:both;
         }
-
         .layer-1 {
             width:50%;
         }
@@ -177,7 +175,6 @@ InfoAttachmentDto infoattachmentDto = infoattachmentDao.selectOne(productNo);
 
     <div class="container w800 m30">
    <%
-
 	String type = request.getParameter("board_product_no");
 	String keyword = request.getParameter("keyword");
 	int p;
@@ -380,7 +377,6 @@ MemberDto memberDto = memberDao.selectOne(boardDto.getBoardWriter());//작성자
     <div class="container w800 m30">
 <body>
    <%
-
 	String type1 = request.getParameter("board_product_no");
 	String keyword1 = request.getParameter("keyword");
 	//페이징 관련 파라미터들을 수신
