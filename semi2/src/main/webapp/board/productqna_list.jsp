@@ -38,11 +38,9 @@
 	BoardDao boardDao = new BoardDao();
 	List<BoardDto> list;
 	if(search){
-
 		list = boardDao.selectProductqnaListByPaging(p, s, type, keyword); 
 	}
 	else {
-
 		list = boardDao.selectProductqnaListByPaging(p, s);
 	}
 %>    
