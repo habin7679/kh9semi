@@ -19,17 +19,17 @@ public class ReplyEditServlet extends HttpServlet{
 		try {
 
 			req.setCharacterEncoding("UTF-8");
-			//준비 : ReplyDto(replyNo + replyTarget + replyContent)
+			
 			ReplyDto replyDto = new ReplyDto();
 			replyDto.setReplyNo(Integer.parseInt(req.getParameter("replyNo")));
 			replyDto.setReplyTarget(Integer.parseInt(req.getParameter("replyTarget")));
 			replyDto.setReplyContent(req.getParameter("replyContent"));
 			
-			//처리
+			
 			ReplyDao replyDao = new ReplyDao();
 			boolean success = replyDao.update(replyDto);
 			
-			//출력
+			
 			if(success) {
 				resp.sendRedirect("detail.jsp?boardNo="+replyDto.getReplyTarget());
 			}
