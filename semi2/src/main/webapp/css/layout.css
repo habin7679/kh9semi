@@ -5,7 +5,6 @@ main {
 header {
     min-height: 120px;
     padding: 20px;
-/*     border-bottom: 3px solid gray; */
 }
 .section {
     min-height: 450px;
