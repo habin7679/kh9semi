@@ -40,7 +40,7 @@
     		new_a.setAttribute('href', '../product/product_user_detail.jsp?product_no='+current.id);  
     		new_a.setAttribute('class', 'link');
     		
-    		new_img.setAttribute('src', '/semi2/file/download.ez?attachmentNo='+current.img); 
+    		new_img.setAttribute('src', '<%=request.getContextPath()%>/file/download.ez?attachmentNo='+current.img); 
     		
     		new_div.setAttribute('class', 'recentp');
     		
