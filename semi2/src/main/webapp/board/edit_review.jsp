@@ -4,12 +4,12 @@
 <%@page import="semi2.beans.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- 준비 --%>
+
 <%
 	int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 %>
 
-<%-- 처리 --%>
+
 <%
 	BoardDao boardDao = new BoardDao();
 	BoardDto boardDto = boardDao.selectOne(boardNo);
@@ -19,7 +19,7 @@
 	MemberDto memberDto = memberDao.selectOne(memberId);
 %>
 
-<%-- 출력 --%>
+
 <jsp:include page="/template/header.jsp"></jsp:include>
 <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>

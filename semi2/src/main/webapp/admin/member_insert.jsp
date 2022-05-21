@@ -30,7 +30,7 @@
                 var that = this;
 
                 $.ajax({
-                    url:"http://localhost:8080/semi2/ajax/id.ez?memberId="+memberId,
+                    url:"<%=request.getContextPath()%>/ajax/id.ez?memberId="+memberId,
                     type:"get",
                     success:function(resp) {
                         //resp는 "NNNNN" 또는 "NNNNY"일 것이다
@@ -97,7 +97,7 @@
                 } 
 
                 $.ajax({
-                    url:"http://localhost:8080/semi2/ajax/nick.ez?memberNick="+memberNick,
+                    url:"<%=request.getContextPath()%>/ajax/nick.ez?memberNick="+memberNick,
                     type:"post",
                     data:{
                         memberNick : memberNick

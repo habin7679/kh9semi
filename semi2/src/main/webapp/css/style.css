@@ -8,12 +8,6 @@
     color: black;
 }
 
-/* 배경 이미지 넣을때 사용
-    .intro_bg {
-    background-image: url("");
-    }
-    */
-
 .header {
     display: flex;
     width: 1280px;
@@ -64,9 +58,3 @@
     margin-left: 84px;
     
 }
-
-/* 네비 글자 색 바꿀 때
-    .nav>li>a {
-    color: ;
-    }
-    */

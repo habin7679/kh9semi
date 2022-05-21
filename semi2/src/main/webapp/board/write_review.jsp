@@ -4,7 +4,7 @@
 <%@page import="semi2.beans.MemberDao"%>
 
 
-<!-- 상품 선택하기 아이디 값 불러오기 -->
+
 <%	
 String memberId = (String)session.getAttribute("member");
 MemberDao memberDao = new MemberDao();

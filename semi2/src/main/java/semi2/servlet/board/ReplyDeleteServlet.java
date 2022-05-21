@@ -16,18 +16,18 @@ public class ReplyDeleteServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			//준비
+			
 			int replyNo = Integer.parseInt(req.getParameter("replyNo"));
 			int replyTarget = Integer.parseInt(req.getParameter("replyTarget"));
 			
-			//처리
+			
 			ReplyDao replyDao = new ReplyDao();
 			boolean success = replyDao.delete(replyNo);
 			
-			//출력
+			
 			if(success) {
 				BoardDao boardDao = new BoardDao();
-				boardDao.updateReplycount(replyTarget);//댓글 수 갱신작업
+				boardDao.updateReplycount(replyTarget);
 				resp.sendRedirect("detail.jsp?boardNo="+replyTarget);
 			}
 			else {

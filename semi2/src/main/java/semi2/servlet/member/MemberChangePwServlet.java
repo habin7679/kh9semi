@@ -24,7 +24,7 @@ public class MemberChangePwServlet extends HttpServlet{
 			memberDao.changePw(memberId,memberPw);
 			
 			//출력
-			resp.sendRedirect("change_pw_success.jsp");
+			resp.sendRedirect(req.getContextPath()+"/member/change_pw_success.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 			resp.sendError(500);
