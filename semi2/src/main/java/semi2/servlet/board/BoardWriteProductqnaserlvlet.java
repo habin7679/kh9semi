@@ -26,7 +26,7 @@ public class BoardWriteProductqnaserlvlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			
-			String path = System.getProperty("user.home") + "/git/kh9semi/semi2/src/main/webapp/image";
+			String path = System.getProperty("user.home") + "/upload/kh92";
 			System.out.println("path = " + path);
 			
 			File dir = new File(path);
