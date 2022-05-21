@@ -44,7 +44,7 @@
     } 
     aside {
     }
-       .p { width: 100%; /* 정렬하려는 요소의 넓이를 반드시 지정 */ margin: 0 auto; }
+       .p { width: 100%; margin: 0 auto; }
     </style>
 </head>
 <body>
@@ -115,7 +115,7 @@ if (endBlock > lastPage) {
 }
 %>
 
-<%-- 출력 --%>
+
 
 	<div class="container w800 m30 ">
 	<div class="row center">

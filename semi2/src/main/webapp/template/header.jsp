@@ -52,7 +52,6 @@ ul.bar, ul.bar ul {
 	padding: 0;
 	margin: 0;
 }
-/* ul의 마지막 clear / li는 float로 배치 */
 ul.bar::after {
 	content: "";
 	display: block;
@@ -62,11 +61,9 @@ ul.bar>li {
 	float: left;
 	width: 300px;
 }
-/* 2차 이상의 메뉴 숨김 */
 ul.bar ul {
 	display: none;
 }
-/* 바 항목에 마우스가 올라가면 하위 메뉴를 표시 */
 ul.bar li:hover>ul {
 	display: block;
 }
