@@ -29,7 +29,7 @@ public class BoardWriteReviewServlet extends HttpServlet{
 			
 			String path = System.getProperty("user.home") + "/upload/kh92";
 			System.out.println("path = " + path);
-			
+			 
 			File dir = new File(path);
 			dir.mkdirs();
 			
