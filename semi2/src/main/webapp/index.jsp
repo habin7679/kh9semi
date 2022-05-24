@@ -73,7 +73,7 @@ ProductAttachmentDao paDao = new ProductAttachmentDao();
 				<a
 					href="<%=request.getContextPath()%>/product/product_user_detail.jsp?product_no=<%=pDto.getProductNo()%>">
 					<img class="wid"
-					src="/semi2/file/download.ez?attachmentNo=<%=paDto.getAttachmentNo()%>"
+					src="<%=request.getContextPath()%>/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  
 					width="200" height="200"
 					style="vertical-align: top; margin-top: 35px;"><br>
 				</a> <label> <%=pDto.getProductName()%>
@@ -106,7 +106,7 @@ ProductAttachmentDao paDao = new ProductAttachmentDao();
 				<a
 					href="<%=request.getContextPath()%>/product/product_user_detail.jsp?product_no=<%=pDto.getProductNo()%>">
 					<img class="wid"
-					src="/semi2/file/download.ez?attachmentNo=<%=paDto.getAttachmentNo()%>"
+					src="<%=request.getContextPath()%>/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  
 					width="200" height="200"
 					style="vertical-align: top; margin-top: 35px;"><br>
 				</a>  <label> <%=pDto.getProductName()%>
@@ -139,7 +139,7 @@ ProductAttachmentDao paDao = new ProductAttachmentDao();
 				<a
 					href="<%=request.getContextPath()%>/product/product_user_detail.jsp?product_no=<%=pDto.getProductNo()%>">
 					<img class="wid"
-					src="/semi2/file/download.ez?attachmentNo=<%=paDto.getAttachmentNo()%>"
+					src="<%=request.getContextPath()%>/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  
 					width="200" height="200"
 					style="vertical-align: top; margin-top: 35px;"><br>
 				</a> <label> <%=pDto.getProductName()%>
@@ -171,7 +171,7 @@ ProductAttachmentDao paDao = new ProductAttachmentDao();
 				<a
 					href="<%=request.getContextPath()%>/product/product_user_detail.jsp?product_no=<%=pDto.getProductNo()%>">
 					<img class="wid"
-					src="/semi2/file/download.ez?attachmentNo=<%=paDto.getAttachmentNo()%>"
+					src="<%=request.getContextPath()%>/file/download.ez?attachmentNo=<%=productattachmentDto.getAttachmentNo()%>"  
 					width="200" height="200"
 					style="vertical-align: top; margin-top: 35px;"><br>
 				</a> <label> <%=pDto.getProductName()%>
